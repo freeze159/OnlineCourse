@@ -1,0 +1,53 @@
+<section class="course container-fluid">
+    <div class="course_content">
+        <div class="row">
+            <div class="col-xl-4 col-lg-3 col-md-3">
+                <h2 class="course_title">The world’s largest selection of courses</h2>
+                <p>Choose from over 80,000 online video courses with new additions published every month</p>
+            </div>
+            <div class="col-xl-8 col-lg-9 col-md-9">
+                <ul class="nav nav-tabs myTab">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#develop">Development</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#design">Design</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#bussiness">Bussiness</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#soft">IT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#personal">Personal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#marketing">Marketing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#photography">Photography</a>
+                    </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane fade-in active" id="develop">
+                        <owl-carousel [options]="myCarouselOptions" [items]="cards"
+                            [carouselClasses]="['owl-theme', 'sliding']" >
+                            <app-course [khoahoc]='khoahoc' *ngFor="let khoahoc of mangKhoaHoc"></app-course> 
+                                                                                                              
+                        </owl-carousel>
+                    </div>
+                    <div class="tab-pane" id="design">...</div>
+                    <div class="tab-pane" id="bussiness">...</div>
+                    <div class="tab-pane" id="soft">...</div>
+                    <div class="tab-pane" id="personal">...</div>
+                    <div class="tab-pane" id="marketing">...</div>
+                    <div class="tab-pane" id="photography">...</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

@@ -1,0 +1,13 @@
+.carousel{
+    background-image: url("../../../../../assets/img/carousel.jpg");
+    /* background-attachment: fixed; */
+    height: 30rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* overflow: hidden; */
+}
+.carousel-text{
+    margin-top: 0;
+    transform: translate(15%,15%);
+    color:white;
+}
