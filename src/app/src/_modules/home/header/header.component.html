@@ -1,0 +1,96 @@
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <!-- Navbar brand -->
+  <mdb-navbar-brand>
+    <a routerLink="/" class="navbar-brand" href="#">
+      <img src="../../../../../assets/img/s1.png" height="70" width="100" alt="">
+      
+    </a>
+  </mdb-navbar-brand>
+
+  <!-- Collapsible content -->
+  <links>
+    <!-- Links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- DROPDOWN Catolories -->
+      <li class="nav-item dropdown none-hover" dropdown>
+        <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light dropdown-main" mdbWavesEffect>
+          <i class="fa fa-th mr-2 py-1"></i>
+          <span>Catolories</span>
+          <span class="caret"></span>
+        </a>
+        
+          <ul *dropdownMenu class="main-navigation dropdown-menu dropdown dropdown-primary " role="menu">
+            <li><a href="#">Front End Design</a>
+              <ul>
+                <li><a href="#">HTML</a></li>
+                <li><a href="#">CSS</a>
+                  <ul>
+                    <li><a href="#">Resets</a></li>
+                    <li><a href="#">Grids</a></li>
+                    <li><a href="#">Frameworks</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">JavaScript</a>
+                  <ul>
+                    <li><a href="#">Ajax</a></li>
+                    <li><a href="#">jQuery</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#">WordPress Development</a>
+              <ul>
+                <li><a href="#">Themes</a></li>
+                <li><a href="#">Plugins</a></li>
+                <li><a href="#">Custom Post Types</a>
+                  <ul>
+                    <li><a href="#">Portfolios</a></li>
+                    <li><a href="#">Testimonials</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Options</a></li>
+              </ul>
+            </li>
+            <li><a href="#">About Us</a></li>
+          </ul>
+        
+      </li>
+      <form class="form-inline waves-light" mdbWavesEffect>
+        <div class="md-form my-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        </div>
+      </form>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="/" >Becomes Instructor</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="/login" >Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="/signup" href="#">Create Account</a>
+      </li>
+      <!-- Dropdown -->
+      <li class="nav-item dropdown " dropdown>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light dropdown-main" mdbWavesEffect>
+          <i class="fas fa-user"></i>
+          <span> Admin </span>
+          <span class="caret"></span>
+        </a>
+        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">My Account</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else</a>
+          <div class="divider dropdown-divider"></div>
+          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
+        </div>
+      </li>
+
+    </ul>
+    <!-- Links -->
+
+
+  </links>
+  <!-- Collapsible content -->
+
+</mdb-navbar>

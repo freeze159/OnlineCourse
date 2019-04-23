@@ -1,0 +1,102 @@
+input.ng-valid{
+    border-left:5px solid rgb(98, 240, 98)!important;
+}
+input.ng-invalid{
+    border-left:5px solid rgb(238, 68, 68)!important;
+}
+.account-page{
+    background-color: #272e30;
+    height: 1012px;
+    margin-top: -120px;
+  }
+  .account-wrap {
+    max-width: 430px;
+    width: 100%;
+    margin: 120px auto;
+    text-align: center;
+  }
+  
+  .site-logo {
+    display: inline-block;
+    margin-bottom: 40px;
+  }
+  
+  .accountform {
+    background-color: #ffffff;
+    border-radius: 10px;
+    text-align: left;
+    padding: 45px 30px;
+  }
+  .accountform h3 {
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: #808080;
+    margin-top: 0;
+    margin-bottom: 35px;
+  }
+  .accountform label {
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+  .accountform .basic-field label {
+    display: block;
+    width: 100%;
+    color: #111111;
+  }
+  .accountform .basic-field label + label {
+    margin-top: 22px;
+  }
+  .accountform .basic-field label p {
+    margin-top: 7px;
+    margin-bottom: 0;
+  }
+  .accountform .basic-field .row {
+    margin: 25px -10px 0;
+  }
+  .accountform .basic-field .row .col-sm-6 {
+    padding: 0 10px;
+  }
+  .accountform [type=text],
+  .accountform [type=password],
+  .accountform [type=email] {
+    width: 100%;
+    border: 1px solid #d1d1d1;
+    line-height: 30px;
+    padding: 9px 15px;
+  }
+  .accountform .stay-login {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+  .accountform .stay-login [type=checkbox] {
+    width: 15px;
+    height: 15px;
+    margin-top: 0;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .accountform [type=submit] {
+    font-weight: 400;
+    font-size: 1.8rem;
+    /* background-color: #d1d1d1; */
+    line-height: 50px;
+    border: none;
+    height: 50px;
+    color: #ffffff;
+    text-align: center;
+    width: 100%;
+    text-transform: uppercase;
+    margin-top: 28px;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  .accountform [type=submit]:hover {
+    background-color: cornflowerblue;
+}
+  .accountform .signup-recover {
+    text-align: center;
+    margin-top: 28px;
+    margin-bottom: 0;
+    font-size:15px;
+  }

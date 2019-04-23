@@ -1,99 +1,62 @@
-.search-group {
-    border-radius: 5%;
-    background-color: #F2F3F5; 
-}
-
-
-.navbar-nav  .nav-item {
-    margin-right:10px;
-}
-
-.search-group-input{
-    background-color: #F2F3F5;
-    border: none;
-
-}
-.search-group-btn{
-    border-radius: 0;
-    background-color: #F2F3F5;
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     
-}
-.search-group-btn:hover{
-    background-color: #EC5252;
-    color: white
-}
-.search-group-btn{
-    color:#EC5252;
-}
-.search-group:hover .search-group-input{ 
-    background-color: white;
-    
-    
-}
-
-.cart-icon{
-    font-size: 20px;
-    color:#EC5252;
-}
-/*  instructor*/
- /* Dropdown Button */
- .dropbtnRight {
-    color: white;
-    border: none;
+    /* background: #1bc2a2; */
   }
   
-  /* The container <div> - needed to position the dropdown content */
-  .dropdownRight {
-    position: relative;
-    display: inline-block;
-    box-sizing: border-box;
-    background-color: white;
-    
-  }
-  
-  /* Dropdown Content (Hidden by Default) */
-  .dropdownRight-content {
-    display: none;
-    position: absolute;
-    top: 40px;
-    right: 2%;
-    background-color: white;
-    height: 100px;
-    width: 300px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-
-  
-  /* Links inside the dropdown */
-  .dropdownRight-content a {
-    padding: 12px 16px;
-    text-decoration: none;
+ul li {
     display: block;
-    background-color: white;
-    color: red;
+    position: relative;
+    float: left;
+    /* background: #1bc2a2; */
   }
-  
-  /* Change color of dropdown links on hover */
-  .dropdownRight-content a:hover {background-color: #ddd;}
-  
-  /* Show the dropdown menu on hover */
-  .dropdownRight:hover .dropdownRight-content {display: block;}
-  
-  /* Change the background color of the dropdown button when the dropdown content is shown */
-  .dropdownRight:hover .dropbtnRight {background-color: #3e8e41;} 
-  .dropdownRight-text{
-      font-size: 16px;
-      font-weight: 200;
-  }
-  /* Button */
-.btn-login{
-    color: black;
-    background-color: white;
-    border: 1px solid black
-}
-.btn-signup{
-    color: white;
-    background-color: #EC5252;
+
+li ul { display: none; }
+
+ul li a {
+  display: block;
+  padding: 1em;
+  text-decoration: none;
+  white-space: nowrap;
+  /* color: #fff; */
 }
 
+ul li a:hover { background: #2c3e50; }
+li.none-hover:hover {
+  pointer-events: none;
+}
+li:hover > ul {
+    display: block;
+    position: absolute;
+    pointer-events: all;
+}
+li.none-hover:focus > ul{
+  display: block;
+  pointer-events: all;
+}
+
+li:hover li { float: none; }
+  
+li:hover a { background: #ffffff; }
+  
+li:hover li a:hover { background: #4d88c4; }
+
+.main-navigation li ul li { border-top: 0; }
+
+ul ul ul {
+    left: 100%;
+    top: 0;
+  }
+ul:before,
+ul:after {
+  content: " "; /* 1 */
+  display: table; /* 2 */
+}
+
+ul:after { clear: both; }
+li:hover a.dropdown-main{
+    background-color:transparent;
+
+}

@@ -9,6 +9,8 @@ export class CartComponent implements OnInit {
 
   constructor() { }
 
+  events: string[] = [];
+  opened: boolean;
   ngOnInit() {
   }
 

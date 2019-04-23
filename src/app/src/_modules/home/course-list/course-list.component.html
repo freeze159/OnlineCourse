@@ -4,50 +4,215 @@
             <div class="col-xl-4 col-lg-3 col-md-3">
                 <h2 class="course_title">The world’s largest selection of courses</h2>
                 <p>Choose from over 80,000 online video courses with new additions published every month</p>
+
             </div>
-            <div class="col-xl-8 col-lg-9 col-md-9">
+            <div class="col-xl-8 col-lg-19 col-md-19">
                 <ul class="nav nav-tabs myTab">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#develop">Development</a>
+                    <li class="nav-item" *ngFor='let theLoai of mangTheLoai;let i=index;'>
+                        <a class="nav-link" data-toggle="tab" href="#a{{theLoai.id}}"
+                            [ngClass]="{'active':i==0}">{{theLoai.TenTheLoai}}</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#design">Design</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#bussiness">Bussiness</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#soft">IT</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#personal">Personal</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#marketing">Marketing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#photography">Photography</a>
-                    </li>
+
                 </ul>
                 <!-- Tab panes -->
-                <div class="tab-content">
-                    <div class="tab-pane fade-in active" id="develop">
-                        <owl-carousel [options]="myCarouselOptions" [items]="cards"
-                            [carouselClasses]="['owl-theme', 'sliding']" >
-                            <app-course [khoahoc]='khoahoc' *ngFor="let khoahoc of mangKhoaHoc"></app-course> 
-                                                                                                              
-                        </owl-carousel>
-                    </div>
-                    <div class="tab-pane" id="design">...</div>
-                    <div class="tab-pane" id="bussiness">...</div>
-                    <div class="tab-pane" id="soft">...</div>
-                    <div class="tab-pane" id="personal">...</div>
-                    <div class="tab-pane" id="marketing">...</div>
-                    <div class="tab-pane" id="photography">...</div>
+                <div class="tab-content myContent">
+                    <div class="tab-pane" *ngFor='let theLoai of mangTheLoai;let i=index;' id='a{{theLoai.id}}'
+                        [ngClass]="{'active':i==0}">
+                        <div class="owl-theme clone-carousel owl-carousel">
+                                
+                                <ng-template [ngIf]="theLoai.id==1">
+                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc1' >
+                                        <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
+                                        <div class="card-body">
+                                            <div class="card-body_content">
+                                                <h4 class="card-title">{{khoahoc.TenKH}}</h4>
+                                                <p class="card-text">Colt Steele Ian Schoonover</p>
+                                                <span class="star">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-half-o"></i>
+                                                </span>
+                                                <span class="number_average">4.6</span>
+                                                <span class="number_rating">(11.597)</span>
+                                                <p class="price">
+                                                    <!-- <span>$179.99</span> -->
+                                                    <span>${{khoahoc.GiaTien}}</span>
+                                                    <a routerLink='/chitietkhoahoc/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'></a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </ng-template>
+                                  <ng-template [ngIf]="theLoai.id==2">
+                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc2' >
+                                        <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
 
+                                        <div class="card-body">
+                                            <div class="card-body_content">
+                                                <h4 class="card-title">{{khoahoc.TenKH}}</h4>
+                                                <p class="card-text">Colt Steele Ian Schoonover</p>
+                                                <span class="star">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-half-o"></i>
+                                                </span>
+                                                <span class="number_average">4.6</span>
+                                                <span class="number_rating">(11.597)</span>
+                                                <p class="price">
+                                                    <!-- <span>$179.99</span> -->
+                                                    <span>${{khoahoc.GiaTien}}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </ng-template>
+                                  <ng-template [ngIf]="theLoai.id==3">
+                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc3' >
+                                        <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
+
+                                        <div class="card-body">
+                                            <div class="card-body_content">
+                                                <h4 class="card-title">{{khoahoc.TenKH}}</h4>
+                                                <p class="card-text">Colt Steele Ian Schoonover</p>
+                                                <span class="star">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-half-o"></i>
+                                                </span>
+                                                <span class="number_average">4.6</span>
+                                                <span class="number_rating">(11.597)</span>
+                                                <p class="price">
+                                                    <!-- <span>$179.99</span> -->
+                                                    <span>${{khoahoc.GiaTien}}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </ng-template>
+                                  <ng-template [ngIf]="theLoai.id==4">
+                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc4' >
+                                        <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
+
+                                        <div class="card-body">
+                                            <div class="card-body_content">
+                                                <h4 class="card-title">{{khoahoc.TenKH}}</h4>
+                                                <p class="card-text">Colt Steele Ian Schoonover</p>
+                                                <span class="star">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-half-o"></i>
+                                                </span>
+                                                <span class="number_average">4.6</span>
+                                                <span class="number_rating">(11.597)</span>
+                                                <p class="price">
+                                                    <!-- <span>$179.99</span> -->
+                                                    <span>${{khoahoc.GiaTien}}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </ng-template>
+                                  <ng-template [ngIf]="theLoai.id==5">
+                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc5' >
+                                        <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
+
+                                        <div class="card-body">
+                                            <div class="card-body_content">
+                                                <h4 class="card-title">{{khoahoc.TenKH}}</h4>
+                                                <p class="card-text">Colt Steele Ian Schoonover</p>
+                                                <span class="star">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-half-o"></i>
+                                                </span>
+                                                <span class="number_average">4.6</span>
+                                                <span class="number_rating">(11.597)</span>
+                                                <p class="price">
+                                                    <!-- <span>$179.99</span> -->
+                                                    <span>${{khoahoc.GiaTien}}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </ng-template>
+                                  <ng-template [ngIf]="theLoai.id==6">
+                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc6' >
+                                        <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
+                                        <div class="card-body">
+                                            <div class="card-body_content">
+                                                <h4 class="card-title">{{khoahoc.TenKH}}</h4>
+                                                <p class="card-text">Colt Steele Ian Schoonover</p>
+                                                <span class="star">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-half-o"></i>
+                                                </span>
+                                                <span class="number_average">4.6</span>
+                                                <span class="number_rating">(11.597)</span>
+                                                <p class="price">
+                                                    <!-- <span>$179.99</span> -->
+                                                    <span>${{khoahoc.GiaTien}}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </ng-template>
+                                  <ng-template [ngIf]="theLoai.id==7">
+                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc7' >
+                                        <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
+                                        <div class="card-body">
+                                            <div class="card-body_content">
+                                                <h4 class="card-title">{{khoahoc.TenKH}}</h4>
+                                                <p class="card-text">Colt Steele Ian Schoonover</p>
+                                                <span class="star">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-half-o"></i>
+                                                </span>
+                                                <span class="number_average">4.6</span>
+                                                <span class="number_rating">(11.597)</span>
+                                                <p class="price">
+                                                    <!-- <span>$179.99</span> -->
+                                                    <span>${{khoahoc.GiaTien}}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </ng-template>
+                                  <ng-template [ngIf]="theLoai.id==8">
+                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc8' >
+                                        <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
+                                        <div class="card-body">
+                                            <div class="card-body_content">
+                                                <h4 class="card-title">{{khoahoc.TenKH}}</h4>
+                                                <p class="card-text">Colt Steele Ian Schoonover</p>
+                                                <span class="star">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-half-o"></i>
+                                                </span>
+                                                <span class="number_average">4.6</span>
+                                                <span class="number_rating">(11.597)</span>
+                                                <p class="price">
+                                                    <!-- <span>$179.99</span> -->
+                                                    <span>${{khoahoc.GiaTien}}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </ng-template>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 </section>

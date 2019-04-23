@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { UserService } from 'src/app/src/_core/services/user.service';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private userService:UserService) { }
+  @ViewChild('frmDangKy') frmDangKy:NgForm;
   ngOnInit() {
   }
+  DangKy(info:any){
+    
+    console.log(info);
+    this.userService.DangKy(info).subscribe(data=>{
 
+      console.log(data);
+    })
+  }
 }
