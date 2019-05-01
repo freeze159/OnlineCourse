@@ -10,7 +10,6 @@ import { NgForm } from '@angular/forms';
 export class LoginComponent implements OnInit {
   @ViewChild('frmDangNhap') frmDn: NgForm
   constructor(private userService: UserService) { }
-
   ngOnInit() {
   }
   // thongtin: any = {
@@ -20,10 +19,15 @@ export class LoginComponent implements OnInit {
   DangNhap(thongtin: any) {
     // console.log(this.thongtin);
     console.log(thongtin);
-    this.userService.DangNhap(thongtin).subscribe(data => {
+    this.userService.DangNhap(thongtin).subscribe((data:any) => {
       if (typeof data == 'object') {
         const userLogin = JSON.stringify(data);
+        const apiToken = JSON.stringify(data.data.api_token);
         localStorage.setItem('userLogin', userLogin);
+        
+        localStorage.setItem('tokenbearer',apiToken);
+        const token = localStorage.getItem('tokenbearer'); 
+        console.log(JSON.parse(token));
         window.location.href='/';
       }
       else {

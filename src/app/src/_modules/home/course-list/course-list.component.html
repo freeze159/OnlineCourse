@@ -4,25 +4,24 @@
             <div class="col-xl-4 col-lg-3 col-md-3">
                 <h2 class="course_title">The world’s largest selection of courses</h2>
                 <p>Choose from over 80,000 online video courses with new additions published every month</p>
-
             </div>
             <div class="col-xl-8 col-lg-19 col-md-19">
                 <ul class="nav nav-tabs myTab">
-                    <li class="nav-item" *ngFor='let theLoai of mangTheLoai;let i=index;'>
-                        <a class="nav-link" data-toggle="tab" href="#a{{theLoai.id}}"
-                            [ngClass]="{'active':i==0}">{{theLoai.TenTheLoai}}</a>
+                    <li class="nav-item" *ngFor='let theLoai of array;let i=index;'>
+                        <a class="nav-link" data-toggle="tab" href="#a{{theLoai.data.id}}"
+                            [ngClass]="{'active':i==0}">{{theLoai.data.TenTheLoai}}</a>
                     </li>
 
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content myContent">
-                    <div class="tab-pane" *ngFor='let theLoai of mangTheLoai;let i=index;' id='a{{theLoai.id}}'
+                    <div class="tab-pane" *ngFor='let theLoai of array;let i=index;' id='a{{theLoai.data.id}}'
                         [ngClass]="{'active':i==0}">
                         <div class="owl-theme clone-carousel owl-carousel">
-                                
-                                <ng-template [ngIf]="theLoai.id==1">
-                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc1' >
-                                        <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
+                        <!-- <div class="vertical slider"> -->
+                                <ng-container *ngIf="theLoai.data.id==1">
+                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc1'>
+                                        <img class="card-img-top" src={{khoahoc.TenKH}} alt="kh1" />
                                         <div class="card-body">
                                             <div class="card-body_content">
                                                 <h4 class="card-title">{{khoahoc.TenKH}}</h4>
@@ -38,38 +37,17 @@
                                                 <p class="price">
                                                     <!-- <span>$179.99</span> -->
                                                     <span>${{khoahoc.GiaTien}}</span>
-                                                    <a routerLink='/chitietkhoahoc/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'></a>
+                                                    <a
+                                                        routerLink='/chitietkhoahoc/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'>Xem
+                                                        Chi Tiết</a>
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
-                                  </ng-template>
-                                  <ng-template [ngIf]="theLoai.id==2">
-                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc2' >
-                                        <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
-
-                                        <div class="card-body">
-                                            <div class="card-body_content">
-                                                <h4 class="card-title">{{khoahoc.TenKH}}</h4>
-                                                <p class="card-text">Colt Steele Ian Schoonover</p>
-                                                <span class="star">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-half-o"></i>
-                                                </span>
-                                                <span class="number_average">4.6</span>
-                                                <span class="number_rating">(11.597)</span>
-                                                <p class="price">
-                                                    <!-- <span>$179.99</span> -->
-                                                    <span>${{khoahoc.GiaTien}}</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                  </ng-template>
-                                  <ng-template [ngIf]="theLoai.id==3">
-                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc3' >
+                                </ng-container>
+                            
+                                <ng-container *ngIf="theLoai.data.id==2">
+                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc2'>
                                         <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
 
                                         <div class="card-body">
@@ -91,9 +69,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                  </ng-template>
-                                  <ng-template [ngIf]="theLoai.id==4">
-                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc4' >
+                                </ng-container>
+                        
+                                <ng-container *ngIf="theLoai.data.id==3">
+                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc3'>
                                         <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
 
                                         <div class="card-body">
@@ -115,9 +94,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                  </ng-template>
-                                  <ng-template [ngIf]="theLoai.id==5">
-                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc5' >
+                                </ng-container>
+                        
+                                <ng-container *ngIf="theLoai.data.id==4">
+                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc4'>
                                         <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
 
                                         <div class="card-body">
@@ -139,9 +119,35 @@
                                             </div>
                                         </div>
                                     </div>
-                                  </ng-template>
-                                  <ng-template [ngIf]="theLoai.id==6">
-                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc6' >
+                                </ng-container>
+                            
+                                <ng-container *ngIf="theLoai.data.id==5">
+                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc5'>
+                                        <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
+
+                                        <div class="card-body">
+                                            <div class="card-body_content">
+                                                <h4 class="card-title">{{khoahoc.TenKH}}</h4>
+                                                <p class="card-text">Colt Steele Ian Schoonover</p>
+                                                <span class="star">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-half-o"></i>
+                                                </span>
+                                                <span class="number_average">4.6</span>
+                                                <span class="number_rating">(11.597)</span>
+                                                <p class="price">
+                                                    <!-- <span>$179.99</span> -->
+                                                    <span>${{khoahoc.GiaTien}}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>                       
+
+                                <ng-container *ngIf="theLoai.data.id==6">
+                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc6'>
                                         <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
                                         <div class="card-body">
                                             <div class="card-body_content">
@@ -162,9 +168,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                  </ng-template>
-                                  <ng-template [ngIf]="theLoai.id==7">
-                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc7' >
+                                </ng-container>                       
+
+                                <ng-container *ngIf="theLoai.data.id==7">
+                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc7'>
                                         <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
                                         <div class="card-body">
                                             <div class="card-body_content">
@@ -185,9 +192,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                  </ng-template>
-                                  <ng-template [ngIf]="theLoai.id==8">
-                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc8' >
+                                </ng-container>
+                            
+                                <ng-container *ngIf="theLoai.data.id==8">
+                                    <div class="card" *ngFor='let khoahoc of dsKhoaHoc8'>
                                         <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
                                         <div class="card-body">
                                             <div class="card-body_content">
@@ -208,11 +216,34 @@
                                             </div>
                                         </div>
                                     </div>
-                                  </ng-template>
+                                </ng-container>
+                            
                         </div>
+
+                        <!-- </div> -->
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</section>
+<section class="regular slider">
+    <div>
+        <img src="http://placehold.it/350x300?text=1">
+    </div>
+    <div>
+        <img src="http://placehold.it/350x300?text=2">
+    </div>
+    <div>
+        <img src="http://placehold.it/350x300?text=3">
+    </div>
+    <div>
+        <img src="http://placehold.it/350x300?text=4">
+    </div>
+    <div>
+        <img src="http://placehold.it/350x300?text=5">
+    </div>
+    <div>
+        <img src="http://placehold.it/350x300?text=6">
     </div>
 </section>

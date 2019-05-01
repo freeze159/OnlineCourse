@@ -24,7 +24,9 @@
       line-height: 1.714;
       color: #505050;
     }
-    
+    .ytp-youtube-button {
+      display: none!important;
+    }
     h1, .h1 {
       font-size: 4rem;
     }
@@ -176,5 +178,36 @@
       flex-wrap:nowrap!important;
       padding-left: 15px;
     }
+    .slider {
+      width: 50%;
+      margin: 100px auto;
+  }
+
+  .slick-slide {
+    margin: 0px 20px;
+  }
+
+  .slick-slide img {
+    width: 100%;
+  }
+
+  .slick-prev:before,
+  .slick-next:before {
+    color: black;
+  }
+
+
+  .slick-slide {
+    transition: all ease-in-out .3s;
+    opacity: .2;
+  }
+  
+  .slick-active {
+    opacity: .5;
+  }
+
+  .slick-current {
+    opacity: 1;
+  }
 /* html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */

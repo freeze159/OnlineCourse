@@ -32,7 +32,11 @@
               "src/assets/css/owl.theme.default.min.css",
               "node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
               "node_modules/angular-bootstrap-md/scss/mdb-free.scss",
-              "src/assets/css/amazonmenu.css"
+              "src/assets/css/amazonmenu.css",
+              "src/assets/css/bootstrap.offcanvas.min.css",
+              "src/assets/css/slick.css",
+              "src/assets/css/slick-theme.css"
+
 
             ],
             "scripts": [
@@ -40,8 +44,10 @@
               "node_modules/popper.js/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/assets/js/owl.carousel.js",
+              "src/assets/js/amazonmenu.js",
               "src/assets/js/custom.js",
-              "src/assets/js/amazonmenu.js"
+              "src/assets/js/bootstrap.offcanvas.js",
+              "src/assets/js/slick.js"
             ]
           },
           "configurations": {

@@ -1,96 +1,285 @@
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-dark">
-
-  <!-- Navbar brand -->
+<!-- <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-dark">
   <mdb-navbar-brand>
     <a routerLink="/" class="navbar-brand" href="#">
       <img src="../../../../../assets/img/s1.png" height="70" width="100" alt="">
-      
+
     </a>
   </mdb-navbar-brand>
+  <ul class="navbar-nav">
+    <li class="nav-item dropdown none-hover" dropdown>
+      <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light dropdown-main" mdbWavesEffect>
+        <i class="fa fa-th mr-2 py-1"></i>
+        <span>Catolories</span>
+        <span class="caret"></span>
+      </a>
+      <ul id="menuid" class="amazonmenu  dropdown-menu dropdown dropdown-primary" *dropdownMenu>
+        <ul>
+          <li><a href="#">Item 1</a></li>
+          <li><a href="#">Folder 0</a>
+          </li>
+          <li><a href="#">Folder 1</a>
+            <ul>
+              <li><a href="#">Sub Item 1.1</a></li>
+              <li><a href="#">Sub Item 1.2</a></li>
+              <li><a href="#">Sub Item 1.3</a>
+                <ul>
+                  <li>Sub Item 1.3.1</li>
+                  <li>Sub Item 1.3.2</li>
+                  <li>Sub Item 1.3.3</li>
+                </ul>
+              </li>
+              <li><a href="#">Sub Item 1.4</a></li>
+              <li><a href="#">Sub Item 1.2</a></li>
+              <li><a href="#">Sub Item 1.3</a></li>
+              <li><a href="#">Sub Item 1.4</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Item 3</a></li>
+          <li><a href="#">Folder 2</a>
+            <ul>
+              <li><a href="#">Sub Item 2.1</a></li>
+              <li><a href="#">Sub Item 2.1</a></li>
+              <li><a href="#">Sub Item 2.1</a></li>
+              <li><a href="#">Sub Item 2.1</a></li>
+              <li><a href="#">Sub Item 2.1</a></li>
+              <li><a href="#">Sub Item 2.1</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Item 4</a></li>
+        </ul>
+      </ul>
+      
+    </li>
+    <form class="form-inline waves-light" mdbWavesEffect>
+      <div class="md-form my-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      </div>
+    </form>
+    <li class="nav-item">
+      <a class="nav-link waves-light" mdbWavesEffect routerLink="/">Becomes Instructor</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link waves-light" mdbWavesEffect routerLink="/login">Login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link waves-light" mdbWavesEffect routerLink="/signup" href="#">Create Account</a>
+    </li>
 
-  <!-- Collapsible content -->
-  <links>
-    <!-- Links -->
-    <ul class="navbar-nav ml-auto">
-      <!-- DROPDOWN Catolories -->
-      <li class="nav-item dropdown none-hover" dropdown>
-        <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light dropdown-main" mdbWavesEffect>
-          <i class="fa fa-th mr-2 py-1"></i>
-          <span>Catolories</span>
-          <span class="caret"></span>
+    <li class="nav-item dropdown " dropdown>
+      <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light dropdown-main"
+        mdbWavesEffect>
+        <i class="fas fa-user"></i>
+        <span> Admin </span>
+        <span class="caret"></span>
+      </a>
+      <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+        <a class="dropdown-item waves-light" mdbWavesEffect href="#">My Account</a>
+        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something</a>
+        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else</a>
+        <div class="divider dropdown-divider"></div>
+        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
+      </div>
+    </li>
+
+  </ul>
+</mdb-navbar> -->
+<header>
+  <div class="menu-mobile container-fluid">
+    <div class="row">
+      <div class='menu-mobile-top m-auto'>
+        <a type="button" class="navbar-toggle-right offcanvas-toggle" data-toggle="offcanvas"
+          data-target="#js-bootstrap-offcanvas" id="offcanvas-toggle">
+          <span class="sr-only">Toggle navigation</span>
+          <i class="fa fa-bars" aria-hidden="true"></i>
         </a>
-        
-          <ul *dropdownMenu class="main-navigation dropdown-menu dropdown dropdown-primary " role="menu">
-            <li><a href="#">Front End Design</a>
-              <ul>
-                <li><a href="#">HTML</a></li>
-                <li><a href="#">CSS</a>
-                  <ul>
-                    <li><a href="#">Resets</a></li>
-                    <li><a href="#">Grids</a></li>
-                    <li><a href="#">Frameworks</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">JavaScript</a>
-                  <ul>
-                    <li><a href="#">Ajax</a></li>
-                    <li><a href="#">jQuery</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="#">WordPress Development</a>
-              <ul>
-                <li><a href="#">Themes</a></li>
-                <li><a href="#">Plugins</a></li>
-                <li><a href="#">Custom Post Types</a>
-                  <ul>
-                    <li><a href="#">Portfolios</a></li>
-                    <li><a href="#">Testimonials</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">Options</a></li>
-              </ul>
-            </li>
-            <li><a href="#">About Us</a></li>
-          </ul>
-        
-      </li>
-      <form class="form-inline waves-light" mdbWavesEffect>
-        <div class="md-form my-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        </div>
-      </form>
-      <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect routerLink="/" >Becomes Instructor</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect routerLink="/login" >Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect routerLink="/signup" href="#">Create Account</a>
-      </li>
-      <!-- Dropdown -->
-      <li class="nav-item dropdown " dropdown>
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light dropdown-main" mdbWavesEffect>
-          <i class="fas fa-user"></i>
-          <span> Admin </span>
-          <span class="caret"></span>
+        <a href=""><img src="../../../../../assets/img/s1.png" width="140px" height="50px" alt="site logon"></a>
+        <a class=""><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+
+        <a class="nav-item dropdown " dropdown>
+          <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light dropdown-main">
+            <i class="fas fa-user"></i>
+            <span> Admin </span>
+            <span class="caret"></span>
+          </a>
+          <div class="dropdown-menu dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" href="#">My Account</a>
+            <a class="dropdown-item waves-light" href="#">Something</a>
+            <a class="dropdown-item waves-light" href="#">Something else</a>
+            <div class="divider dropdown-divider"></div>
+            <a class="dropdown-item waves-light" href="#">Log out</a>
+          </div>
         </a>
-        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">My Account</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else</a>
-          <div class="divider dropdown-divider"></div>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
+      </div>
+
+      <nav class="navbar navbar-default navbar-offcanvas navbar-offcanvas-touch " style="background:white;"
+        role="navigation" id="js-bootstrap-offcanvas">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Brand</a>
+            <a type="button" class='remove-navibar'>
+              <span class="sr-only">Toggle navigation</span>
+              <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div>
+            <ul class="nav navbar-nav sm-customize-menu">
+              <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a></li>
+              <li><a href="/kichhoat"><i class="fa fa-key" aria-hidden="true"></i> Kích hoạt khóa học</a></li>
+              <li *ngFor='let theLoai of danhSachTheLoai'><a href="">{{theLoai.TenTheLoai}}</a></li>
+
+            </ul>
+          </div>
         </div>
-      </li>
+      </nav>
+    </div>
 
-    </ul>
-    <!-- Links -->
+  </div>
+
+  <!-- real menu -->
 
 
-  </links>
-  <!-- Collapsible content -->
 
-</mdb-navbar>
+
+  <div class="course-home-menutop hidden-xs mt-1 mb-2">
+    <div class="container-fluid">
+      <div class="row col-width-lg">
+        <div class="col-lg-3 col-md-3 col-sm-4 cate-md d-flex justify-items-center">
+          <a class="course-logo" href="/"><img src="../../../../../assets/img/s1.png" alt="course - Học từ chuyên gia"
+              width="138" height="33"></a>
+          <div class="course-menu-cate"><i class="fa fa-th" aria-hidden="true"></i> Danh mục
+            <nav id="mysidebarmenu" class="amazonmenu">
+              <ul>
+                <li class="hassub"><a title="Các khóa học công nghệ thông tin Online từ cơ bản đến chuyên sâu"
+                   routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Công Nghệ Thông Tin',Id:'1'}"><i class="fa fa fa-code" aria-hidden="true"></i> Công nghệ thông
+                    tin</a>
+                  <ul class="issub" style="z-index: 1008; display: none;">
+                    <li><a href="/course/cong-nghe-thong-tin">Tất cả Công nghệ thông tin</a></li>
+                    <li><a href="/tag/co-so-du-lieu">Đồ Họa</a></li>
+                    <li><a href="/tag/hoc-quan-tri-mang">Phần Cứng</a></li>
+                    <li><a href="/tag/lap-trinh">Phần Mềm</a></li>
+                    <li><a href="/tag/lap-trinh-web">Mạng Máy Tính</a></li>
+                  </ul>
+                </li>
+                <li class="hassub"><a title="Các khóa học tin học văn phòng từ cơ bản đến nâng cao tốt nhất"
+                  routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Kinh Tế',Id:'2'}"><i class="fa fa fa-desktop" aria-hidden="true"></i> Kinh Tế</a>
+                  <ul class="issub" style="z-index: 1011; display: none;">
+                    <li><a href="/course/tin-hoc-van-phong">Tất cả Kinh tế</a></li>
+                    <li><a href="/tag/excel">Tài Chính</a></li>
+                    <li><a href="/tag/word">Sales</a></li>
+                    <li><a href="/tag/ke-toan">Chiến lược kinh tế</a></li>
+                  </ul>
+                </li>
+                <li class="hassub"><a title="Các khóa học thiết kế từ cơ bản đến chuyên sâu" routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Giáo Dục',Id:'3'}"><i
+                      class="fa fa fa-paint-brush" aria-hidden="true"></i>Giáo Dục</a>
+                  <ul class="issub" style="z-index: 1012; display: none;">
+                    <li><a href="/course/thiet-ke">Tất cả Giáo dục</a></li>
+                    <li><a href="/tag/phan-mem-thiet-ke">Toán học</a></li>
+                    <li><a href="/tag/kien-truc">Khoa Học</a></li>
+                    <li><a href="/tag/kien-truc">Ngôn ngữ học</a></li>
+                    
+                  </ul>
+                </li>
+                <li class="hassub"><a title="Khóa học Marketing thực chiến từ những giảng viên hàng đầu Việt Nam"
+                  routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Y Tế',Id:'4'}"><i class="fa fa fa-line-chart" aria-hidden="true"></i> Y Tế</a>
+                  <ul class="issub" style="z-index: 1013; display: none;">
+                    <li><a href="/course/marketing">Tất cả Y Tế</a></li>
+                    <li><a href="/tag/facebook-marketing">Dinh Dưỡng</a></li>
+                    <li><a href="/tag/tu-dong-hoa-marketing">Yoga - Fitness</a></li>
+                    <li><a href="/tag/email-marketing">Sơ cứu</a></li>
+                   
+                  </ul>
+                </li>
+                <li class="hassub"><a title="Khóa học Sale, bán hàng từ các chuyên gia Marketing hàng đầu course"
+                  routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Âm Nhạc',Id:'5'}"><i class="fa fa fa-shopping-cart" aria-hidden="true"></i> Âm Nhạc
+                    </a>
+                  <ul class="issub" style="z-index: 1014; display: none;">
+                    <li><a href="/course/sale-ban-hang">Tất cả Âm nhạc</a></li>
+                    <li><a href="/tag/ban-hang-online">Thanh nhạc</a></li>
+                    <li><a href="/tag/ban-hang-livestream">Kỹ thuật nhạc cổ điển</a></li>
+                    <li><a href="/tag/kich-ban-ban-hang">Phần mềm</a></li>
+                    
+                  </ul>
+                </li>
+                <li class="hassub"><a title="Các khóa học kinh doanh và khởi nghiệp để gia tăng doanh số hiệu quả"
+                  routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Thời Trang',Id:'6'}"><i class="fa fa fa-rocket" aria-hidden="true"></i> Thời Trang</a>
+                  <ul class="issub" style="z-index: 1002; display: none;">
+                    <li><a href="/course/kinh-doanh-khoi-nghiep">Tất cả Thời Trang</a></li>
+                    <li><a href="/tag/chien-luoc-kinh-doanh">Chiến lược kinh doanh</a></li>
+                    <li><a href="/tag/bat-dong-san">Bất động sản</a></li>
+                    <li><a href="/tag/crypto">Crypto</a></li>
+                    <li><a href="/tag/kinh-doanh-online">Kinh doanh online</a></li>
+                    <li><a href="/tag/kinh-doanh">Kinh doanh</a></li>
+                    <li><a href="/tag/khoi-nghiep">Khởi nghiệp</a></li>
+                    <li><a href="/tag/startup">startup</a></li>
+                    <li><a href="/tag/kiem-tien-online">Kiếm tiền online</a></li>
+                    <li><a href="/tag/lam-giau-tai-chinh-ca-nhan">Làm giàu &amp; Tài chính cá nhân</a></li>
+                    <li><a href="/tag/ban-le-dich-vu">Bán lẻ - Dịch vụ</a></li>
+                    <li><a href="/tag/chung-khoan">Chứng khoán</a></li>
+                    <li><a href="/tag/dau-tu">Đầu tư</a></li>
+                  </ul>
+                </li>
+                <li class="hassub"><a title="Các khóa học phát triển cá nhân để cải thiện cuộc sống và sự nghiệp"
+                  routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Sắc Đẹp',Id:'7'}"><i class="fa fa fa-lightbulb-o" aria-hidden="true"></i> Sắc Đẹp</a>
+                  <ul class="issub" style="z-index: 1002; display: none;">
+                    <li><a href="/course/phat-trien-ca-nhan">Tất cả Sắc đẹp</a></li>
+                    
+                  </ul>
+                </li>
+                <li class="hassub"><a title="Các khóa học nâng các kiến thức sức khỏe và giới tính cho người Việt"
+                  routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Nghệ Thuật',Id:'8'}"><i class="fa fa fa-heartbeat" aria-hidden="true"></i> Nghệ Thuật</a>
+                  <ul class="issub" style="z-index: 1005; display: none;">
+                    <li><a href="/course/suc-khoe-gioi-tinh">Tất cả Nghệ Thuật</a></li>
+                    
+                  </ul>
+                </li>
+                
+
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-4 cate-sm">
+          <form class="course-search-boxtop navbar-form form-inline">
+            <input name="key" type="text" class="form-control course-form"
+              placeholder="Tìm khóa học, giảng viên bạn quan tâm">
+            <button type="submit" class="btn course-btn-search">
+              <i class="fa fa-search"></i>
+
+            </button>
+          </form>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 cate-sm d-flex justify-items-center">
+          <div class="right-menu">
+            <a href="/kichhoat" class="course-active-course"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
+              <p class="hidden-md hidden-xs hidden-sm">Kích hoạt khóa học</p>
+            </a>
+            <a href="/gio-hang" class="course-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span
+                class="course-sl-cart"><b>0</b></span></a>
+            <a class="course-reg-acc ml-2" href='/signup' *ngIf='!logged'>Đăng ký</a>
+            <a class="course-log-acc" routerLink='login' *ngIf='!logged'>Đăng nhập</a>
+            <a class="nav-item dropdown ml-3" dropdown>
+              <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light dropdown-main" *ngIf='logged'>
+                <i class="fas fa-user"></i>
+                <span> {{thongTinUser.Ten}} </span>
+                <span class="caret"></span>
+              </a>
+              <div class="dropdown-menu dropdown dropdown-primary" role="menu">
+                <a class="dropdown-item waves-light" routerLink='/user/{{thongTinUser.Id}}'>Tài khoản của tôi</a>
+
+                <div class="divider dropdown-divider"></div>
+                <a class="dropdown-item waves-light" (click)='Logout()'>Đăng Xuất</a>
+              </div>
+            </a>
+          </div>
+
+          <div>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</header>

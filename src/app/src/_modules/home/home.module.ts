@@ -18,6 +18,9 @@ import { HeaderComponent } from './header/header.component';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { CourseWatchComponent } from './course-watch/course-watch.component';
+import { UserPageComponent } from './user-page/user-page.component';
+import { LearnNowComponent } from './learn-now/learn-now.component';
+import { CourseViewComponent } from './course-view/course-view.component';
 
 const homeRoutes: Routes = [
   {
@@ -26,7 +29,9 @@ const homeRoutes: Routes = [
       { path: 'cart', component: CartComponent },
       { path: 'instructor', component: BecomeInstructorComponent },
       { path: 'chitietkhoahoc/:id/:mangKHid', component: CourseDetailComponent },
-      { path: 'chitietkhoahoc/guest/:id', component: CourseDetailGuestComponent }
+      { path: 'chitietkhoahoc/guest/:id', component: CourseDetailGuestComponent },
+      { path: 'user/:id', component: UserPageComponent },
+      { path: 'danhmuckhoahoc', component: CourseViewComponent }
 
     ]
   },
@@ -40,7 +45,7 @@ const homeRoutes: Routes = [
 @NgModule({
   declarations: [HomeTemplateComponent, LoginComponent, SignUpComponent, HomePageComponent,
     CartComponent, BecomeInstructorComponent, CourseListComponent, CourseDetailComponent,
-     CourseDetailGuestComponent, HeaderComponent, FooterComponent, CourseWatchComponent],
+    CourseDetailGuestComponent, HeaderComponent, FooterComponent, CourseWatchComponent, UserPageComponent, LearnNowComponent, CourseViewComponent],
   imports: [
     CommonModule, RouterModule.forChild(homeRoutes), MDBBootstrapModule.forRoot(), FormsModule,
     NavbarModule, WavesModule, ButtonsModule, MatSidenavModule, MatCheckboxModule, MatButtonModule

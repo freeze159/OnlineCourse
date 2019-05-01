@@ -11,7 +11,7 @@ export class CourseDetailComponent implements OnInit {
   constructor( private atvRoute: ActivatedRoute,private khoaHocService:KhoaHocService) { }
   khoaHocId:any;
   mangKHId:any;
-  thongTinKH:any;
+  thongTinKH:Array<any>=[];
   ngOnInit() {
     this.atvRoute.params.subscribe(data =>{
       this.khoaHocId=(data.id);
