@@ -19,9 +19,9 @@ export class HeaderComponent implements OnInit {
   danhSachMang:Array<any>=[];
   array:Array<any>=[];
   ngOnInit() {
-    // this.khoaHocService.LayTheLoaiKhoaHoc().subscribe((res:any)=>{
-    //   this.danhSachTheLoai=res.data;
-    // });
+    this.khoaHocService.LayTheLoaiKhoaHoc().subscribe((res:any)=>{
+      this.danhSachTheLoai=res.data;
+    });
     
 
     //Kiểm tra đăng nhập

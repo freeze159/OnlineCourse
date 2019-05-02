@@ -22,19 +22,62 @@ export class CourseListComponent implements OnInit {
   dsKhoaHoc6: Array<any> = [];
   dsKhoaHoc7: Array<any> = [];
   dsKhoaHoc8: Array<any> = [];
-  
+
   constructor(private danhSachKhoaHoc: KhoaHocService) { }
   ngOnInit() {
-    
-    this.GetMangKH();
-    // console.log(this.mangKhoaHoc);
-    setTimeout(() => {
-      console.log(this.dsKhoaHoc1);
 
-    }, 3000);
+    this.danhSachKhoaHoc.LayTheLoaiKhoaHoc().subscribe(res => {
+      this.mangTheLoai = res.data;
+    });
+    this.danhSachKhoaHoc.LayChiTietTheLoai(1).subscribe(res => {
+      let tmp = res.data.MangKH
+      for (let mang of tmp) {
+        this.danhSachKhoaHoc.LayDanhSachKhoaHoc(mang.id).subscribe((res: any) => {
+          for (let khoahocObject of res.data) {
+            this.dsKhoaHoc1.push(khoahocObject);
+          }
+        })
+      }
+      console.log(this.dsKhoaHoc1);
+    })
+
   }
-  public GetMangKH(){
-    this.array.length=0;
+  active(id) {
+    this.danhSachKhoaHoc.LayChiTietTheLoai(id).subscribe(res => {
+      let tmp = res.data.MangKH
+      for (let mang of tmp) {
+        this.danhSachKhoaHoc.LayDanhSachKhoaHoc(mang.id).subscribe((res: any) => {
+          for (let khoahocObject of res.data) {
+            switch (id) {
+              case 2:
+                this.dsKhoaHoc2.push(khoahocObject);
+                break;
+              case 3:
+                this.dsKhoaHoc3.push(khoahocObject);
+                break;
+              case 4:
+                this.dsKhoaHoc4.push(khoahocObject);
+                break;
+              case 5:
+                this.dsKhoaHoc5.push(khoahocObject);
+                break;
+              case 6:
+                this.dsKhoaHoc6.push(khoahocObject);
+                break;
+              case 7:
+                this.dsKhoaHoc7.push(khoahocObject);
+                break;
+              case 8:
+                this.dsKhoaHoc8.push(khoahocObject);
+                break;
+            }
+          }
+        })
+      }
+    })
+  }
+  public GetMangKH() {
+    this.array.length = 0;
     forkJoin(
       this.danhSachKhoaHoc.LayChiTietTheLoai(1),
       this.danhSachKhoaHoc.LayChiTietTheLoai(2),
@@ -45,10 +88,10 @@ export class CourseListComponent implements OnInit {
       this.danhSachKhoaHoc.LayChiTietTheLoai(7),
       this.danhSachKhoaHoc.LayChiTietTheLoai(8),
 
-    ).subscribe((res:any)=>{
-      this.array =[...(res)];
+    ).subscribe((res: any) => {
+      this.array = [...(res)];
       // console.log(this.array[0].data);
-      for(let mang of this.array){
+      for (let mang of this.array) {
         this.mangTheLoai.push(mang.data.TenTheLoai);
         this.mangKhoaHoc.push(mang.data);
       }
@@ -56,7 +99,7 @@ export class CourseListComponent implements OnInit {
     })
   }
   LayKhoaHocTheLoai() {
-    for(let listKH of this.mangKhoaHoc){
+    for (let listKH of this.mangKhoaHoc) {
       // console.log(listKH);
       let tmp = listKH.MangKH;
       for (const mang of tmp) {
