@@ -157,7 +157,13 @@
                   color: #29303b;
                   font-size: 15px;
                   font-weight: 600; }
-      
+/* Reason */
+.course-reason { width: 100%; margin-bottom: 20px;margin-top: 20px;background-color: #dce6f5  }
+.course-reason h4 { font-size: 30px; font-weight: bold; text-align: center; margin-bottom: 20px; text-transform: uppercase; margin-top: 10px; }
+.reason-4 { text-align: center; }
+.img-reason img { margin: 0 auto; }
+.txt-reason { margin-top: 10px; font-weight: bold; font-size: 20px; }
+.txt-reason span { display: block; font-size: 14px; font-weight: 100; }
 /* Student */
 .student {
   margin-top: 25px; }

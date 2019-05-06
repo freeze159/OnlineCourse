@@ -9,7 +9,7 @@
                 <ul class="nav nav-tabs myTab">
                     <li class="nav-item" *ngFor='let theLoai of mangTheLoai;let i=index;'>
                         <a class="nav-link" data-toggle="tab" href="#a{{theLoai.id}}" [ngClass]="{'active':i==0}"
-                        (click)="active(theLoai.id)">{{theLoai.TenTheLoai}}</a>
+                            (click)='active(theLoai.id);'>{{theLoai.TenTheLoai}}</a>
                     </li>
 
                 </ul>
@@ -22,7 +22,7 @@
                                 <div class="card-body">
                                     <div class="card-body_content">
                                         <h4 class="card-title">{{khoahoc.TenKH}}</h4>
-                                        <p class="card-text">Colt Steele Ian Schoonover</p>
+                                        <p class="card-text">{{khoahoc.GiangVien}}</p>
                                         <span class="star">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i><i class="fa fa-star"></i>
@@ -31,12 +31,13 @@
                                         </span>
                                         <span class="number_average">4.6</span>
                                         <span class="number_rating">(11.597)</span>
-                                        <p class="price">
-                                            <!-- <span>$179.99</span> -->
-                                            <span>${{khoahoc.GiaTien}}</span>
-                                            <a routerLink='/chitietkhoahoc/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'>Xem
-                                                Chi Ti?t</a>
-                                        </p>
+                                        <div class="price">
+
+                                            <p class="mb-0">Giá: {{khoahoc.GiaTien | currency:'VND':'symbol':'3.0-1'}}
+                                            </p>
+                                            <a routerLink='/learn-continue/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'
+                                                class="text-center">Xem Chi Tiết</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -45,11 +46,11 @@
                     <div class="tab-pane" id='a2'>
                         <div class="regular2 slider">
                             <div class="card" *ngFor='let khoahoc of dsKhoaHoc2'>
-                                <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
+                                <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" height="100px" />
                                 <div class="card-body">
                                     <div class="card-body_content">
                                         <h4 class="card-title">{{khoahoc.TenKH}}</h4>
-                                        <p class="card-text">Colt Steele Ian Schoonover</p>
+                                        <p class="card-text">{{khoahoc.GiangVien}}</p>
                                         <span class="star">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i><i class="fa fa-star"></i>
@@ -58,12 +59,13 @@
                                         </span>
                                         <span class="number_average">4.6</span>
                                         <span class="number_rating">(11.597)</span>
-                                        <p class="price">
-                                            <!-- <span>$179.99</span> -->
-                                            <span>${{khoahoc.GiaTien}}</span>
-                                            <a routerLink='/chitietkhoahoc/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'>Xem
-                                                Chi Ti?t</a>
-                                        </p>
+                                        <div class="price">
+
+                                            <p class="mb-0">Giá: {{khoahoc.GiaTien | currency:'VND':'symbol':'3.0-1'}}
+                                            </p>
+                                            <a routerLink='/learn-continue/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'
+                                                class="text-center">Xem Chi Tiết</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -74,11 +76,11 @@
                     <div class="tab-pane" id='a3'>
                         <div class="regular3 slider">
                             <div class="card" *ngFor='let khoahoc of dsKhoaHoc3'>
-                                <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
+                                <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" height="100px" />
                                 <div class="card-body">
                                     <div class="card-body_content">
                                         <h4 class="card-title">{{khoahoc.TenKH}}</h4>
-                                        <p class="card-text">Colt Steele Ian Schoonover</p>
+                                        <p class="card-text">{{khoahoc.GiangVien}}</p>
                                         <span class="star">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i><i class="fa fa-star"></i>
@@ -87,12 +89,13 @@
                                         </span>
                                         <span class="number_average">4.6</span>
                                         <span class="number_rating">(11.597)</span>
-                                        <p class="price">
-                                            <!-- <span>$179.99</span> -->
-                                            <span>${{khoahoc.GiaTien}}</span>
-                                            <a routerLink='/chitietkhoahoc/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'>Xem
-                                                Chi Ti?t</a>
-                                        </p>
+                                        <div class="price">
+
+                                            <p class="mb-0">Giá: {{khoahoc.GiaTien | currency:'VND':'symbol':'3.0-1'}}
+                                            </p>
+                                            <a routerLink='/learn-continue/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'
+                                                class="text-center">Xem Chi Tiết</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -104,11 +107,11 @@
 
                         <div class="regular4 slider">
                             <div class="card" *ngFor='let khoahoc of dsKhoaHoc4'>
-                                <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
+                                <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" height="100px" />
                                 <div class="card-body">
                                     <div class="card-body_content">
                                         <h4 class="card-title">{{khoahoc.TenKH}}</h4>
-                                        <p class="card-text">Colt Steele Ian Schoonover</p>
+                                        <p class="card-text">{{khoahoc.GiangVien}}</p>
                                         <span class="star">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i><i class="fa fa-star"></i>
@@ -117,12 +120,13 @@
                                         </span>
                                         <span class="number_average">4.6</span>
                                         <span class="number_rating">(11.597)</span>
-                                        <p class="price">
-                                            <!-- <span>$179.99</span> -->
-                                            <span>${{khoahoc.GiaTien}}</span>
-                                            <a routerLink='/chitietkhoahoc/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'>Xem
-                                                Chi Ti?t</a>
-                                        </p>
+                                        <div class="price">
+
+                                            <p class="mb-0">Giá: {{khoahoc.GiaTien | currency:'VND':'symbol':'3.0-1'}}
+                                            </p>
+                                            <a routerLink='/learn-continue/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'
+                                                class="text-center">Xem Chi Tiết</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -132,11 +136,11 @@
                     <div class="tab-pane" id='a5'>
                         <div class="regular5 slider">
                             <div class="card" *ngFor='let khoahoc of dsKhoaHoc5'>
-                                <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
+                                <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" height="100px" />
                                 <div class="card-body">
                                     <div class="card-body_content">
                                         <h4 class="card-title">{{khoahoc.TenKH}}</h4>
-                                        <p class="card-text">Colt Steele Ian Schoonover</p>
+                                        <p class="card-text">{{khoahoc.GiangVien}}</p>
                                         <span class="star">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i><i class="fa fa-star"></i>
@@ -145,12 +149,13 @@
                                         </span>
                                         <span class="number_average">4.6</span>
                                         <span class="number_rating">(11.597)</span>
-                                        <p class="price">
-                                            <!-- <span>$179.99</span> -->
-                                            <span>${{khoahoc.GiaTien}}</span>
-                                            <a routerLink='/chitietkhoahoc/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'>Xem
-                                                Chi Ti?t</a>
-                                        </p>
+                                        <div class="price">
+
+                                            <p class="mb-0">Giá: {{khoahoc.GiaTien | currency:'VND':'symbol':'3.0-1'}}
+                                            </p>
+                                            <a routerLink='/learn-continue/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'
+                                                class="text-center">Xem Chi Tiết</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -161,11 +166,11 @@
 
                         <div class="regular6 slider">
                             <div class="card" *ngFor='let khoahoc of dsKhoaHoc6'>
-                                <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
+                                <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" height="100px" />
                                 <div class="card-body">
                                     <div class="card-body_content">
                                         <h4 class="card-title">{{khoahoc.TenKH}}</h4>
-                                        <p class="card-text">Colt Steele Ian Schoonover</p>
+                                        <p class="card-text">{{khoahoc.GiangVien}}</p>
                                         <span class="star">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i><i class="fa fa-star"></i>
@@ -174,12 +179,13 @@
                                         </span>
                                         <span class="number_average">4.6</span>
                                         <span class="number_rating">(11.597)</span>
-                                        <p class="price">
-                                            <!-- <span>$179.99</span> -->
-                                            <span>${{khoahoc.GiaTien}}</span>
-                                            <a routerLink='/chitietkhoahoc/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'>Xem
-                                                Chi Ti?t</a>
-                                        </p>
+                                        <div class="price">
+
+                                            <p class="mb-0">Giá: {{khoahoc.GiaTien | currency:'VND':'symbol':'3.0-1'}}
+                                            </p>
+                                            <a routerLink='/learn-continue/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'
+                                                class="text-center">Xem Chi Tiết</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -190,11 +196,11 @@
                     <div class="tab-pane" id='a7'>
                         <div class="regular7 slider">
                             <div class="card" *ngFor='let khoahoc of dsKhoaHoc7'>
-                                <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" width="75px" height="50px"/>
+                                <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" height="100px" />
                                 <div class="card-body">
                                     <div class="card-body_content">
                                         <h4 class="card-title">{{khoahoc.TenKH}}</h4>
-                                        <p class="card-text">Colt Steele Ian Schoonover</p>
+                                        <p class="card-text">{{khoahoc.GiangVien}}</p>
                                         <span class="star">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i><i class="fa fa-star"></i>
@@ -203,12 +209,13 @@
                                         </span>
                                         <span class="number_average">4.6</span>
                                         <span class="number_rating">(11.597)</span>
-                                        <p class="price">
-                                            <!-- <span>$179.99</span> -->
-                                            <span>${{khoahoc.GiaTien}}</span>
-                                            <a routerLink='/chitietkhoahoc/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'>Xem
-                                                Chi Ti?t</a>
-                                        </p>
+                                        <div class="price">
+
+                                            <p class="mb-0">Giá: {{khoahoc.GiaTien | currency:'VND':'symbol':'3.0-1'}}
+                                            </p>
+                                            <a routerLink='/learn-continue/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'
+                                                class="text-center">Xem Chi Tiết</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -219,11 +226,11 @@
                     <div class="tab-pane" id='a8'>
                         <div class="regular8 slider">
                             <div class="card" *ngFor='let khoahoc of dsKhoaHoc8'>
-                                <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" />
+                                <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" height="100px" />
                                 <div class="card-body">
                                     <div class="card-body_content">
                                         <h4 class="card-title">{{khoahoc.TenKH}}</h4>
-                                        <p class="card-text">Colt Steele Ian Schoonover</p>
+                                        <p class="card-text">{{khoahoc.GiangVien}}</p>
                                         <span class="star">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i><i class="fa fa-star"></i>
@@ -232,12 +239,13 @@
                                         </span>
                                         <span class="number_average">4.6</span>
                                         <span class="number_rating">(11.597)</span>
-                                        <p class="price">
-                                            <!-- <span>$179.99</span> -->
-                                            <span>${{khoahoc.GiaTien}}</span>
-                                            <a routerLink='/chitietkhoahoc/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'>Xem
-                                                Chi Ti?t</a>
-                                        </p>
+                                        <div class="price">
+
+                                            <p class="mb-0">Giá: {{khoahoc.GiaTien | currency:'VND':'symbol':'3.0-1'}}
+                                            </p>
+                                            <a routerLink='/learn-continue/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'
+                                                class="text-center">Xem Chi Tiết</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

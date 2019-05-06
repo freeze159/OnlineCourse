@@ -34,10 +34,15 @@ export class KhoaHocService {
     let response = this.http.get(linkApi);
     return response;
   }
-  
-  // public LayDanhSachPhim(): Observable<any[]> {
-  //   let response: any = this.http.get('http://svcy2.myclass.vn/api/QuanLyPhim/LayDanhSachPhim?MaNhom=GP03');
-  //   return response;
-  // }
+  public LayDanhSachBaiGiang(idKH:any){
+    const linkApi= `https://khoahocdt.com/api/KhoaHoc/${idKH}/BaiGiang`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    var reqHeader = new HttpHeaders({});
+      // Cho biết định dạng dữ liệu truyền đi
+    // header.append('Content-Type','application/x-www-form-urlencoded')
+    const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+
 
 }

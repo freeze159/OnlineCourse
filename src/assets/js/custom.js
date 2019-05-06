@@ -17,8 +17,7 @@ $(document).ready(function () {
         })
 
     }, 1000);
-
-    setTimeout(() => {
+    setTimeout(function () {
         $('.clone-carousel').owlCarousel({
             items: 3,
             itemsDesktop: [1199, 4],
@@ -30,9 +29,13 @@ $(document).ready(function () {
             navigationText: ['<i class=\"fa fa-angle-left\"></i>', '<i class=\"fa fa-angle-right\"></i>'],
             pagination: false,
             loop: false,
-            rewind: true,
+            rewind: true
+
         })
-    }, 5000);
+
+    }, 1000);
+
+    
 
     $(".remove-navibar").click(function () {
         $("#js-bootstrap-offcanvas").trigger("offcanvas.close");
@@ -73,16 +76,11 @@ $(document).ready(function () {
 
         });
 
-    }, 1500);
-
-
-    $("#js-bootstrap-offcanvas").trigger("offcanvas.toggle"); // Toggle open & close
-    $("#js-bootstrap-offcanvas").trigger("offcanvas.open"); // Open the menu
-    $("#js-bootstrap-offcanvas").trigger("offcanvas.close"); // Close the menu
-
-
+    }, 2000);
+    
+      
 })
-// setTimeout(() => {
+
 $(function () {
     amazonmenu.init({
         menuid: 'mysidebarmenu'
@@ -91,16 +89,26 @@ $(function () {
 $(document).on('shown.bs.tab', function (e) {
     var target = ($(e.target).attr("href"));
     switch (target) {
+        case '#a1':
+            setTimeout(() => {
+                $(".regular").slick({
+                    dots: true,
+                    // infinite: true,
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                });
+            }, 1200);
+
+            break;
         case '#a2':
             setTimeout(() => {
-                
                 $(".regular2").slick({
                     dots: true,
                     // infinite: true,
                     slidesToShow: 3,
                     slidesToScroll: 3,
                 });
-            }, 900);
+            }, 1200);
 
             break;
         case '#a3':
@@ -113,7 +121,8 @@ $(document).on('shown.bs.tab', function (e) {
 
                 });
 
-            }, 800);
+            }, 1200);
+            
             break;
         case '#a4':
             setTimeout(() => {
@@ -125,7 +134,7 @@ $(document).on('shown.bs.tab', function (e) {
 
                 });
 
-            }, 800);
+            }, 1200);
             break;
         case '#a5':
             setTimeout(() => {
@@ -137,7 +146,7 @@ $(document).on('shown.bs.tab', function (e) {
 
                 });
 
-            }, 800);
+            }, 1200);
             break;
         case '#a6':
             setTimeout(() => {
@@ -149,7 +158,7 @@ $(document).on('shown.bs.tab', function (e) {
 
                 });
 
-            }, 800);
+            }, 1200);
             break;
         case '#a7':
             setTimeout(() => {
@@ -161,7 +170,7 @@ $(document).on('shown.bs.tab', function (e) {
 
                 });
 
-            }, 800);
+            }, 1200);
             break;
         case '#a8':
             setTimeout(() => {
@@ -173,7 +182,7 @@ $(document).on('shown.bs.tab', function (e) {
 
                 });
 
-            }, 800);
+            }, 1200);
             break;
 
 
@@ -216,9 +225,9 @@ $(window).on('popstate', function (event) {
 
         });
 
-    }, 1500);
+    }, 1600);
 });
-// }, 2500);
+
 
 
 

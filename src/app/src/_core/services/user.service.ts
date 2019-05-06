@@ -25,12 +25,20 @@ export class UserService {
     const linkApi= `https://khoahocdt.com/api/User/${id}`;
     const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
     var reqHeader = new HttpHeaders({});
-    console.log(tokenParse);
+    // console.log(tokenParse);
       // Cho biết định dạng dữ liệu truyền đi
     // header.append('Content-Type','application/x-www-form-urlencoded')
-    
     const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
-
+    return observable;
+  }
+  public KhoaHocCuaToi():Observable<any>{
+    const linkApi= `https://khoahocdt.com/api/User/KhoaHocCuaToi`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    var reqHeader = new HttpHeaders({});
+    // console.log(tokenParse);
+      // Cho biết định dạng dữ liệu truyền đi
+    // header.append('Content-Type','application/x-www-form-urlencoded')
+    const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
     return observable;
   }
 }

@@ -11,7 +11,6 @@ import { CourseListComponent } from './course-list/course-list.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md';
-import { CourseDetailGuestComponent } from './course-detail-guest/course-detail-guest.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCheckboxModule, MatButtonModule } from '@angular/material';
 import { HeaderComponent } from './header/header.component';
@@ -21,6 +20,7 @@ import { CourseWatchComponent } from './course-watch/course-watch.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { LearnNowComponent } from './learn-now/learn-now.component';
 import { CourseViewComponent } from './course-view/course-view.component';
+import { CheckOwnGuard } from '../../_core/guard/check-own.guard';
 
 const homeRoutes: Routes = [
   {
@@ -28,8 +28,8 @@ const homeRoutes: Routes = [
       { path: '', component: HomePageComponent },
       { path: 'cart', component: CartComponent },
       { path: 'instructor', component: BecomeInstructorComponent },
-      { path: 'chitietkhoahoc/:id/:mangKHid', component: CourseDetailComponent },
-      { path: 'chitietkhoahoc/guest/:id', component: CourseDetailGuestComponent },
+      { path: 'chitietkhoahoc/:id/:mangKHid', component: CourseDetailComponent},
+      // { path: 'chitietkhoahoc/guest/:id/:mangKHid', component: CourseDetailGuestComponent },
       { path: 'user/:id', component: UserPageComponent },
       { path: 'danhmuckhoahoc', component: CourseViewComponent }
 
@@ -37,7 +37,7 @@ const homeRoutes: Routes = [
   },
   { path: 'signup', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'watch', component: CourseWatchComponent }
+  { path: 'learn-continue/:id/:mangKHid', component: CourseWatchComponent,canActivate:[CheckOwnGuard] }
 
 
 
@@ -45,7 +45,7 @@ const homeRoutes: Routes = [
 @NgModule({
   declarations: [HomeTemplateComponent, LoginComponent, SignUpComponent, HomePageComponent,
     CartComponent, BecomeInstructorComponent, CourseListComponent, CourseDetailComponent,
-    CourseDetailGuestComponent, HeaderComponent, FooterComponent, CourseWatchComponent, UserPageComponent, LearnNowComponent, CourseViewComponent],
+     HeaderComponent, FooterComponent, CourseWatchComponent, UserPageComponent, LearnNowComponent, CourseViewComponent],
   imports: [
     CommonModule, RouterModule.forChild(homeRoutes), MDBBootstrapModule.forRoot(), FormsModule,
     NavbarModule, WavesModule, ButtonsModule, MatSidenavModule, MatCheckboxModule, MatButtonModule

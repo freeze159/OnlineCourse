@@ -1,23 +1,31 @@
 export class KhoaHoc{
-    public Id:number;
-    public MangKh_id:number;
-    public GiangVien_id:number;
+    public DanhGia:string;
+    public GiaTien:string;
+    public GiamGia:string
+    public GiangVien:string;
     public HinhAnh:string;
-    public TenKh:string;
-    public TomTat:string;
-    public GiaTien:number;
-    public DanhGia:number;
+    public MangKH:string;
     public SoLuotXem:number;
-    constructor(id:number,mangkh:number,giangvien:number,hinhanh:string,tenkh:string,tomtat:string,giatien:number,danhgia:number,soluotxem:number){
-        this.Id=id;
-        this.MangKh_id=mangkh;
-        this.GiangVien_id=giangvien;
-        this.HinhAnh=hinhanh;
-        this.TenKh=tenkh;
-        this.TomTat=tomtat;
-        this.GiaTien=giatien;
-        this.DanhGia=danhgia;
-        this.SoLuotXem=soluotxem;
+    public TenKH:string;
+    public ThanhTien:string;
+    public TomTat:string;
+    public id:number;
+    
+    constructor(DanhGia:string,GiaTien:string,GiamGia:string,GiangVien:string,HinhAnh:string,MangKH:string,
+        SoLuotXem:number,TenKH:string,ThanhTien:string,TomTat:string,id:number){
+          
+            this.DanhGia=DanhGia;
+            this.GiaTien=GiaTien;
+            this.GiamGia=GiamGia;
+            this.GiangVien=GiangVien;
+            this.HinhAnh=HinhAnh;
+            this.MangKH = MangKH;
+            this.SoLuotXem=SoLuotXem;
+            this.TenKH=TenKH;
+            this.ThanhTien==ThanhTien;
+            this.TomTat=TomTat;
+            this.id=id;
+        
     }
 
     

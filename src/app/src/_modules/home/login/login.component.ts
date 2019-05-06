@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   // }
   DangNhap(thongtin: any) {
     // console.log(this.thongtin);
-    console.log(thongtin);
+    // console.log(thongtin);
     this.userService.DangNhap(thongtin).subscribe((data:any) => {
       if (typeof data == 'object') {
         const userLogin = JSON.stringify(data);
@@ -27,12 +27,21 @@ export class LoginComponent implements OnInit {
         
         localStorage.setItem('tokenbearer',apiToken);
         const token = localStorage.getItem('tokenbearer'); 
-        console.log(JSON.parse(token));
-        window.location.href='/';
+        // console.log(JSON.parse(token));
+        
+        this.userService.KhoaHocCuaToi().subscribe((res:any)=>{
+          console.log(res.data);
+          const ownCouse = JSON.stringify(res.data)
+          localStorage.setItem('ownCourse',ownCouse);
+          window.location.href='/';
+        })
       }
       else {
         alert(data);
       }
     })
+    
+    
+    
   }
 }

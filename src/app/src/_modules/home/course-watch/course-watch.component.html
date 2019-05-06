@@ -4,17 +4,17 @@
   </div>
   <div id="mySidenav" class="sidenav">
     <div id="accordion">
-
-      <div class="card" *ngFor='let video of baiGiang;let i=index;'>
+      <div class="card">
         <form>
           <div class="card-header">
-            <a class="card-link" data-toggle="collapse" href='#a{{i}}'>
-              {{video.TenBaiGiang}}
+            <a class="card-link" data-toggle="collapse" href='#baiGiang'>
+                
+              Danh Sách Bài Giảng
             </a>
           </div>
-          <div id="a{{i}}" class="collapse show" data-parent="#accordion">
+          <div id="baiGiang" class="collapse show" data-parent="#accordion" *ngFor='let video of baiGiangList;let i=index;'>
             <div class="card-body">
-              <a (click)='changeLecture(video.Link)' [attr.data-set]='video.Link' #link>{{video.TenBaiGiang}}</a>
+              <a (click)='changeLecture(video.EmbededURL)' [attr.data-set]='video.EmbededURL' #link> <i class="fa fa-play-circle mr-2"></i>Bài {{i+1}}: {{video.TenBaiGiang}}</a>
             </div>
           </div>
         </form>
@@ -25,19 +25,22 @@
   <!-- Use any element to open the sidenav -->
   <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
   <div id="main">
-    <div class="container pl-0">
+    <app-header></app-header>
+    <div class="container pl-0 mt-5">
       <div class="row">
-        <div>
+        <!-- <div> -->
           <div class="video-header">
             <a href="javascript:void(0)" class="" (click)="openNav()" id="openNav"></a>
           </div>
-          <div class="video">
-            <iframe width="1024" height="512" src="https://www.youtube.com/embed/ErhGuwNgrmw" allowfullscreen #vid></iframe>
-          </div>
+          
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ErhGuwNgrmw" allowfullscreen #vid></iframe>
+            </div>
+          
+          
 
-        </div>
+        <!-- </div> -->
       </div>
     </div>
-    <app-footer></app-footer>
   </div>
 </div>

@@ -50,7 +50,8 @@
           box-orient: vertical;
           color: #29303b;
           font-size: 15px;
-          font-weight: 600; }
+          font-weight: 600;
+        margin-bottom: 0; }
 .course .myContent .card .card-body .card-text {
           color: #686f7a;
           font-size: 12px;
@@ -70,16 +71,24 @@
           font-weight: normal; }
 .course .myContent .card .card-body .price {
           text-align: right;
-          padding: 10px 0; }
-.course .myContent .card .card-body .price span:first-child {
-            color: #686f7a;
-            font-size: 13px;
-            font-weight: normal;
-            text-decoration: line-through; }
-.course .myContent .card .card-body .price span:last-child {
-            color: #29303b;
-            font-size: 15px;
-            font-weight: 600; }
+          padding: 10px 0;
+         }
+         
+.course .myContent .card .card-body .price p:first-child {
+            color: black;
+            font-size: 20px;
+            font-weight: 600;
+            margin-right: 20px;
+            /* text-decoration: line-through;  */
+          }
+.course .myContent .card .card-body .price p:last-child {
+            color: black;
+            font-size: 14px;
+            font-weight: 600;
+           }
+           .course .myContent .card .card-body a{
+             color:#eb1436!important;
+           }
   
 .clone-carousel .owl-item {
   padding: 0 15px;

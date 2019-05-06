@@ -66,6 +66,9 @@
   .dropdown-menu{
       background-color: #2c3e50;
   }  */
+  .dropdown {
+    margin-top: 20px;
+  }
   .col-width-lg { margin: 0 auto; }
 .course-home-menutop {display: flex;}
 .course-logo { padding: 13px 0 15px 0; }
@@ -77,7 +80,7 @@
 .course-active-course { border: 1px solid #555; padding: 9px 10px; border-radius: 3px; display: inline-block; color: #555; margin-top: 13px; }
 .course-active-course:hover { background: #f26c4f; color: #fff; border:1px solid #ccc; }
 .course-active-course i {margin-right: 5px;}
-.course-cart { color: #999; margin-left: 10px; position: relative; }
+.course-cart { color: #999; margin-left: 10px; position: relative;margin-top: 20px; }
 .course-cart i { font-size: 24px; }
 .course-sl-cart { font-size: 10px; border-radius: 25px; border: 1px solid #ccc; position: absolute; top: -14px; left: 18px; padding: 1px 5px; }
 .course-acc-zone { float: right; margin-top: 13px; }
