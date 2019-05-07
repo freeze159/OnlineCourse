@@ -253,8 +253,8 @@
             <a href="/kichhoat" class="course-active-course"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
               <p class="hidden-md hidden-xs hidden-sm">Kích hoạt khóa học</p>
             </a>
-            <a href="/gio-hang" class="course-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span
-                class="course-sl-cart"><b>0</b></span></a>
+            <a href="/gio-hang" class="course-cart"><i class="fa fa-shopping-cart" [ngClass]="{'cart-active':flag}" aria-hidden="true"></i><span
+                class="course-sl-cart"><b>{{count}}</b></span></a>
             <a class="course-reg-acc ml-2" href='/signup' *ngIf='!logged'>Đăng ký</a>
             <a class="course-log-acc" routerLink='/login' *ngIf='!logged'>Đăng nhập</a>
             <a class="nav-item dropdown ml-3" dropdown>
@@ -267,7 +267,7 @@
                 <a class="dropdown-item waves-light" routerLink='/user/{{thongTinUser.Id}}'>Tài khoản của tôi</a>
 
                 <div class="divider dropdown-divider"></div>
-                <a class="dropdown-item waves-light" (click)='Logout()'>Đăng Xuất</a>
+                <a class="dropdown-item waves-light" (click)='logOut()'>Đăng Xuất</a>
               </div>
             </a>
           </div>

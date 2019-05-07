@@ -1,73 +1,28 @@
-/* li ul { display: none; } */
+
   
   ul li a {
     display: block;
     padding: 1em;
     text-decoration: none;
     white-space: nowrap;
-    /* color: #fff; */
+ 
   }
-/* ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background: #212121 ;
-  }
-  
-  ul li {
-    display: block;
-    position: relative;
-    float: left;
-    background: #212121 ;
-  }
-  
-  /* This hides the dropdowns */
+
   .navbar.navbar-expand-lg links ,.navbar.navbar-expand-lg navlink{
     width: initial!important;
   }
 
-  
-  
-  /* ul li a:hover { background: #2c3e50; }  */
-  
    li:hover > ul {
     display: block;
     position: absolute;
   }
   
   li:hover li { float: none; }
-  
-  /* li:hover a { background: #2c3e50; } */
-  
-  /* li:hover li a:hover { background: #2c3e50; } */
-  
+
   .main-navigation li ul li { border-top: 0; } 
   
-  /* Displays second level dropdowns to the right of the first level dropdown */
-  
-/*   
-  ul ul ul {
-    left: 100%;
-    top: 0;
-  } */
-  
-  /* Simple clearfix */
-  
-  
-  
-  /* ul:before,
-  ul:after {
-    content: " "; /* 1 */
-    /* display: table; 2 */
-  /* }
-  
-  ul:after { clear: both; }
-
-  .dropdown-menu{
-      background-color: #2c3e50;
-  }  */
   .dropdown {
-    margin-top: 20px;
+    margin-top: -10px;
   }
   .col-width-lg { margin: 0 auto; }
 .course-home-menutop {display: flex;}
@@ -82,6 +37,7 @@
 .course-active-course i {margin-right: 5px;}
 .course-cart { color: #999; margin-left: 10px; position: relative;margin-top: 20px; }
 .course-cart i { font-size: 24px; }
+.cart-active {color:orangered;}
 .course-sl-cart { font-size: 10px; border-radius: 25px; border: 1px solid #ccc; position: absolute; top: -14px; left: 18px; padding: 1px 5px; }
 .course-acc-zone { float: right; margin-top: 13px; }
 .course-acc-zone li { display: inline-table; }

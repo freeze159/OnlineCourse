@@ -6,16 +6,17 @@
         <div class="d-flex justify-content-between">
             <div>
                 <span>Đánh Giá</span>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
+                <ng-container *ngFor='let star of danhGia'>
+                    <i class="fa fa-star" ></i>
+                </ng-container>
+                
+
+
                 <br>
                 <a class="btn btn-success btn-start waves-light" mdbWavesEffect routerLink="/watch">Bắt đầu học</a>
             </div>
             <div>
-                <p>Giảng viên hướng dẫn: {{this.thongTinKH.GiangVien}}</p>
+                <p>Giảng viên hướng dẫn: {{giangVien}}</p>
             </div>
         </div>
 
@@ -180,8 +181,8 @@
                 <span>Lorem ipsum dolor sit amet.</span><br>
                 <span>Lorem ipsum dolor sit amet.</span>
                 <hr>
-                <h3 class="course-price lead">{{thongTinKH.ThanhTien | currency:'VND':'symbol':'3.0-1'}}</h3>
-                <a class="btn btn-success btn-start waves-light" mdbWavesEffect routerLink="/watch">Ghi Danh</a>
+                <h3 class="course-price lead">{{thanhTien | number:'.0'}}<span>đ</span></h3>
+                <a class="btn btn-success btn-start waves-light" mdbWavesEffect (click)='addCart()' >Đăng Ký Ngay</a>
             </div>
 
 
