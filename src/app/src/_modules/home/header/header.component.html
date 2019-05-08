@@ -253,7 +253,7 @@
             <a href="/kichhoat" class="course-active-course"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
               <p class="hidden-md hidden-xs hidden-sm">Kích hoạt khóa học</p>
             </a>
-            <a href="/gio-hang" class="course-cart"><i class="fa fa-shopping-cart" [ngClass]="{'cart-active':flag}" aria-hidden="true"></i><span
+            <a routerLink='/cart' class="course-cart"><i class="fa fa-shopping-cart" [ngClass]="{'cart-active':flag}" aria-hidden="true"></i><span
                 class="course-sl-cart"><b>{{count}}</b></span></a>
             <a class="course-reg-acc ml-2" href='/signup' *ngIf='!logged'>Đăng ký</a>
             <a class="course-log-acc" routerLink='/login' *ngIf='!logged'>Đăng nhập</a>

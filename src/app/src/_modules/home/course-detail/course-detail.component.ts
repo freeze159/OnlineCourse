@@ -47,7 +47,12 @@ export class CourseDetailComponent implements OnInit {
   addCart() {
     let addedCourse = {
       Id: this.khoaHocId,
-      MangKHID:this.mangKHId, 
+      MangKHID:this.mangKHId,
+      TenKH:this.tenKh,
+      Gia:this.thanhTien,
+      TenGiangVien:this.giangVien,
+      HinhAnh:this.hinhAnh,
+
     };
     this.cartService.cart.emit(addedCourse);
     // console.log(addedCourse);

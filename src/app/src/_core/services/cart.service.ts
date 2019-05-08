@@ -7,4 +7,5 @@ export class CartService {
 
   constructor() { }
   @Output() cart = new EventEmitter();
+  @Output() delItems = new EventEmitter();
 }

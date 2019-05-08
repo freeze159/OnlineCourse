@@ -22,19 +22,22 @@ export class HeaderComponent implements OnInit {
   flag = false;
   count: number = 0;
   @Input() cart: any = {}
+  @Input() delted:any={}
   ngOnInit() {
     this.khoaHocService.LayTheLoaiKhoaHoc().subscribe((res: any) => {
       this.danhSachTheLoai = res.data;
     });
-  // Lấy thông tin Cart 
+    // Lấy thông tin Cart 
     this.getCart();
-
     //Kiểm tra đăng nhập
     this.checkLogin();
-    
-    
+    this.cartService.delItems.subscribe((res:any) =>{
+      this.count=res.Count;
+      this.flag=res.Flag;
+    })
+
   }
-  checkLogin(){
+  checkLogin() {
     if (localStorage.getItem('userLogin')) {
       this.logged = true;
       let tmp = JSON.parse(localStorage.getItem('userLogin'));
@@ -51,22 +54,25 @@ export class HeaderComponent implements OnInit {
     localStorage.clear();
     window.location.reload();
   }
-  getCart(){
+  getCart() {
     let oldCart = JSON.parse(sessionStorage.getItem('cart')) || [];
-    if(JSON.parse(sessionStorage.getItem('cart'))){
-      this.flag=true;
+    if (JSON.parse(sessionStorage.getItem('cart'))) {
+      this.flag = true;
     }
     this.count = oldCart.length;
-    console.log(oldCart);
+    // console.log(oldCart);
     this.cartService.cart.subscribe((res: any) => {
-      this.count=this.count+1;
+      this.count = this.count + 1;
       if (typeof res == 'object') {
         let newCart = {
-          'KhoaHocid': res.Id,
-          'MangKHid': res.MangKHID,
-          'Count': oldCart.length
+          Id: res.Id,
+          MangKHID: res.MangKHID,
+          TenKH: res.TenKH,
+          Gia: res.Gia,
+          TenGiangVien:res.TenGiangVien,
+          HinhAnh:res.HinhAnh
         }
-        this.flag=true;
+        this.flag = true;
         oldCart.push(newCart);
         sessionStorage.setItem('cart', JSON.stringify(oldCart));
         Swal.fire({
@@ -79,4 +85,5 @@ export class HeaderComponent implements OnInit {
 
     })
   }
+
 }
