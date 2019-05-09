@@ -13,12 +13,14 @@ export class CartComponent implements OnInit {
   items: Array<any> = []
   totalPrice: number = 0;
   flag=true;
+  count:number=0
   ngOnInit() {
     this.items = JSON.parse(sessionStorage.getItem('cart'));
     this.tongTien();
+    this.count=this.items.length;
+
   }
   tongTien() {
-
     for (let item of this.items) {
       this.totalPrice += JSON.parse(item.Gia);
     }
@@ -30,7 +32,9 @@ export class CartComponent implements OnInit {
     let priceDef = this.items.find(item => item.Id == id);
     this.items.splice(indexDel, 1);
     this.totalPrice -= priceDef.Gia;
-    let count=this.items.length;
+    this.count=this.items.length;
+    // this.countItem=count--;
+    this.count=this.count--;
     // xoa trong storage
     let newItems = this.items;
     if(newItems.length==0){
@@ -42,9 +46,9 @@ export class CartComponent implements OnInit {
     }
     let deleted = {
       Flag:this.flag,
-      Count:count--
+      Count:this.count
     }
-
+    
     this.cartService.delItems.emit(deleted);
 
   }

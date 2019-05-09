@@ -1,0 +1,50 @@
+a {
+    color:blue;
+}
+.form-code{
+    margin-left: 280px;
+    text-align: center;
+    width: 50%;
+}
+main {
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+}
+h1{
+    
+    font-size: 32px;
+    font-weight: 900;
+
+}
+.content .caution{
+    font-weight: bold;
+    font-size: 15px;;
+}
+.circle{
+    display:inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background: gray;
+    border:1px solid transparent;
+    font-size: 12px;
+    color:#ffffff;
+    font-weight: bold;
+    margin-right: 5px;
+
+}
+.btn-activate{
+    width: 200px;
+    height: 80px;
+    font-size: 1.2rem;
+    line-height: 20px;
+    border:1px solid red;
+    border-radius: 20px;
+    color:black!important;
+    background: rgba(23, 117, 240, 0.801);
+    
+}
+.btn-activate:hover{
+    background: #dc3545;
+    color:white!important;
+}

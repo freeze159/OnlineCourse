@@ -144,7 +144,7 @@
     <div class="container-fluid">
       <div class="row col-width-lg">
         <div class="col-lg-3 col-md-3 col-sm-4 cate-md d-flex justify-items-center">
-          <a class="course-logo" href="/"><img src="../../../../../assets/img/s1.png" alt="course - Học từ chuyên gia"
+          <a class="course-logo" routerLink='/'><img src="../../../../../assets/img/s1.png" alt="course - Học từ chuyên gia"
               width="138" height="33"></a>
           <div class="course-menu-cate"><i class="fa fa-th" aria-hidden="true"></i> Danh mục
             <nav id="mysidebarmenu" class="amazonmenu">
@@ -153,7 +153,7 @@
                    routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Công Nghệ Thông Tin',Id:'1'}"><i class="fa fa fa-code" aria-hidden="true"></i> Công nghệ thông
                     tin</a>
                   <ul class="issub" style="z-index: 1008; display: none;">
-                    <li><a href="/course/cong-nghe-thong-tin">Tất cả Công nghệ thông tin</a></li>
+                    <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Công Nghệ Thông Tin',Id:'1'}">Tất cả Công nghệ thông tin</a></li>
                     <li><a href="/tag/co-so-du-lieu">Đồ Họa</a></li>
                     <li><a href="/tag/hoc-quan-tri-mang">Phần Cứng</a></li>
                     <li><a href="/tag/lap-trinh">Phần Mềm</a></li>
@@ -163,26 +163,26 @@
                 <li class="hassub"><a title="Các khóa học tin học văn phòng từ cơ bản đến nâng cao tốt nhất"
                   routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Kinh Tế',Id:'2'}"><i class="fa fa fa-desktop" aria-hidden="true"></i> Kinh Tế</a>
                   <ul class="issub" style="z-index: 1011; display: none;">
-                    <li><a href="/course/tin-hoc-van-phong">Tất cả Kinh tế</a></li>
-                    <li><a href="/tag/excel">Tài Chính</a></li>
-                    <li><a href="/tag/word">Sales</a></li>
-                    <li><a href="/tag/ke-toan">Chiến lược kinh tế</a></li>
+                    <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Kinh Tế',Id:'2'}">Tất cả Kinh tế</a></li>
+                    <li><a >Tài Chính</a></li>
+                    <li><a >Sales</a></li>
+                    <li><a >Chiến lược kinh tế</a></li>
                   </ul>
                 </li>
                 <li class="hassub"><a title="Các khóa học thiết kế từ cơ bản đến chuyên sâu" routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Giáo Dục',Id:'3'}"><i
                       class="fa fa fa-paint-brush" aria-hidden="true"></i>Giáo Dục</a>
                   <ul class="issub" style="z-index: 1012; display: none;">
-                    <li><a href="/course/thiet-ke">Tất cả Giáo dục</a></li>
-                    <li><a href="/tag/phan-mem-thiet-ke">Toán học</a></li>
-                    <li><a href="/tag/kien-truc">Khoa Học</a></li>
-                    <li><a href="/tag/kien-truc">Ngôn ngữ học</a></li>
+                    <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Giáo Dục',Id:'3'}">Tất cả Giáo dục</a></li>
+                    <li><a >Toán học</a></li>
+                    <li><a >Khoa Học</a></li>
+                    <li><a >Ngôn ngữ học</a></li>
                     
                   </ul>
                 </li>
                 <li class="hassub"><a title="Khóa học Marketing thực chiến từ những giảng viên hàng đầu Việt Nam"
                   routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Y Tế',Id:'4'}"><i class="fa fa fa-line-chart" aria-hidden="true"></i> Y Tế</a>
                   <ul class="issub" style="z-index: 1013; display: none;">
-                    <li><a href="/course/marketing">Tất cả Y Tế</a></li>
+                    <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Y Tế',Id:'4'}">Tất cả Y Tế</a></li>
                     <li><a href="/tag/facebook-marketing">Dinh Dưỡng</a></li>
                     <li><a href="/tag/tu-dong-hoa-marketing">Yoga - Fitness</a></li>
                     <li><a href="/tag/email-marketing">Sơ cứu</a></li>
@@ -193,42 +193,31 @@
                   routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Âm Nhạc',Id:'5'}"><i class="fa fa fa-shopping-cart" aria-hidden="true"></i> Âm Nhạc
                     </a>
                   <ul class="issub" style="z-index: 1014; display: none;">
-                    <li><a href="/course/sale-ban-hang">Tất cả Âm nhạc</a></li>
-                    <li><a href="/tag/ban-hang-online">Thanh nhạc</a></li>
-                    <li><a href="/tag/ban-hang-livestream">Kỹ thuật nhạc cổ điển</a></li>
-                    <li><a href="/tag/kich-ban-ban-hang">Phần mềm</a></li>
+                    <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Âm Nhạc',Id:'5'}">Tất cả Âm nhạc</a></li>
+                    <li><a >Thanh nhạc</a></li>
+                    <li><a >Kỹ thuật nhạc cổ điển</a></li>
+                    <li><a >Phần mềm</a></li>
                     
                   </ul>
                 </li>
                 <li class="hassub"><a title="Các khóa học kinh doanh và khởi nghiệp để gia tăng doanh số hiệu quả"
                   routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Thời Trang',Id:'6'}"><i class="fa fa fa-rocket" aria-hidden="true"></i> Thời Trang</a>
                   <ul class="issub" style="z-index: 1002; display: none;">
-                    <li><a href="/course/kinh-doanh-khoi-nghiep">Tất cả Thời Trang</a></li>
-                    <li><a href="/tag/chien-luoc-kinh-doanh">Chiến lược kinh doanh</a></li>
-                    <li><a href="/tag/bat-dong-san">Bất động sản</a></li>
-                    <li><a href="/tag/crypto">Crypto</a></li>
-                    <li><a href="/tag/kinh-doanh-online">Kinh doanh online</a></li>
-                    <li><a href="/tag/kinh-doanh">Kinh doanh</a></li>
-                    <li><a href="/tag/khoi-nghiep">Khởi nghiệp</a></li>
-                    <li><a href="/tag/startup">startup</a></li>
-                    <li><a href="/tag/kiem-tien-online">Kiếm tiền online</a></li>
-                    <li><a href="/tag/lam-giau-tai-chinh-ca-nhan">Làm giàu &amp; Tài chính cá nhân</a></li>
-                    <li><a href="/tag/ban-le-dich-vu">Bán lẻ - Dịch vụ</a></li>
-                    <li><a href="/tag/chung-khoan">Chứng khoán</a></li>
-                    <li><a href="/tag/dau-tu">Đầu tư</a></li>
+                    <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Thời Trang',Id:'6'}">Tất cả Thời Trang</a></li>
+                    
                   </ul>
                 </li>
                 <li class="hassub"><a title="Các khóa học phát triển cá nhân để cải thiện cuộc sống và sự nghiệp"
                   routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Sắc Đẹp',Id:'7'}"><i class="fa fa fa-lightbulb-o" aria-hidden="true"></i> Sắc Đẹp</a>
                   <ul class="issub" style="z-index: 1002; display: none;">
-                    <li><a href="/course/phat-trien-ca-nhan">Tất cả Sắc đẹp</a></li>
+                    <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Sắc Đẹp',Id:'7'}">Tất cả Sắc đẹp</a></li>
                     
                   </ul>
                 </li>
                 <li class="hassub"><a title="Các khóa học nâng các kiến thức sức khỏe và giới tính cho người Việt"
                   routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Nghệ Thuật',Id:'8'}"><i class="fa fa fa-heartbeat" aria-hidden="true"></i> Nghệ Thuật</a>
                   <ul class="issub" style="z-index: 1005; display: none;">
-                    <li><a href="/course/suc-khoe-gioi-tinh">Tất cả Nghệ Thuật</a></li>
+                    <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Nghệ Thuật',Id:'8'}">Tất cả Nghệ Thuật</a></li>
                     
                   </ul>
                 </li>
@@ -239,10 +228,10 @@
           </div>
         </div>
         <div class="col-lg-5 col-md-5 col-sm-4 cate-sm">
-          <form class="course-search-boxtop navbar-form form-inline">
-            <input name="key" type="text" class="form-control course-form"
-              placeholder="Tìm khóa học, giảng viên bạn quan tâm">
-            <button type="submit" class="btn course-btn-search">
+          <form class="course-search-boxtop navbar-form form-inline" (ngSubmit)=search(frmSearch.value) #frmSearch=ngForm>
+            <input name="keyWord" type="text" class="form-control course-form"
+              placeholder="Tìm khóa học, giảng viên bạn quan tâm" ngModel required>
+            <button type="submit" class="btn course-btn-search" [disabled]="frmSearch.invalid">
               <i class="fa fa-search"></i>
 
             </button>
@@ -250,7 +239,7 @@
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4 cate-sm d-flex justify-items-center">
           <div class="right-menu">
-            <a href="/kichhoat" class="course-active-course"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
+            <a routerLink="/kichhoat" class="course-active-course"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
               <p class="hidden-md hidden-xs hidden-sm">Kích hoạt khóa học</p>
             </a>
             <a routerLink='/cart' class="course-cart"><i class="fa fa-shopping-cart" [ngClass]="{'cart-active':flag}" aria-hidden="true"></i><span

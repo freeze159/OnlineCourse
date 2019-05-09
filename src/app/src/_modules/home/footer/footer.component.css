@@ -1,5 +1,5 @@
 footer {
-    background-color: #0f1619;
+    background-color: #2C3238;
     float: left;
     width: 100%;
   }
@@ -148,6 +148,8 @@ footer {
     float: left;
     width: 100%;
     clear: both;
+    background-color: #222222;
+    
   }
   .copyright-footer .container {
     border-top: 1px solid rgba(255, 255, 255, 0.1);

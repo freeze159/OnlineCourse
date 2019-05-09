@@ -21,6 +21,8 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { LearnNowComponent } from './learn-now/learn-now.component';
 import { CourseViewComponent } from './course-view/course-view.component';
 import { CheckOwnGuard } from '../../_core/guard/check-own.guard';
+import { SearchResultComponent } from './search-result/search-result.component';
+import { EnterCodeComponent } from './enter-code/enter-code.component';
 
 const homeRoutes: Routes = [
   {
@@ -28,16 +30,17 @@ const homeRoutes: Routes = [
       { path: '', component: HomePageComponent },
       { path: 'cart', component: CartComponent },
       { path: 'instructor', component: BecomeInstructorComponent },
-      { path: 'chitietkhoahoc/:id/:mangKHid', component: CourseDetailComponent},
-      // { path: 'chitietkhoahoc/guest/:id/:mangKHid', component: CourseDetailGuestComponent },
+      { path: 'chitietkhoahoc/:id/:mangKHid', component: CourseDetailComponent },
       { path: 'user/:id', component: UserPageComponent },
-      { path: 'danhmuckhoahoc', component: CourseViewComponent }
+      { path: 'danhmuckhoahoc', component: CourseViewComponent },
+      { path: 'ket-qua/:keyword', component: SearchResultComponent },
+      { path: 'kichhoat', component: EnterCodeComponent }
 
     ]
   },
   { path: 'signup', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'learn-continue/:id/:mangKHid', component: CourseWatchComponent,canActivate:[CheckOwnGuard] }
+  { path: 'learn-continue/:id/:mangKHid', component: CourseWatchComponent, canActivate: [CheckOwnGuard] }
 
 
 
@@ -45,7 +48,7 @@ const homeRoutes: Routes = [
 @NgModule({
   declarations: [HomeTemplateComponent, LoginComponent, SignUpComponent, HomePageComponent,
     CartComponent, BecomeInstructorComponent, CourseListComponent, CourseDetailComponent,
-     HeaderComponent, FooterComponent, CourseWatchComponent, UserPageComponent, LearnNowComponent, CourseViewComponent],
+    HeaderComponent, FooterComponent, CourseWatchComponent, UserPageComponent, LearnNowComponent, CourseViewComponent, SearchResultComponent, EnterCodeComponent],
   imports: [
     CommonModule, RouterModule.forChild(homeRoutes), MDBBootstrapModule.forRoot(), FormsModule,
     NavbarModule, WavesModule, ButtonsModule, MatSidenavModule, MatCheckboxModule, MatButtonModule

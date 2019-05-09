@@ -57,16 +57,16 @@
     }
     
     a {
-      color: #eb1436;
+      color: #505050;
       text-decoration: none;
       -webkit-transition: all 0.3s ease;
       transition: all 0.3s ease;
     }
-    a:focus, a:visited {
+    /* a:focus, a:visited {
       outline: none;
       text-decoration: none;
-      color: #eb1436;
-    }
+      color: #ffffff;
+    } */
     a:hover {
       color: #c8102e;
       text-decoration: none;
@@ -106,13 +106,13 @@
     .btn {
       /* font-size: 1.8rem; */
       font-weight: 500;
-      color: #ffffff;
+      color: #ffffff!important;
       
       -webkit-transition: all 0.3s ease;
       transition: all 0.3s ease;
       line-height: 50px;
       padding: 0 0!important;
-      border-radius: 25px!important;
+      /* border-radius: 25px!important; */
     }
     .btn:focus, .btn:visited, .btn:active {
       color: #ffffff;

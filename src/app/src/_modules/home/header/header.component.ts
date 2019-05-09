@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { KhoaHocService } from 'src/app/src/_core/services/khoa-hoc.service';
 import { forkJoin } from 'rxjs';
 import { CartService } from 'src/app/src/_core/services/cart.service';
 import Swal from 'sweetalert2'
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -16,6 +17,8 @@ export class HeaderComponent implements OnInit {
 
   };
   constructor(private khoaHocService: KhoaHocService, private cartService: CartService) { }
+  @ViewChild('frmDangKy') frmDangKy: NgForm;
+
   danhSachTheLoai: Array<any> = [];
   danhSachMang: Array<any> = [];
   array: Array<any> = [];
@@ -85,5 +88,10 @@ export class HeaderComponent implements OnInit {
 
     })
   }
-
+  search(key:any){
+    let keyword = '';
+    keyword=key.keyWord;
+    window.location.href=`/ket-qua/${keyword}`;
+    
+  }
 }

@@ -52,6 +52,9 @@
           font-size: 15px;
           font-weight: 600;
         margin-bottom: 0; }
+.course .myContent .card .card-body .card-title a{
+  color: #ffffff;
+}
 .course .myContent .card .card-body .card-text {
           color: #686f7a;
           font-size: 12px;
@@ -87,7 +90,7 @@
             font-weight: 600;
            }
            .course .myContent .card .card-body a{
-             color:#eb1436!important;
+             /* color:#eb1436!important; */
            }
   
 .clone-carousel .owl-item {
@@ -118,6 +121,9 @@
   color: #ffffff;
   background-color: #eb1436;
   border-color: #eb1436;
+}
+.btn{
+  border-radius: 0px;
 }
 .clone-item {
   float: left;

@@ -30,7 +30,7 @@
 .course-menu-cate { display: inline-block;    margin: 25px 0 0 16px; cursor: pointer; position: relative; color: #555}
 .course-menu-cate i { font-size: 18px; margin-right: 5px; vertical-align: middle; }
 .course-form {    font-size: 13px;   font-style: italic;    height: 40px;    width: 99% !important;}
-.course-btn-search { box-shadow: none;   position: absolute;    right: 28px;    top: 12px;  background: transparent;   color: #f26c4f;    font-size: 20px; padding: 6px 20px;}
+.course-btn-search { box-shadow: none;   position: absolute;    right: 28px;    top: 12px;  background: transparent;   color: #f26c4f!important;    font-size: 20px; padding: 6px 20px;}
 .course-search-boxtop { margin-top: 13px; }
 .course-active-course { border: 1px solid #555; padding: 9px 10px; border-radius: 3px; display: inline-block; color: #555; margin-top: 13px; }
 .course-active-course:hover { background: #f26c4f; color: #fff; border:1px solid #ccc; }

@@ -34,7 +34,7 @@ export class KhoaHocService {
     let response = this.http.get(linkApi);
     return response;
   }
-  public LayDanhSachBaiGiang(idKH:any){
+  public LayDanhSachBaiGiang(idKH:any):Observable<any>{
     const linkApi= `https://khoahocdt.com/api/KhoaHoc/${idKH}/BaiGiang`;
     const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
     var reqHeader = new HttpHeaders({});
@@ -43,6 +43,18 @@ export class KhoaHocService {
     const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
     return observable;
   }
-
-
+  public TimKiem(keyword:string){
+    const linkApi= `https://khoahocdt.com/api/Search?TuKhoa=${keyword}`;
+    const observable = this.http.get(linkApi);
+    return observable;
+  }
+  public KichHoat(code:string){
+    const linkApi= `https://khoahocdt.com/api/NhapCode`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    var reqHeader = new HttpHeaders({});
+      // Cho biết định dạng dữ liệu truyền đi
+    // header.append('Content-Type','application/x-www-form-urlencoded')
+    const observable = this.http.post(linkApi,code,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
 }
