@@ -48,7 +48,7 @@ export class KhoaHocService {
     const observable = this.http.get(linkApi);
     return observable;
   }
-  public KichHoat(code:string){
+  public KichHoat(code:any){
     const linkApi= `https://khoahocdt.com/api/NhapCode`;
     const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
     var reqHeader = new HttpHeaders({});

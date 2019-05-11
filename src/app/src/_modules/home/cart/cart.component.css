@@ -41,7 +41,7 @@
 .price-cart span sup { font-size: 10px; }
 .u-cart-price { margin-top: 15px;  }
 .u-cart-price p { font-size: 18px; }
-.price-btn-box a { color: #fff; background: #ec5252; padding: 10px 20px; text-align: center; border-radius: 3px; font-weight: bold; display: inline-block; width: 100%;  text-transform: uppercase;}
+.price-btn-box button { color: #fff; background: #ec5252; padding: 10px 20px; text-align: center; border-radius: 3px; font-weight: bold; display: inline-block; width: 100%;  text-transform: uppercase;}
 .cart-notice p { font-size: 14px; color: #7a8388; text-align: center;margin-top: 15px; }
 .price-cart-box { display: inline-block; width: 100%; margin: 0 0 10px 0;  }
 .price-cart-1 { color: #ec5252; font-size: 26px; font-weight: bold; }

@@ -34,8 +34,7 @@ const homeRoutes: Routes = [
       { path: 'user/:id', component: UserPageComponent },
       { path: 'danhmuckhoahoc', component: CourseViewComponent },
       { path: 'ket-qua/:keyword', component: SearchResultComponent },
-      { path: 'kichhoat', component: EnterCodeComponent }
-
+      { path: 'kichhoat', component: EnterCodeComponent },
     ]
   },
   { path: 'signup', component: SignUpComponent },

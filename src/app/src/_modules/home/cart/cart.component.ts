@@ -14,10 +14,15 @@ export class CartComponent implements OnInit {
   totalPrice: number = 0;
   flag=true;
   count:number=0
+  thongTinBuyer:any;
   ngOnInit() {
     this.items = JSON.parse(sessionStorage.getItem('cart'));
     this.tongTien();
     this.count=this.items.length;
+    //Lấy thông tin buyer từ local
+    const res:any = JSON.parse(localStorage.getItem('userLogin'));
+    this.thongTinBuyer =res.data
+    console.log(this.thongTinBuyer);
 
   }
   tongTien() {
@@ -51,5 +56,27 @@ export class CartComponent implements OnInit {
     
     this.cartService.delItems.emit(deleted);
 
+  }
+  conFirm(thongTinBuyer){
+    // Lấy item cart => string
+    const cartItems=JSON.parse(sessionStorage.getItem('cart'));
+    let listKh='';
+    for(let item of cartItems){
+      listKh+=item.Id+',';
+    }
+    const listKhFixeđ =listKh.slice(listKh.length-listKh.length,listKh.length-1)
+    //Truyền thông tin buyer
+    thongTinBuyer.HoTenBuyer = this.thongTinBuyer.name;
+    thongTinBuyer.EmailBuyer =  this.thongTinBuyer.email;
+    thongTinBuyer.DienThoaiBuyer = this.thongTinBuyer.SoDienThoai;
+    thongTinBuyer.MangKH_id = listKhFixeđ;
+    console.log(thongTinBuyer);
+    //Call Api
+    this.cartService.ThanhToan(thongTinBuyer.MangKH_id,thongTinBuyer.HoTenBuyer,
+      thongTinBuyer.EmailBuyer,thongTinBuyer.DienThoaiBuyer,thongTinBuyer.DiaChiBuyer).subscribe((res:any) =>{
+        const linkThanhToan = res.data;
+        window.location.href=linkThanhToan;
+      })
+      
   }
 }

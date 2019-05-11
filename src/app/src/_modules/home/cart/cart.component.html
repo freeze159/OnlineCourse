@@ -1,27 +1,25 @@
 <div class="u-bread-cart">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="unica-breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item active">Giỏ hàng ({{count}} khóa học)</li>
-                        </ol>
-                    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="unica-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active">Giỏ hàng ({{count}} khóa học)</li>
+                    </ol>
                 </div>
             </div>
         </div>
     </div>
+</div>
 <main>
     <div class="unica-order-cart">
         <div class="container">
             <div class="row">
-                <div class="col-lg-9 col-md-9 col-sm-8 col-cart">
+                <div class="col-lg-7 col-md-8 col-sm-8 col-cart">
                     <div class="u-box-cart2">
                         <div class="u-cart-course" *ngFor='let item of items;let i=index;'>
                             <div class="img-cart-course">
-                                <img class="img-responsive"
-                                    src={{item.HinhAnh}}
-                                    alt="" width="140" height="70"> </div>
+                                <img class="img-responsive" src={{item.HinhAnh}} alt="" width="140" height="70"> </div>
                             <div class="title-cart-course">
                                 <p>{{item.TenKH}}</p>
                                 <span>Giảng viên: {{item.TenGiangVien}}</span>
@@ -30,9 +28,8 @@
                                 <p>{{item.Gia | number:'.0'}}<sup>đ</sup></p>
                             </div>
                             <div class="remove-course">
-                                <i type="course_id" title="Xóa khóa học này" alt="Xóa khóa học này" (click)='Xoa(item.Id)'
-                                     class="fa fa-times del_cart"
-                                    aria-hidden="true"></i>
+                                <i type="course_id" title="Xóa khóa học này" alt="Xóa khóa học này"
+                                    (click)='Xoa(item.Id)' class="fa fa-times del_cart" aria-hidden="true"></i>
 
                             </div>
                         </div>
@@ -42,18 +39,40 @@
                         <a href="/khoa-hoc-noi-bat" class="pull-left"><i class="fa fa-plus"></i> Chọn thêm khóa học</a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-4">
-                    <div class="u-cart-price">
-                        <div class="price-cart-box clearfix">
-                            <div class="price-cart-1">{{totalPrice | number:'.0'}}<sup>đ</sup></div>
+                <div class="col-lg-5 col-md-4 col-sm-4">
+                    
+                    <h1 class="">Xác nhận thông tin</h1>
+                    <form #frmOrder='ngForm' (ngSubmit)='conFirm(frmOrder.value)'>
+
+                        <div class="form-group ">
+                            <label> Họ và Tên:</label>
+                            <input type="text" name="HoTenBuyer" id="" class="form-control"  placeholder={{thongTinBuyer.name}} value={{thongTinBuyer.name}} #HoTenBuyer ngModel>
+                            <label>Email:</label>
+                            <input disabled  type="text" name="EmailBuyer" id="" class="form-control" placeholder={{thongTinBuyer.email}} value={{thongTinBuyer.email}} #EmailBuyer ngModel>
                         </div>
-                        <div class="price-btn-box">
-                            <a href="/order/step1">Thanh toán</a>
+
+                        <div class="form-group ">
+                            <label>Điện thoại</label>
+                            <input type="text" name="DienThoaiBuyer" id="" class="form-control" placeholder={{thongTinBuyer.SoDienThoai}} value={{thongTinBuyer.SoDienThoai}} #DienThoaiBuyer ngModel>
+                            <label>Địa chỉ</label>
+                            <input type="text" name="DiaChiBuyer" id="" class="form-control" placeholder="Vui lòng nhập địa chỉ" #DiaChiBuyer ngModel>
+
                         </div>
-                    </div>
+
+                        <div class="form-group text-center">
+                                <div class="u-cart-price">
+                                        <div class="price-cart-box clearfix">
+                                            <div class="price-cart-1"> Tổng chi phí: {{totalPrice | number:'.0'}}<sup>đ</sup></div>
+                                        </div>
+                                        <div class="price-btn-box">
+                                            <button type="submit">Thanh toán</button>
+                                        </div>
+                                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-        
+
     </div>
 </main>

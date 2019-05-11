@@ -14,8 +14,8 @@ export class CourseListComponent implements OnInit {
   listKH: Array<any> = [];
   mangTheLoai: Array<any> = [];
   array: Array<any> = [];
-  ownflag=false;
-  flag:Array<boolean> = [false,false,false,false,false,false,false];
+  ownflag = false;
+  flag: Array<boolean> = [false, false, false, false, false, false, false];
   dsKhoaHoc1: Array<any> = [];
   dsKhoaHoc2: Array<any> = [];
   dsKhoaHoc3: Array<any> = [];
@@ -24,8 +24,46 @@ export class CourseListComponent implements OnInit {
   dsKhoaHoc6: Array<any> = [];
   dsKhoaHoc7: Array<any> = [];
   dsKhoaHoc8: Array<any> = [];
-  constructor(private danhSachKhoaHoc: KhoaHocService,private userService: UserService) {
+  constructor(private danhSachKhoaHoc: KhoaHocService, private userService: UserService) {
+    $(document).ready(function () {
+      'use strict';
+      setTimeout(() => {
+        $(".regular").slick({
+          dots: true,
+          // infinite: true,
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          slideSpeed: 200,
+          responsive: [
+            {
+              breakpoint: 1200,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                dots: false,
+              }
+            },
+            {
+              breakpoint: 1008,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: false,
+              }
+            },
+            {
+              breakpoint: 800,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: false,
+              }
+            }
+          ]
+        });
 
+      }, 2000);
+    })
 
   }
 
@@ -44,8 +82,8 @@ export class CourseListComponent implements OnInit {
         })
       }
     })
-    
-    
+
+
   }
   active(id: any) {
     this.danhSachKhoaHoc.LayChiTietTheLoai(id).subscribe(res => {
@@ -55,75 +93,75 @@ export class CourseListComponent implements OnInit {
           for (let khoahocObject of res.data) {
             switch (id) {
               case 2:
-              if(this.flag[0]==false){
-                this.dsKhoaHoc2.push(khoahocObject);
-              }
-              else{
-              }
-              setTimeout(() => {
-                this.flag[0]=true;
-              }, 1500);
+                if (this.flag[0] == false) {
+                  this.dsKhoaHoc2.push(khoahocObject);
+                }
+                else {
+                }
+                setTimeout(() => {
+                  this.flag[0] = true;
+                }, 1500);
 
                 break;
               case 3:
-              if(this.flag[1]==false){
-                this.dsKhoaHoc3.push(khoahocObject);
-              }
-              else{
-              }
-              setTimeout(() => {
-                this.flag[1]=true;
-              }, 1500);
+                if (this.flag[1] == false) {
+                  this.dsKhoaHoc3.push(khoahocObject);
+                }
+                else {
+                }
+                setTimeout(() => {
+                  this.flag[1] = true;
+                }, 1500);
                 break;
               case 4:
-              if(this.flag[2]==false){
-                this.dsKhoaHoc4.push(khoahocObject);
-              }
-              else{
-              }
-              setTimeout(() => {
-                this.flag[2]=true;
-              }, 1500);
+                if (this.flag[2] == false) {
+                  this.dsKhoaHoc4.push(khoahocObject);
+                }
+                else {
+                }
+                setTimeout(() => {
+                  this.flag[2] = true;
+                }, 1500);
                 break;
               case 5:
-              if(this.flag[3]==false){
-                this.dsKhoaHoc5.push(khoahocObject);
-              }
-              else{
-              }
-              setTimeout(() => {
-                this.flag[3]=true;
-              }, 1500);
+                if (this.flag[3] == false) {
+                  this.dsKhoaHoc5.push(khoahocObject);
+                }
+                else {
+                }
+                setTimeout(() => {
+                  this.flag[3] = true;
+                }, 1500);
                 break;
               case 6:
-              if(this.flag[4]==false){
-                this.dsKhoaHoc6.push(khoahocObject);
-              }
-              else{
-              }
-              setTimeout(() => {
-                this.flag[4]=true;
-              }, 1500);
+                if (this.flag[4] == false) {
+                  this.dsKhoaHoc6.push(khoahocObject);
+                }
+                else {
+                }
+                setTimeout(() => {
+                  this.flag[4] = true;
+                }, 1500);
                 break;
               case 7:
-              if(this.flag[5]==false){
-                this.dsKhoaHoc7.push(khoahocObject);
-              }
-              else{
-              }
-              setTimeout(() => {
-                this.flag[5]=true;
-              }, 1500);
+                if (this.flag[5] == false) {
+                  this.dsKhoaHoc7.push(khoahocObject);
+                }
+                else {
+                }
+                setTimeout(() => {
+                  this.flag[5] = true;
+                }, 1500);
                 break;
               case 8:
-              if(this.flag[6]==false){
-                this.dsKhoaHoc8.push(khoahocObject);
-              }
-              else{
-              }
-              setTimeout(() => {
-                this.flag[6]=true;
-              }, 1500);
+                if (this.flag[6] == false) {
+                  this.dsKhoaHoc8.push(khoahocObject);
+                }
+                else {
+                }
+                setTimeout(() => {
+                  this.flag[6] = true;
+                }, 1500);
                 break;
             }
           }
