@@ -15,9 +15,11 @@ export class SignUpComponent implements OnInit {
   DangKy(info:any){
     
     console.log(info);
+    info.HinhAnh ='';
     this.userService.DangKy(info).subscribe(data=>{
 
       console.log(data);
+      window.location.href='/';
     })
   }
 }

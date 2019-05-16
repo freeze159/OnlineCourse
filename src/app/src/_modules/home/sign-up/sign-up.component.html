@@ -1,34 +1,46 @@
 <div class="account-page">
   <div class="account-wrap">
 
-    <a class="site-logo" href="index.html">
+    <a class="site-logo" routerLink='/'>
       <img src="../../../../../assets/images/template/logo.png" alt="Site Logo">
     </a>
 
     <form #frmDangKy="ngForm" class="accountform signupform" (ngSubmit)="DangKy(frmDangKy.value)" >
       <h3>Sign up, it's free..</h3>
       <div class="basic-field">
-        <label>Username <br />
+        <label>Tài Khoản <br />
           <p>
             <input type="text" name="name"class="form-control"
             #taiKhoan='ngModel' ngModel required>
           </p>
         </label>
-        <label>E-mail address <br />
+        <label>E-mail <br />
           <p>
             <input type="email" class="form-control" name="email"
             #email='ngModel' ngModel required>
           </p>
         </label>
-        <label>Password <br />
+        <label>Mật Khẩu <br />
           <p>
             <input  #matKhau="ngModel" class="form-control" name="password" ngModel type="password"required />
           </p>
         </label>
-        <label>Confirm Password <br />
+        <label>Nhập lại mật khẩu <br />
           <p>
             <input  #reMatKhau="ngModel" required [ngClass]="{'ng-invalid': reMatKhau.value != matKhau.value}" 
         class="form-control" name="password_confirmation" ngModel  type="password"/>
+          </p>
+        </label>
+        <label>Số điện thoại<br />
+          <p>
+            <input  #SoDienThoai="ngModel" required  
+        class="form-control" name="SoDienThoai" ngModel  type="text"/>
+          </p>
+        </label>
+        <label>Ngày Sinh<br />
+          <p>
+            <input  #NgaySinh="ngModel" required 
+        class="form-control" name="NgaySinh" ngModel  type="date"/>
           </p>
         </label>
       </div>

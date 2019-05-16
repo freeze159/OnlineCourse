@@ -92,7 +92,7 @@
           <span class="sr-only">Toggle navigation</span>
           <i class="fa fa-bars" aria-hidden="true"></i>
         </a>
-        <a href=""><img src="../../../../../assets/img/s1.png" width="140px" height="50px" alt="site logon"></a>
+        <a href=""><img src="/assets/img/s1.png" width="140px" height="50px" alt="site logon"></a>
         <a class=""><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
 
         <a class="nav-item dropdown " dropdown>
@@ -123,8 +123,8 @@
           </div>
           <div>
             <ul class="nav navbar-nav sm-customize-menu">
-              <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a></li>
-              <li><a href="/kichhoat"><i class="fa fa-key" aria-hidden="true"></i> Kích hoạt khóa học</a></li>
+              <li><a routerLink="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a></li>
+              <li><a routerLink="/kichhoat"><i class="fa fa-key" aria-hidden="true"></i> Kích hoạt khóa học</a></li>
               <li *ngFor='let theLoai of danhSachTheLoai'><a href="">{{theLoai.TenTheLoai}}</a></li>
 
             </ul>
@@ -144,7 +144,7 @@
     <div class="container-fluid">
       <div class="row col-width-lg">
         <div class="col-lg-3 col-md-3 col-sm-4 cate-md d-flex justify-items-center">
-          <a class="course-logo" routerLink='/'><img src="../../../../../assets/img/s1.png" alt="course - Học từ chuyên gia"
+          <a class="course-logo" routerLink='/'><img src="./assets/img/s1.png" alt="course - Học từ chuyên gia"
               width="138" height="33"></a>
           <div class="course-menu-cate"><i class="fa fa-th" aria-hidden="true"></i> Danh mục
             <nav id="mysidebarmenu" class="amazonmenu">
@@ -244,7 +244,7 @@
             </a>
             <a routerLink='/cart' class="course-cart"><i class="fa fa-shopping-cart" [ngClass]="{'cart-active':flag}" aria-hidden="true"></i><span
                 class="course-sl-cart"><b>{{count}}</b></span></a>
-            <a class="course-reg-acc ml-2" href='/signup' *ngIf='!logged'>Đăng ký</a>
+            <a class="course-reg-acc ml-2" routerLink='/signup' *ngIf='!logged'>Đăng ký</a>
             <a class="course-log-acc" routerLink='/login' *ngIf='!logged'>Đăng nhập</a>
             <a class="nav-item dropdown ml-3" dropdown>
               <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light dropdown-main" *ngIf='logged'>

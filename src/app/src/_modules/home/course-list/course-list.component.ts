@@ -25,45 +25,7 @@ export class CourseListComponent implements OnInit {
   dsKhoaHoc7: Array<any> = [];
   dsKhoaHoc8: Array<any> = [];
   constructor(private danhSachKhoaHoc: KhoaHocService, private userService: UserService) {
-    $(document).ready(function () {
-      'use strict';
-      setTimeout(() => {
-        $(".regular").slick({
-          dots: true,
-          // infinite: true,
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          slideSpeed: 200,
-          responsive: [
-            {
-              breakpoint: 1200,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1,
-                dots: false,
-              }
-            },
-            {
-              breakpoint: 1008,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                dots: false,
-              }
-            },
-            {
-              breakpoint: 800,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                dots: false,
-              }
-            }
-          ]
-        });
-
-      }, 2000);
-    })
+    
 
   }
 

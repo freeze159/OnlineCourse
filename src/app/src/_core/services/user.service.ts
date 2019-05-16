@@ -41,4 +41,21 @@ export class UserService {
     const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
     return observable;
   }
+  public Update(id:any,thongtin:any):Observable<any>{
+    const linkApi= `https://khoahocdt.com/api/User/${id}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    var reqHeader = new HttpHeaders({});
+ 
+    const observable = this.http.put(linkApi,thongtin,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public UpdateImage(id:any,thongtin:any):Observable<any>{
+    const linkApi= `https://khoahocdt.com/api/User/${id}/UserUpdateImage`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    var reqHeader = new HttpHeaders({});
+ 
+    const observable = this.http.post(linkApi,thongtin,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  
 }

@@ -76,7 +76,7 @@ $(document).ready(function () {
 
         });
 
-    }, 2000);
+    }, 1600);
     
       
 })
@@ -190,6 +190,7 @@ $(document).on('shown.bs.tab', function (e) {
 });
 $(window).on('popstate', function (event) {
     setTimeout(() => {
+        console.log(event);
         $(".regular").slick({
             dots: true,
             // infinite: true,
@@ -225,7 +226,7 @@ $(window).on('popstate', function (event) {
 
         });
 
-    }, 1600);
+    }, 2000);
 });
 
 

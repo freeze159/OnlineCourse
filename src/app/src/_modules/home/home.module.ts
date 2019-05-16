@@ -23,6 +23,7 @@ import { CourseViewComponent } from './course-view/course-view.component';
 import { CheckOwnGuard } from '../../_core/guard/check-own.guard';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { EnterCodeComponent } from './enter-code/enter-code.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const homeRoutes: Routes = [
   {
@@ -50,7 +51,7 @@ const homeRoutes: Routes = [
     HeaderComponent, FooterComponent, CourseWatchComponent, UserPageComponent, LearnNowComponent, CourseViewComponent, SearchResultComponent, EnterCodeComponent],
   imports: [
     CommonModule, RouterModule.forChild(homeRoutes), MDBBootstrapModule.forRoot(), FormsModule,
-    NavbarModule, WavesModule, ButtonsModule, MatSidenavModule, MatCheckboxModule, MatButtonModule
+    NavbarModule, WavesModule, ButtonsModule, MatSidenavModule, MatCheckboxModule, MatButtonModule,HttpClientModule
   ]
 })
 export class HomeModule { }

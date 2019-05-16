@@ -1,192 +1,177 @@
 <div class="container bootstrap snippet">
-  <div class="row">
-      <div class="col-sm-10">
-          <h1>User name</h1>
-      </div>
-      <div class="col-sm-2"><a href="/" class="pull-right"><img title="profile image"
-                  class="img-circle img-responsive"
-                  src="../../../../../assets/images/template/logo.png"></a></div>
-  </div>
-  <div class="row">
-      <div class="col-sm-3">
-          <!--left col-->
+    <div class="row">
+        <div class="col-sm-10">
+            <h1>User name</h1>
+        </div>
+        <!-- <div class="col-sm-2"><a href="/" class="pull-right"><img title="profile image"
+                    class="img-circle img-responsive" src="../../../../../assets/images/template/logo.png"></a></div> -->
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <!--left col-->
 
 
-          <div class="text-center">
-              <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
-                  alt="avatar">
-              <h6>Upload a different photo...</h6>
-              <input type="file" class="text-center center-block file-upload">
-          </div><br>
+            <div class="text-center">
+                <img src={{hinhAnh}} class="avatar img-circle img-thumbnail"
+                     alt="avatar">
+                <h6>Upload a different photo...</h6>
+                <input type="file" class="text-center center-block file-upload" name='HinhAnh' (change)='onFileChange($event)'>
+
+            </div><br>
 
 
-          <div class="panel panel-default">
-              <!-- <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
+            <div class="panel panel-default">
+                <!-- <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
         <div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div> -->
-          </div>
+            </div>
 
 
-          <ul class="list-group">
-              <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-              <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
-              <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
-              <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
-              <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
-          </ul>
+            <ul class="list-group">
+                <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
+            </ul>
 
-          <div class="panel panel-default">
-              <div class="panel-heading">Social Media</div>
-              <div class="panel-body">
-                  <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i
-                      class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i
-                      class="fa fa-google-plus fa-2x"></i>
-              </div>
-          </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Social Media</div>
+                <div class="panel-body">
+                    <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i
+                        class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i
+                        class="fa fa-google-plus fa-2x"></i>
+                </div>
+            </div>
 
-      </div>
-      <!--/col-3-->
-      <div class="col-sm-9">
-          <ul class="nav nav-tabs">
-              <li class="active"><a data-toggle="tab" href="#home">Thong Tin</a></li>
-              <li><a data-toggle="tab" href="#history">Lich Su Dat Ve</a></li>
-              
-          </ul>
+        </div>
+        <!--/col-3-->
+        <div class="col-sm-9">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home">Thông Tin</a></li>
+                <li><a data-toggle="tab" href="#history"> Khóa học của tôi</a></li>
+
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="home" >
+                    <hr>
+                    <form class="form" #registrationForm='ngForm' (ngSubmit)='update(registrationForm.value)' enctype="multipart/form-data">
+                        
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label>
+                                    <h4>Họ và Tên</h4>
+                                </label>
+                                <input type="text" class="form-control" name='name' #name='ngModel'
+                                    value="{{ten}}" ngModel required
+                                    title="enter your first name if any.">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label>
+                                    <h4>Ngày Sinh</h4>
+                                </label>
+                                <input type="date" class="form-control" name="NgaySinh" #NgaySinh='ngModel' ngModel
+                                    required value='{{birth}}' title="Nhập Ngày Sinh">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label>
+                                    <h4>Số Điện Thoại</h4>
+                                </label>
+                                <input type="text" class="form-control" name="SoDienThoai" #SoDienThoai='ngModel'
+                                    value="{{phone}}" ngModel
+                                    placeholder="" title="enter your mobile number if any.">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label>
+                                    <h4>Email</h4>
+                                </label>
+                                <input type="email" class="form-control" name="Email" value="{{email}}"
+                                    title="enter your email." disabled>
+                            </div>
+                        </div>
+                        
+
+                        <div class="form-group d-flex justify-items-center">
+                            <div class="col-xs-6">
+                                    <label><h4>Cập nhật mật khẩu</h4></label>
+                                <input type="checkbox" name='CheckPassword' id='CheckPassword'
+                                    (click)='checkUpdatePass()' checked class="ml-2" style="width:20px; height: 30px;">
+
+                                
+                            </div>
+
+                        </div>
+                        <div class="form-group" *ngIf='checkedButton'>
+
+                            <div class="col-xs-6">
+                                <label for="password">
+                                    <h4>Mật Khẩu Hiện Tại</h4>
+                                </label>
+                                <input type="password" class="form-control" name="PasswordHienTai"
+                                    #PasswordHienTai='ngModel' ngModel placeholder="Nhập mật khẩu hiện tại"
+                                    title="enter your password.">
+                            </div>
+                        </div>
+                        <div class="form-group" *ngIf='checkedButton'>
+
+                            <div class="col-xs-6">
+                                <label for="password2">
+                                    <h4>Mật khẩu mới</h4>
+                                </label>
+                                <input type="password" class="form-control" name="PasswordMoi" #PasswordMoi='ngModel'
+                                    ngModel placeholder="Nhập mật khẩu mới" title="enter your password2.">
+                            </div>
+                        </div>
+                        <div class="form-group" *ngIf='checkedButton'>
+
+                            <div class="col-xs-6">
+                                <label for="password2">
+                                    <h4>Nhập lại mật khẩu mới</h4>
+                                </label>
+                                <input type="password" class="form-control" name="PasswordMoiNhapLai"
+                                    #PasswordMoiNhapLai='ngModel' ngModel placeholder="password2"
+                                    title="enter your password2.">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <br>
+                                <button class="btn btn-lg btn-success" type="submit"><i
+                                        class="glyphicon glyphicon-ok-sign"></i>Cập Nhật Thông Tin</button>
+
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <hr>
+
+                </div>
+                <!--/tab-pane-->
+                <div class="tab-pane" id="history">
+
+                    <h2>Khoa Học Của tôi</h2>
+
+                    <hr>
+                    
+
+                </div>
 
 
-          <div class="tab-content">
-              <div class="tab-pane active" id="home">
-                  <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
-                      <div class="form-group">
+            </div>
+            <!--/tab-pane-->
+        </div>
+        <!--/tab-content-->
 
-                          <div class="col-xs-6">
-                              <label for="first_name">
-                                  <h4>First name</h4>
-                              </label>
-                              <input type="text" class="form-control" name="first_name" id="first_name"
-                                  placeholder="first name" title="enter your first name if any.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                              <label for="last_name">
-                                  <h4>Last name</h4>
-                              </label>
-                              <input type="text" class="form-control" name="last_name" id="last_name"
-                                  placeholder="last name" title="enter your last name if any.">
-                          </div>
-                      </div>
-
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                              <label for="phone">
-                                  <h4>Phone</h4>
-                              </label>
-                              <input type="text" class="form-control" name="phone" id="phone"
-                                  placeholder="enter phone" title="enter your phone number if any.">
-                          </div>
-                      </div>
-
-                      <div class="form-group">
-                          <div class="col-xs-6">
-                              <label for="mobile">
-                                  <h4>Mobile</h4>
-                              </label>
-                              <input type="text" class="form-control" name="mobile" id="mobile"
-                                  placeholder="enter mobile number" title="enter your mobile number if any.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                              <label for="email">
-                                  <h4>Email</h4>
-                              </label>
-                              <input type="email" class="form-control" name="email" id="email"
-                                  placeholder="you@email.com" title="enter your email.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                              <label for="email">
-                                  <h4>Location</h4>
-                              </label>
-                              <input type="email" class="form-control" id="location" placeholder="somewhere"
-                                  title="enter a location">
-                          </div>
-                      </div>
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                              <label for="password">
-                                  <h4>Password</h4>
-                              </label>
-                              <input type="password" class="form-control" name="password" id="password"
-                                  placeholder="password" title="enter your password.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-
-                          <div class="col-xs-6">
-                              <label for="password2">
-                                  <h4>Verify</h4>
-                              </label>
-                              <input type="password" class="form-control" name="password2" id="password2"
-                                  placeholder="password2" title="enter your password2.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          <div class="col-xs-12">
-                              <br>
-                              <button class="btn btn-lg btn-success" type="submit"><i
-                                      class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                              <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i>
-                                  Reset</button>
-                          </div>
-                      </div>
-                  </form>
-
-                  <hr>
-
-              </div>
-              <!--/tab-pane-->
-              <div class="tab-pane" id="history">
-
-                  <h2>Lich Su Dat Ve</h2>
-
-                  <hr>
-                  <table class="table">
-                      <thead>
-                          <tr>
-                              <th>Mã ghế</th>
-                              <th>Ngày đặt</th>
-                              <th>Giá vé</th>
-                              <th>Tên Phim</th>
-                              <th>Rạp</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr *ngFor='let ve of danhSachVeDat'>
-                              <td>{{ve.MaGhe}}</td>
-                              <td>{{ve.NgayDat}}</td>
-                              <td>{{ve.GiaVe}}</td>
-                              <td>{{ve.TenPhim}}</td>
-                              <td>{{ve.Rap}}</td>
-                          </tr>
-                      </tbody>
-                  </table>
-
-              </div>
-              
-
-          </div>
-          <!--/tab-pane-->
-      </div>
-      <!--/tab-content-->
-
-  </div>
-  <!--/col-9-->
+    </div>
+    <!--/col-9-->
 </div>

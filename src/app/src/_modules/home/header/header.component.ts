@@ -11,7 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class HeaderComponent implements OnInit {
   logged: boolean = false;
-  thongTinUser: Object = {
+  thongTinUser:any = {
     'Id': '',
     'Ten': '',
 
