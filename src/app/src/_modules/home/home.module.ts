@@ -31,7 +31,7 @@ const homeRoutes: Routes = [
       { path: '', component: HomePageComponent },
       { path: 'cart', component: CartComponent },
       { path: 'instructor', component: BecomeInstructorComponent },
-      { path: './chitietkhoahoc/:id/:mangKHid', component: CourseDetailComponent },
+      { path: 'chitietkhoahoc/:id/:mangKHid', component: CourseDetailComponent },
       { path: 'user/:id', component: UserPageComponent },
       { path: 'danhmuckhoahoc', component: CourseViewComponent },
       { path: 'ket-qua/:keyword', component: SearchResultComponent },
