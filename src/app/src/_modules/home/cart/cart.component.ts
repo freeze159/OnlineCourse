@@ -76,7 +76,7 @@ export class CartComponent implements OnInit {
       thongTinBuyer.EmailBuyer,thongTinBuyer.DienThoaiBuyer,thongTinBuyer.DiaChiBuyer).subscribe((res:any) =>{
         const linkThanhToan = res.data;
         window.location.href=linkThanhToan;
-        sessionStorage.clear();
+      
       })
     
   }

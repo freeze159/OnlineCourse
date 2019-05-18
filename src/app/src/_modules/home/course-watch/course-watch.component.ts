@@ -14,10 +14,7 @@ export class CourseWatchComponent implements OnInit {
   
   idKhoaHoc
   baiGiangList:any=[
-    // {TenBaiGiang:'Bai 1',Link:'https://www.youtube.com/embed/4hiV5WH3vm8'},
-    // {TenBaiGiang:'Bai 2',Link:'https://www.youtube.com/embed/ux3rRgUV2MM'},
-    // {TenBaiGiang:'Bai 3',Link:'https://www.youtube.com/embed/akXGSw7H49Y'},
-    // {TenBaiGiang:'Bai 4',Link:'https://www.youtube.com/embed/akXGSw7H49Y'},
+
   ]
   constructor(private khoaHocService:KhoaHocService,private atv:ActivatedRoute) { }
 

@@ -22,7 +22,7 @@
       <label class="stay-login">
         <input type="checkbox" name="stay-login"> Stay logged in
       </label>
-      <button type="submit">Login</button>
+      <button type="submit" [disabled]='frmDangNhap.invalid' class="btn btn-success">Login</button>
       <p class="signup-recover">Don't you have an account yet? <a routerLink="/dangky">Sign up here</a><br /><a href="#">I
           forgot my password</a></p>
     </form>

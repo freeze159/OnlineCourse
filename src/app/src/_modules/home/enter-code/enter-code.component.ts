@@ -10,11 +10,13 @@ import { UserService } from 'src/app/src/_core/services/user.service';
   styleUrls: ['./enter-code.component.css']
 })
 export class EnterCodeComponent implements OnInit {
-
+  flagLoggin:boolean=true
   constructor(private khoaHocService:KhoaHocService,private userService:UserService) { }
   @ViewChild('frmCode') frmCode:NgForm
   ngOnInit() {
-    
+    if(localStorage.getItem('userLogin')){
+      this.flagLoggin=false;
+    }
     // this.khoaHocService.KichHoat().subscribe((res.))
 
     
@@ -27,6 +29,7 @@ export class EnterCodeComponent implements OnInit {
     this.khoaHocService.KichHoat(data).subscribe((res:any)=>{
       if(typeof res=='object'){
         Swal.fire('Thông báo','Bạn đã mỡ thành công khóa học',"success");
+        const token = localStorage.getItem('tokenbearer'); 
         this.userService.KhoaHocCuaToi().subscribe((res:any)=>{
           const ownCouse = JSON.stringify(res.data)
           localStorage.setItem('ownCourse',ownCouse);

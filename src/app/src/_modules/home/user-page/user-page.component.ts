@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 export class UserPageComponent implements OnInit {
   @ViewChild('registrationForm') frmUpdate: NgForm;
   fileData: File = null;
-  checkedButton = true;
+  checkedButton = false;
   checkPass: any = "";
   idUser: number;
   selectedFile: File;
@@ -23,15 +23,15 @@ export class UserPageComponent implements OnInit {
   birth:string;
   phone:string;
   email:string;
-  // thongTinUpdate = {
-  //   "name": this.ten,
-  //   "NgaySinh": this.birth,
-  //   "SoDienThoai":this.phone,
+
+  constructor(private userService: UserService, private atvRoute: ActivatedRoute) { 
     
-  // }
-  constructor(private userService: UserService, private atvRoute: ActivatedRoute) { }
+  }
   thongTinUser: User;
   ngOnInit() {
+    let checkbox: any = document.getElementById('CheckPassword');
+    checkbox.checked =false;
+    console.log(checkbox.checked)
     this.atvRoute.params.subscribe(res => {
       let id = res;
       this.idUser = id.id;
@@ -48,8 +48,6 @@ export class UserPageComponent implements OnInit {
 
   }
   update(thongtin:any) {
-    
-    
     if (this.checkedButton == false) {
       // console.log(thongtin)
       if(thongtin.name == '') {
@@ -126,7 +124,8 @@ export class UserPageComponent implements OnInit {
 
   }
   checkUpdatePass() {
-    let checkbox: any = document.getElementById('CheckPassword')
+    let checkbox: any = document.getElementById('CheckPassword');
+    
     this.checkedButton = checkbox.checked;
 
   }

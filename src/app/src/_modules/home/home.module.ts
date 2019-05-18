@@ -24,14 +24,14 @@ import { CheckOwnGuard } from '../../_core/guard/check-own.guard';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { EnterCodeComponent } from './enter-code/enter-code.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 const homeRoutes: Routes = [
   {
     path: '', component: HomeTemplateComponent, children: [
       { path: '', component: HomePageComponent },
       { path: 'cart', component: CartComponent },
       { path: 'instructor', component: BecomeInstructorComponent },
-      { path: 'chitietkhoahoc/:id/:mangKHid', component: CourseDetailComponent },
+      { path: './chitietkhoahoc/:id/:mangKHid', component: CourseDetailComponent },
       { path: 'user/:id', component: UserPageComponent },
       { path: 'danhmuckhoahoc', component: CourseViewComponent },
       { path: 'ket-qua/:keyword', component: SearchResultComponent },
@@ -50,8 +50,9 @@ const homeRoutes: Routes = [
     CartComponent, BecomeInstructorComponent, CourseListComponent, CourseDetailComponent,
     HeaderComponent, FooterComponent, CourseWatchComponent, UserPageComponent, LearnNowComponent, CourseViewComponent, SearchResultComponent, EnterCodeComponent],
   imports: [
-    CommonModule, RouterModule.forChild(homeRoutes), MDBBootstrapModule.forRoot(), FormsModule,
-    NavbarModule, WavesModule, ButtonsModule, MatSidenavModule, MatCheckboxModule, MatButtonModule,HttpClientModule
+    CommonModule, MDBBootstrapModule.forRoot(), FormsModule,
+    NavbarModule, WavesModule, ButtonsModule, MatSidenavModule, MatCheckboxModule, MatButtonModule,HttpClientModule,
+     RouterModule.forChild(homeRoutes),NgxPaginationModule
   ]
 })
 export class HomeModule { }

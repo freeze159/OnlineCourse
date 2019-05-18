@@ -61,6 +61,17 @@
             
         } 
     }
+    .course-btn-search { 
+      box-shadow: none;   
+      position: relative;
+      right: -92%;
+      bottom: 37px;
+      background: transparent;  
+       color: #f26c4f!important;   
+        font-size: 20px; 
+        padding: 6px 20px;
+      z-index: 3;}
+
 /* Intro */
 .intro {
   background: linear-gradient(-45deg, #ec5252, #6e1a52);

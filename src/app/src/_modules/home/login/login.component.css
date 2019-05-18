@@ -73,7 +73,7 @@
   .accountform [type=submit] {
     font-weight: 400;
     font-size: 1.8rem;
-    /* background-color: #d1d1d1; */
+    background-color: #d1d1d1;
     line-height: 50px;
     border: none;
     height: 50px;

@@ -10,7 +10,7 @@ export class CartService {
   @Output() cart = new EventEmitter();
   @Output() delItems = new EventEmitter();
   public ThanhToan(MangKH_id:string,HoTenBuyer:string,EmailBuyer:string,DienThoaiBuyer:string,DiaChiBuyer:string){
-    const linkApi= `https://khoahocdt.com/api/NganLuong/ThanhToan?MangKH_id=${MangKH_id}&HoTenBuyer=${HoTenBuyer}&EmailBuyer=${EmailBuyer}&DienThoaiBuyer=${DienThoaiBuyer}&DiaChiBuyer=${DiaChiBuyer}`;
+    const linkApi= `https://api.khoahocdt.com/api/NganLuong/ThanhToan?MangKH_id=${MangKH_id}&HoTenBuyer=${HoTenBuyer}&EmailBuyer=${EmailBuyer}&DienThoaiBuyer=${DienThoaiBuyer}&DiaChiBuyer=${DiaChiBuyer}`;
     const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
       // Cho biết định dạng dữ liệu truyền đi
     // header.append('Content-Type','application/x-www-form-urlencoded')

@@ -4,6 +4,8 @@ import { forkJoin } from 'rxjs';
 import { CartService } from 'src/app/src/_core/services/cart.service';
 import Swal from 'sweetalert2'
 import { NgForm } from '@angular/forms';
+import {Location} from '@angular/common';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -16,7 +18,7 @@ export class HeaderComponent implements OnInit {
     'Ten': '',
 
   };
-  constructor(private khoaHocService: KhoaHocService, private cartService: CartService) { }
+  constructor(private khoaHocService: KhoaHocService, private cartService: CartService,private location:Router) { }
   @ViewChild('frmDangKy') frmDangKy: NgForm;
 
   danhSachTheLoai: Array<any> = [];
@@ -91,7 +93,8 @@ export class HeaderComponent implements OnInit {
   search(key:any){
     let keyword = '';
     keyword=key.keyWord;
-    window.location.href=`/ket-qua/${keyword}`;
+    let keyWordClean = keyword.replace(/ /g, "-")
+    this.location.navigateByUrl(`/ket-qua/${keyWordClean}`);
     
   }
 }

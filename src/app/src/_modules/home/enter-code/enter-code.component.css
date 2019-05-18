@@ -2,7 +2,7 @@ a {
     color:blue;
 }
 .form-code{
-    margin-left: 280px;
+    /* margin-left: 280px; */
     text-align: center;
     width: 50%;
 }
@@ -41,10 +41,11 @@ h1{
     border:1px solid red;
     border-radius: 20px;
     color:black!important;
-    background: rgba(23, 117, 240, 0.801);
+    background: #dc3545;
+    
     
 }
 .btn-activate:hover{
-    background: #dc3545;
-    color:white!important;
+    background: rgba(23, 117, 240, 0.801);
+        color:white!important;
 }

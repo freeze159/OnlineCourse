@@ -1,16 +1,16 @@
 <main>
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12 col-md-12 col-xs-12 text-center content">
-        <h1>KÍCH HOẠT KHÓA HỌC</h1>
-        <p class="caution">Lưu ý: Mỗi khóa học chỉ cần kích hoạt 1 lần duy nhất</p>
-        <p><span class="circle">1</span><span>Bạn <b>chưa có</b> tài khoản đăng nhập?, vui lòng </span> <a routerLink='/signup'>Đăng ký tài khoản mới</a></p>
-        <p><span class="circle">2</span><span>Bạn <b>đã có</b> tài khoản đăng nhập?, vui lòng </span> <a routerLink='/login'>Đăng nhập tài khoản</a></p>
-        <form class="form-group form-code" #frmCode='ngForm' (ngSubmit)='submitCode(frmCode.value)'>
-          <input type="text" name="Code"  class="form-control" placeholder="Nhập mã kích hoạt, ví dụ 123456" #Code ngModel width="100px" >
-          <button type="submit" class="btn btn-activate"> <i class="fa fa-unlock"></i> Kích hoạt ngay</button>
+    
+      <div class="row text-center content">
+        <h1 class="col-md-12">KÍCH HOẠT KHÓA HỌC</h1>
+        <p class="caution col-md-12">Lưu ý: Mỗi khóa học chỉ cần kích hoạt 1 lần duy nhất</p>
+        <p class="col-md-12" *ngIf='flagLoggin'><span class="circle ">1</span><span>Bạn <b>chưa có</b> tài khoản đăng nhập?, vui lòng </span> <a routerLink='/signup'>Đăng ký tài khoản mới</a></p>
+        <p class="col-md-12" *ngIf='flagLoggin'><span class="circle ">2</span><span>Bạn <b>đã có</b> tài khoản đăng nhập?, vui lòng </span> <a routerLink='/login'>Đăng nhập tài khoản</a></p>
+        <form class="form-group col-md-12 ml-2" #frmCode='ngForm' (ngSubmit)='submitCode(frmCode.value)'>
+          <input  type="text" name="Code"  class="form-control mx-auto w-75" placeholder="Nhập mã kích hoạt, ví dụ 123456" #Code ngModel width="100px" required >
+          <button [disabled]='frmCode.invalid || flagLoggin' type="submit" class="btn btn-activate"> <i class="fa fa-unlock"></i> Kích hoạt ngay</button>
         </form>
       </div>
-    </div>
+    
   </div>
 </main>

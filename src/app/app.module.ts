@@ -22,11 +22,10 @@ const appRoute:Routes = [
     AppComponent
   ],
   imports: [
-
+    RouterModule.forRoot(appRoute),
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    RouterModule.forRoot(appRoute),
     HttpClientModule,
     MatSidenavModule, MatCheckboxModule, MatButtonModule
     

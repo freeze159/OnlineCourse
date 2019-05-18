@@ -2,7 +2,7 @@
   <div class="container-fluid bg-br" style="padding:15px 0">
     <div class="container">
       <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-4 u-list-leftbar hidden-xs">
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 u-list-leftbar hidden-xs">
           <section>
             <div class="u-cate-list">
               <p
@@ -13,7 +13,7 @@
                      routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Công Nghệ Thông Tin',Id:'1'}"><i class="fa fa fa-code" aria-hidden="true"></i> Công nghệ thông
                       tin</a>
                     <ul class="issub" style="z-index: 1008; display: none;">
-                      <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Công Nghệ Thông Tin',Id:'1'}">Tất cả Công nghệ thông tin</a></li>
+                      <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Công-Nghệ-Thông-Tin',Id:'1'}">Tất cả Công nghệ thông tin</a></li>
                       <li><a href="/tag/co-so-du-lieu">Đồ Họa</a></li>
                       <li><a href="/tag/hoc-quan-tri-mang">Phần Cứng</a></li>
                       <li><a href="/tag/lap-trinh">Phần Mềm</a></li>
@@ -87,13 +87,13 @@
             </div>
           </section>
         </div>
-        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 main-content">
+        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 main-content">
           <div class="u-all-course">
             <h1 style="font-size: 20px;font-family: inherit;font-weight: 500;line-height: 1.1;color: inherit;">Kết quả
               tìm kiếm: {{key}}</h1>
           </div>
           <div class="row" *ngIf='flagEx'>
-            <div class="card col-lg-4 col-md-4" *ngFor='let khoahoc of seachResult'>
+            <div class="card col-lg-4 col-md-4" *ngFor='let khoahoc of seachResult | paginate: { itemsPerPage: 6, currentPage: p }'>
               <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" height="100px" />
               <div class="card-body">
                   <div class="card-body_content">
@@ -117,13 +117,17 @@
                   </div>
               </div>
           </div>
-          
-        
-
           </div>
           <div class="search-failed" *ngIf='!flagEx'>
             <p>Không có kết quả nào</p>
           </div>
+          <pagination-controls 
+          
+          autoHide="true"
+          responsive="true"
+          previousLabel="Trang trước"
+          nextLabel="Trang Kế"
+          (pageChange)="p = $event"></pagination-controls>
         </div>
       </div>
     </div>

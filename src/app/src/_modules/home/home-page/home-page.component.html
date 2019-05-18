@@ -5,15 +5,18 @@
     <div class="cover_container">
         <h1 class="cover__title">Learn on your schedule</h1>
         <p class="cover__detail">Study any topic, anytime. Explore thousands of courses for as low as $19.99</p>
-        <form action="" class="form__cover_search">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="What do you want to learn?">
-                <div class="input-group-append">
-                    <span class="input-group-text">
+        <form class="form__cover_search" (ngSubmit)=search(frmSearch.value)
+        #frmSearch=ngForm>
+            
+                <input  name="keyWord" type="text" class="form-control"
+                placeholder="Tìm khóa học, giảng viên bạn quan tâm" ngModel required>
+        
+                    <button type="submit" class="btn course-btn-search" [disabled]="frmSearch.invalid">
                         <i class="fa fa-search"></i>
-                    </span>
-                </div>
-            </div>
+          
+                      </button>
+                
+            
         </form>
     </div>
 </section>

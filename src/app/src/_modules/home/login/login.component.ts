@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/src/_core/services/user.service';
 import { NgForm } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -27,17 +28,21 @@ export class LoginComponent implements OnInit {
         
         localStorage.setItem('tokenbearer',apiToken);
         const token = localStorage.getItem('tokenbearer'); 
-        // console.log(JSON.parse(token));
+        Swal.fire('Thành công','Bạn đã đăng nhập thành công',"success");
+        setTimeout(() => {
+          this.userService.KhoaHocCuaToi().subscribe((res:any)=>{
+            console.log(res.data);
+            const ownCouse = JSON.stringify(res.data)
+            localStorage.setItem('ownCourse',ownCouse);
+            window.location.href='/';
+          })
+        }, 700);
+          
+          
         
-        this.userService.KhoaHocCuaToi().subscribe((res:any)=>{
-          console.log(res.data);
-          const ownCouse = JSON.stringify(res.data)
-          localStorage.setItem('ownCourse',ownCouse);
-          window.location.href='/';
-        })
       }
       else {
-        alert(data);
+        Swal.fire('Thất bại',data,"error");
       }
     })
     

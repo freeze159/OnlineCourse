@@ -9,15 +9,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SearchResultComponent implements OnInit {
 
-  constructor(private khoaHocService: KhoaHocService, private atv: ActivatedRoute) { }
+  constructor(private khoaHocService: KhoaHocService, private atv: ActivatedRoute) {
+   }
   seachResult: Array<any> = [];
   flagEx = false;
   key
   ngOnInit() {
     this.atv.params.subscribe((res: any) => {
       const key = res.keyword
-      this.key=key;
-      this.khoaHocService.TimKiem(key).subscribe((res: any) => {
+      this.key=key.replace(/-/g, " ");
+      console.log(this.key)
+      this.khoaHocService.TimKiem(this.key).subscribe((res: any) => {
         this.seachResult = res.data;
         console.log(this.seachResult)
         if (this.seachResult.length!=0) {
