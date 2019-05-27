@@ -10,14 +10,18 @@
       font-weight: normal;
       padding-top: 4rem; }
 .course .myTab {
-    margin-bottom: 25px;
-    border-bottom: none; }
+  margin-bottom: 25px;
+  border-bottom: none;
+  margin-left: 73px;
+     }
 .course .myTab .nav-link
  {
       color: #29303b;
-      font-size: 15px;
-      font-weight: normal;
+      font-size: 20px;
+      font-weight: bold;
       padding:0.4rem 0.5rem;
+      
+      
       }
 .course .myTab .nav-link:hover {
       border: none; }
@@ -25,11 +29,13 @@
       border-top: none;
       border-left: none;
       border-right: none;
+      background: #8be0f3;
       border-bottom: 5px solid #007791; }
 .course .myContent {
-    position: relative; }
+    position: relative;
+    background: #f5f3f3 }
 .course .myContent .card {
-      height: 275px;
+      height: 315px;
       overflow: hidden; }
 .course .myContent .card .card-body {
         padding: 1rem; }
@@ -101,6 +107,7 @@
   top: -70px;
   right: 15px;
 }
+
 .clone-carousel .owl-prev,.clone-carousel .owl-next {
   font-size: 2.4rem;
   color: #505050;
@@ -130,10 +137,27 @@
   /* width: 100%; */
   position: relative;
 }
+h4 { text-align: center; font-size: 30px; font-weight: bold; margin: 15px; text-transform: uppercase;}
+
 
     @media screen and (max-width: 768px) {
     .course .course_content .course_title {
       padding-top: 1rem; 
     } 
+    .course .myTab .nav-link
+ {
+      color: #29303b;
+      font-size: 15px;
+      font-weight: 600;
+      
+      padding:0.4rem 0.5rem;
+      
+      
+      }
+      .course .myTab {
+        margin-bottom: 25px;
+        border-bottom: none;
+        margin-left: 0px;
+    }
+
   }
- 

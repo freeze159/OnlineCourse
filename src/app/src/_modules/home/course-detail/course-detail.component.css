@@ -83,7 +83,11 @@ border-width: 5px;
 border-color: #fff #fff #5cb85c;
 color: #555;
 }
+.nav-tabs .nav-link{
+    font-size: 1.4rem;
+    font-weight: 600
 
+}
 .collapse-icon-left .icon-left{
     color: #2cd42c;
     font-size: 30px;

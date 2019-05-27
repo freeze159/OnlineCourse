@@ -40,34 +40,46 @@
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-4 col-sm-4">
-                    
+
                     <h1 class="">Xác nhận thông tin</h1>
                     <form #frmOrder='ngForm' (ngSubmit)='conFirm(frmOrder.value)'>
 
                         <div class="form-group ">
                             <label> Họ và Tên:</label>
-                            <input type="text" name="HoTenBuyer" id="" class="form-control"  placeholder={{thongTinBuyer.name}} value={{thongTinBuyer.name}} #HoTenBuyer ngModel>
+                            <input type="text" name="HoTenBuyer" id="" class="form-control"
+                                placeholder={{thongTinBuyer.name}} value={{thongTinBuyer.name}} #HoTenBuyer='ngModel'
+                                ngModel>
                             <label>Email:</label>
-                            <input disabled  type="text" name="EmailBuyer" id="" class="form-control" placeholder={{thongTinBuyer.email}} value={{thongTinBuyer.email}} #EmailBuyer ngModel>
+                            <input disabled type="text" name="EmailBuyer" id="" class="form-control"
+                                placeholder={{thongTinBuyer.email}} value={{thongTinBuyer.email}} #EmailBuyer='ngModel'
+                                ngModel>
                         </div>
 
-                        <div class="form-group ">
+                        <div class="form-group">
                             <label>Điện thoại</label>
-                            <input type="text" name="DienThoaiBuyer" id="" class="form-control" placeholder={{thongTinBuyer.SoDienThoai}} value={{thongTinBuyer.SoDienThoai}} #DienThoaiBuyer ngModel>
+                            <input type="text" name="DienThoaiBuyer" id="" class="form-control"
+                                placeholder={{thongTinBuyer.SoDienThoai}} value={{thongTinBuyer.SoDienThoai}}
+                                #DienThoaiBuyer='ngModel' ngModel>
                             <label>Địa chỉ</label>
-                            <input type="text" name="DiaChiBuyer" id="" class="form-control" placeholder="Vui lòng nhập địa chỉ" #DiaChiBuyer ngModel>
-
+                            <input type="text" name="DiaChiBuyer" class="form-control"
+                                placeholder="Vui lòng nhập địa chỉ" #DiaChiBuyer='ngModel' ngModel required>
+                            <div *ngIf="(DiaChiBuyer.touched || DiaChiBuyer.dirty) && DiaChiBuyer.errors ">
+                                <div *ngIf="DiaChiBuyer.errors.required" class="alert alert-danger text-danger">
+                                    Địa chỉ không được bỏ trống
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group text-center">
-                                <div class="u-cart-price">
-                                        <div class="price-cart-box clearfix">
-                                            <div class="price-cart-1"> Tổng chi phí: {{totalPrice | number:'.0'}}<sup>đ</sup></div>
-                                        </div>
-                                        <div class="price-btn-box">
-                                            <button type="submit">Thanh toán</button>
-                                        </div>
+                            <div class="u-cart-price">
+                                <div class="price-cart-box clearfix">
+                                    <div class="price-cart-1"> Tổng chi phí: {{totalPrice | number:'.0'}}<sup>đ</sup>
                                     </div>
+                                </div>
+                                <div class="price-btn-box">
+                                    <button type="submit" [disabled]='frmOrder.invalid'>Thanh toán</button>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>

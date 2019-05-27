@@ -90,11 +90,11 @@
         <a type="button" class="navbar-toggle-right offcanvas-toggle" data-toggle="offcanvas"
           data-target="#js-bootstrap-offcanvas" id="offcanvas-toggle">
           <span class="sr-only">Toggle navigation</span>
-          <i class="fa fa-bars" aria-hidden="true"></i>
+          <i class="fa fa-bars" aria-hidden="true" style="font-size: 21px;"></i>
         </a>
-        <a href=""><img src="/assets/img/s1.png" width="140px" height="50px" alt="site logon"></a>
+        <a href=""><img src="https://www.khoahocdt.com/Logo.png" width="140px" height="50px" alt="site logon"></a>
         <a routerLink='/cart' class="course-cart"><i class="fa fa-shopping-cart" [ngClass]="{'cart-active':flag}"
-          aria-hidden="true"></i><span class="course-sl-cart"><b>{{count}}</b></span></a>
+            aria-hidden="true"></i><span class="course-sl-cart"><b>{{count}}</b></span></a>
 
 
         <a class="course-reg-acc ml-2" routerLink='/signup' *ngIf='!logged'>Đăng ký</a>
@@ -106,8 +106,8 @@
             <span class="caret"></span>
           </a>
           <div class="dropdown-menu dropdown dropdown-primary" role="menu">
-            <a class="dropdown-item waves-light" routerLink='/user/{{thongTinUser.Id}}'>Tài khoản của tôi</a>
-
+            <a class="dropdown-item waves-light" routerLink='/user/{{thongTinUser.Id}}'>Khóa học của tôi</a>
+            
             <div class="divider dropdown-divider"></div>
             <a class="dropdown-item waves-light" (click)='logOut()'>Đăng Xuất</a>
           </div>
@@ -129,7 +129,8 @@
             <ul class="nav navbar-nav sm-customize-menu">
               <li><a routerLink="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a></li>
               <li><a routerLink="/kichhoat"><i class="fa fa-key" aria-hidden="true"></i> Kích hoạt khóa học</a></li>
-              <li *ngFor='let theLoai of danhSachTheLoai'><a href="">{{theLoai.TenTheLoai}}</a></li>
+              <li *ngFor='let theLoai of danhSachTheLoai'><a routerLink='/danhmuckhoahoc'
+                  [queryParams]="{TenTheLoai:theLoai.TenTheLoai,Id:theLoai.id}">{{theLoai.TenTheLoai}}</a></li>
 
             </ul>
           </div>
@@ -147,9 +148,9 @@
   <div class="course-home-menutop hidden-xs mt-1 mb-2">
     <div class="container-fluid">
       <div class="row col-width-lg">
-        <div class="col-lg-3 col-md-3 col-sm-4 cate-md d-flex justify-items-center">
-          <a class="course-logo" href="/"><img src="./assets/img/s1.png" alt="course - Học từ chuyên gia" width="138"
-              height="33"></a>
+        <div class="col-lg-3 col-md-2 col-sm-4 cate-md d-flex justify-items-center">
+          <a class="course-logo" href="/"><img src="https://www.khoahocdt.com/Logo.png" alt="course - Học từ chuyên gia"
+              width="120" height="55"></a>
           <div class="course-menu-cate"><i class="fa fa-th" aria-hidden="true"></i> Danh mục
             <nav id="mysidebarmenu" class="amazonmenu">
               <ul>
@@ -246,7 +247,7 @@
             </nav>
           </div>
         </div>
-        <div class="col-lg-5 col-md-5 col-sm-4 cate-sm">
+        <div class="col-lg-4 col-md-5 col-sm-4 cate-sm">
           <form class="course-search-boxtop navbar-form form-inline" (ngSubmit)=search(frmSearch.value)
             #frmSearch=ngForm>
             <input name="keyWord" type="text" class="form-control course-form"
@@ -257,15 +258,18 @@
             </button>
           </form>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-4 cate-sm d-flex justify-items-center">
+        <div class="col-lg-5 col-md-5 col-sm-4 cate-sm d-flex justify-items-center">
           <div class="right-menu">
             <a routerLink="/kichhoat" class="course-active-course"><i class="fa fa-unlock-alt" aria-hidden="true"></i>
               <p class="hidden-md hidden-xs hidden-sm">Kích hoạt khóa học</p>
             </a>
             <a routerLink='/cart' class="course-cart"><i class="fa fa-shopping-cart" [ngClass]="{'cart-active':flag}"
                 aria-hidden="true"></i><span class="course-sl-cart"><b>{{count}}</b></span></a>
-            <a class="course-reg-acc ml-2" routerLink='/signup' *ngIf='!logged'>Đăng ký</a>
-            <a class="course-log-acc" routerLink='/login' *ngIf='!logged'>Đăng nhập</a>
+            <a *ngIf='!logged' class="ml-5">
+              <a class="course-reg-acc ml-2" routerLink='/signup' >Đăng ký</a>
+              <a class="course-log-acc" routerLink='/login' >Đăng nhập</a>
+            </a>
+
             <a class="nav-item dropdown ml-3" dropdown>
               <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light dropdown-main" *ngIf='logged'>
                 <i class="fa fa-user"></i>
@@ -273,8 +277,8 @@
                 <span class="caret"></span>
               </a>
               <div class="dropdown-menu dropdown dropdown-primary" role="menu">
-                <a class="dropdown-item waves-light" routerLink='/user/{{thongTinUser.Id}}'>Tài khoản của tôi</a>
-
+                <a class="dropdown-item waves-light" routerLink='/user/{{thongTinUser.Id}}'>Khóa học của tôi</a>
+                
                 <div class="divider dropdown-divider"></div>
                 <a class="dropdown-item waves-light" (click)='logOut()'>Đăng Xuất</a>
               </div>

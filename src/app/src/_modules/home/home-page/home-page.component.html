@@ -3,8 +3,8 @@
 
 <section class="cover">
     <div class="cover_container">
-        <h1 class="cover__title">Learn on your schedule</h1>
-        <p class="cover__detail">Study any topic, anytime. Explore thousands of courses for as low as $19.99</p>
+        <h1 class="cover__title">Học theo lộ trình của bạn</h1>
+        <p class="cover__detail">Học bất kỳ khóa học nào vào thời gian bạn muốn</p>
         <form class="form__cover_search" (ngSubmit)=search(frmSearch.value)
         #frmSearch=ngForm>
             
@@ -31,8 +31,8 @@
                     <i class="fa fa-bullseye"></i>
                 </div>
                 <div class="intro_sub-detail d-inline-block">
-                    <b>80,000 online courses</b>
-                    <p>Explore a variety of fresh topics</p>
+                    <b>Rất nhiều khóa học</b>
+                    <p>Khám phá sự đa dạng của các chủ đề</p>
                 </div>
             </div>
             
@@ -43,8 +43,8 @@
                         <i class="fa fa-spinner"></i>
                     </div>
                     <div class="intro_sub-detail">
-                        <b>Expert instruction</b>
-                        <p>Find the right instructor for you</p>
+                        <b>Giảng viên giàu kinh nghiệm</b>
+                        <p>Tìm giảng viên phù hợp với bạn</p>
                     </div>
                 </div>
             
@@ -56,8 +56,8 @@
                         <i class="fa fa-refresh" ></i>
                     </div>
                     <div class="intro_sub-detail">
-                        <b>Lifetime access</b>
-                        <p>Learn on your schedule</p>
+                        <b>Học trọn đời</b>
+                        <p>Mọi lúc mọi nơi</p>
                     </div>
                 </div>
             
@@ -74,7 +74,7 @@
 <!-- End Course Catagories -->
 
 <!-- Best View Code -->
-<section class="view container-fluid">
+<!-- <section class="view container-fluid">
     <div class="view_content">
         <h5>Students are viewing</h5>
         <div class="owl-carousel owl-theme clonex2-carousel">
@@ -206,10 +206,10 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <!-- End Best View Code -->
-<div class="container">
+<section class="container">
     <!-- <div class="row"> -->
             <div class="row course-reason">
                 <h4 class="col-lg-12">Tại sao bạn nên học cùng </h4>
@@ -248,9 +248,10 @@
             </div>
     
     <!-- </div> -->
-</div>
+</section>
+
 <!-- FeedBack -->
-<section class="student container-fluid">
+<!-- <section class="student container-fluid">
     <div class="student_content">
         <h4>What our students have to say</h4>
         <div class="owl-carousel owl-theme clone-carousel">
@@ -411,5 +412,34 @@
             </div>
         </div>
     </div>
+</section> -->
+<app-course-interest></app-course-interest>
+<section class="banner container-fluid text-center">
+    <div class="container">
+        <h1>Học mọi lúc, mọi nơi</h1>
+        <p>Học trên mọi thiết bị</p>
+        <p>Học trọn đời</p>
+        
+        <button class="button button__signup" routerLink='/signup' *ngIf='!loggin'>Đăng ký miễn phí ngay</button>
+    </div>
 </section>
+<!-- job -->
+<section class="job container-fluid">
+    <div class="job_content">
+        <div class="row job_row">
+            <div class="col-md-12">
+                <div class="teaching text-center border-right border-left">
+                    <h1>Trở thành giảng viên</h1>
+                    <p>Dạy thứ bạn muốn, DTCourse cung cấp
+                         công cụ để làm điều đó</p>
+                    <button class="button button__signup" routerLink='/tro-thanh-giang-vien'>Dạy học ngay</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
 <!-- End FeedBack -->

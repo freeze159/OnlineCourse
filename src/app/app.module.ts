@@ -12,17 +12,18 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCheckboxModule, MatButtonModule } from '@angular/material';
 
 const appRoute:Routes = [
+  {path:'',loadChildren:()=>HomeModule},
   {path:'home',loadChildren:() => HomeModule},
   {path:'admin',loadChildren:() => AdminModule},
-  {path:'mod',loadChildren:()=>ModModule},
-  {path:'',loadChildren:()=>HomeModule},
+  {path:'instructor',loadChildren:()=>ModModule},
+  
 ]
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    RouterModule.forRoot(appRoute),
+    RouterModule.forRoot(appRoute,{scrollPositionRestoration: 'enabled'}),
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

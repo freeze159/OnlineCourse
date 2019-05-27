@@ -1,0 +1,116 @@
+<section class="container content">
+  <div class="row">
+    <div class="col-sm-12">
+      <h3 class="lead">Các bước tạo khóa học</h3>
+    </div>
+    
+      <mat-vertical-stepper #stepper class="col-sm-12">
+        <mat-step [stepControl]="firstFormGroup" #step1>
+          <ng-template matStepLabel>Bước 1 trong 4</ng-template>
+          <h3>Bạn muốn đặt tên khóa học là gì?</h3>
+          <form #frmName='ngForm' (ngSubmit)='getName(frmName.value)' >
+            <div class="form-group">
+              <mat-form-field>
+                <input type="text" matInput placeholder="Tên khóa học là gì?" #name="ngModel" name="name" ngModel
+                  required minlength="10" maxlength="100">
+
+              </mat-form-field>
+              <div style="width:300px;" *ngIf="name.errors && (name.dirty || name.touched)">
+                <div *ngIf="name.errors.required" class="alert alert-danger">
+                  <p>Không được để rỗng!</p>
+                </div>
+                <div *ngIf="name.errors.minlength || name.errors.maxlength" class="alert alert-danger">
+                  <p>Độ dài từ 10 đến 100 ký tự!</p>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="form-group">
+              <mat-form-field>
+                <input type="text" matInput placeholder="Tóm tắt khóa học của bạn" #short="ngModel" name="short" ngModel
+                  required minlength="10" maxlength="200">
+
+              </mat-form-field>
+              <div style="width:300px;" *ngIf="short.errors && (short.dirty || short.touched)">
+                <div *ngIf="short.errors.required" class="alert alert-danger">
+                  <p>Không được để rỗng!</p>
+                </div>
+                <div *ngIf="short.errors.minlength || short.errors.maxlength" class="alert alert-danger">
+                  <p>Độ dài từ 10 đến 200 ký tự!</p>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="form-group">
+              <mat-form-field>
+                <input type="number" matInput placeholder="Giá bạn mong muốn cho khóa học" #price="ngModel" name="price"
+                  ngModel required >
+
+              </mat-form-field>
+              <div style="width:300px;" *ngIf="(price.touched || price.dirty) && price.errors">
+                      <div class="alert alert-danger text-danger">
+                        Chỉ được nhập số
+                      </div>
+                    
+              </div>
+            </div>
+            <hr>
+            <div class="form-group">
+              <button mat-button matStepperNext [disabled]='frmName.invalid' type="submit">Next</button>
+
+            </div>
+          </form>
+
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form #frmTheLoai='ngForm' (ngSubmit)='getTheLoai(frmTheLoai.value)'>
+            <ng-template matStepLabel>Bước 2 trong 4</ng-template>
+
+            <mat-form-field>
+              <mat-label>Thể loại khóa học bạn chọn là: </mat-label>
+              <mat-select (selectionChange)="onSelect($event.value)" #theLoai='ngModel' ngModel name='theLoai' required>
+                <mat-option value="0">--Select--</mat-option>
+                <mat-option *ngFor="let theLoai of danhSachTheLoai" value={{theLoai.id}}>{{theLoai.TenTheLoai}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <hr>
+            <br>
+
+            <mat-form-field>
+              <mat-label>Nhóm khóa học bạn chọn là: </mat-label>
+              <mat-select #nhomKH='ngModel' name='nhomKH' ngModel required>
+                <mat-option value="0">--Select--</mat-option>
+                <mat-option *ngFor="let nhomKhoaHoc of danhSachMangKhoaHoc" value={{nhomKhoaHoc.id}}>
+                  {{nhomKhoaHoc.TenMangKH}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+
+            <div class="form-group">
+              <button mat-button matStepperNext [disabled]='frmTheLoai.invalid' type="submit">Next</button>
+
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Bước 3 trong 4</ng-template>
+          <div class="text-center">
+            <h3>Tải lên hình ảnh cho khóa học của bạn</h3>
+              <img src={{hinhAnh}} class="avatar img-circle img-thumbnail" alt="avatar">
+              <h6>Upload a different photo...</h6>
+              <input type="file" class="text-center center-block file-upload" name='HinhAnh'
+                  (change)='onFileChange($event)'>
+
+          </div><br>
+
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Bước 4 trong 4</ng-template>
+
+
+        </mat-step>
+      </mat-vertical-stepper>
+    
+  </div>
+</section>

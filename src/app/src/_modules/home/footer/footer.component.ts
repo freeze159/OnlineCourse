@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { KhoaHocService } from 'src/app/src/_core/services/khoa-hoc.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private khoahocService:KhoaHocService) { }
+  danhSachTheLoai: Array<any> = [];
   ngOnInit() {
+    setTimeout(() => {
+      this.khoahocService.LayTheLoaiKhoaHoc().subscribe((res: any) => {
+        this.danhSachTheLoai = res.data;
+      });
+    }, 2000);
+    
   }
 
 }

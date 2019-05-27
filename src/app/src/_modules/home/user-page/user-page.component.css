@@ -1,0 +1,57 @@
+ul{
+    line-height: 2;
+}
+ul li a{
+    font-size:20px;
+    color:rgb(6, 247, 26);
+    font-weight: bold;
+    width: 100%;
+}
+.btn-lg{
+    font-size: 1.2rem;
+    padding: 15px 15px!important;
+    height: 3.3rem;
+}
+.btn-learn {
+    height: 30px;
+    width: 120px;
+    font-size: 1.2rem;
+    line-height: 30px;
+}
+.card{
+    margin-right: 14px;
+    min-width: 250px!important;
+}
+#CheckPassword {
+    width: 15px;
+    height: 15px;
+    margin-top: 0;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+li {
+    margin-left: 10px; 
+}
+li:hover{
+    color: white!important;
+    background: cornflowerblue;
+}
+li:hover a{
+    color: white!important;
+    background: cornflowerblue;
+}
+a.active{
+    color: white!important;
+
+    display: block;
+    background: cornflowerblue;
+
+}
+th {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+td {
+    font-size: 1.2rem;
+}

@@ -1,15 +1,15 @@
 <!-- Overlay -->
-<div class="container-fluid">
+<main class="container-fluid">
     <div id="overlay"></div>
-    <section class="course-intro">
+    <div class="course-intro">
         <h3 class="display-4">{{tenKh}}</h3>
         <div class="d-flex justify-content-between">
             <div>
                 <span class="mr-2">Đánh Giá</span>
                 <ng-container *ngFor='let star of danhGia'>
-                    <i class="fa fa-star" ></i>
+                    <i class="fa fa-star"></i>
                 </ng-container>
-                
+
 
 
                 <br>
@@ -21,7 +21,7 @@
         </div>
 
 
-    </section>
+    </div>
     <div class="row course-info">
         <!-- End Overlay -->
         <!-- Course Main -->
@@ -182,10 +182,12 @@
                 <span>Lorem ipsum dolor sit amet.</span>
                 <hr>
                 <h3 class="course-price lead">{{thanhTien | number:'.0'}}<span>đ</span></h3>
-                <a class="btn btn-success btn-start waves-light" mdbWavesEffect (click)='addCart()' >Đăng Ký Ngay</a>
+                <a class="btn btn-success btn-start waves-light" mdbWavesEffect (click)='addCart()'>Đăng Ký Ngay</a>
             </div>
 
 
 
 
         </div>
+    </div>
+</main>

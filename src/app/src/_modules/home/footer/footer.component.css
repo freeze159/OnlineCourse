@@ -1,4 +1,4 @@
-footer {
+ footer {
     background-color: #2C3238;
     float: left;
     width: 100%;
@@ -16,7 +16,7 @@ footer {
   }
   .footer-logo + .about-text {
     margin-top: 40px;
-    color: #b4b4b4;
+    color: black;
   }
   
   .footer-social {
@@ -35,7 +35,7 @@ footer {
   .socials a {
     display: inline-block;
     font-size: 1.5rem;
-    color: #ffffff;
+    color: #2C3238;
     height: 35px;
     width: 35px;
     line-height: 35px;
@@ -48,7 +48,7 @@ footer {
     margin-left: 15px;
   }
   .socials a:hover {
-    background-color: #eb1436;
+    background-color: rgb(59, 59, 245);
   }
   
   .widget {
@@ -82,7 +82,7 @@ footer {
   .widget .widget-cat .cat a {
     font-weight: 500;
     line-height: 2.57;
-    color: #ffffff;
+    color: #222222;
   }
   .widget .widget-cat .cat a:hover {
     color: #eb1436;
@@ -199,4 +199,4 @@ footer {
   
   .newsletter-error {
     border: 1px solid #eb1436;
-  }
+  } 

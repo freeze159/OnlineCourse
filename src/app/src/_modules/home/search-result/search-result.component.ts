@@ -9,11 +9,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SearchResultComponent implements OnInit {
 
-  constructor(private khoaHocService: KhoaHocService, private atv: ActivatedRoute) {
-   }
+  constructor(private khoaHocService: KhoaHocService, private atv: ActivatedRoute) {}
   seachResult: Array<any> = [];
   flagEx = false;
   key
+  p=1;
   ngOnInit() {
     this.atv.params.subscribe((res: any) => {
       const key = res.keyword

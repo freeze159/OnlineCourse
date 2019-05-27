@@ -1,13 +1,11 @@
 <section class="course container-fluid">
     <div class="course_content">
         <div class="row">
-            <div class="col-xl-4 col-lg-3 col-md-3">
-                <h2 class="course_title">The world’s largest selection of courses</h2>
-                <p>Choose from over 80,000 online video courses with new additions published every month</p>
-            </div>
-            <div class="col-xl-8 col-lg-19 col-md-19">
+            
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                    <h4>Các Khóa Học hiện có</h4>
                 <ul class="nav nav-tabs myTab">
-                    <li class="nav-item" *ngFor='let theLoai of mangTheLoai;let i=index;'>
+                    <li class="nav-item mr-2" *ngFor='let theLoai of mangTheLoai;let i=index;'>
                         <a class="nav-link" data-toggle="tab" href="#a{{theLoai.id}}" [ngClass]="{'active':i==0}"
                             (click)='active(theLoai.id);'>{{theLoai.TenTheLoai}}</a>
                     </li>
@@ -16,21 +14,20 @@
                 <!-- Tab panes -->
                 <div class="tab-content myContent">
                     <div class="tab-pane active" id='a1'>
-                        <div class="regular slider">
+                        <div class="regularX slider">
                             <div class="card" *ngFor='let khoahoc of dsKhoaHoc1'>
                                 <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" height="100px" />
                                 <div class="card-body">
                                     <div class="card-body_content">
                                         <h4 class="card-title">{{khoahoc.TenKH}}</h4>
-                                        <p class="card-text">{{khoahoc.GiangVien}}</p>
+                                        <p class="card-text">Giảng Viên:{{khoahoc.GiangVien}}</p>
+                                        <span>Đánh Giá: </span>
                                         <span class="star">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                        </span>
-                                        <span class="number_average">4.6</span>
-                                        <span class="number_rating">(11.597)</span>
+                                                
+                                            <i *ngFor='let star of khoahoc.DanhGia'class="fa fa-star"></i>
+                                            
+                                        </span><br>
+                                        <span class="number_rating">Lượt Xem: {{khoahoc.SoLuotXem}}</span>
                                         <div class="price text-center">
 
                                             <p class="mb-0">Giá: {{khoahoc.GiaTien | number:'.0'}}<sup>đ</sup>
@@ -45,30 +42,29 @@
                     </div>
                     <div class="tab-pane" id='a2'>
                         <div class="regular2 slider">
-                            <div class="card" *ngFor='let khoahoc of dsKhoaHoc2'>
-                                <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" height="100px" />
-                                <div class="card-body">
-                                    <div class="card-body_content">
-                                        <h4 class="card-title">{{khoahoc.TenKH}}</h4>
-                                        <p class="card-text">{{khoahoc.GiangVien}}</p>
-                                        <span class="star">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                        </span>
-                                        <span class="number_average">4.6</span>
-                                        <span class="number_rating">(11.597)</span>
-                                        <div class="price text-center">
-
-                                            <p class="mb-0">Giá: {{khoahoc.GiaTien | number:'.0'}}<sup>đ</sup>
-                                            </p>
-                                            <a routerLink='/learn-continue/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'
-                                                class="text-center" class="btn btn-info">Xem Chi Tiết</a>
+                                <div class="card" *ngFor='let khoahoc of dsKhoaHoc2'>
+                                        <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" height="100px" />
+                                        <div class="card-body">
+                                            <div class="card-body_content">
+                                                <h4 class="card-title">{{khoahoc.TenKH}}</h4>
+                                                <p class="card-text">Giảng Viên:{{khoahoc.GiangVien}}</p>
+                                                <span>Đánh Giá: </span>
+                                                <span class="star">
+                                                        
+                                                    <i *ngFor='let star of khoahoc.DanhGia'class="fa fa-star"></i>
+                                                    
+                                                </span><br>
+                                                <span class="number_rating">Lượt Xem: {{khoahoc.SoLuotXem}}</span>
+                                                <div class="price text-center">
+        
+                                                    <p class="mb-0">Giá: {{khoahoc.GiaTien | number:'.0'}}<sup>đ</sup>
+                                                    </p>
+                                                    <a routerLink='/learn-continue/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'
+                                                        class="text-center" class="btn btn-info">Xem Chi Tiết</a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
                         </div>
 
 
@@ -80,15 +76,13 @@
                                 <div class="card-body">
                                     <div class="card-body_content">
                                         <h4 class="card-title">{{khoahoc.TenKH}}</h4>
-                                        <p class="card-text">{{khoahoc.GiangVien}}</p>
+                                        <p class="card-text">Giảng Viên:{{khoahoc.GiangVien}}</p>
+                                        <span>Đánh Giá: </span>
                                         <span class="star">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                        </span>
-                                        <span class="number_average">4.6</span>
-                                        <span class="number_rating">(11.597)</span>
+                                                
+                                                <i *ngFor='let star of khoahoc.DanhGia'class="fa fa-star"></i>
+                                        </span><br>
+                                        <span class="number_rating">Lượt Xem: {{khoahoc.SoLuotXem}}</span>
                                         <div class="price">
 
                                             <p class="mb-0">Giá: {{khoahoc.GiaTien | number:'.0'}}<sup>đ</sup>
@@ -111,15 +105,13 @@
                                 <div class="card-body">
                                     <div class="card-body_content">
                                         <h4 class="card-title">{{khoahoc.TenKH}}</h4>
-                                        <p class="card-text">{{khoahoc.GiangVien}}</p>
+                                        <p class="card-text">Giảng Viên:{{khoahoc.GiangVien}}</p>
+                                        <span>Đánh Giá: </span>
                                         <span class="star">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                        </span>
-                                        <span class="number_average">4.6</span>
-                                        <span class="number_rating">(11.597)</span>
+                                                
+                                                <i *ngFor='let star of khoahoc.DanhGia'class="fa fa-star"></i>
+                                        </span><br>
+                                        <span class="number_rating">Lượt Xem: {{khoahoc.SoLuotXem}}</span>
                                         <div class="price text-center">
 
                                             <p class="mb-0">Giá: {{khoahoc.GiaTien | number:'.0'}}<sup>đ</sup>
@@ -140,15 +132,13 @@
                                 <div class="card-body">
                                     <div class="card-body_content">
                                         <h4 class="card-title">{{khoahoc.TenKH}}</h4>
-                                        <p class="card-text">{{khoahoc.GiangVien}}</p>
+                                        <p class="card-text">Giảng Viên:{{khoahoc.GiangVien}}</p>
+                                        <span>Đánh Giá: </span>
                                         <span class="star">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                        </span>
-                                        <span class="number_average">4.6</span>
-                                        <span class="number_rating">(11.597)</span>
+                                               
+                                                <i *ngFor='let star of khoahoc.DanhGia'class="fa fa-star"></i>
+                                        </span><br>
+                                        <span class="number_rating">Lượt Xem: {{khoahoc.SoLuotXem}}</span>
                                         <div class="price text-center">
 
                                             <p class="mb-0">Giá: {{khoahoc.GiaTien | number:'.0'}}<sup>đ</sup>
@@ -170,15 +160,13 @@
                                 <div class="card-body">
                                     <div class="card-body_content">
                                         <h4 class="card-title">{{khoahoc.TenKH}}</h4>
-                                        <p class="card-text">{{khoahoc.GiangVien}}</p>
+                                        <p class="card-text">Giảng Viên:{{khoahoc.GiangVien}}</p>
+                                        <span>Đánh Giá: </span>
                                         <span class="star">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                        </span>
-                                        <span class="number_average">4.6</span>
-                                        <span class="number_rating">(11.597)</span>
+                                                
+                                                <i *ngFor='let star of khoahoc.DanhGia'class="fa fa-star"></i>
+                                        </span><br>
+                                        <span class="number_rating">Lượt Xem: {{khoahoc.SoLuotXem}}</span>
                                         <div class="price text-center">
 
                                             <p class="mb-0">Giá: {{khoahoc.GiaTien | number:'.0'}}<sup>đ</sup>
@@ -200,15 +188,13 @@
                                 <div class="card-body">
                                     <div class="card-body_content">
                                         <h4 class="card-title">{{khoahoc.TenKH}}</h4>
-                                        <p class="card-text">{{khoahoc.GiangVien}}</p>
+                                        <p class="card-text">Giảng Viên:{{khoahoc.GiangVien}}</p>
+                                        <span>Đánh Giá: </span>
                                         <span class="star">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                        </span>
-                                        <span class="number_average">4.6</span>
-                                        <span class="number_rating">(11.597)</span>
+                                               
+                                                <i *ngFor='let star of khoahoc.DanhGia'class="fa fa-star"></i>
+                                        </span><br>
+                                        <span class="number_rating">Lượt Xem: {{khoahoc.SoLuotXem}}</span>
                                         <div class="price text-center">
 
                                             <p class="mb-0">Giá: {{khoahoc.GiaTien | number:'.0'}}<sup>đ</sup>
@@ -230,15 +216,13 @@
                                 <div class="card-body">
                                     <div class="card-body_content">
                                         <h4 class="card-title">{{khoahoc.TenKH}}</h4>
-                                        <p class="card-text">{{khoahoc.GiangVien}}</p>
+                                        <p class="card-text">Giảng Viên:{{khoahoc.GiangVien}}</p>
+                                        <span>Đánh Giá: </span>
                                         <span class="star">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i><i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                        </span>
-                                        <span class="number_average">4.6</span>
-                                        <span class="number_rating">(11.597)</span>
+                                               
+                                                <i *ngFor='let star of khoahoc.DanhGia'class="fa fa-star"></i>
+                                        </span><br>
+                                        <span class="number_rating">Lượt Xem: {{khoahoc.SoLuotXem}}</span>
                                         <div class="price text-center">
 
                                             <p class="mb-0">Giá: {{khoahoc.GiaTien | number:'.0'}}<sup>đ</sup>

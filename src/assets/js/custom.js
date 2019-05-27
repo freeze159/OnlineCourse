@@ -1,50 +1,19 @@
 $(document).ready(function () {
     'use strict';
-    setTimeout(function () {
-        $('.clonex2-carousel').owlCarousel({
-            items: 5,
-            itemsDesktop: [1199, 4],
-            itemsDesktopSmall: [991, 3],
-            itemsTablet: [767, 3],
-            itemsMobile: [479, 1],
-            slideSpeed: 200,
-            navigation: true,
-            navigationText: ['<i class=\"fa fa-angle-left\"></i>', '<i class=\"fa fa-angle-right\"></i>'],
-            pagination: false,
-            loop: false,
-            rewind: true
 
-        })
 
-    }, 1000);
-    setTimeout(function () {
-        $('.clone-carousel').owlCarousel({
-            items: 3,
-            itemsDesktop: [1199, 4],
-            itemsDesktopSmall: [991, 3],
-            itemsTablet: [767, 3],
-            itemsMobile: [479, 1],
-            slideSpeed: 200,
-            navigation: true,
-            navigationText: ['<i class=\"fa fa-angle-left\"></i>', '<i class=\"fa fa-angle-right\"></i>'],
-            pagination: false,
-            loop: false,
-            rewind: true
-
-        })
-
-    }, 1000);
-
-    
+    $('[data-toggle="popover"]').popover();
 
     $(".remove-navibar").click(function () {
         $("#js-bootstrap-offcanvas").trigger("offcanvas.close");
     });
     setTimeout(() => {
-        $(".regular").slick({
+        $(".regularX").slick({
+            centerMode: true,
+            centerPadding: '60px',
+            slidesToShow: 3,
             dots: true,
             // infinite: true,
-            slidesToShow: 3,
             slidesToScroll: 3,
             slideSpeed: 200,
             responsive: [
@@ -54,6 +23,8 @@ $(document).ready(function () {
                         slidesToShow: 2,
                         slidesToScroll: 1,
                         dots: false,
+                        centerMode: false,
+                        centerPadding: '0px',
                     }
                 },
                 {
@@ -62,6 +33,8 @@ $(document).ready(function () {
                         slidesToShow: 1,
                         slidesToScroll: 1,
                         dots: false,
+                        centerMode: false,
+                        centerPadding: '0px',
                     }
                 },
                 {
@@ -70,15 +43,17 @@ $(document).ready(function () {
                         slidesToShow: 1,
                         slidesToScroll: 1,
                         dots: false,
+                        centerMode: false,
+                        centerPadding: '0px',
                     }
                 }
             ]
 
         });
 
-    }, 1600);
-    
-      
+    }, 2200);
+
+
 })
 
 $(function () {
@@ -94,9 +69,38 @@ $(document).on('shown.bs.tab', function (e) {
                 $(".regular").slick({
                     dots: true,
                     // infinite: true,
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    slideSpeed: 200,
+                    responsive: [
+                        {
+                            breakpoint: 1200,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        },
+                        {
+                            breakpoint: 1008,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        },
+                        {
+                            breakpoint: 800,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        }
+                    ]
+
                 });
+
             }, 1200);
 
             break;
@@ -104,10 +108,40 @@ $(document).on('shown.bs.tab', function (e) {
             setTimeout(() => {
                 $(".regular2").slick({
                     dots: true,
-                    // infinite: true,
+                    centerMode: true,
+                    centerPadding: '60px',
                     slidesToShow: 3,
                     slidesToScroll: 3,
+                    slideSpeed: 200,
+                    responsive: [
+                        {
+                            breakpoint: 1200,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        },
+                        {
+                            breakpoint: 1008,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        },
+                        {
+                            breakpoint: 800,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        }
+                    ]
+
                 });
+
             }, 1200);
 
             break;
@@ -115,24 +149,85 @@ $(document).on('shown.bs.tab', function (e) {
             setTimeout(() => {
                 $(".regular3").slick({
                     dots: true,
-                    // infinite: true,
+                    centerMode: true,
+                    infinite: true,
+                    centerPadding: '60px',
                     slidesToShow: 3,
                     slidesToScroll: 3,
+                    slideSpeed: 200,
+                    responsive: [
+                        {
+                            breakpoint: 1200,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        },
+                        {
+                            breakpoint: 1008,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        },
+                        {
+                            breakpoint: 800,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        }
+                    ]
 
                 });
 
+
             }, 1200);
-            
+
             break;
         case '#a4':
             setTimeout(() => {
                 $(".regular4").slick({
+                    infinite: true,
                     dots: true,
-                    // infinite: true,
+                    centerMode: true,
+                    centerPadding: '60px',
                     slidesToShow: 3,
+                    
                     slidesToScroll: 3,
+                    slideSpeed: 200,
+                    responsive: [
+                        {
+                            breakpoint: 1200,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        },
+                        {
+                            breakpoint: 1008,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        },
+                        {
+                            breakpoint: 800,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        }
+                    ]
 
                 });
+
 
             }, 1200);
             break;
@@ -141,10 +236,38 @@ $(document).on('shown.bs.tab', function (e) {
                 $(".regular5").slick({
                     dots: true,
                     // infinite: true,
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    slideSpeed: 200,
+                    responsive: [
+                        {
+                            breakpoint: 1200,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        },
+                        {
+                            breakpoint: 1008,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        },
+                        {
+                            breakpoint: 800,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        }
+                    ]
 
                 });
+
 
             }, 1200);
             break;
@@ -153,10 +276,38 @@ $(document).on('shown.bs.tab', function (e) {
                 $(".regular6").slick({
                     dots: true,
                     // infinite: true,
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    slideSpeed: 200,
+                    responsive: [
+                        {
+                            breakpoint: 1200,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        },
+                        {
+                            breakpoint: 1008,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        },
+                        {
+                            breakpoint: 800,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        }
+                    ]
 
                 });
+                ;
 
             }, 1200);
             break;
@@ -165,10 +316,38 @@ $(document).on('shown.bs.tab', function (e) {
                 $(".regular7").slick({
                     dots: true,
                     // infinite: true,
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    slideSpeed: 200,
+                    responsive: [
+                        {
+                            breakpoint: 1200,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        },
+                        {
+                            breakpoint: 1008,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        },
+                        {
+                            breakpoint: 800,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        }
+                    ]
 
                 });
+
 
             }, 1200);
             break;
@@ -177,10 +356,38 @@ $(document).on('shown.bs.tab', function (e) {
                 $(".regular8").slick({
                     dots: true,
                     // infinite: true,
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    slideSpeed: 200,
+                    responsive: [
+                        {
+                            breakpoint: 1200,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        },
+                        {
+                            breakpoint: 1008,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        },
+                        {
+                            breakpoint: 800,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                dots: false,
+                            }
+                        }
+                    ]
 
                 });
+
 
             }, 1200);
             break;
@@ -189,12 +396,16 @@ $(document).on('shown.bs.tab', function (e) {
     }
 });
 $(window).on('popstate', function (event) {
+
+    $(".regularX").unslick
     setTimeout(() => {
-        console.log(event);
-        $(".regular").slick({
+
+        $(".regularX").slick({
+            centerMode: true,
+            centerPadding: '60px',
+            slidesToShow: 3,
             dots: true,
             // infinite: true,
-            slidesToShow: 3,
             slidesToScroll: 3,
             slideSpeed: 200,
             responsive: [
@@ -204,6 +415,8 @@ $(window).on('popstate', function (event) {
                         slidesToShow: 2,
                         slidesToScroll: 1,
                         dots: false,
+                        centerMode: false,
+                        centerPadding: '0px',
                     }
                 },
                 {
@@ -212,6 +425,8 @@ $(window).on('popstate', function (event) {
                         slidesToShow: 1,
                         slidesToScroll: 1,
                         dots: false,
+                        centerMode: false,
+                        centerPadding: '0px',
                     }
                 },
                 {
@@ -220,15 +435,43 @@ $(window).on('popstate', function (event) {
                         slidesToShow: 1,
                         slidesToScroll: 1,
                         dots: false,
+                        centerMode: false,
+                        centerPadding: '0px',
                     }
                 }
             ]
 
         });
 
-    }, 2000);
+    }, 1600);
 });
 
+$(function () {
+    $('.pop').popover({
+        trigger: "manual",
+        html: true,
+        animation: false,
+        content: function () {
+            var content = $(this).parents('.box-pop').find('#popover-content').html();
 
+            return content;
+        }
+
+    }).on("mouseenter", function () {
+        console.log('haha');
+        var _this = this;
+        $(this).popover("show");
+        $(".popover").on("mouseleave", function () {
+            $(_this).popover('hide');
+        });
+    }).on("mouseleave", function () {
+        var _this = this;
+        setTimeout(function () {
+            if (!$(".popover:hover").length) {
+                $(_this).popover("hide");
+            }
+        }, 0);
+    });
+})
 
 

@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <h2 class="col-sm-12">Lịch sử bán khóa học</h2>
+    
+        <table class="table table-bordered table-hover table-responsive-sm col-sm-12">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Tên khóa học</th>
+                    <th scope="col">Người mua</th>
+                    <th scope="col">Tổng Tiền</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let thongTin of lichSuThanhToan'>
+                    <td scope="row" class="table-primary">{{thongTin.KhoaHoc}}</td>
+                    <td scope="row" class="table-danger">{{thongTin.user}}</td>
+                    <td scope="row" class="table-success">{{thongTin.TongTien | number:'.0'}}<sup>đ</sup></td>
+                    
+                </tr>
+
+            </tbody>
+        </table>
+    
+
+</div>
+</div>

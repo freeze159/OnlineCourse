@@ -29,9 +29,11 @@ export class HeaderComponent implements OnInit {
   @Input() cart: any = {}
   @Input() delted:any={}
   ngOnInit() {
-    this.khoaHocService.LayTheLoaiKhoaHoc().subscribe((res: any) => {
-      this.danhSachTheLoai = res.data;
-    });
+    setTimeout(() => {
+      this.khoaHocService.LayTheLoaiKhoaHoc().subscribe((res: any) => {
+        this.danhSachTheLoai = res.data;
+      });
+    }, 1500);
     // Lấy thông tin Cart 
     this.getCart();
     //Kiểm tra đăng nhập
@@ -57,7 +59,7 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('userLogin');
     localStorage.removeItem('tokenbearer');
     localStorage.clear();
-    window.location.reload();
+    window.location.href='/';
   }
   getCart() {
     let oldCart = JSON.parse(sessionStorage.getItem('cart')) || [];

@@ -1,0 +1,38 @@
+
+  
+  ul li a {
+    display: block;
+    padding: 1em;
+    text-decoration: none;
+    white-space: nowrap;
+ 
+  }
+
+   li:hover > ul {
+    display: block;
+    position: absolute;
+  }
+  
+  li:hover li { float: none; }
+
+  .main-navigation li ul li { border-top: 0; } 
+  
+  .dropdown {
+    margin-top: -10px;
+  }
+.menu-mobile{
+    display:none;
+  }
+  /* Responsive */
+  @media (max-width:767px) {
+    .course-home-menutop{
+      display:none;
+    }
+    .menu-mobile{
+      display: block;
+    }
+    .menu-mobile-top a{
+      margin-right: 15px;
+      font-size: 16px;
+    }
+  }

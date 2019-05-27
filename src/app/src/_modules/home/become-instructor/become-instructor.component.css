@@ -1,0 +1,107 @@
+.cover {
+    background-image: url("../../../../../assets/img/048e0cdc-3e71-47dc-ae30-e9ac7a3504b5.jpg");
+    position: relative;
+   /* background-attachment: fixed;
+    */
+   /* background-size: contain;
+    */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 330px;
+  }
+  .cover .cover_container {
+    max-width: 500px;
+    position: absolute;
+    top: 10%;
+    left: 11%;
+  }
+  .cover .cover_container .cover__title {
+    color: #fff;
+    font-size: 40px;
+    font-weight: 600;
+  }
+  .cover .cover_container .cover__detail {
+    color: #fff;
+    font-size: 18px;
+    font-weight: normal;
+  }
+  .cover .cover_container .form__cover_search input {
+    background-color: #fff;
+    font-size: 15px;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-right: 1px solid transparent;
+    padding: 12px 15px;
+  }
+  .cover .cover_container .form__cover_search input:focus {
+    border: 1px solid #fff;
+    box-shadow: none;
+  }
+  .cover .cover_container .form__cover_search .input-group-text {
+    background-color: #fff;
+    font-size: 15px;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border: none;
+    cursor: pointer;
+  }
+  .cover .cover_container .form__cover_search .input-group-text i {
+    color: #ec5252;
+  }
+  .cover .cover_container .form__cover_search .input-group-text:hover {
+    background-color: #ec5252;
+  }
+  .cover .cover_container .form__cover_search .input-group-text:hover i {
+    color: #fff;
+  }
+  @media screen and (max-width: 768) {
+    .cover .cover_container {
+        left: 15%;
+   }
+    .cover{
+        padding-bottom:70%;
+        padding-right: 30%;
+   }
+  }
+  .btn-instruc{
+      font-size:1.2rem;
+      text-align: center;
+      padding: 12px 20px!important;
+      widows: 200px;
+      height: 50px;
+      border-radius:25px;
+
+  }
+/* Cover */
+h1{
+    font-size: 2rem;
+    font-weight: bolder
+}
+.image {
+    background: url(https://ihworld.com/media/1801/istock-530772108.jpg?anchor=center&mode=crop&width=600&height=338);
+    background-blend-mode:unset;
+    height:338px;
+    
+}
+.image-1 {
+    background: url(https://as2.ftcdn.net/jpg/02/12/82/05/500_F_212820528_1kOfW4DxVOrqwueCmlcsNo3NipN9Cjr4.jpg ) 0/70% no-repeat;
+    background-blend-mode:unset;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height:338px;
+    
+}
+.image-2 {
+    background: url(https://previews.123rf.com/images/emojiimage/emojiimage1803/emojiimage180300176/96922935-cute-teen-girl-wants-to-be-school-teacher-when-grow-up-cartoon-child-character-holding-book-and-poin.jpg) 0/70% no-repeat;
+    background-blend-mode:unset;
+    height:338px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}

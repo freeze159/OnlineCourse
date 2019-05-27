@@ -1,0 +1,52 @@
+
+<header>
+    <div class="menu-mobile container-fluid">
+        <div class="row">
+          <div class='menu-mobile-top m-auto'>
+            <a type="button" class="navbar-toggle-right offcanvas-toggle" data-toggle="offcanvas"
+              data-target="#js-bootstrap-offcanvas" id="offcanvas-toggle">
+              <span class="sr-only">Toggle navigation</span>
+              <i class="fa fa-bars" aria-hidden="true" style="font-size: 21px;"></i>
+            </a>
+            <a href=""><img src="https://www.khoahocdt.com/Logo.png" width="140px" height="50px" alt="site logon"></a>
+            
+            <a class="nav-item dropdown ml-3" dropdown>
+              <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light dropdown-main" *ngIf='logged'>
+                <i class="fa fa-user"></i>
+                <span class="caret"></span>
+              </a>
+              <div class="dropdown-menu dropdown dropdown-primary" role="menu">
+                
+                <div class="divider dropdown-divider"></div>
+                <a class="dropdown-item waves-light" (click)='logOut()'>Đăng Xuất</a>
+              </div>
+            </a>
+    
+          </div>
+    
+          <nav class="navbar navbar-default navbar-offcanvas navbar-offcanvas-touch " style="background:white;"
+            role="navigation" id="js-bootstrap-offcanvas">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="#">Brand</a>
+                <a type="button" class='remove-navibar'>
+                  <span class="sr-only">Toggle navigation</span>
+                  <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                </a>
+              </div>
+              <div>
+                <ul class="nav navbar-nav sm-customize-menu">
+                  <li><a routerLink="/"><i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a></li>
+                  <li><a routerLink="/kichhoat"><i class="fa fa-key" aria-hidden="true"></i> Kích hoạt khóa học</a></li>
+                  
+                  <!-- <li *ngFor='let theLoai of danhSachTheLoai'><a routerLink='/danhmuckhoahoc' -->
+                      <!-- [queryParams]="{TenTheLoai:theLoai.TenTheLoai,Id:theLoai.id}">{{theLoai.TenTheLoai}}</a></li> -->
+    
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+    
+      </div>
+</header>

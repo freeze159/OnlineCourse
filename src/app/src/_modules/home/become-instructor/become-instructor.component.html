@@ -1,3 +1,64 @@
-<p>
-  become-instructor works!
-</p>
+<section class="cover">
+  <div class="cover_container">
+    <h1 class="cover__title">Dạy cho cả thế giới online</h1>
+    <p class="cover__detail">Chia sẻ kiến thức của bạn và kết nối với nhiều học viên trên khắp cả nước</p>
+    <button class='btn btn-primary btn-instruc' *ngIf='!isTeacher'(click)='upgrade()'>Dạy ngay Nào!</button>
+    <button class='btn btn-primary btn-instruc' *ngIf='isTeacher' routerLink='/instructor'>Đi đến trang giảng viên</button>
+    
+  </div>
+</section>
+<main class="container">
+  <h1 class="lead text-center">Các bước tiến hành</h1>
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step >
+      <div class="row">
+        <ng-template matStepLabel>Lên kế hoạch</ng-template>
+        <div class="col-md-6">
+          <h1>Lên kế hoạch giảng dạy</h1>
+          <p>Bạn bắt đầu với niềm đam mê và kiến thức của bạn.</p>
+          <br>
+          <p> Sau đó chọn một chủ đề và kế hoạch
+            bài giảng của bạn trong Google Docs, Microsoft Excel hoặc sổ ghi chép yêu thích của bạn.</p>
+        </div>
+        <div class="col-md-6">
+          <div class="image">
+
+          </div>
+        </div>
+      </div>
+    </mat-step>
+    <mat-step >
+      <div class="row">
+        <ng-template matStepLabel>Quay video</ng-template>
+        <div class="col-md-6">
+          <h1>Quay Video</h1>
+          <p>Chỉ cần laptop và camera. Bạn đã sẵn sàng</p>
+          <br>
+          <p> Quay lại những điều bạn muốn chia sẻ cho các học viên.</p>
+        </div>
+        <div class="col-md-6">
+          <div class="image-1">
+
+          </div>
+        </div>
+      </div>
+    </mat-step>
+    <mat-step>
+      <div class="row">
+        <ng-template matStepLabel>Đóng góp cho cộng đồng </ng-template>
+        <div class="col-md-6">
+          <h1 class="leader"></h1>
+          <p>Xây dựng cộng đồng</p>
+          <br>
+          <p> Cùng chia sẻ những kiến thức của bạn và tạo dựng một cộng đồng gắn kết nhờ những kiến thức đó.</p>
+        </div>
+        <div class="col-md-6">
+          <div class="image-2">
+
+          </div>
+        </div>
+      </div>
+
+    </mat-step>
+  </mat-horizontal-stepper>
+</main>

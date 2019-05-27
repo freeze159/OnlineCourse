@@ -11,7 +11,7 @@ export class CourseViewComponent implements OnInit {
 
   constructor(private khoahocService: KhoaHocService, private atvRoute: ActivatedRoute,private local: Location ) { }
   danhSachKhoaHoc: Array<any> = [];
-  
+  p=1;
   ngOnInit() {
     this.atvRoute.queryParams.subscribe((res: any) => {
       this.khoahocService.LayChiTietTheLoai(res.Id).subscribe(res => {

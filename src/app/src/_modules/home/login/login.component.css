@@ -94,3 +94,9 @@
     margin-bottom: 0;
     font-size:15px;
   }
+  .btn-gg{
+    background: #c63d2d;
+    border-color:#c63d2d;
+    height: 50px;
+    width: 200px;
+  }

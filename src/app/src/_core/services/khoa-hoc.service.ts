@@ -34,10 +34,10 @@ export class KhoaHocService {
     let response = this.http.get(linkApi);
     return response;
   }
+  
   public LayDanhSachBaiGiang(idKH:any):Observable<any>{
     const linkApi= `https://api.khoahocdt.com/api/KhoaHoc/${idKH}/BaiGiang`;
     const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
-    var reqHeader = new HttpHeaders({});
       // Cho biết định dạng dữ liệu truyền đi
     // header.append('Content-Type','application/x-www-form-urlencoded')
     const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
@@ -51,10 +51,42 @@ export class KhoaHocService {
   public KichHoat(code:any){
     const linkApi= `https://api.khoahocdt.com/api/NhapCode`;
     const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
-    var reqHeader = new HttpHeaders({});
       // Cho biết định dạng dữ liệu truyền đi
     // header.append('Content-Type','application/x-www-form-urlencoded')
     const observable = this.http.post(linkApi,code,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public LayKhoaHocNoiBat():Observable<any>{
+    const linkApi: string = `https://api.khoahocdt.com/api/KhoaHocNoiBat`;
+    let response = this.http.get(linkApi);
+    return response;
+  }
+  public LayKhoaHocGiangVien(idGiangVien:any):Observable<any>{
+    const linkApi= `https://api.khoahocdt.com/api/GiangVien/${idGiangVien}/KhoaHocDaDay`;
+    const observable = this.http.get(linkApi,idGiangVien)
+    return observable;
+  }
+  public ThemKhoaHoc(idMangKh:any,thongTin:any){
+    const linkApi= `https://api.khoahocdt.com/api/MangKhoaHoc/${idMangKh}/KhoaHoc`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+      // Cho biết định dạng dữ liệu truyền đi
+    // header.append('Content-Type','application/x-www-form-urlencoded')
+    const observable = this.http.post(linkApi,thongTin,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public UpdateKhoaHocImage(idMangKh:number,idKhoaHoc:number,thongtin:any):Observable<any>{
+    const linkApi= `https://api.khoahocdt.com/api/MangKhoaHoc/${idMangKh}/KhoaHoc/${idKhoaHoc}/AddOrUpdateImage`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+ 
+    const observable = this.http.post(linkApi,thongtin,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public LayKhoaHocChoDuyet(idGiangVien:any){
+    const linkApi= `https://api.khoahocdt.com/api/GiangVien/${idGiangVien}/KhoaHocChoDuyet`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+      // Cho biết định dạng dữ liệu truyền đi
+    // header.append('Content-Type','application/x-www-form-urlencoded')
+    const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
     return observable;
   }
 }

@@ -111,12 +111,12 @@
                 <div class="card-body_content">
                   <h4 class="card-title">{{khoahoc.TenKH}}</h4>
                   <p class="card-text">Giảng Viên: {{khoahoc.GiangVien}}</p>
+                  <span>Đánh Giá: </span>
                   <span class="star">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i><i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
-                  </span>
+
+                    <i *ngFor='let star of khoahoc.DanhGia' class="fa fa-star"></i>
+
+                  </span><br>
                   <span class="number_average">4.6</span>
                   <span class="number_rating">(11.597)</span>
                   <div class="price text-center">

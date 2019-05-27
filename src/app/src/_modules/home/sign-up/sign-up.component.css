@@ -6,8 +6,8 @@ input.ng-invalid{
 }
 .account-page{
     background-color: #272e30;
-    height: 1012px;
     margin-top: -120px;
+    margin-bottom: -120px;
   }
   .account-wrap {
     max-width: 430px;

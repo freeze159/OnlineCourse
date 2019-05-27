@@ -2,40 +2,75 @@
   <div class="account-wrap">
 
     <a class="site-logo" routerLink='/'>
-      <img src="../../../../../assets/images/template/logo.png" alt="Site Logo">
+      <img src='https://www.khoahocdt.com/Logo.png'width="200" height="150" alt="Site Logo">
     </a>
 
     <form #frmDangKy="ngForm" class="accountform signupform" (ngSubmit)="DangKy(frmDangKy.value)" >
       <h3>Sign up, it's free..</h3>
       <div class="basic-field">
         <label>Tài Khoản <br />
-          <p>
+          
             <input type="text" name="name"class="form-control"
-            #taiKhoan='ngModel' ngModel required>
-          </p>
+            #taiKhoan='ngModel' ngModel required minlength="3" maxlength="50">
+            <div *ngIf="taiKhoan.errors && (taiKhoan.dirty || taiKhoan.touched)">
+              <div *ngIf="taiKhoan.errors.required" class="alert alert-danger">
+                  <p>Không được để rỗng!</p>
+              </div>
+
+              <div *ngIf="taiKhoan.errors.minlength || taiKhoan.errors.maxlength" class="alert alert-danger">
+                 Độ dài từ 6-15 kí tự!
+              </div>
+            </div>
         </label>
         <label>E-mail <br />
-          <p>
+          
             <input type="email" class="form-control" name="email"
-            #email='ngModel' ngModel required>
-          </p>
+            #email='ngModel' ngModel required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+            <div *ngIf="email.errors && (email.dirty || email.touched)">
+              <div *ngIf="email.errors.required" class="alert alert-danger">
+                  <p>Không được để rỗng</p>
+              </div>
+              <!-- Kiểm tra định dạng email -->
+              <div *ngIf="email.errors.pattern" class="alert alert-danger">
+                  <p>Không đúng định dạng email</p>
+              </div>
+            </div>
         </label>
         <label>Mật Khẩu <br />
-          <p>
-            <input  #matKhau="ngModel" class="form-control" name="password" ngModel type="password"required />
-          </p>
+          
+            <input  #matKhau="ngModel"  class="form-control" name="password" minlength="6" maxlength="15" ngModel type="password"required />
+            <div *ngIf="matKhau.errors && (matKhau.dirty || matKhau.touched)">
+              <div *ngIf="matKhau.errors.required" class="alert alert-danger">
+                  <p>Không được để rỗng!</p>
+              </div>
+
+              <div *ngIf="matKhau.errors.minlength || matKhau.errors.maxlength" class="alert alert-danger">
+                 Độ dài từ 6-15 kí tự!
+              </div>
+            </div>
+          
+          
         </label>
         <label>Nhập lại mật khẩu <br />
-          <p>
-            <input  #reMatKhau="ngModel" required [ngClass]="{'ng-invalid': reMatKhau.value != matKhau.value}" 
-        class="form-control" name="password_confirmation" ngModel  type="password"/>
-          </p>
+          
+            <input  #reMatKhau="ngModel" [ngClass]="{'ng-invalid': reMatKhau.value != matKhau.value}"
+        class="form-control ng-invalid" name="password_confirmation" ngModel required type="password"/>
+        <div *ngIf="(reMatKhau.touched || reMatKhau.dirty) && reMatKhau.errors || reMatKhau.value != matKhau.value">
+          <div *ngIf="kiemTraMatKhau(reMatKhau.value,matKhau.value)" class="alert alert-danger text-danger">
+            Mật khẩu không trùng khớp
+          </div>
+        </div>
+      
         </label>
         <label>Số điện thoại<br />
-          <p>
+          
             <input  #SoDienThoai="ngModel" required  
         class="form-control" name="SoDienThoai" ngModel  type="text"/>
-          </p>
+        <div *ngIf="(SoDienThoai.touched || SoDienThoai.dirty) && SoDienThoai.errors ">
+          <div *ngIf="SoDienThoai.errors.required" class="alert alert-danger text-danger">
+            Số điện thoại không được bỏ trống
+          </div>
+        </div>
         </label>
         <label>Ngày Sinh<br />
           <p>
@@ -46,7 +81,7 @@
       </div>
       <button [disabled]="frmDangKy.invalid" type="submit" class="btn btn-info">Submit</button>
 
-      <p class="signup-recover">Do you already have an account? <a routerLink="/dangnhap">Login here</a></p>
+      <p class="signup-recover">Do you already have an account? <a routerLink="/login">Login here</a></p>
     </form>
   </div>
 </div>

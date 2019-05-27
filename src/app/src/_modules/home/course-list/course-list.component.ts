@@ -42,7 +42,9 @@ export class CourseListComponent implements OnInit {
             this.dsKhoaHoc1.push(khoahocObject);
           }
         })
+        
       }
+      console.log(this.dsKhoaHoc1)
     })
 
 

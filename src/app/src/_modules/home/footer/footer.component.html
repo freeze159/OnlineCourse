@@ -1,4 +1,5 @@
-<footer class="text-white">
+<!-- <footer>213213</footer> -->
+<footer class="bg-light">
   <div class="footer-widget-area">
       <div class="container">
           <div class="row">
@@ -6,11 +7,11 @@
                   <div class="widget about-widget">
                       <div class="widget-inner">
                           <a class="footer-logo" href="index.html">
-                              <img src="" alt="Footer logo">
+                              <img src="https://www.khoahocdt.com/Logo.png" alt="Footer logo" width="150" height="150">
                           </a>
                           <p class="about-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, ducimus, atque. Praesentium suscipit provident explicabo dignissimos nostrum numquam deserunt earum accusantium et fugit.</p>
                           <div class="footer-social">
-                              <h5 class="footer-social-title">Connect with</h5>
+                              <h5 class="footer-social-title">Kết nối ngay với chúng tôi</h5>
                               <div class="socials">
                                   <a href="#"><i class="fa fa-facebook"></i></a>
                                   <a href="#"><i class="fa fa-twitter"></i></a>
@@ -24,18 +25,10 @@
               </div>
               <div class="col-md-4 col-sm-6 col-xs-12">
                   <div class="widget category-widget">
-                      <h3 class="widget-title">Video Category</h3>
+                      <h3 class="widget-title">Các Khóa Học</h3>
                       <div class="widget-inner">
                           <ul class="widget-cat">
-                              <li class="cat"><a href="#">Movies</a></li>
-                              <li class="cat"><a href="#">Crime Video</a></li>
-                              <li class="cat"><a href="#">Dramas</a></li>
-                              <li class="cat"><a href="#">TV Show</a></li>
-                              <li class="cat"><a href="#">Popular Video</a></li>
-                              <li class="cat"><a href="#">Episodes</a></li>
-                              <li class="cat"><a href="#">Comedy Video</a></li>
-                              <li class="cat"><a href="#">WWE</a></li>
-                              <li class="cat"><a href="#">Action &amp; Adventure</a></li>
+                              <li class="cat" *ngFor='let theLoai of danhSachTheLoai'><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:theLoai.TenTheLoai,Id:theLoai.id}">{{theLoai.TenTheLoai}}</a></li>
                           </ul>
                       </div>
                   </div>
@@ -72,7 +65,7 @@
                   </ul>
               </div>
               <div class="col-md-6 col-sm-5 col-xs-12 xs-text-center">
-                  <p class="copyright-text">&copy; 2017 <a href="index.html">DTO</a>. All Rights Reserved</p>
+                  <p class="copyright-text">&copy; 2019 <a href="index.html">DTO</a>. All Rights Reserved</p>
               </div>
           </div>
       </div>

@@ -1,7 +1,7 @@
-<div class="container bootstrap snippet">
+<div class="container bootstrap snippet mb-2">
     <div class="row">
         <div class="col-sm-10">
-            <h1>User name</h1>
+            <h1>Trang cá nhân</h1>
         </div>
         <!-- <div class="col-sm-2"><a href="/" class="pull-right"><img title="profile image"
                     class="img-circle img-responsive" src="../../../../../assets/images/template/logo.png"></a></div> -->
@@ -9,62 +9,43 @@
     <div class="row">
         <div class="col-sm-3">
             <!--left col-->
-
-
             <div class="text-center">
-                <img src={{hinhAnh}} class="avatar img-circle img-thumbnail"
-                     alt="avatar">
+                <img src={{hinhAnh}} class="avatar img-circle img-thumbnail" alt="avatar">
                 <h6>Upload a different photo...</h6>
-                <input type="file" class="text-center center-block file-upload" name='HinhAnh' (change)='onFileChange($event)'>
+                <input type="file" class="text-center center-block file-upload" name='HinhAnh'
+                    (change)='onFileChange($event)'>
 
             </div><br>
+            <div class="navi-box">
+                <ul class="nav flex-column">
+                    <li><a data-toggle="tab" href="#home">Thông Tin</a></li>
+                    <li><a data-toggle="tab" class="active" href="#course"> Khóa học của tôi</a></li>
+                    <li><a data-toggle="tab" href="#mycourse" (click)='baiGiang()'> Khóa học giảng dạy</a></li>
+                    <li><a data-toggle="tab" href="#history" (click)='lichSu()'> Lịch sử thanh toán</a></li>
 
-
-            <div class="panel panel-default">
-                <!-- <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
-        <div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div> -->
+                </ul>
             </div>
 
 
-            <ul class="list-group">
-                <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
-            </ul>
 
-            <div class="panel panel-default">
-                <div class="panel-heading">Social Media</div>
-                <div class="panel-body">
-                    <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i
-                        class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i
-                        class="fa fa-google-plus fa-2x"></i>
-                </div>
-            </div>
 
         </div>
         <!--/col-3-->
         <div class="col-sm-9">
-            <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#home">Thông Tin</a></li>
-                <li><a data-toggle="tab" href="#history"> Khóa học của tôi</a></li>
-
-            </ul>
-
             <div class="tab-content">
-                <div class="tab-pane active" id="home" >
+                <div class="tab-pane " id="home">
+                    <h3>Thông Tin Cá Nhân</h3>
                     <hr>
-                    <form class="form" #registrationForm='ngForm' (ngSubmit)='update(registrationForm.value)' enctype="multipart/form-data">
-                        
+                    <form class="form" #frmUpdate='ngForm' (ngSubmit)='update(frmUpdate.value)'
+                        enctype="multipart/form-data">
+
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label>
                                     <h4>Họ và Tên</h4>
                                 </label>
-                                <input type="text" class="form-control" name='name' #name='ngModel'
-                                    value="{{ten}}" ngModel required
-                                    title="enter your first name if any.">
+                                <input type="text" class="form-control" name='name' #name='ngModel' value="{{ten}}"
+                                    ngModel required title="enter your first name if any.">
                             </div>
                         </div>
 
@@ -84,8 +65,7 @@
                                     <h4>Số Điện Thoại</h4>
                                 </label>
                                 <input type="text" class="form-control" name="SoDienThoai" #SoDienThoai='ngModel'
-                                    value="{{phone}}" ngModel
-                                    placeholder="" title="enter your mobile number if any.">
+                                    value="{{phone}}" ngModel placeholder="" title="enter your mobile number if any.">
                             </div>
                         </div>
                         <div class="form-group">
@@ -98,76 +78,181 @@
                                     title="enter your email." disabled>
                             </div>
                         </div>
-                        
+
 
                         <div class="form-group d-flex justify-items-center">
                             <div class="col-xs-6">
-                                    <label><h4>Cập nhật mật khẩu</h4></label>
+                                <label>
+                                    <h4>Cập nhật mật khẩu</h4>
+                                </label>
                                 <input type="checkbox" name='CheckPassword' id='CheckPassword'
-                                    (click)='checkUpdatePass()'  class="ml-2" style="width:20px; height: 30px;">
+                                    (click)='checkUpdatePass()' class="ml-2" style="width:20px; height: 30px;">
 
-                                
+
                             </div>
 
                         </div>
-                        <div class="form-group" *ngIf='checkedButton'>
 
-                            <div class="col-xs-6">
-                                <label for="password">
+                        <div class="form-group" *ngIf='checkedButton'>
+                            <div class="col-xs-6 ">
+                                <label>
                                     <h4>Mật Khẩu Hiện Tại</h4>
                                 </label>
-                                <input type="password" class="form-control" name="PasswordHienTai"
-                                    #PasswordHienTai='ngModel' ngModel placeholder="Nhập mật khẩu hiện tại"
-                                    title="enter your password.">
+                                <input type="password" class="form-control" name="PasswordHienTai" #password='ngModel'
+                                    ngModel placeholder="Nhập mật khẩu hiện tại" title="enter your password."
+                                    minlength="6" maxlength="15" required>
+                                <div *ngIf="password.errors && (password.dirty || password.touched)">
+                                    <div *ngIf="password.errors.required" class="alert alert-danger">
+                                        <p>Không được để rỗng!</p>
+                                    </div>
+
+                                    <div *ngIf="password.errors.minlength || password.errors.maxlength"
+                                        class="alert alert-danger">
+                                        Độ dài từ 6-15 kí tự!
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group" *ngIf='checkedButton'>
 
                             <div class="col-xs-6">
-                                <label for="password2">
+                                <label>
                                     <h4>Mật khẩu mới</h4>
                                 </label>
-                                <input type="password" class="form-control" name="PasswordMoi" #PasswordMoi='ngModel'
-                                    ngModel placeholder="Nhập mật khẩu mới" title="enter your password2.">
+                                <input type="password" class="form-control" name="PasswordMoi" #passNew='ngModel'
+                                    ngModel placeholder="Nhập mật khẩu mới" title="enter your password2." minlength="6"
+                                    maxlength="15" required>
+                                <div *ngIf="passNew.errors && (passNew.dirty || passNew.touched)">
+                                    <div *ngIf="passNew.errors.required" class="alert alert-danger">
+                                        <p>Không được để rỗng!</p>
+                                    </div>
+
+                                    <div *ngIf="passNew.errors.minlength || passNew.errors.maxlength"
+                                        class="alert alert-danger">
+                                        Độ dài từ 6-15 kí tự!
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group" *ngIf='checkedButton'>
 
                             <div class="col-xs-6">
-                                <label for="password2">
+                                <label>
                                     <h4>Nhập lại mật khẩu mới</h4>
                                 </label>
-                                <input type="password" class="form-control" name="PasswordMoiNhapLai"
-                                    #PasswordMoiNhapLai='ngModel' ngModel placeholder="password2"
-                                    title="enter your password2.">
+                                <input type="password" class="form-control" name="PasswordMoiNhapLai" #rePass='ngModel'
+                                    ngModel placeholder="Nhập lại mật khẩu" title="enter your password2." required>
+                                <div
+                                    *ngIf="(rePass.touched || rePass.dirty) && rePass.errors || rePass.value != passNew.value">
+                                    <div *ngIf="kiemTraMatKhau(rePass.value,passNew.value)"
+                                        class="alert alert-danger text-danger">
+                                        Mật khẩu không trùng khớp
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+
 
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <br>
-                                <button class="btn btn-lg btn-success" type="submit"><i
-                                        class="glyphicon glyphicon-ok-sign"></i>Cập Nhật Thông Tin</button>
+                                <button class="btn btn-lg btn-success" type="submit"><i class="fa fa-lock"></i>Cập Nhật
+                                    Thông Tin</button>
 
                             </div>
                         </div>
                     </form>
-                    
+
                     <hr>
 
                 </div>
                 <!--/tab-pane-->
+                <div class="tab-pane active" id="course">
+                    <div class="row">
+                        <h2 class="col-sm-12">Khóa Học Của tôi</h2>
+                        <div class="card col-sm-3"
+                            *ngFor="let myC of myCourse | paginate: { itemsPerPage: 3, currentPage: p,id:'foo'}">
+                            <img class="card-img-top" src={{myC.HinhAnh}} alt="kh1" height="100px" />
+                            <div class="card-body">
+                                <div class="card-body_content">
+                                    <h4 class="card-title">{{myC.TenKH}}</h4>
+                                    <p class="card-text">Giảng Viên: {{myC.GiangVien_id}}</p>
+                                    <div class="price text-center">
+
+                                        <p class="mb-0">Giá: {{myC.GiaTien | number:'.0'}}<sup>đ</sup>
+                                        </p>
+                                        <a routerLink='/learn-continue/{{myC.id}}/{{myC.MangKH_id}}' class="text-center"
+                                            class="btn btn-info btn-learn">Học tiếp</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <pagination-controls id="foo" autoHide="true" responsive="true" previousLabel="Trang trước"
+                            nextLabel="Trang Kế" (pageChange)="p = $event">
+                        </pagination-controls>
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="mycourse">
+                    <div class="row">
+                        <h2 class="col-sm-12">Khóa Học Giảng Dạy</h2>
+                        <div class="card col-sm-3"
+                            *ngFor="let khoahoc of teachingCourse | paginate: { itemsPerPage: 6, currentPage: pageCurrent,id:'lul' }">
+                            <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" height="100px" />
+                            <div class="card-body">
+                                <div class="card-body_content">
+                                    <h4 class="card-title">{{khoahoc.TenKH}}</h4>
+                                    <p class="card-text">Giảng Viên: {{khoahoc.GiangVien_id}}</p>
+                                    <div class="price text-center">
+
+                                        <p class="mb-0">Giá: {{khoahoc.GiaTien | number:'.0'}}<sup>đ</sup>
+                                        </p>
+                                        <a routerLink='/learn-continue/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'
+                                            class="text-center" class="btn btn-info">Học tiếp</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <pagination-controls id="lul" autoHide="true" responsive="true" previousLabel="Trang trước"
+                            nextLabel="Trang Kế" (pageChange)="pageCurrent = $event">
+                        </pagination-controls>
+                    </div>
+
+                </div>
                 <div class="tab-pane" id="history">
+                    <div class="row">
+                        <h2 class="col-sm-12">Lịch sử thanh toán</h2>
+                        
+                            <table class="table table-bordered table-hover table-responsive-sm col-sm-12">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">Tên khóa học</th>
+                                        <th scope="col">Tổng tiền</th>
+                                        <th scope="col">Hình thức thanh toán</th>
+                                        <th scope="col">Thời gian giao dịch</th>
+                                        <th scope="col">Trạng Thái</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor='let thongTin of bill'>
+                                        <td scope="row" class="table-primary">{{thongTin.KhoaHoc}}</td>
+                                        <td scope="row" class="table-danger">{{thongTin.TongTien}}</td>
+                                        <td scope="row" class="table-success">{{thongTin.ThanhToan}}</td>
+                                        <td scope="row" class="table-secondary">{{thongTin.ThoiGian}}</td>
+                                        <td scope="row" class="table-info">{{thongTin.TrangThai}}</td>
+                                    </tr>
 
-                    <h2>Khoa Học Của tôi</h2>
+                                </tbody>
+                            </table>
+                        
 
-                    <hr>
-                    
+                    </div>
 
                 </div>
 
-
             </div>
+
             <!--/tab-pane-->
         </div>
         <!--/tab-content-->

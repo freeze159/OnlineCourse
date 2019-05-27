@@ -2,29 +2,44 @@
   <div class="account-wrap">
 
     <a class="site-logo" href="index.html">
-      <img src="../../../../../assets/images/template/logo.png" alt="Site Logo">
+      <img src='https://www.khoahocdt.com/Logo.png' width="200" height="150" alt="Site Logo">
     </a>
 
     <form class="accountform loginform" #frmDangNhap='ngForm' (ngSubmit)="DangNhap(frmDangNhap.value)">
-      <h3>Log in</h3>
+      <h3>Đăng nhập</h3>
       <div class="basic-field">
-        <label>Username <br />
-          <p>
-            <input type="text" name=email ngModel required>
-          </p>
+        <label>Email <br />
+          
+            <input type="text" name='email' #email='ngModel' ngModel required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" pac>
+            <div *ngIf="email.errors && (email.dirty || email.touched)">
+              <div *ngIf="email.errors.required" class="alert alert-danger">
+                  <p>Không được để rỗng</p>
+              </div>
+              <!-- Kiểm tra định dạng email -->
+              <div *ngIf="email.errors.pattern" class="alert alert-danger">
+                  <p>Không đúng định dạng email</p>
+              </div>
+            </div>
+          
         </label>
-        <label>Password <br />
+        <label>Mật khẩu <br />
           <p>
-            <input type="password" name=password ngModel required>
+            <input type="password" name='password' ngModel required>
           </p>
         </label>
       </div>
       <label class="stay-login">
         <input type="checkbox" name="stay-login"> Stay logged in
       </label>
+      
       <button type="submit" [disabled]='frmDangNhap.invalid' class="btn btn-success">Login</button>
-      <p class="signup-recover">Don't you have an account yet? <a routerLink="/dangky">Sign up here</a><br /><a href="#">I
+      <p class="signup-recover">Don't you have an account yet? <a routerLink="/signup">Sign up here</a><br /><a href="#">I
           forgot my password</a></p>
     </form>
+    <label> Login with google</label>
+    <button type="button"  class="btn btn-gg" (click)='logGoogle()'>Đăng nhập bằng <i class="fa fa-google" aria-hidden="true"></i> Google</button>
+    <p>{{user.name}}</p>
+    <p>{{user.email}}</p>
+
   </div>
 </div>

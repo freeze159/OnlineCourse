@@ -12,7 +12,7 @@ export class CourseWatchComponent implements OnInit {
   @ViewChild('vid') videos:ElementRef
   @ViewChild('link') links:ElementRef
   
-  idKhoaHoc
+  idKhoaHoc:any
   baiGiangList:any=[
 
   ]
@@ -21,10 +21,12 @@ export class CourseWatchComponent implements OnInit {
   ngOnInit() {
     //Lấy params id và mangKHid
     this.atv.params.subscribe((res:any)=>{
+      console.log(res)
       this.idKhoaHoc=res.id;
       
     })
     this.khoaHocService.LayDanhSachBaiGiang(this.idKhoaHoc).subscribe((res:any)=>{
+      console.log(res)
       this.baiGiangList=res;
       // console.log(this.baiGiangList);
     })
@@ -85,7 +87,7 @@ export class CourseWatchComponent implements OnInit {
   
   }
   changeLecture(video:string){
-    console.log(this.videos);
+    // console.log(this.videos);
     this.videos.nativeElement.src='https://'+video;
     // console.log(this.videos.nativeElement.src);
     // console.log(this.links.nativeElement);
