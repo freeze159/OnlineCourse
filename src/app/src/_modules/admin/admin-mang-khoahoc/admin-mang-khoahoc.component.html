@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col-md-12">
+    <label>Chọn Thể Loại Khóa Học</label>
+    <br>
+    <form #frmUpdate='ngForm' (ngSubmit)='update(frmUpdate.value)'>
+      <mat-form-field>
+        <mat-label>Thể loại khóa học bạn chọn là: </mat-label>
+        <mat-select (selectionChange)="onSelect($event.value)">
+          <mat-option value="0">--Select--</mat-option>
+          <mat-option *ngFor="let theLoai of danhSachTheLoai" value={{theLoai.id}}>{{theLoai.TenTheLoai}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <h3>Nhóm Khóa Học : {{tenTheLoai}}</h3>
+  <table class="table table-bordered table-responsive-sm" id="dataTable1" width="100%" cellspacing="0">
+    <thead class="table-primary">
+      <tr>
+        <th>ID mảng</th>
+        <th>ID Thể Loại</th>
+        <th>Tên Nhóm Khóa Học</th>
+        <th>Thao Tác</th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor='let mang of danhSachMangKh'>
+        <td>{{mang.id}}</td>
+        <td>{{mang.TheLoaiKH_id}}</td>
+        <td>{{mang.TenMangKH}}</td>
+        <td><button matButton class="btn btn-primary mr-3 " routerLink='{{mang.id}}/khoa-hoc' *ngIf='flag'>Xem Chi Tiết</button>
+          <button matButton class="btn btn-primary mr-3 " routerLink='../the-loai/{{mang.TheLoaiKH_id}}/nhom-khoa-hoc/{{mang.id}}/khoa-hoc' *ngIf='!flag'>Xem Chi Tiết</button>
+          <button matButton (click)='getIdMang(mang.id)' data-toggle="modal" data-target="#updateModalMang"
+            class="btn mr-3 btn-info">Cập nhật</button>
+          <button matButton (click)='deleteMangKhoaHoc(mang.id)' class="btn btn-danger">Xóa</button></td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+<!-- Bảng Chi Tiết -->
+
+
+<div class="modal fade" id="updateModalMang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cập Nhật Khóa Học</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #frmUpdateMangKhoaHoc='ngForm' (ngSubmit)='updateMang(frmUpdateMangKhoaHoc.value)'>
+          <mat-form-field>
+            <mat-label>Nhập Tên Nhóm Khóa Học Mới</mat-label>
+            <input type="text" matInput name="TenMangKH" #name='ngModel' placeholder="{{tenTheLoaiCapNhat}}" ngModel
+              required>
+
+          </mat-form-field>
+          <div class="form-group">
+            <button matButton class="btn-success form-control" type="submit"
+              [disabled]='frmUpdateMangKhoaHoc.invalid'>Xác nhận</button>
+
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

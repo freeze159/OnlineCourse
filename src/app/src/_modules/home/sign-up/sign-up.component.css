@@ -1,102 +1,136 @@
+*{
+  padding-right: 0;
+  padding-left: 0;
+}
+.container{
+  background-color: #4e73df!important;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #4e73df), to(#224abe))!important;
+    background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%)!important;
+    background-size: cover!important;
+}
+.bg-register-image {
+  background: url('https://www.khoahocdt.com/Logo.png');
+  background-position: center;
+  background-size: cover;
+}
 input.ng-valid{
     border-left:5px solid rgb(98, 240, 98)!important;
 }
 input.ng-invalid{
     border-left:5px solid rgb(238, 68, 68)!important;
 }
-.account-page{
-    background-color: #272e30;
-    margin-top: -120px;
-    margin-bottom: -120px;
-  }
-  .account-wrap {
-    max-width: 430px;
-    width: 100%;
-    margin: 120px auto;
-    text-align: center;
-  }
-  
-  .site-logo {
-    display: inline-block;
-    margin-bottom: 40px;
-  }
-  
-  .accountform {
-    background-color: #ffffff;
-    border-radius: 10px;
-    text-align: left;
-    padding: 45px 30px;
-  }
-  .accountform h3 {
-    font-size: 2.4rem;
-    font-weight: 500;
-    color: #808080;
-    margin-top: 0;
-    margin-bottom: 35px;
-  }
-  .accountform label {
-    font-size: 1.4rem;
-    font-weight: 400;
-  }
-  .accountform .basic-field label {
-    display: block;
-    width: 100%;
-    color: #111111;
-  }
-  .accountform .basic-field label + label {
-    margin-top: 22px;
-  }
-  .accountform .basic-field label p {
-    margin-top: 7px;
-    margin-bottom: 0;
-  }
-  .accountform .basic-field .row {
-    margin: 25px -10px 0;
-  }
-  .accountform .basic-field .row .col-sm-6 {
-    padding: 0 10px;
-  }
-  .accountform [type=text],
-  .accountform [type=password],
-  .accountform [type=email] {
-    width: 100%;
-    border: 1px solid #d1d1d1;
-    line-height: 30px;
-    padding: 9px 15px;
-  }
-  .accountform .stay-login {
-    display: block;
-    margin-top: 10px;
-    margin-bottom: 0;
-  }
-  .accountform .stay-login [type=checkbox] {
-    width: 15px;
-    height: 15px;
-    margin-top: 0;
-    margin-right: 6px;
-    vertical-align: middle;
-  }
-  .accountform [type=submit] {
-    font-weight: 400;
-    font-size: 1.8rem;
-    /* background-color: #d1d1d1; */
-    line-height: 50px;
-    border: none;
-    height: 50px;
-    color: #ffffff;
-    text-align: center;
-    width: 100%;
-    text-transform: uppercase;
-    margin-top: 28px;
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-  }
-  .accountform [type=submit]:hover {
-    background-color: cornflowerblue;
+ 
+form.user .custom-checkbox.small label {
+  line-height: 1.5rem;
 }
-  .accountform .signup-recover {
-    text-align: center;
-    margin-top: 28px;
-    margin-bottom: 0;
-    font-size:15px;
-  }
+
+form.user .form-control-user {
+  font-size: 0.9rem;
+  border-radius: 10rem;
+  padding: 1.5rem 1rem;
+  
+
+}
+.text-gray-900 {
+  color: #3a3b45 !important;
+}
+form.user .btn-user {
+  font-size: 0.9rem;
+  border-radius: 10rem;
+  padding: 0.75rem 1rem;
+  color: white;
+  border:1px solid;
+
+}
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.btn-block + .btn-block {
+  margin-top: 0.5rem;
+}
+
+input[type="submit"].btn-block,
+input[type="reset"].btn-block,
+input[type="button"].btn-block {
+  width: 100%;
+}
+
+.btn-google {
+  color: #fff;
+  background-color: #ea4335;
+  border-color: #fff;
+}
+
+.btn-google:hover {
+  color: #fff;
+  background-color: #e12717;
+  border-color: #e6e6e6;
+}
+
+.btn-google:focus, .btn-google.focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+}
+
+.btn-google.disabled, .btn-google:disabled {
+  color: #fff;
+  background-color: #ea4335;
+  border-color: #fff;
+}
+
+.btn-google:not(:disabled):not(.disabled):active, .btn-google:not(:disabled):not(.disabled).active,
+.show > .btn-google.dropdown-toggle {
+  color: #fff;
+  background-color: #d62516;
+  border-color: #dfdfdf;
+}
+
+.btn-google:not(:disabled):not(.disabled):active:focus, .btn-google:not(:disabled):not(.disabled).active:focus,
+.show > .btn-google.dropdown-toggle:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+}
+
+.btn-facebook {
+  color: #fff;
+  background-color: #3b5998;
+  border-color: #fff;
+}
+
+.btn-facebook:hover {
+  color: #fff;
+  background-color: #30497c;
+  border-color: #e6e6e6;
+}
+
+.btn-facebook:focus, .btn-facebook.focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+}
+.bg-gradient-primary {
+  background-color: #4e73df;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #4e73df), to(#224abe));
+  background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
+  background-size: cover;
+}
+
+.btn-facebook.disabled, .btn-facebook:disabled {
+  color: #fff;
+  background-color: #3b5998;
+  border-color: #fff;
+}
+
+.btn-facebook:not(:disabled):not(.disabled):active, .btn-facebook:not(:disabled):not(.disabled).active,
+.show > .btn-facebook.dropdown-toggle {
+  color: #fff;
+  background-color: #2d4373;
+  border-color: #dfdfdf;
+}
+
+.btn-facebook:not(:disabled):not(.disabled):active:focus, .btn-facebook:not(:disabled):not(.disabled).active:focus,
+.show > .btn-facebook.dropdown-toggle:focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+}

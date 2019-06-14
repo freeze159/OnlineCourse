@@ -58,6 +58,7 @@ export class HeaderComponent implements OnInit {
   logOut() {
     localStorage.removeItem('userLogin');
     localStorage.removeItem('tokenbearer');
+    sessionStorage.removeItem('cart');
     localStorage.clear();
     window.location.href='/';
   }

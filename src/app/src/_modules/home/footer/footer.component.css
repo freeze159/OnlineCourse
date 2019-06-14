@@ -1,12 +1,10 @@
  footer {
     background-color: #2C3238;
-    float: left;
-    width: 100%;
+    
   }
   
   .footer-widget-area {
-    float: left;
-    width: 100%;
+    
     clear: both;
     padding: 85px 0 60px;
   }
@@ -109,6 +107,15 @@
     margin-right: 10px;
   }
   .widget.newsletter-widget .subscription [type=submit] {
+    width: 60px;
+    line-height: 41px;
+    height: 45px;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    color: #eb1436;
+    font-size: 1.8rem;
+    background-color: transparent;
+  }
+  .widget.newsletter-widget .subscription a {
     width: 60px;
     line-height: 41px;
     height: 45px;

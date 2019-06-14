@@ -8,57 +8,65 @@ import Swal from 'sweetalert2';
   styleUrls: ['./mod-create.component.css']
 })
 export class ModCreateComponent implements OnInit {
-  @ViewChild('frmName') frmName:NgForm
-  @ViewChild('step1') step1:ElementRef
-  name:string=''
-  summary:String='';
-  price:number=0;
-  idMangKhoaHoc=1;
-  idKhoaHocVuaThem:number;
+  @ViewChild('frmName') frmName: NgForm
+  @ViewChild('step1') step1: ElementRef
+  name: string = ''
+  summary: String = '';
+  price: number = 0;
+  idMangKhoaHoc = 1;
+  idKhoaHocVuaThem: number;
   fileData: File = null;
-  hinhAnh:any;
-  constructor(private khoahocService:KhoaHocService) { }
-  danhSachTheLoai:any;
-  danhSachMangKhoaHoc:any;
+  hinhAnh: any;
+  constructor(private khoahocService: KhoaHocService) { }
+  danhSachTheLoai: any;
+  danhSachMangKhoaHoc: any;
+  thongTinBody: any;
   ngOnInit() {
-    this.khoahocService.LayTheLoaiKhoaHoc().subscribe(res =>{
-        this.danhSachTheLoai=res.data;
-    })
-    console.log(this.step1)
-  }
-  getName(thongTin:any){
-    this.name=thongTin.name;
-    this.summary=thongTin.short;
-    this.price=thongTin.price;
-  }
-  onSelect(theLoaiId){
-    this.khoahocService.LayMangKhoaHoc(theLoaiId).subscribe((res:any)=>{
-      this.danhSachMangKhoaHoc=res.data;
+    this.khoahocService.LayTheLoaiKhoaHoc().subscribe(res => {
+      this.danhSachTheLoai = res.data;
     })
   }
-  getTheLoai(thongTin){
-    this.idMangKhoaHoc=thongTin.nhomKH;
-    let thongTinBody = {
-      'TenKH':this.name,
-      'TomTat':this.summary,
-      'GiaTien':this.price
+  getName(thongTin: any) {
+    this.name = thongTin.name;
+    this.summary = thongTin.short;
+    this.price = thongTin.price;
+    console.log(thongTin)
+  }
+  onSelect(theLoaiId) {
+    this.khoahocService.LayMangKhoaHoc(theLoaiId).subscribe((res: any) => {
+      this.danhSachMangKhoaHoc = res.data;
+    })
+  }
+  getTheLoai(thongTin) {
+    this.idMangKhoaHoc = thongTin.nhomKH;
+    this.thongTinBody = {
+      'TenKH': this.name,
+      'TomTat': this.summary,
+      'GiaTien': this.price
     }
-    this.khoahocService.ThemKhoaHoc(this.idMangKhoaHoc,thongTinBody).subscribe((res:any)=>{
-      
-      this.idKhoaHocVuaThem=res.data.id;
-    },err => {
-      Swal.fire('Error','Bạn cần điền tên và tóm tắt khóa học','error');
-    })
+
 
   }
   onFileChange(event) {
-    this.fileData = <File>event.target.files[0];
-    let formData = new FormData()
-    formData.set('HinhAnh', this.fileData, this.fileData.name);
-    this.khoahocService.UpdateKhoaHocImage(this.idMangKhoaHoc,this.idKhoaHocVuaThem,formData).subscribe((res: any) => {
-      this.hinhAnh = res.data;
-      console.log(res);
+    this.khoahocService.ThemKhoaHoc(this.idMangKhoaHoc, this.thongTinBody).subscribe((res: any) => {
+      console.log(res.data)
+      this.idKhoaHocVuaThem = res.data.id;
+      this.fileData = <File>event.target.files[0];
+      let formData = new FormData();
+      
+      formData.set('HinhAnh', this.fileData, this.fileData.name);
+      this.khoahocService.UpdateKhoaHocImage(this.idMangKhoaHoc, this.idKhoaHocVuaThem, formData).subscribe((res: any) => {
+        this.hinhAnh = res.data;
+      })
+      
+    }, err => {
+      Swal.fire('Error', 'Bạn cần điền tên và tóm tắt khóa học', 'error');
+    })
+
+  }
+  finish() {
+    Swal.fire('Hoàn tất', 'Bạn đã tạo khóa học thành công hãy tạo bài giảng cho khóa học', 'success').then(res => {
+      window.location.href = `/instructor/lecture/${this.idKhoaHocVuaThem}/${this.idMangKhoaHoc}`;
     })
   }
-
 }

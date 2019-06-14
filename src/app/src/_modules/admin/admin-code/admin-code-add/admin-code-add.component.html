@@ -1,0 +1,24 @@
+
+<div class="container">
+    <div class="row">
+        <div class="preloader" id="preloader" >
+            <div class="lds-css ng-scope">
+                <div class="lds-ripple">
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+        <h3 class="col-md-12 text-center">Up file code theo mẫu sau</h3>
+        <hr>
+        <img src='https://www.khoahocdt.com/codeadd.png' class="responsive col-md-12">    
+        <div class="col-md-12">
+          <label>Upload file: </label>
+            <input type="file" class="text-center center-block file-upload" name='file'
+            (change)='onFileChange($event)'>
+        </div>
+        <button matButton class="btn btn-success col-md-1 btn-upload" (click)='Upload()'>Xác nhận</button>
+        
+      </div>
+</div>
+

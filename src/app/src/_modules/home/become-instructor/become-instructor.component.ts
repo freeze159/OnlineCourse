@@ -11,7 +11,7 @@ export class BecomeInstructorComponent implements OnInit {
 
   constructor(private userS:UserService) { }
   isLinear
-  isTeacher:boolean =false;
+  isTeacher:boolean = false;
   ngOnInit() {
     this.userS.LayChiTietGiangVien().subscribe(res =>{
       console.log(res)
@@ -31,7 +31,7 @@ export class BecomeInstructorComponent implements OnInit {
       {
         title: 'Tóm tắt',
         text: 'Tóm tắt thông tin của bạn',
-        input:'text',
+        input:'textarea',
         inputValidator:(value) =>{
           if(!value){
             return 'Bạn cần phải viết điều gì đó'

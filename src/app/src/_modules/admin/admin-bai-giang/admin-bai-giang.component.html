@@ -1,0 +1,109 @@
+<div class="row">
+  <div class="col-md-4">
+    <label>Chọn Thể Loại Khóa Học</label>
+    <br>
+    <form #frmUpdate='ngForm' (ngSubmit)='update(frmUpdate.value)'>
+      <mat-form-field>
+        <mat-label>Thể loại khóa học bạn chọn là: </mat-label>
+        <mat-select (selectionChange)="onSelect($event.value)">
+          <mat-option value="0">--Select--</mat-option>
+          <mat-option *ngFor="let theLoai of danhSachTheLoai" value={{theLoai.id}}>{{theLoai.TenTheLoai}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="col-md-4">
+    <label>Chọn Mảng Khóa Học</label>
+    <br>
+    <form #frmUpdate='ngForm'>
+      <mat-form-field>
+        <mat-label>Nhóm khóa học bạn chọn là: </mat-label>
+        <mat-select (selectionChange)="onSelectMang($event.value)">
+          <mat-option value="0">--Select--</mat-option>
+          <mat-option *ngFor="let mang of danhSachMang" value={{mang.id}}>{{mang.TenMangKH}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="col-md-4">
+    <label>Chọn Khóa Học</label>
+    <br>
+    <form #frmUpdate='ngForm'>
+      <mat-form-field>
+        <mat-label>Khóa học bạn chọn là: </mat-label>
+        <mat-select (selectionChange)="onSelectKhoaHoc($event.value)">
+          <mat-option value="0">--Select--</mat-option>
+          <mat-option *ngFor="let khoahoc of danhSachKhoaHoc" value={{khoahoc.id}}>{{khoahoc.TenKH}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+  <table class="table table-bordered table-responsive-sm col-md-12 table-striped" id="dataTable1" width="100%"
+    cellspacing="0">
+    <thead class="table-primary">
+      <tr>
+        <th>ID</th>
+        <th>ID Khóa Học</th>
+        <th>Tên Bài Giảng</th>
+        <th>Mô Tả</th>
+        <th>Link</th>
+        <th>Thao Tác</th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor='let baiGiang of danhSachBaiGiang'>
+        <td>{{baiGiang.id}}</td>
+        <td>{{baiGiang.KhoaHoc_id}}</td>
+        <td>{{baiGiang.TenBaiGiang}}</td>
+        <td>{{baiGiang.MoTa}}</td>
+        <td>{{baiGiang.EmbededURL}}</td>
+        
+        <td>
+          <button matButton (click)='updateTriggered(baiGiang.id,baiGiang.KhoaHoc_id,baiGiang.TenBaiGiang,baiGiang.MoTa,baiGiang.EmbededURL)' 
+          class="btn mr-3 btn-info">Cập
+              nhật </button>
+          <button matButton (click)='delele(baiGiang.id,baiGiang.KhoaHoc_id)' class="btn btn-danger">Xóa</button>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+  <div class="col-md-10 mx-auto" *ngIf='flag' id="updateRole">
+    <h3>Cập nhật bài bài giảng</h3>
+    <form #frmUpdate='ngForm' (ngSubmit)='update(frmUpdate.value)' class="col-md-12" >
+    
+      <div class="form-group">
+        <label class="lead">Tên bài giảng mới</label>
+        <input type="text" class="form-control" #tenKH='ngModel' name='TenBaiGiang' ngModel minlength="10"
+          placeholder="{{name}}">
+        <div *ngIf='tenKH.errors && (tenKH.touched || tenKH.dirty)'>
+          <div *ngIf='tenKH.errors.minlength' class="alert alert-danger">
+            Tên bài giảng phải nhiều hơn 10 ký tự
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="lead">Mô tả mới</label>
+        <input type="text" class="form-control" #mota='ngModel' name='MoTa' ngModel minlength="10"
+          placeholder="{{describe}}">
+        <div *ngIf='mota.errors && (mota.touched || mota.dirty)'>
+          <div *ngIf='mota.errors.minlength' class="alert alert-danger">
+            Mô tả  phải nhiều hơn 10 ký tự
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="lead">Đường dẫn mới:</label>
+        <input type="text" class="form-control" #giamG='ngModel' name='EmbededURL' ngModel placeholder="{{link}}">
+      </div>
+      <button mat-button type="submit" [disabled]='frmUpdate.invalid' class="btn-success">Cập nhật</button>
+    </form>
+  </div>
+  
+</div>

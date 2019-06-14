@@ -1,0 +1,126 @@
+<div class="row">
+  <div class="col-md-12">
+    <label>Chọn Thể Loại Khóa Học</label>
+    <br>
+    <form #frmUpdate='ngForm' (ngSubmit)='update(frmUpdate.value)'>
+      <mat-form-field>
+        <mat-label>Thể loại khóa học bạn chọn là: </mat-label>
+        <mat-select (selectionChange)="onSelect($event.value)">
+          <mat-option value="0">--Select--</mat-option>
+          <mat-option *ngFor="let theLoai of danhSachTheLoai" value={{theLoai.id}}>{{theLoai.TenTheLoai}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="col-md-12">
+    <label>Chọn Thể Loại Khóa Học</label>
+    <br>
+    <form #frmUpdate='ngForm'>
+      <mat-form-field>
+        <mat-label>Nhóm khóa học bạn chọn là: </mat-label>
+        <mat-select (selectionChange)="onSelectMang($event.value)">
+          <mat-option value="0">--Select--</mat-option>
+          <mat-option *ngFor="let mang of danhSachMang" value={{mang.id}}>{{mang.TenMangKH}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+  <h4 class="col-md-5">Thể loại khóa học : {{tenTheLoai}}</h4>
+  <br>
+
+  <h4 class="col-md-4">Nhóm khóa học : {{tenMang}}</h4>
+  <table class="table table-bordered table-responsive-sm col-md-12 table-striped" id="dataTable1" width="100%"
+    cellspacing="0">
+    <thead class="table-primary">
+      <tr>
+        <th>ID Khóa Học</th>
+        <th>Tên Khóa Học</th>
+        <th>Tên Giảng Viên</th>
+        <th>Giá Tiền</th>
+        <th>Giảm Giá</th>
+        <th>Đánh Giá</th>
+        <th>Thao Tác</th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor='let khoahoc of danhSachKhoaHoc'>
+        <td>{{khoahoc.id}}</td>
+        <td>{{khoahoc.TenKH}}</td>
+        <td>{{khoahoc.GiangVien}}</td>
+        <td>{{khoahoc.GiaTien | number:'.0'}} <sup>đ</sup></td>
+        <td>{{khoahoc.GiamGia}}</td>
+        <td>{{khoahoc.DanhGia[0]}} <sup><i class="fa fa-star" style="color:yellow"></i></sup></td>
+        <td>
+          <button matButton class="btn btn-primary mr-3 " *ngIf='flagButton' routerLink='{{khoahoc.id}}/bai-giang'>Xem Chi Tiết</button>
+          <button matButton class="btn btn-primary mr-3 " *ngIf='!flagButton' routerLink='../the-loai/{{idTheLoai}}/nhom-khoa-hoc/{{khoahoc.MangKH_id}}/khoa-hoc/{{khoahoc.id}}/bai-giang'>Xem Chi Tiết</button>
+          <button matButton (click)='updateTriggered(khoahoc.MangKH_id,khoahoc.id)' class="btn mr-3 btn-info">Cập
+            nhật</button>
+          <button matButton (click)='delele(khoahoc.id)' class="btn btn-danger">Xóa</button>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+  <form #frmUpdate='ngForm' (ngSubmit)='update(frmUpdate.value)' class="col-md-12" *ngIf='flag'>
+    <mat-form-field>
+      <mat-label>Thể loại khóa học bạn chọn là: </mat-label>
+      <mat-select (selectionChange)="onSelectTheLoai($event.value)" required>
+        <mat-option value="0">--Select--</mat-option>
+        <mat-option *ngFor="let theLoai of danhSachTheLoai" value={{theLoai.id}}>{{theLoai.TenTheLoai}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <sup style="color:red;font-size: 1.2rem;position: relative;
+              left: 30%;
+              top: 53px;"> * </sup> <label style="color:red;font-size: 1rem;position: relative;
+left: 30%;
+top: 53px;">Nhóm khóa học là bắt buộc</label>
+    <mat-form-field>
+
+      <mat-label>Nhóm khóa học bạn chọn là: </mat-label>
+      <mat-select #nhomKH='ngModel' name='MangKH_id' ngModel required>
+        <mat-option value="0">--Select--</mat-option>
+        <mat-option *ngFor="let nhomKhoaHoc of danhSachMangSecond" value={{nhomKhoaHoc.id}}>
+          {{nhomKhoaHoc.TenMangKH}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="form-group">
+      <label>Tên Khóa học mới</label>
+      <input type="text" class="form-control" #tenKH='ngModel' name='TenKH' ngModel minlength="10"
+        placeholder="{{name}}">
+      <div *ngIf='tenKH.errors && (tenKH.touched || tenKH.dirty)'>
+        <div *ngIf='tenKH.errors.minlength' class="alert alert-danger">
+          Tên khóa học phải nhiều hơn 10 ký tự
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Mô tả mới</label>
+      <input type="text" class="form-control" #mota='ngModel' name='TomTat' ngModel minlength="10"
+        placeholder="{{short}}">
+      <div *ngIf='mota.errors && (mota.touched || mota.dirty)'>
+        <div *ngIf='mota.errors.minlength' class="alert alert-danger">
+          Tên khóa học phải nhiều hơn 10 ký tự
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Hình Ảnh</label><br>
+      <input type="file" class="text-center center-block file-upload" name='HinhAnh' (change)='onFileChange($event)'>
+    </div>
+    <div class="form-group">
+      <label>Giá tiền mới</label>
+      <input type="number" class="form-control" #giaT='ngModel' name='GiaTien' ngModel placeholder="{{price}}">
+    </div>
+    <div class="form-group">
+      <label>Giảm giá %</label>
+      <input type="number" class="form-control" #giamG='ngModel' name='GiamGia' ngModel placeholder="{{giam}}">
+    </div>
+    <button mat-button type="submit" [disabled]='frmUpdate.invalid' class="btn-success">Cập nhật</button>
+  </form>
+</div>

@@ -8,6 +8,18 @@ import { Observable } from 'rxjs';
 export class UserService {
   
   constructor(private http:HttpClient) { }
+  public LayDanhSachUser(){
+    const linkApi= `https://api.khoahocdt.com/api/User`
+    const header: HttpHeaders = new HttpHeaders(); // Cho biết định dạng dữ liệu truyền đi
+    const observable = this.http.get(linkApi);
+    return observable;
+  }
+  public LayDanhSachGiangVien(){
+    const linkApi= `https://api.khoahocdt.com/api/GiangVien`
+    const header: HttpHeaders = new HttpHeaders(); // Cho biết định dạng dữ liệu truyền đi
+    const observable = this.http.get(linkApi);
+    return observable;
+  }
   public DangKy(thongtin:any):Observable<any>{
     const linkApi= 'https://api.khoahocdt.com/api/Register'
     const header: HttpHeaders = new HttpHeaders(); // Cho biết định dạng dữ liệu truyền đi
@@ -84,6 +96,12 @@ export class UserService {
     const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
     return observable;
   }
+  public LayChiTietGiangVien1(id):Observable<any>{
+    const linkApi= `https://api.khoahocdt.com/api/GiangVien/${id}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer'));  
+    const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
   public LichSuBanKhoaHoc(id:number):Observable<any>{
     const linkApi= `https://api.khoahocdt.com/api/GiangVien/${id}/LichSuBanKhoaHoc`;
     const tokenParse = JSON.parse(localStorage.getItem('tokenbearer'));  
@@ -97,6 +115,70 @@ export class UserService {
     var reqHeader = new HttpHeaders({});
  
     const observable = this.http.put(linkApi,thongtin,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public TaiKhoanBanCurrent():Observable<any>{
+    const linkApi= `https://api.khoahocdt.com/api/TaiKhoanNganHang/Current`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+ 
+    const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public UpdateBank(idTaiKhoan:number,body:any):Observable<any>{
+    const linkApi= `https://api.khoahocdt.com/api/TaiKhoanNganHang/${idTaiKhoan}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    var reqHeader = new HttpHeaders({});
+ 
+    const observable = this.http.put(linkApi,body,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public DelBank(idTaiKhoan:number):Observable<any>{
+    const linkApi= `https://api.khoahocdt.com/api/TaiKhoanNganHang/${idTaiKhoan}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    var reqHeader = new HttpHeaders({});
+    const observable = this.http.delete(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public AddBank(body:any):Observable<any>{
+    const linkApi= `https://api.khoahocdt.com/api/TaiKhoanNganHang`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    var reqHeader = new HttpHeaders({});
+    const observable = this.http.post(linkApi,body,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public ReportHoaHon():Observable<any>{
+    const linkApi= `https://api.khoahocdt.com/api/Report/HoaDon`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    var reqHeader = new HttpHeaders({});
+    const observable = this.http.get(linkApi ,{responseType: 'blob',headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public ReportCodeKhoaHoc():Observable<any>{
+    const linkApi= `https://api.khoahocdt.com/api/Report/CodeKH`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    var reqHeader = new HttpHeaders({});
+    const observable = this.http.get(linkApi ,{responseType: 'blob',headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public UploadCode(thongtin):Observable<any>{
+    const linkApi= `https://api.khoahocdt.com/api/CodeKhoaHoc/Import`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    var reqHeader = new HttpHeaders({});
+ 
+    const observable = this.http.post(linkApi,thongtin,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public DelUser(id):Observable<any>{
+    const linkApi= `https://api.khoahocdt.com/api/User/${id}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    var reqHeader = new HttpHeaders({});
+    const observable = this.http.delete(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public ResetPass(email:string):Observable<any>{
+    const linkApi= `https://api.khoahocdt.com/api/Mail/ResetPassword?email=${email}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer'));  
+    const observable = this.http.get(linkApi)
     return observable;
   }
 }

@@ -1,0 +1,42 @@
+.bg-password-image{
+    background: url('https://www.khoahocdt.com/Logo.png');
+    background-position: center;
+    background-size: cover;
+}
+form.user .custom-checkbox.small label {
+    line-height: 1.5rem;
+  }
+  
+  form.user .form-control-user {
+    font-size: 0.9rem;
+    border-radius: 10rem;
+    padding: 1.5rem 1rem;
+    
+
+  }
+  .text-gray-900 {
+    color: #3a3b45 !important;
+  }
+  form.user .btn-user {
+    font-size: 0.9rem;
+    border-radius: 10rem;
+    padding: 0.75rem 1rem;
+    color: white;
+    border:1px solid;
+
+  }
+  .btn-block {
+    display: block;
+    width: 100%;
+  }
+  
+  .btn-block + .btn-block {
+    margin-top: 0.5rem;
+  }
+  
+  input[type="submit"].btn-block,
+  input[type="reset"].btn-block,
+  input[type="button"].btn-block {
+    width: 100%;
+  }
+  

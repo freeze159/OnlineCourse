@@ -28,6 +28,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { MatStepperModule } from '@angular/material/stepper';
 import { CourseInterestComponent } from './course-interest/course-interest.component';
 import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider} from 'ng4-social-login';
+import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
 const config = new AuthServiceConfig([
   {
     id:GoogleLoginProvider.PROVIDER_ID,
@@ -45,19 +46,20 @@ const homeRoutes: Routes = [
       { path: 'danhmuckhoahoc', component: CourseViewComponent },
       { path: 'ket-qua/:keyword', component: SearchResultComponent },
       { path: 'kichhoat', component: EnterCodeComponent },
+      
     ]
   },
   { path: 'signup', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'learn-continue/:id/:mangKHid', component: CourseWatchComponent, canActivate: [CheckOwnGuard] }
-
+  { path: 'learn-continue/:id/:mangKHid', component: CourseWatchComponent, canActivate: [CheckOwnGuard] },
+  { path: 'reset-password', component: ForgotPassComponent },
 
 
 ]
 @NgModule({
   declarations: [HomeTemplateComponent, LoginComponent, SignUpComponent, HomePageComponent,
     CartComponent, BecomeInstructorComponent, CourseListComponent, CourseDetailComponent,
-    HeaderComponent, FooterComponent, CourseWatchComponent, UserPageComponent, LearnNowComponent, CourseViewComponent, SearchResultComponent, EnterCodeComponent, CourseInterestComponent],
+    HeaderComponent, FooterComponent, CourseWatchComponent, UserPageComponent, LearnNowComponent,ForgotPassComponent, CourseViewComponent, SearchResultComponent, EnterCodeComponent, CourseInterestComponent, ForgotPassComponent],
   imports: [
     CommonModule, MDBBootstrapModule.forRoot(), FormsModule,
     NavbarModule, WavesModule, ButtonsModule, MatSidenavModule, MatCheckboxModule, MatButtonModule, HttpClientModule,

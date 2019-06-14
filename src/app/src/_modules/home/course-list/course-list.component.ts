@@ -1,9 +1,9 @@
-import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { KhoaHocService } from 'src/app/src/_core/services/khoa-hoc.service';
-import { forkJoin, from } from 'rxjs';
+
 import * as $ from 'jquery';
 import { UserService } from 'src/app/src/_core/services/user.service';
-
+import 'src/assets/js/slick.js';
 @Component({
   selector: 'app-course-list',
   templateUrl: './course-list.component.html',
@@ -24,8 +24,9 @@ export class CourseListComponent implements OnInit {
   dsKhoaHoc6: Array<any> = [];
   dsKhoaHoc7: Array<any> = [];
   dsKhoaHoc8: Array<any> = [];
-  constructor(private danhSachKhoaHoc: KhoaHocService, private userService: UserService) {
-    
+  slick: any;
+  constructor(private danhSachKhoaHoc: KhoaHocService, private userService: UserService, private chRef: ChangeDetectorRef) {
+
 
   }
 
@@ -41,10 +42,57 @@ export class CourseListComponent implements OnInit {
           for (let khoahocObject of res.data) {
             this.dsKhoaHoc1.push(khoahocObject);
           }
+          
         })
-        
+
       }
-      console.log(this.dsKhoaHoc1)
+      this.chRef.detectChanges();
+      const regul: any = $('.regularX');
+      setTimeout(() => {
+        this.slick = regul.slick({
+          centerMode: true,
+          centerPadding: '60px',
+          slidesToShow: 3,
+          dots: true,
+          // infinite: true,
+          slidesToScroll: 3,
+          slideSpeed: 200,
+          responsive: [
+            {
+              breakpoint: 1200,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                dots: false,
+                centerMode: false,
+                centerPadding: '0px',
+              }
+            },
+            {
+              breakpoint: 1008,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: false,
+                centerMode: false,
+                centerPadding: '0px',
+              }
+            },
+            {
+              breakpoint: 800,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: false,
+                centerMode: false,
+                centerPadding: '0px',
+              }
+            }
+          ]
+  
+        });
+      }, 1200);
+      
     })
 
 

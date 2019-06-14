@@ -49,7 +49,6 @@ export class ModDetailComponent implements OnInit {
   }
   choDuyet(){
     this.khoaHocService.LayKhoaHocChoDuyet(this.idGiangVien).subscribe((res:any)=>{
-      console.log(res.data)
         this.myCourse = res.data;
     })
   }

@@ -10,17 +10,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCheckboxModule, MatButtonModule } from '@angular/material';
+import { CheckAdminGuard } from './src/_core/guard/check-admin.guard';
+import { NotfoundComponent } from './src/_modules/notfound/notfound.component';
+import { CheckInstrucGuard } from './src/_core/guard/check-instruc.guard';
 
 const appRoute:Routes = [
   {path:'',loadChildren:()=>HomeModule},
   {path:'home',loadChildren:() => HomeModule},
-  {path:'admin',loadChildren:() => AdminModule},
-  {path:'instructor',loadChildren:()=>ModModule},
+  {path:'admin',loadChildren:() => AdminModule,canActivate: [CheckAdminGuard]},
+  {path:'instructor',loadChildren:()=>ModModule,canActivate: [CheckInstrucGuard]},
+  {path:'notfound',component:NotfoundComponent},
+  {path:'**',component:NotfoundComponent}
   
 ]
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,NotfoundComponent
   ],
   imports: [
     RouterModule.forRoot(appRoute,{scrollPositionRestoration: 'enabled'}),
@@ -28,7 +33,7 @@ const appRoute:Routes = [
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    MatSidenavModule, MatCheckboxModule, MatButtonModule
+    MatSidenavModule, MatCheckboxModule, MatButtonModule,
     
     
   ],

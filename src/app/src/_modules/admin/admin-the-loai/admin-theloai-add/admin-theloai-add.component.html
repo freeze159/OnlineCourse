@@ -1,0 +1,12 @@
+<div class="row">
+  <form #frmTheTheLoai='ngForm' (ngSubmit)='addTheLoai(frmTheTheLoai.value)'>
+    <mat-form-field>
+      <mat-label>Điền Tên Thể Loại</mat-label>
+      <input type="text" matInput #theLoai name="TenTheLoai" ngModel required minlength="3">
+      <mat-error>Không được để trống & ít nhất 3 ký tự</mat-error>
+    </mat-form-field>
+    <div class="form-group">
+      <button type="submit" class="form-control btn btn-success" [disabled]='frmTheTheLoai.invalid'>Xác nhận</button>
+    </div>
+  </form>
+</div>

@@ -20,9 +20,8 @@
                 <ul class="nav flex-column">
                     <li><a data-toggle="tab" href="#home">Thông Tin</a></li>
                     <li><a data-toggle="tab" class="active" href="#course"> Khóa học của tôi</a></li>
-                    <li><a data-toggle="tab" href="#mycourse" (click)='baiGiang()'> Khóa học giảng dạy</a></li>
                     <li><a data-toggle="tab" href="#history" (click)='lichSu()'> Lịch sử thanh toán</a></li>
-
+                    <li><a routerLink='/instructor'> Đến trang giảng viên</a></li>
                 </ul>
             </div>
 
@@ -192,34 +191,7 @@
                     </div>
 
                 </div>
-                <div class="tab-pane" id="mycourse">
-                    <div class="row">
-                        <h2 class="col-sm-12">Khóa Học Giảng Dạy</h2>
-                        <div class="card col-sm-3"
-                            *ngFor="let khoahoc of teachingCourse | paginate: { itemsPerPage: 6, currentPage: pageCurrent,id:'lul' }">
-                            <img class="card-img-top" src={{khoahoc.HinhAnh}} alt="kh1" height="100px" />
-                            <div class="card-body">
-                                <div class="card-body_content">
-                                    <h4 class="card-title">{{khoahoc.TenKH}}</h4>
-                                    <p class="card-text">Giảng Viên: {{khoahoc.GiangVien_id}}</p>
-                                    <div class="price text-center">
-
-                                        <p class="mb-0">Giá: {{khoahoc.GiaTien | number:'.0'}}<sup>đ</sup>
-                                        </p>
-                                        <a routerLink='/learn-continue/{{khoahoc.id}}/{{khoahoc.MangKH_id}}'
-                                            class="text-center" class="btn btn-info">Học tiếp</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <hr>
-                        <pagination-controls id="lul" autoHide="true" responsive="true" previousLabel="Trang trước"
-                            nextLabel="Trang Kế" (pageChange)="pageCurrent = $event">
-                        </pagination-controls>
-                    </div>
-
-                </div>
+                
                 <div class="tab-pane" id="history">
                     <div class="row">
                         <h2 class="col-sm-12">Lịch sử thanh toán</h2>

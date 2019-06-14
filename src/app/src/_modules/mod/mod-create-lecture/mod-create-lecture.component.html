@@ -1,0 +1,221 @@
+<section class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-3 left-col">
+      <div class="text-center">
+        <img src={{hinhAnh}} class="avatar img-circle img-thumbnail" alt="avatar">
+        <h3>{{name}}</h3>
+
+      </div><br>
+      <hr>
+      <!--left col-->
+      <div class="navi-box">
+
+        <ul class="nav flex-column">
+          Quản lý Khóa Học
+          <li><a data-toggle="tab" href="#update">Cập nhật khóa học</a></li>
+          Quản lý Bài Giảng
+          <li><a data-toggle="tab" href="#course" (click)='layBaiGiang()' class="active">Danh Sách Bài Giảng</a></li>
+          <li><a data-toggle="tab" href="#add"> Thêm Bài Giảng</a></li>
+          <li><a data-toggle="tab" href="#updateLec" (click)='layBaiGiang()'> Cập Nhật Bài Giảng</a></li>
+          <hr>
+          <li style="color:red!important;background:none!important;"><a (click)='deleteCourse()'
+              style="color:red!important;background:none!important;"> Xóa khóa học này</a></li>
+
+        </ul>
+      </div>
+
+
+
+
+    </div>
+    <!--/col-3-->
+    <div class="col-sm-12 col-md-9 course-col">
+      <div class="tab-content">
+        <div class="tab-pane " id="add">
+          <div class="pt-4">
+            <p class="intruc"><span class='numb'>1</span> Người dùng nhập số lượng bài giảng</p>
+            <p class="intruc"><span class='numb'>2</span> Khai báo tên bài giảng(tối thiếu 10 ký tự)</p>
+            <p class="intruc"><span class='numb'>3</span> Khái báo tóm tắt tóm tắt bài giảng (tối thiếu 10 ký tự)</p>
+            <p class="intruc"><span class='numb'>4</span> Dẫn link youtube của bài giảng</p>
+          </div>
+          <h3>Thêm Bài Giảng</h3>
+          <hr>
+          <h4>Nhập số lượng bài giảng cần thêm</h4>
+          <hr>
+          <form #frmSoLuong="ngForm" class="" (ngSubmit)="frmAdd(frmSoLuong.value)">
+            <input type="number" name="soLuong" #soLuong='ngModel' ngModel class="form-control">
+            <hr>
+            <button mat-button type="submit" class="btn-success">Xác Nhận</button>
+          </form>
+          <hr>
+          <form *ngIf='confirmNum' [formGroup]="BaiGiangForm" (ngSubmit)="SaveData()">
+
+            <div class="form-group" formArrayName="data"
+              *ngFor="let cd of BaiGiangForm.controls.data.controls;let i=index; ">
+              <div formGroupName={{i}} class="form-group">
+                <h3>Thông Tin Bài Giảng {{i+1}}</h3>
+                <input type="text" formControlName="TenBaiGiang" placeholder="Tên Bài Giảng" class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && cd.controls.TenBaiGiang.errors }" required minlength="10" />
+                <div *ngIf="submitted && cd.controls.TenBaiGiang.errors" class="invalid-feedback">
+                  <div *ngIf="cd.controls.TenBaiGiang.errors.required">Cần nhập tên bài giảng</div>
+                  <div *ngIf="cd.controls.TenBaiGiang.errors.minlength">Cần nhập nhiều hơn 10 ký tự</div>
+                </div>
+                <hr>
+                <input type="text" formControlName="MoTa" placeholder="Mô tả" class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && cd.controls.MoTa.errors }" required minlength="10" />
+                <div *ngIf="submitted && cd.controls.MoTa.errors" class="invalid-feedback">
+                  <div *ngIf="cd.controls.MoTa.errors.required">Cần nhập Mô tả</div>
+                  <div *ngIf="cd.controls.MoTa.errors.minlength">Cần nhập nhiều hơn 10 ký tự</div>
+                </div>
+                <hr>
+                <input type="text" formControlName="EmbededURL" placeholder="Link youtube" class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && cd.controls.EmbededURL.errors }" required />
+                <div *ngIf="submitted && cd.controls.EmbededURL.errors" class="invalid-feedback">
+                  <div *ngIf="cd.controls.EmbededURL.errors.required">Cần nhập Link </div>
+                </div>
+                <hr>
+              </div>
+            </div>
+            <button class="btn-success" mat-button type="submit">Xác nhận</button>
+            
+          </form>
+
+
+
+        </div>
+        <!--/tab-pane-->
+        <div class="tab-pane active" id="course">
+          <div class="row">
+            <h2 class="col-sm-12">Danh Sách Bài Giảng</h2>
+            <div class="card col-sm-3"
+              *ngFor="let myL of courseList | paginate: { itemsPerPage: 3, currentPage: p,id:'foo'}">
+              <!-- <img class="card-img-top" src='' alt="kh1" height="100px" /> -->
+              <div class="card-body">
+                <div class="card-body_content">
+                  <h4 class="card-title">Tên Bài Giảng: {{myL.TenBaiGiang}}</h4>
+                  <p class="card-text">Mô tả: {{myL.MoTa}}</p>
+                  <div class="price text-center">
+                    <p class="card-text">Đường dẫn: {{myL.EmbededURL}}</p>
+                    <!-- <p class="mb-0">Giá: {{myC.GiaTien | number:'.0'}}<sup>đ</sup>
+                    </p> -->
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr>
+
+          </div>
+          <div>
+            <pagination-controls id="foo" autoHide="true" responsive="true" previousLabel="Trang trước"
+              nextLabel="Trang Kế" (pageChange)="p = $event">
+            </pagination-controls>
+          </div>
+        </div>
+        <div class="tab-pane pl-5 pr-5" id="update">
+          <h3 class="text-center">Cập nhật các khóa học</h3>
+          <h4 class="text-center">Thay đổi cái mục bạn muốn thay đổi</h4>
+          <form #frmUpdate='ngForm' (ngSubmit)='update(frmUpdate.value)'>
+            <mat-form-field>
+              <mat-label>Thể loại khóa học bạn chọn là: </mat-label>
+              <mat-select (selectionChange)="onSelect($event.value)" required>
+                <mat-option value="0">--Select--</mat-option>
+                <mat-option *ngFor="let theLoai of danhSachTheLoai" value={{theLoai.id}}>{{theLoai.TenTheLoai}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <br>
+            <sup style="color:red;font-size: 1.2rem;position: relative;
+                      left: 38%;
+                      top: 53px;"> * </sup> <label style="color:red;font-size: 1.2rem;position: relative;
+    left: 38%;
+    top: 53px;">Nhóm khóa học là bắt buộc</label><br>
+            <mat-form-field>
+
+              <mat-label>Nhóm khóa học bạn chọn là: </mat-label>
+              <mat-select #nhomKH='ngModel' name='MangKH_id' ngModel required >
+                <mat-option value="0">--Select--</mat-option>
+                <mat-option *ngFor="let nhomKhoaHoc of danhSachMangKhoaHoc" value={{nhomKhoaHoc.id}}>
+                  {{nhomKhoaHoc.TenMangKH}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="form-group">
+              <label>Tên Khóa học mới</label>
+              <input type="text" class="form-control" #tenKH='ngModel' name='TenKH' ngModel minlength="10" placeholder="{{name}}">
+              <div *ngIf='tenKH.errors && (tenKH.touched || tenKH.dirty)'>
+                <div *ngIf='tenKH.errors.minlength' class="alert alert-danger">
+                  Tên khóa học phải nhiều hơn 10 ký tự
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Mô tả mới</label>
+              <input type="textarea" class="form-control" #mota='ngModel' name='TomTat' ngModel minlength="10" placeholder="{{short}}">
+              <div *ngIf='mota.errors && (mota.touched || mota.dirty)'>
+                <div *ngIf='mota.errors.minlength' class="alert alert-danger">
+                  Tên khóa học phải nhiều hơn 10 ký tự
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Hình Ảnh</label><br>
+              <input type="file" class="text-center center-block file-upload" name='HinhAnh'
+                (change)='onFileChange($event)'>
+            </div>
+            <div class="form-group">
+              <label>Giá tiền mới</label>
+              <input type="number" class="form-control" #giaT='ngModel' name='GiaTien' ngModel placeholder="{{price}}">
+            </div>
+            <div class="form-group">
+              <label>Giảm giá %</label>
+              <input type="number" class="form-control" #giamG='ngModel' name='GiamGia' ngModel placeholder="{{giam}}">
+            </div>
+            <button mat-button type="submit" [disabled]='frmUpdate.invalid' class="btn-success">Cập nhật</button>
+          </form>
+
+
+
+        </div>
+        <div class="tab-pane" id="updateLec">
+          <table class="table table-hover table-responsive-sm">
+            <thead class="thead-light">
+              <tr>
+                <th>Id</th>
+                <th>Tiêu đề</th>
+                <th>Mô tả</th>
+                <th>Đường dẫn youtube</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let myL of courseList'>
+
+                <td>{{myL.id}}</td>
+                <td>
+                  <p>{{myL.TenBaiGiang}}</p>
+                </td>
+                <td>
+                  <p>{{myL.MoTa}}</p>
+                </td>
+                <td>
+                  <p>{{myL.EmbededURL}}</p>
+                </td>
+                <td><button mat-button class='btn-success mr-2' routerLink='update'
+                    [queryParams]='{idL:myL.id,TenBaiGiang:myL.TenBaiGiang,MoTa:myL.MoTa,EmbededURL:myL.EmbededURL}'>Update</button>
+                  <button mat-button class="btn-danger" (click)='delete(myL.id,myL.KhoaHoc_id)'>Xóa</button></td>
+
+              </tr>
+
+            </tbody>
+          </table>
+
+
+
+        </div>
+      </div>
+
+      <!--/tab-pane-->
+    </div>
+  </div>
+</section>

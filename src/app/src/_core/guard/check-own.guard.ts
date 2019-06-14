@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Route } from '@angular/compiler/src/core';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,6 @@ export class CheckOwnGuard implements CanActivate {
   ) {
     let id = route.params.id;
     let mangKHid =  route.params.mangKHid;
-    console.log(route.params);
     const myCourse = JSON.parse(localStorage.getItem('ownCourse'));
     if(myCourse){
       let course = myCourse.find(course => course.id == id);
@@ -22,7 +22,7 @@ export class CheckOwnGuard implements CanActivate {
       }
       else {
         this.Routes.navigateByUrl('/chitietkhoahoc/'+id+'/'+mangKHid);
-        return true;
+        Swal.fire('','Bạn chưa sở hữu khóa học này','question')
       }
     }
     else{

@@ -35,8 +35,10 @@
               "src/assets/css/amazonmenu.css",
               "src/assets/css/bootstrap.offcanvas.min.css",
               "src/assets/css/slick.css",
-              "src/assets/css/slick-theme.css"
-
+              "src/assets/css/slick-theme.css",
+              "src/assets/css/dataTables.bootstrap4.css",
+              "src/assets/css/magnific-popup.css"
+              
 
             ],
             "scripts": [
@@ -45,9 +47,14 @@
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/assets/js/owl.carousel.js",
               "src/assets/js/amazonmenu.js",
-              "src/assets/js/custom.js",
               "src/assets/js/bootstrap.offcanvas.js",
-              "src/assets/js/slick.js"
+              "src/assets/js/slick.js",
+              "src/assets/js/jquery.dataTables.min.js",
+              "src/assets/js/dataTables.bootstrap4.js",
+              "src/assets/js/custom.js",
+              "src/assets/js/dataTable.js",
+              "src/assets/js/jquery.magnific-popup.min.js"
+              
             ]
           },
           "configurations": {

@@ -1,0 +1,189 @@
+<section class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 col-md-3 left-col">
+      <!--left col-->
+      <div class="navi-box">
+        <ul class="nav flex-column">
+          <!-- <li><a data-toggle="tab" href="#home" class="active">Chi Tiết Ngân Hàng</a></li> -->
+          <li><a data-toggle="tab" href="#bank" (click)='getDatabank()'> Danh sách tài khoản</a></li>
+          <li><a data-toggle="tab" href="#home"> Thêm tài khoản</a></li>
+
+
+        </ul>
+      </div>
+    </div>
+    <!--/col-3-->
+    <div class="col-sm-12 col-md-9 course-col">
+      <div class="tab-content">
+        <div class="tab-pane " id="home">
+          <div class="head">
+
+            <h3>Thông tin liên hệ: </h3>
+          </div>
+
+          <form #frmBankAdd='ngForm' (ngSubmit)='addBank(frmBankAdd.value)'>
+            <div class="form-group">
+              <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
+                <mat-radio-button class="example-radio-button mr-5" *ngFor="let g of gender" [value]="g">
+                  {{g}}
+                </mat-radio-button>
+              </mat-radio-group>
+              <div class="main-form mt-4">
+                <div class="form-group">
+                  <mat-form-field>
+
+                    <mat-label>Chủ thẻ tối thiểu 5 ký tự</mat-label>
+                    <input matInput type="text" ngModel name='ChuTaiKhoan' #bankChuTaiKhoan='ngModel' required
+                      minlength="5">
+
+
+                    <label>Chủ tài khoản</label>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Số tài khoản từ 12 đến 19 số</mat-label>
+                    <input matInput type="text" ngModel name='SoTaiKhoan' #bankSoTaiKhoan='ngModel' required
+                      minlength="12" maxlength="19">
+
+
+                    <label>Số tài khoản</label>
+
+                  </mat-form-field>
+
+                  
+                </div>
+                <div class="form-group">
+
+
+
+                  <mat-form-field>
+                    <mat-label>Cần chọn Ngân Hàng</mat-label>
+                    <mat-select name="NganHang_id" #bankNganHang='ngModel' ngModel class="form-control select" required>
+
+                      <mat-option value="0">--Select--</mat-option>
+                      <mat-option *ngFor='let bank of bankList' value={{bank.id}}>{{bank.TenNganHang}}
+                      </mat-option>
+                    </mat-select>
+
+                    <label>Ngân Hàng</label>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Chi nhánh tối thiểu 5 ký tự</mat-label>
+                    <input matInput type="text" ngModel name='ChiNhanhNganHang' #bankChiNhanhNganHang='ngModel' required
+                      minlength="5">
+
+                    <label>Chi Nhánh Ngân Hàng</label>
+                  </mat-form-field>
+                </div>
+              </div>
+              <button type="submit" mat-button class="btn-success btn-confirmB" [disabled]='frmBankAdd.invalid'><a data-toggle='tab' href='#bank'> </a>Xác nhận</button>
+
+            </div>
+          </form>
+
+        </div>
+        <div class="tab-pane bankTable active" id="bank">
+          <table class="table table-hover table-responsive-sm">
+            <thead class="thead-light">
+              <tr>
+                <th>Id</th>
+                <th>Số tài khoản</th>
+                <th>Chủ Tài Khoản</th>
+                <th>Ngân Hàng</th>
+                <th>Chi Nhánh</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let bankInfo of thongTin;let i=index;'>
+
+                <td>{{bankInfo.id}}</td>
+                <td>
+                  {{bankInfo.SoTaiKhoan}}
+                </td>
+                <td>
+                  {{bankInfo.ChuTaiKhoan}}
+                </td>
+                <td>
+                  {{bankInfo.NganHang}}
+                </td>
+                <td>
+                  {{bankInfo.ChiNhanhNganHang}}
+                </td>
+                <td><button mat-button class="btn-success mr-2"
+                    (click)='getBank(bankInfo.id,bankInfo.SoTaiKhoan,bankInfo.ChuTaiKhoan,bankInfo.NganHang,bankInfo.ChiNhanhNganHang)'>Cập
+                    nhật</button>
+                  <button mat-button class="btn-danger" (click)='xoa(bankInfo.id)'>Xóa</button></td>
+
+              </tr>
+
+            </tbody>
+          </table>
+          <div class="tab-second" *ngIf='flag'>
+            <div class="head">
+
+              <h3>Thông tin liên hệ: </h3>
+            </div>
+
+            <form #frmBank='ngForm' (ngSubmit)='updateBank(frmBank.value)' *ngIf='flag'>
+              <div class="form-group">
+                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
+                  <mat-radio-button class="example-radio-button mr-5" *ngFor="let g of gender" [value]="g">
+                    {{g}}
+                  </mat-radio-button>
+                </mat-radio-group>
+                <div class="main-form mt-4">
+                  <div class="form-group">
+                    <mat-form-field>
+
+
+                      <input matInput type="text" ngModel name='ChuTaiKhoan' #bankChuTaiKhoan='ngModel'
+                        placeholder="{{thongTinChiTiet.ChuTaiKhoan}}">
+                      <label>Chủ tài khoản</label>
+                    </mat-form-field>
+                    <mat-form-field>
+
+                      <input matInput type="text" ngModel name='SoTaiKhoan' #bankSoTaiKhoan='ngModel'
+                        placeholder="{{thongTinChiTiet.SoTaiKhoan}}" minlength="12" maxlength="19">
+                      <mat-error *ngIf='bankSoTaiKhoan.errors && (bankSoTaiKhoan.touched || bankSoTaiKhoan.dirty)'>Số
+                        tài khoản từ 12 đến 19 số</mat-error>
+
+                      <label>Số tài khoản</label>
+
+                    </mat-form-field>
+
+                    
+                  </div>
+                  <div class="form-group">
+                      <mat-form-field>
+                          <mat-label>{{thongTinChiTiet.NganHang}}</mat-label>
+                          <mat-select name="NganHang_id" #bankNganHang='ngModel' ngModel class="form-control select">
+    
+                            <mat-option value="0">--Select--</mat-option>
+                            <mat-option *ngFor='let bank of bankList' value={{bank.id}}>{{bank.TenNganHang}}
+                            </mat-option>
+                          </mat-select>
+                          <label>Ngân Hàng</label>
+                        </mat-form-field>
+                    <mat-form-field>
+                      <input matInput type="text" ngModel name='ChiNhanhNganHang' #bankChiNhanhNganHang='ngModel'
+                        placeholder="{{thongTinChiTiet.ChiNhanhNganHang}}">
+                      <label>Chi Nhánh Ngân Hàng</label>
+                    </mat-form-field>
+
+
+                   
+
+                  </div>
+                </div>
+                <button type="submit" mat-button class="btn-success btn-confirmB" [disabled]='frmBank.invalid'>Xác nhận</button>
+
+              </div>
+            </form>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

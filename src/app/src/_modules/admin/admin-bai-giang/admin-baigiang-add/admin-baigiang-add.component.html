@@ -1,0 +1,54 @@
+<div class="row">
+        <div class="pt-4 col-md-10 mx-auto">
+          <p class="intruc"><span class='numb'>1</span> Người dùng nhập số lượng bài giảng</p>
+          <p class="intruc"><span class='numb'>2</span> Khai báo tên bài giảng(tối thiếu 10 ký tự)</p>
+          <p class="intruc"><span class='numb'>3</span> Khái báo tóm tắt tóm tắt bài giảng (tối thiếu 10 ký tự)</p>
+          <p class="intruc"><span class='numb'>4</span> Dẫn link youtube của bài giảng</p>
+        </div>
+        
+        <form #frmSoLuong="ngForm" class="col-md-10 mx-auto" (ngSubmit)="frmAdd(frmSoLuong.value)">
+            <h3>Thêm Bài Giảng</h3>
+            <hr>
+            <h4>Nhập số lượng bài giảng cần thêm</h4>
+            <hr>
+          <input type="number" name="soLuong" #soLuong='ngModel' ngModel class="form-control">
+          <hr>
+          <button mat-button type="submit" class="btn-success">Xác Nhận</button>
+        </form>
+        <hr>
+        <form *ngIf='confirmNum' [formGroup]="BaiGiangForm" (ngSubmit)="SaveData()" class="col-md-10 mx-auto">
+
+          <div class="form-group" formArrayName="data"
+            *ngFor="let cd of BaiGiangForm.controls.data.controls;let i=index; ">
+            <div formGroupName={{i}} class="form-group">
+              <h3>Thông Tin Bài Giảng {{i+1}}</h3>
+              <input type="text" formControlName="TenBaiGiang" placeholder="Tên Bài Giảng" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && cd.controls.TenBaiGiang.errors }" required minlength="10" />
+              <div *ngIf="submitted && cd.controls.TenBaiGiang.errors" class="invalid-feedback">
+                <div *ngIf="cd.controls.TenBaiGiang.errors.required">Cần nhập tên bài giảng</div>
+                <div *ngIf="cd.controls.TenBaiGiang.errors.minlength">Cần nhập nhiều hơn 10 ký tự</div>
+              </div>
+              <hr>
+              <input type="text" formControlName="MoTa" placeholder="Mô tả" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && cd.controls.MoTa.errors }" required minlength="10" />
+              <div *ngIf="submitted && cd.controls.MoTa.errors" class="invalid-feedback">
+                <div *ngIf="cd.controls.MoTa.errors.required">Cần nhập Mô tả</div>
+                <div *ngIf="cd.controls.MoTa.errors.minlength">Cần nhập nhiều hơn 10 ký tự</div>
+              </div>
+              <hr>
+              <input type="text" formControlName="EmbededURL" placeholder="Link youtube" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && cd.controls.EmbededURL.errors }" required />
+              <div *ngIf="submitted && cd.controls.EmbededURL.errors" class="invalid-feedback">
+                <div *ngIf="cd.controls.EmbededURL.errors.required">Cần nhập Link </div>
+              </div>
+              <hr>
+            </div>
+          </div>
+          <button class="btn-success" mat-button type="submit">Xác nhận</button>
+          
+        </form>
+
+
+
+     
+</div>

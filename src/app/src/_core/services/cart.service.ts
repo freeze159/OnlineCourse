@@ -17,4 +17,9 @@ export class CartService {
     const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
     return observable;
   }
+  public LayDanhSachNganHang(){
+    const linkApi= `https://api.khoahocdt.com/api/NganHang`;
+    const observable = this.http.get(linkApi)
+    return observable;
+  }
 }

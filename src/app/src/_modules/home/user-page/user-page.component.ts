@@ -19,7 +19,6 @@ export class UserPageComponent implements OnInit {
   idUser: number;
   selectedFile: File;
   myCourse:any;
-  teachingCourse:any
   hinhAnh: string;
   ten: string;
   birth: string;
@@ -151,13 +150,7 @@ export class UserPageComponent implements OnInit {
     this.frmUpdate.control.setErrors({ 'loiNhapLaiMatKhau': false });
     return false;
   }
-  baiGiang(){
-    this.khoaHocService.LayKhoaHocGiangVien(this.idUser).subscribe((res:any) => {
-      this.teachingCourse = res.data;
-    },err => {
-      
-    })
-  }
+  
   lichSu(){
     this.userService.LichSuThanhToan().subscribe((res:any)=>{
        this.bill = res.data;

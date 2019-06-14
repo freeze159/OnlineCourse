@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~datatables.net-bs4/css/dataTables.bootstrap4.css";
 * {
     margin: 0;
     padding: 0;
@@ -132,45 +133,7 @@
       margin-left: 0px!important;
 
   }
-  /* .owl-next, .owl-prev {
-    color: #00576b !important;
-    font-size: 24px !important;
-    box-shadow: 0 2px 8px 2px rgba(20, 23, 28, 0.1);
-    width: 44px;
-    height: 44px;
-    border-radius: 50% !important;
-    -webkit-border-radius: 50% !important;
-    -moz-border-radius: 50% !important;
-    -ms-border-radius: 50% !important;
-    -o-border-radius: 50% !important;
-    position: absolute;
-    top: 35%;
-    right: -20px;
-    background-color: #fff !important;
-    z-index: 2; 
-    padding-left: 17px;
-    padding-top: 4px;
-  }
-  
-  .owl-prev {
-    color: #00576b !important;
-    font-size: 24px !important;
-    box-shadow: 0 2px 8px 2px rgba(20, 23, 28, 0.1);
-    width: 44px;
-    height: 44px;
-    border-radius: 50% !important;
-    -webkit-border-radius: 50% !important;
-    -moz-border-radius: 50% !important;
-    -ms-border-radius: 50% !important;
-    -o-border-radius: 50% !important;
-    position: absolute;
-    top: 35%;
-    left: -30px;
-    background-color: #fff !important;
-    z-index: 2; }
-    .owl-item{
-      margin-right:15px;
-    } */
+ 
     .nav{
       /* flex-wrap:nowrap!important; */
       padding-left: 15px;
@@ -195,15 +158,154 @@
 
   .slick-slide {
     transition: all ease-in-out .3s;
-    opacity: .2;
+    /* opacity: .2; */
   }
   
   .slick-active {
-    opacity: .5;
+    /* opacity: .5; */
   }
 
   .slick-current {
     opacity: 1;
+  }
+  .bg-gradient-primary {
+    background-color: #4e73df;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #4e73df), to(#224abe));
+    background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
+    background-size: cover;
+  }
+  
+  .bg-gradient-secondary {
+    background-color: #858796;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #858796), to(#60616f));
+    background-image: linear-gradient(180deg, #858796 10%, #60616f 100%);
+    background-size: cover;
+  }
+  
+  .bg-gradient-success {
+    background-color: #1cc88a;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #1cc88a), to(#13855c));
+    background-image: linear-gradient(180deg, #1cc88a 10%, #13855c 100%);
+    background-size: cover;
+  }
+  
+  .bg-gradient-info {
+    background-color: #36b9cc;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #36b9cc), to(#258391));
+    background-image: linear-gradient(180deg, #36b9cc 10%, #258391 100%);
+    background-size: cover;
+  }
+  
+  .bg-gradient-warning {
+    background-color: #f6c23e;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #f6c23e), to(#dda20a));
+    background-image: linear-gradient(180deg, #f6c23e 10%, #dda20a 100%);
+    background-size: cover;
+  }
+  
+  .bg-gradient-danger {
+    background-color: #e74a3b;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #e74a3b), to(#be2617));
+    background-image: linear-gradient(180deg, #e74a3b 10%, #be2617 100%);
+    background-size: cover;
+  }
+  
+  .bg-gradient-light {
+    background-color: #f8f9fc;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #f8f9fc), to(#c2cbe5));
+    background-image: linear-gradient(180deg, #f8f9fc 10%, #c2cbe5 100%);
+    background-size: cover;
+  }
+  
+  .bg-gradient-dark {
+    background-color: #5a5c69;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #5a5c69), to(#373840));
+    background-image: linear-gradient(180deg, #5a5c69 10%, #373840 100%);
+    background-size: cover;
+  }
+  
+  .bg-gray-100 {
+    background-color: #f8f9fc !important;
+  }
+  
+  .bg-gray-200 {
+    background-color: #eaecf4 !important;
+  }
+  
+  .bg-gray-300 {
+    background-color: #dddfeb !important;
+  }
+  
+  .bg-gray-400 {
+    background-color: #d1d3e2 !important;
+  }
+  
+  .bg-gray-500 {
+    background-color: #b7b9cc !important;
+  }
+  
+  .bg-gray-600 {
+    background-color: #858796 !important;
+  }
+  
+  .bg-gray-700 {
+    background-color: #6e707e !important;
+  }
+  
+  .bg-gray-800 {
+    background-color: #5a5c69 !important;
+  }
+  
+  .bg-gray-900 {
+    background-color: #3a3b45 !important;
+  }
+  
+  .o-hidden {
+    overflow: hidden !important;
+  }
+  
+  .text-xs {
+    font-size: .7rem;
+  }
+  
+  .text-lg {
+    font-size: 1.2rem;
+  }
+  
+  .text-gray-100 {
+    color: #f8f9fc !important;
+  }
+  
+  .text-gray-200 {
+    color: #eaecf4 !important;
+  }
+  
+  .text-gray-300 {
+    color: #dddfeb !important;
+  }
+  
+  .text-gray-400 {
+    color: #d1d3e2 !important;
+  }
+  
+  .text-gray-500 {
+    color: #b7b9cc !important;
+  }
+  
+  .text-gray-600 {
+    color: #858796 !important;
+  }
+  
+  .text-gray-700 {
+    color: #6e707e !important;
+  }
+  
+  .text-gray-800 {
+    color: #5a5c69 !important;
+  }
+  
+  .text-gray-900 {
+    color: #3a3b45 !important;
   }
 html, body {
    height: 100%!important;
@@ -218,6 +320,9 @@ html, body {
   -webkit-tap-highlight-color: transparent;
   border-radius: 50%;
 }
+.mat-form-field-wrapper{
+  width: 300px;
+}
 .mat-step-header:focus{
   background: #7cf5e1;
 }
@@ -225,3 +330,35 @@ html, body {
   pointer-events: none !important;
 }
 /* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+@media only screen and (max-width:768px){
+  
+  .mat-form-field-wrapper{
+      width: 150px!important;
+  }
+
+}
+/* Scroller */
+.scroll-to-top {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  display: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  text-align: center;
+  color: #fff;
+  background: rgba(90, 92, 105, 0.5);
+  line-height: 46px;
+}
+
+.scroll-to-top:focus, .scroll-to-top:hover {
+  color: white;
+}
+
+.scroll-to-top:hover {
+  background: #5a5c69;
+}
+
+.scroll-to-top i {
+  font-weight: 800;
+}

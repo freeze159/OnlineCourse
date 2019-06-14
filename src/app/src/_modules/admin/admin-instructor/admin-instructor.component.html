@@ -1,0 +1,92 @@
+<div class="row">
+    <form class="form" #frmUpdate='ngForm' (ngSubmit)='update(frmUpdate.value)' class="col-md-10 mx-auto"
+    enctype="multipart/form-data" *ngIf='flag'>
+    <h3 class="text-center">Cập nhật Giảng Viên</h3>
+    <div class="form-group">
+      <div class="col-xs-6">
+        <label>
+          <h4>Tên Giảng Viên</h4>
+        </label>
+        <input type="text" class="form-control" name='TenGiangVien' #name='ngModel' value="{{ten}}" ngModel required
+          title="enter your first name if any.">
+      </div>
+    </div>
+
+    <div class="form-group">
+
+      <div class="col-xs-6">
+        <label>
+          <h4>Tóm tắt</h4>
+        </label>
+        <input type="textarea" class="form-control" name="TomTat" #short='ngModel' value="{{tomTat}}" ngModel required
+          title="Nhập Tóm Tắt">
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <div class="col-xs-12">
+        <br>
+        <button class="btn btn-lg btn-success" type="submit"><i class="fa fa-lock mr-2 ml-2"></i>Cập Nhật
+          Thông Tin</button>
+
+      </div>
+    </div>
+  </form>
+    <table class="table table-bordered table-responsive-sm table-striped "  id="dataTable" width="100%" cellspacing="0">
+        <thead class="table-primary">
+          <tr>
+            <th>ID</th>
+            <th>ID_User</th>
+            <th>Tên GV</th>
+            <th>SoLuongHocVien</th>
+            <th>SoLuongKhoaHoc</th>
+            <th>Thao Tác</th>
+      
+          </tr>
+        </thead>
+        
+        <tbody>
+          <tr *ngFor='let user of danhSachGiangVien'>
+            <td>{{user.id}}</td>
+            <td>{{user.user_id}}</td>
+            <td>{{user.TenGiangVien}}</td>
+            <td>{{user.SoLuongHocVien}}</td>
+            <td>{{user.SoLuongKhoaHoc}}</td>
+            <td><button matButton  class="btn btn-primary mr-3 " (click)='modal(user.id)' data-toggle="modal" data-target="#updateModal">Xem Chi Tiết</button>
+              <button  matButton (click)='getDataUpdate(user.id)' class="btn mr-3 btn-info">Cập nhật</button>
+              <button  matButton (click)='delUser(user.user_id)' class="btn btn-danger">Xóa</button></td>
+      
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+
+
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content ">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Thông tin Giảng Viên</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body d-flex">
+          <div style="height: 300px;width: 200px;" class=" mr-3">
+            <img src={{hinhAnh}} width="200" height="300" >
+          </div>
+          <div class="data">
+            <p>Họ Tên: {{ten}}</p>
+            <p>Tóm tắt: {{tomTat}}</p>
+            <p>Số lượng học viên: {{SoLuongHocVien}}</p>
+            <p>Số lượng khóa học: {{SoLuongKhoaHoc}}</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>

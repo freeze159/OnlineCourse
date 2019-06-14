@@ -13,9 +13,14 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule    } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { ModCreateLectureComponent } from './mod-create-lecture/mod-create-lecture.component';
+import { UpdateComponent } from './mod-create-lecture/update/update.component';
 
+
+import {MatRadioModule} from '@angular/material/radio';
+import { ModBankingComponent } from './mod-banking/mod-banking.component'; 
 const modRoutes: Routes = [
   {
     path: '', component: ModTemplateComponent, children: [
@@ -25,7 +30,10 @@ const modRoutes: Routes = [
       { path: 'mycourse', component: ModCourseComponent },
       { path: 'history', component: ModHistoryComponent },
       { path: 'create', component: ModCreateComponent },
-      { path: 'home/create', component: ModCreateComponent }
+      { path: 'bank', component: ModBankingComponent },
+      { path: 'home/create', component: ModCreateComponent },
+      { path: 'lecture/:id/:mangKhoaHoc', component: ModCreateLectureComponent },
+      { path: 'lecture/:id/:mangKhoaHoc/update', component: UpdateComponent }
     ]
   },
 
@@ -34,9 +42,9 @@ const modRoutes: Routes = [
 
 ]
 @NgModule({
-  declarations: [ModPageComponent, ModTemplateComponent, ModHeaderComponent, ModDetailComponent, ModCourseComponent, ModHistoryComponent, ModCreateComponent],
+  declarations: [ModPageComponent, ModTemplateComponent, ModHeaderComponent, ModDetailComponent, ModCourseComponent, ModHistoryComponent, ModCreateComponent, ModCreateLectureComponent, UpdateComponent, ModBankingComponent],
   imports: [
-    CommonModule, RouterModule.forChild(modRoutes), NgxPaginationModule, MatInputModule, MatFormFieldModule, MatStepperModule, FormsModule, MatButtonModule, MatSelectModule
+    CommonModule, RouterModule.forChild(modRoutes), NgxPaginationModule, MatInputModule, MatFormFieldModule, MatStepperModule, FormsModule,ReactiveFormsModule, MatButtonModule, MatSelectModule,MatRadioModule
   ]
 })
 

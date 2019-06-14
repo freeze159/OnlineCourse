@@ -24,6 +24,10 @@ export class KhoaHocService {
     let response: any = this.http.get(`https://api.khoahocdt.com/api/MangKhoaHoc/${idMangKH}/KhoaHoc`);
     return response;
   }
+  public LayChiTietMangKhoaHoc(idTheLoai:number,idMangKH: any): Observable<any[]> {
+    let response: any = this.http.get(`https://api.khoahocdt.com/api/TheLoaiKhoaHoc/${idTheLoai}/MangKhoaHoc/${idMangKH}`);
+    return response;
+  }
   public LayChiTietTheLoai(idTheloai):Observable<any>{
     const linkApi: string = `https://api.khoahocdt.com/api/TheLoaiKhoaHoc/${idTheloai}`;
     let response = this.http.get(linkApi);
@@ -87,6 +91,150 @@ export class KhoaHocService {
       // Cho biết định dạng dữ liệu truyền đi
     // header.append('Content-Type','application/x-www-form-urlencoded')
     const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public ThemBaiGiang(idKhoaHoc:number,thongTin:any){
+    const linkApi= `https://api.khoahocdt.com/api/KhoaHoc/${idKhoaHoc}/BaiGiang`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.post(linkApi,thongTin,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public UpdateBaiGiang(idKhoaHoc:number,idBaiGiang:number,body:any){
+    const linkApi= `https://api.khoahocdt.com/api/KhoaHoc/${idKhoaHoc}/BaiGiang/${idBaiGiang}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.put(linkApi,body,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public XoaBaiGiang(idKhoaHoc:number,idBaiGiang:number){
+    const linkApi= `https://api.khoahocdt.com/api/KhoaHoc/${idKhoaHoc}/BaiGiang/${idBaiGiang}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.delete(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public UpdateKhoaHoc(idKhoaHoc:number,idMangKhoaHoc:number,body:any){
+    const linkApi= `https://api.khoahocdt.com/api/MangKhoaHoc/${idMangKhoaHoc}/KhoaHoc/${idKhoaHoc}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.put(linkApi,body,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public XoaKhoaHoc(idKhoaHoc:number,idMangKH:number){
+    const linkApi= `https://api.khoahocdt.com/api/MangKhoaHoc/${idMangKH}/KhoaHoc/${idKhoaHoc}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.delete(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  //admin The Loai
+  public UpdateTheLoai(idTheLoai,thongTin){
+    const linkApi= `https://api.khoahocdt.com/api/TheLoaiKhoaHoc/${idTheLoai}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.put(linkApi,thongTin,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public XoaTheLoai(idTheLoai){
+    const linkApi= `https://khoahocdt.com/api/TheLoaiKhoaHoc/${idTheLoai}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.delete(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public ThemTheLoai(body:any){
+    const linkApi= `https://api.khoahocdt.com/api/TheLoaiKhoaHoc`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.post(linkApi,body,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  //admin MangKhoaHoc
+  public UpdateMangKhoaHoc(idTheLoai:number,idMang:number,thongTin:any){
+    const linkApi= `https://api.khoahocdt.com/api/TheLoaiKhoaHoc/${idTheLoai}/MangKhoaHoc/${idMang}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.put(linkApi,thongTin,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public XoaMangKhoaHoc(idTheLoai:number,idMang:number){
+    const linkApi= `https://api.khoahocdt.com/api/TheLoaiKhoaHoc/${idTheLoai}/MangKhoaHoc/${idMang}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.delete(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public ThemMangKhoaHoc(idTheLoai:number,body:any){
+    const linkApi= `https://api.khoahocdt.com/api/TheLoaiKhoaHoc/${idTheLoai}/MangKhoaHoc`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.post(linkApi,body,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  // Admin Code
+  public LayDanhSachCode(){
+    const linkApi= `https://api.khoahocdt.com/api/CodeKhoaHoc`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public XoaCode(idCode:number){
+    const linkApi= `https://api.khoahocdt.com/api/CodeKhoaHoc/${idCode}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.delete(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  //Duyet Khoa Học
+  public LayKhoaHocChuaDuyet(){
+    const linkApi= `https://api.khoahocdt.com/api/Admin/DuyetKhoaHoc`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public DuyetKhoaHoc(body:any){
+    const linkApi= `https://api.khoahocdt.com/api/Admin/DuyetKhoaHoc`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.post(linkApi,body,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  // Comment
+  public LayDanhSachComment(idKhoaHoc){
+    const linkApi= `https://api.khoahocdt.com/api/KhoaHoc/${idKhoaHoc}/Comment`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public ThemComment(idKhoaHoc,body){
+    const linkApi= `https://api.khoahocdt.com/api/KhoaHoc/${idKhoaHoc}/Comment`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.post(linkApi,body,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public CapNhatComment(idKhoaHoc,idComment,body){
+    const linkApi= `https://api.khoahocdt.com/api/KhoaHoc/${idKhoaHoc}/Comment/${idComment}?`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.put(linkApi,body,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public XoaComment(idKhoaHoc,idComment){
+    const linkApi= `https://api.khoahocdt.com/api/KhoaHoc/${idKhoaHoc}/Comment/${idComment}?`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.delete(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  // Rate
+  public LayDanhSachDanhGia(idKhoaHoc){
+    const linkApi= `https://api.khoahocdt.com/api/KhoaHoc/${idKhoaHoc}/DanhGia`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public ThemDanhGia(idKhoaHoc,body){
+    const linkApi= `https://api.khoahocdt.com/api/KhoaHoc/${idKhoaHoc}/DanhGia`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.post(linkApi,body,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public CapNhatDanhGia(idKhoaHoc,idDanhGia,body){
+    const linkApi= `https://api.khoahocdt.com/api/KhoaHoc/${idKhoaHoc}/DanhGia/${idDanhGia}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.put(linkApi,body,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public XoaDanhGia(idKhoaHoc,idDanhGia){
+    const linkApi= `https://api.khoahocdt.com/api/KhoaHoc/${idKhoaHoc}/DanhGia/${idDanhGia}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.delete(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
     return observable;
   }
 }
