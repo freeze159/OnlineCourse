@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { KhoaHocService } from 'src/app/src/_core/services/khoa-hoc.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 export class ModCreateLectureComponent implements OnInit {
   BaiGiangForm: FormGroup
   name: string;
-  constructor(private atv: ActivatedRoute, private khoahocS: KhoaHocService, private fb: FormBuilder) { }
+  constructor(private atv: ActivatedRoute, private khoahocS: KhoaHocService, private fb: FormBuilder,private route:Router) { }
   courseId: number;
   short: string;
   p = 1;
@@ -35,6 +35,7 @@ export class ModCreateLectureComponent implements OnInit {
       this.courseId = res.id;
       this.courseGroupId = res.mangKhoaHoc;
       this.khoahocS.LayChiTietKhoaHoc(this.courseGroupId, this.courseId).subscribe(res => {
+        console.log(res)
         this.hinhAnh = res.data.HinhAnh;
         this.name = res.data.TenKH;
         this.short = res.data.TomTat;
@@ -83,17 +84,17 @@ export class ModCreateLectureComponent implements OnInit {
     return this.fb.group({
       TenBaiGiang: [''],
       MoTa: [''],
-      EmbededURL: ['']
+      EmbededURL: [''],
+      HocThu:['0']
     })
   }
   SaveData() {
     this.submitted = true;
-
+    console.log(this.BaiGiangForm.value)
     // stop here if form is invalid
     if (this.BaiGiangForm.invalid) {
       Swal.fire('Thất bại', 'Chưa nhập đủ thông tin', 'error');
       return;
-
     }
     else {
       for (let item of this.BaiGiangForm.value.data) {
@@ -118,13 +119,15 @@ export class ModCreateLectureComponent implements OnInit {
         }
 
       }
-      console.log(this.BaiGiangForm.value)
       if (this.failInput) {
         this.danhSachThem = this.BaiGiangForm.value;
         this.khoahocS.ThemBaiGiang(this.courseId, this.danhSachThem).subscribe((res: any) => {
           if (typeof res == 'object') {
             Swal.fire('Thành công', 'Thêm Bài Giảng thành công', 'success')
             this.BaiGiangForm.reset();
+          }
+          else{
+            Swal.fire('Lỗi',res,'error')
           }
         })
       }
@@ -202,9 +205,12 @@ export class ModCreateLectureComponent implements OnInit {
         thongTin.GiamGia = 0
       }
       this.khoahocS.UpdateKhoaHoc(this.courseId, this.courseGroupId, thongTin).subscribe((res: any) => {
-        Swal.fire('Thành công', 'Cập nhật khóa học thành công', 'success');
+        Swal.fire('Thành công', 'Cập nhật khóa học thành công', 'success').then(res =>{
+          this.route.navigateByUrl(`/instructor/lecture/${this.courseId}/${thongTin.MangKH_id}`);
+
+        });
       }, err => {
-        Swal.fire('Thất bại', 'Cập nhật khóa học thất bại', 'error');
+        Swal.fire('Thất bại', err, 'error');
       })
     })
   }

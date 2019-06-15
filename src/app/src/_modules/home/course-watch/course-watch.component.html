@@ -2,22 +2,42 @@
   <div id="mySidenav" class="sidenav">
     <div id="accordion">
       <div class="card">
-        <form>
-          <div class="card-header">
-            <a class="card-link" data-toggle="collapse" href='#baiGiang'>
-
-              Danh Sách Bài Giảng
-            </a>
+        <div class="card-header">
+          <a class="card-link" data-toggle="collapse" href='#baiGiang'>
+            Danh Sách Bài Giảng
+          </a>
+        </div>
+        <div id="baiGiang" class="collapse show" data-parent="#accordion"
+          *ngFor='let video of baiGiangList;let i=index;'>
+          <div class="card-body">
+            <a (click)='changeLecture(video.EmbededURL)' [attr.data-set]='video.EmbededURL' #link> <i
+                class="fa fa-play-circle mr-2"></i>Bài {{i+1}}: {{video.TenBaiGiang}}</a>
           </div>
-          <div id="baiGiang" class="collapse show" data-parent="#accordion"
-            *ngFor='let video of baiGiangList;let i=index;'>
-            <div class="card-body">
-              <a (click)='changeLecture(video.EmbededURL)' [attr.data-set]='video.EmbededURL' #link> <i
-                  class="fa fa-play-circle mr-2"></i>Bài {{i+1}}: {{video.TenBaiGiang}}</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <a class="card-link" data-toggle="collapse" href='#cauHoi'>
+            Danh Sách Câu hỏi
+          </a>
+        </div>
+        <div id="cauHoi" class="collapse " data-parent="#accordion" >
+          <div class="card-body">
+            <div id="accordionCauHoi">
+              
+                <a data-toggle="collapse" href='#baiGiangHello'>
+                  Câu Hỏi Cho Bài Giảng 
+                </a>              
+                <div id="baiGiangHello" class="collapse " data-parent="#accordionCauHoi">
+                  <div class="card-body">
+                    123123
+                  </div>
+                </div>
+              
+
             </div>
           </div>
-        </form>
-
+        </div>
       </div>
     </div>
   </div>
@@ -33,8 +53,7 @@
         </div>
 
         <div class="embed-responsive embed-responsive-16by9">
-          <iframe class="embed-responsive-item" src='' allowfullscreen
-            #vid></iframe>
+          <iframe class="embed-responsive-item" src='' allowfullscreen #vid></iframe>
         </div>
 
 

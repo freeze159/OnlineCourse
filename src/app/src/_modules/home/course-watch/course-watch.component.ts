@@ -13,9 +13,9 @@ export class CourseWatchComponent implements OnInit {
   @ViewChild('link') links:ElementRef
   
   idKhoaHoc:any
-  baiGiangList:any=[
-
-  ]
+  baiGiangList:any
+  danhSachCauHoi:any;
+  
   videoMoDau:string;
   baiGiangDauTien:any;
   constructor(private khoaHocService:KhoaHocService,private atv:ActivatedRoute) { }
@@ -27,11 +27,12 @@ export class CourseWatchComponent implements OnInit {
       
     })
     this.khoaHocService.LayDanhSachBaiGiang(this.idKhoaHoc).subscribe((res:any)=>{
+      console.log(res)
       this.baiGiangList=res;
       this.baiGiangDauTien=this.baiGiangList[0];
-      console.log(this.baiGiangDauTien);
       this.videos.nativeElement.src='https://'+this.baiGiangDauTien.EmbededURL;
     })
+    // this.khoaHocService.LayDanhSachCauHoi()
     //icon
     document.getElementById('openNav').innerHTML='<i class="fa fa-bars">'
   }
@@ -76,7 +77,7 @@ export class CourseWatchComponent implements OnInit {
       document.getElementById("mySidenav").style.position = "absolute";
 
       document.getElementById("mySidenav").style.display = "none";
-      document.getElementById("mySidenav").style.transition='1s';
+      document.getElementById("mySidenav").style.transition='0s';
 
     }
   

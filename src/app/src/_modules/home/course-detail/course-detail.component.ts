@@ -13,7 +13,7 @@ import 'magnific-popup';
   styleUrls: ['./course-detail.component.css']
 })
 export class CourseDetailComponent implements OnInit {
-  constructor(private route:Router, private atvRoute: ActivatedRoute, private khoaHocService: KhoaHocService, private cartService: CartService, private userS: UserService) { }
+  constructor(private route: Router, private atvRoute: ActivatedRoute, private khoaHocService: KhoaHocService, private cartService: CartService, private userS: UserService) { }
   @Input() cart: any = {}
   khoaHocId: any;
   mangKHId: any;
@@ -23,25 +23,39 @@ export class CourseDetailComponent implements OnInit {
   giangVien: string;
   thanhTien: string;
   danhGia: Array<any> = [];
-  danhSachComment: any;
-  baiGiangList:any
-  flag =false;
+  danhSachComment: Array<any>;
+  danhSachRate: Array<any> = [];
+  baiGiangList: any
+  flag = false;
+  flagNull = false;
+  flagComment: Array<boolean>;
   ngOnInit() {
     this.atvRoute.params.subscribe(data => {
       this.khoaHocId = (data.id);
       this.mangKHId = (data.mangKHid);
       const course = JSON.parse(localStorage.getItem('ownCourse'));
-      let ownC = course.find(x =>x.id ==this.khoaHocId);
-      if(ownC){
-        this.flag =true;
+      if (course) {
+        let ownC = course.find(x => x.id == this.khoaHocId);
+        if (ownC) {
+          this.flag = true;
+        }
       }
-      this.khoaHocService.LayDanhSachBaiGiang(this.khoaHocId).subscribe((res:any)=>{
-        console.log(res)
-        this.baiGiangList= res;
+
+      this.khoaHocService.LayDanhSachBaiGiangPublic(this.khoaHocId).subscribe((res: any) => {
+        this.baiGiangList = res.data;
       })
     })
-    
+
     this.khoaHocService.LayChiTietKhoaHoc(this.mangKHId, this.khoaHocId).subscribe((res: any) => {
+      //Cắt chuỗi nội dung
+      let wholeString: string = res.data.TomTat;
+      let index: number = wholeString.indexOf('<h2 style="text-align: center;"><strong>KẾT QUẢ ĐẠT ĐƯỢC</strong></h2>'
+      );
+      let stringKq = wholeString.slice(index, wholeString.length);
+      let stringMain = wholeString.slice(0, index);
+      document.getElementById('mainNoiDung').innerHTML = stringMain;
+      document.getElementById('ketquadatduoc').innerHTML = stringKq;
+      //    Lưu data chi tiét
       this.thongTinKH = res.data;
       this.tenKh = this.thongTinKH.TenKH;
       this.hinhAnh = this.thongTinKH.HinhAnh;
@@ -54,7 +68,7 @@ export class CourseDetailComponent implements OnInit {
       document.getElementById("overlay").style.backgroundPosition = 'center';
       document.getElementById('course-comment-img').style.background = `url(${this.hinhAnh})`;
       document.getElementById("course-comment-img").style.backgroundPosition = 'center';
-    },err => {
+    }, err => {
       this.route.navigateByUrl('/notfound');
     })
 
@@ -72,84 +86,143 @@ export class CourseDetailComponent implements OnInit {
     this.cartService.cart.emit(addedCourse);
     // console.log(addedCourse);
   }
+
+  checkCo(id) {
+    let userLogin = JSON.parse(localStorage.getItem('userLogin'));
+    if (userLogin) {
+      let userId = userLogin.data.id;
+      if (userId == id) {
+        return true;
+      }
+      else return false;
+    }
+    else return false;
+
+  }
   loadComment() {
     this.khoaHocService.LayDanhSachComment(this.khoaHocId).subscribe((res: any) => {
+      if (res.data.length == 0) {
+        this.flagNull = true;
+      }
       this.danhSachComment = res.data;
+
+      console.log(this.danhSachComment)
+    })
+
+
+  }
+  loadRate() {
+    this.khoaHocService.LayDanhSachDanhGia(this.khoaHocId).subscribe((res: any) => {
+      for (let danhgia of res.data) {
+        const diem = JSON.parse(danhgia.Diem);
+        let newDanhGia: Array<number> = Array(diem).fill(5);
+        danhgia.Diem = newDanhGia;
+        this.danhSachRate.push(danhgia);
+
+      }
+
+    })
+  }
+  xoaRate(id) {
+    Swal.fire({
+      title: 'Bạn chắc chứ',
+      text: "Không thể khôi phục sau khi xóa",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+
+      if (result.value) {
+        this.khoaHocService.XoaComment(this.khoaHocId, id).subscribe(res => {
+          this.loadComment()
+        })
+        Swal.fire(
+          'Đã xóa!',
+          'Bình luận của bạn đã được xóa',
+          'success'
+        )
+      }
     })
 
   }
   comment(thongtin) {
-    if (thongtin.sao != '') {
-      let tieuDe = ''
-      let rate = thongtin.sao;
-      switch (rate) {
-        case '1': {
-          tieuDe = 'Không hài lòng';
-          break;
-        }
-        case '2': {
-          tieuDe = 'Tạm được';
-          break;
-        }
-        case '3': {;
-          tieuDe = 'Bình thường';
-          break;
-        }
-        case '4': {
-          tieuDe = 'Hài lòng';
-          break;
-        }
-        case '5': {
-          tieuDe = 'Rất hài lòng';
-          break;
-        }
-      }
-      let thongTinDanhGia = {
-        Diem: rate,
-        TieuDe: tieuDe,
-        NoiDung: thongtin.NoiDung
-      }
-      this.khoaHocService.ThemDanhGia(this.khoaHocId,thongTinDanhGia).subscribe((res:any)=>{
-        if(typeof res =='object'){
-          alert('Cảm ơn bạn đã đánh giá');
-        }
-        else{
-          alert('Bạn cần sở hữu khóa học để đánh giá')
-        }
-      })
-    }
-
-
-
+    this.flagNull = false;
     let thongTinComment = {
       NoiDung: thongtin.NoiDung
     }
-    this.khoaHocService.ThemComment(this.khoaHocId,thongTinComment).subscribe(res=>{
-      Swal.fire('Thành công','Thêm bình luận thành công','success')
-      this.khoaHocService.LayDanhSachComment(this.khoaHocId).subscribe((res: any) => {
-        this.danhSachComment = res.data;
+    this.khoaHocService.ThemComment(this.khoaHocId, thongTinComment).subscribe(res => {
+      Swal.fire('Thành công', 'Thêm bình luận thành công', 'success').then(res => {
+        this.loadComment();
+      })
+
+    }, err => {
+      Swal.fire({
+        title: 'Bạn chưa đăng nhập',
+        text: "Đăng nhập ngay!!!",
+        type: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Đăng nhập'
+      }).then((result) => {
+        if (result.value) {
+          this.route.navigateByUrl('/login');
+        }
       })
     })
 
   }
-  loadBaiGiang(){
-    // this.khoaHocService.LayDanhSachBaiGiang(this.khoaHocId).subscribe((res:any)=>{
-    //   console.log(res)
-    //   this.baiGiangList= res.data;
-    // })
+  rate(thongtin) {
+    if (thongtin.sao != '') {
+      let rate = thongtin.sao;
+      let thongTinDanhGia = {
+        Diem: rate,
+        TieuDe: thongtin.TieuDe,
+        NoiDung: thongtin.NoiDung
+      }
+      this.khoaHocService.ThemDanhGia(this.khoaHocId, thongTinDanhGia).subscribe((res: any) => {
+        if (typeof res == 'object') {
+          Swal.fire('Thành công','Cảm ơn bạn đã đánh giá','success');
+        }
+        else {
+          Swal.fire('Thông báo','Bạn cần sở hữu khóa học để đánh giá','warning');
+        }
+      }, err => {
+        Swal.fire({
+          title: 'Bạn chưa đăng nhập',
+          text: "Đăng nhập ngay!!!",
+          type: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Đăng nhập'
+        }).then((result) => {
+          if (result.value) {
+            this.route.navigateByUrl('/login');
+          }
+        })
+      })
+    }
+    else {
+      Swal.fire('Thông báo','Bạn chưa chọn điểm','warning');
+    }
+  }
+  loadBaiGiang() {
     $('.play-video').magnificPopup({
       type: 'iframe'
-  });
-  $.extend(true, $.magnificPopup.defaults, {
+    });
+    $.extend(true, $.magnificPopup.defaults, {
       iframe: {
-          patterns: {
-              youtube: {
-                  index: 'youtube.com',
-                  id: 'embed/',
-                  src: 'https://www.youtube.com/embed/%id%?autoplay=1'
-              }
+        patterns: {
+          youtube: {
+            index: 'youtube.com',
+            id: 'embed/',
+            src: 'https://www.youtube.com/embed/%id%?autoplay=1'
           }
+        }
       }
-  });
+    });
   }
 }

@@ -1,124 +1,124 @@
 <section class="container-fluid">
-  <div class="row">
-    <div class="col-sm-12 col-md-3 left-col">
-      <div class="text-center">
-        <img src={{hinhAnh}} class="avatar img-circle img-thumbnail" alt="avatar">
-
-
-      </div><br>
-      <!--left col-->
-      <div class="navi-box">
-        <ul class="nav flex-column">
-          <li><a data-toggle="tab" href="#home" class="active">Thông Tin Giảng Viên</a></li>
-          <li><a data-toggle="tab" href="#course" (click)='choDuyet()'> Khóa học chờ duyệt</a></li>
-          
-
-        </ul>
-      </div>
-
-
-
-
-    </div>
-    <!--/col-3-->
-    <div class="col-sm-12 col-md-9 course-col">
-      <div class="tab-content">
-        <div class="tab-pane active" id="home">
-          <h3>Thông Tin Giảng Viên</h3>
-          <hr>
-          <form class="form" #frmUpdate='ngForm' (ngSubmit)='update(frmUpdate.value)' enctype="multipart/form-data">
-
-            <div class="form-group">
-              <div class="col-xs-6">
-                <label>
-                  <h4>Họ và Tên</h4>
-                </label>
-                <input type="text" class="form-control" name='TenGiangVien' #TenGiangVien='ngModel' ngModel
-                  placeholder={{tenGiangVien}} required minlength="5" maxlength="100">
-
-              </div>
-            </div>
-
-            <div class="form-group">
-
-              <div class="col-xs-6">
-                <label>
-                  <h4>Tóm tắt giảng viên</h4>
-                </label>
-                <input type="text" class="form-control" name='TomTat' #TomTat='ngModel' ngModel required
-                  placeholder='{{tomTat}}'>
-
-              </div>
-            </div>
-            <div class="form-group">
-
-              <div class="col-xs-6">
-                <label>
-                  <h4>Số lượng học viên</h4>
-                </label>
-                <input type="text" class="form-control" placeholder='{{soLuongHocVien}}' title="Số lượng học viên" disabled>
-              </div>
-            </div>
-            <div class="form-group">
-
-              <div class="col-xs-6">
-                <label>
-                  <h4>Số lượng khóa học</h4>
-                </label>
-                <input type="text" class="form-control" placeholder='{{soLuongKhoaHoc}}' title="Số lượng khóa học" disabled>
-              </div>
-            </div>
-
-
-
-            <div class="form-group">
-              <div class="col-xs-12">
-                <br>
-                <button class="btn btn-lg btn-success" type="submit"><i class="fa fa-lock mr-2"></i>Cập Nhật
-                  Thông Tin</button>
-
-              </div>
-            </div>
-          </form>
-
-          <hr>
-
+    <div class="row">
+      <div class="col-sm-12 col-md-3 left-col">
+        <div class="text-center">
+          <img src={{hinhAnh}} class="avatar img-circle img-thumbnail" alt="avatar">
+  
+  
+        </div><br>
+        <!--left col-->
+        <div class="navi-box">
+          <ul class="nav flex-column">
+            <li><a data-toggle="tab" href="#home" class="active">Thông Tin Giảng Viên</a></li>
+            <li><a data-toggle="tab" href="#course" (click)='choDuyet()'> Khóa học chờ duyệt</a></li>
+            
+  
+          </ul>
         </div>
-        <!--/tab-pane-->
-        <div class="tab-pane " id="course">
-          <div class="row">
-            <h2 class="col-sm-12">Khóa Học Của tôi</h2>
-            <div class="card col-sm-3"
-              *ngFor="let myC of myCourse | paginate: { itemsPerPage: 6, currentPage: p,id:'foo'}">
-              <img class="card-img-top" src={{myC.HinhAnh}} alt="kh1" height="100px" />
-              <div class="card-body">
-                <div class="card-body_content">
-                  <h4 class="card-title">{{myC.TenKH}}</h4>
-                  <p class="card-text">Giảng Viên: {{myC.GiangVien}}</p>
-                  <div class="price text-center">
-
-                    <p class="mb-0">Giá: {{myC.GiaTien | number:'.0'}}<sup>đ</sup>
-                    </p>
-                    <a class="btn btn-info" routerLink='../lecture/{{myC.id}}/{{myC.MangKH_id}}'>Quản lý khóa học</a>
-
+  
+  
+  
+  
+      </div>
+      <!--/col-3-->
+      <div class="col-sm-12 col-md-9 course-col">
+        <div class="tab-content">
+          <div class="tab-pane active" id="home">
+            <h3>Thông Tin Giảng Viên</h3>
+            <hr>
+            <form class="form" #frmUpdate='ngForm' (ngSubmit)='update(frmUpdate.value)' enctype="multipart/form-data">
+  
+              <div class="form-group">
+                <div class="col-xs-6">
+                  <label>
+                    <h4>Họ và Tên</h4>
+                  </label>
+                  <input type="text" class="form-control" name='TenGiangVien' #TenGiangVien='ngModel' ngModel
+                    placeholder={{tenGiangVien}} required minlength="5" maxlength="100">
+  
+                </div>
+              </div>
+  
+              <div class="form-group">
+  
+                <div class="col-xs-6">
+                  <label>
+                    <h4>Tóm tắt giảng viên</h4>
+                  </label>
+                  <input type="text" class="form-control" name='TomTat' #TomTat='ngModel' ngModel required
+                    placeholder='{{tomTat}}'>
+  
+                </div>
+              </div>
+              <div class="form-group">
+  
+                <div class="col-xs-6">
+                  <label>
+                    <h4>Số lượng học viên</h4>
+                  </label>
+                  <input type="text" class="form-control" placeholder='{{soLuongHocVien}}' title="Số lượng học viên" disabled>
+                </div>
+              </div>
+              <div class="form-group">
+  
+                <div class="col-xs-6">
+                  <label>
+                    <h4>Số lượng khóa học</h4>
+                  </label>
+                  <input type="text" class="form-control" placeholder='{{soLuongKhoaHoc}}' title="Số lượng khóa học" disabled>
+                </div>
+              </div>
+  
+  
+  
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <br>
+                  <button class="btn btn-lg btn-success" type="submit"><i class="fa fa-lock mr-2"></i>Cập Nhật
+                    Thông Tin</button>
+  
+                </div>
+              </div>
+            </form>
+  
+            <hr>
+  
+          </div>
+          <!--/tab-pane-->
+          <div class="tab-pane " id="course">
+            <div class="row">
+              <h2 class="col-sm-12">Khóa Học Của tôi</h2>
+              <div class="card col-sm-3"
+                *ngFor="let myC of myCourse | paginate: { itemsPerPage: 6, currentPage: p,id:'foo'}">
+                <img class="card-img-top" src={{myC.HinhAnh}} alt="kh1" height="100px" />
+                <div class="card-body">
+                  <div class="card-body_content">
+                    <h4 class="card-title">{{myC.TenKH}}</h4>
+                    <p class="card-text">Giảng Viên: {{myC.GiangVien}}</p>
+                    <div class="price text-center">
+  
+                      <p class="mb-0">Giá: {{myC.GiaTien | number:'.0'}}<sup>đ</sup>
+                      </p>
+                      <a class="btn btn-info" routerLink='../lecture/{{myC.id}}/{{myC.MangKH_id}}'>Quản lý khóa học</a>
+  
+                    </div>
                   </div>
                 </div>
               </div>
+  
+              <hr>
+  
             </div>
-
-            <hr>
-
+            <div>
+              <pagination-controls id="foo" autoHide="true" responsive="true" previousLabel="Trang trước"
+                nextLabel="Trang Kế" (pageChange)="p = $event">
+              </pagination-controls>
+            </div>
           </div>
-          <div>
-            <pagination-controls id="foo" autoHide="true" responsive="true" previousLabel="Trang trước"
-              nextLabel="Trang Kế" (pageChange)="p = $event">
-            </pagination-controls>
-          </div>
+          
         </div>
         
+        <!--/tab-pane-->
       </div>
-      
-      <!--/tab-pane-->
     </div>
-  </div>
-</section>
+  </section>

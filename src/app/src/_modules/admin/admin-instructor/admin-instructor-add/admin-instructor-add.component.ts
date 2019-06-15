@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/src/_core/services/user.service';
 
 @Component({
   selector: 'app-admin-instructor-add',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminInstructorAddComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userS:UserService) { }
 
   ngOnInit() {
+    
   }
 
 }

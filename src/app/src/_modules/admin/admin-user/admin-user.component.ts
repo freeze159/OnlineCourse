@@ -44,10 +44,8 @@ export class AdminUserComponent implements OnInit {
     })
   }
   getDataUpdate(id) {
-    this.flag = true;
     this.userS.XemChiTietUser(id).subscribe((res: any) => {
-      let checkbox: any = document.getElementById('CheckPassword');
-      checkbox.checked = false;
+
       this.thongTinUser = res.data;
       this.hinhAnh = this.thongTinUser.HinhAnh;
       this.ten = this.thongTinUser.name;
@@ -56,10 +54,15 @@ export class AdminUserComponent implements OnInit {
       this.email = this.thongTinUser.email;
       this.idUser = id;
     })
+    this.flag = true;
+    let checkbox: any = document.getElementById('CheckPassword');
+    checkbox.checked = false;
+    
+    
   }
   modal(id) {
     this.userS.XemChiTietUser(id).subscribe((res: any) => {
-      
+
       this.thongTinUser = res.data;
       this.hinhAnh = this.thongTinUser.HinhAnh;
       this.ten = this.thongTinUser.name;
@@ -88,17 +91,17 @@ export class AdminUserComponent implements OnInit {
 
       }
       this.userS.Update(this.idUser, thongTinUpdate).subscribe((res: any) => {
-        Swal.fire('Success', 'Bạn đã cập nhật thành công', "success")
-          .then(res => {
-            this.flag = true;
-            // let thongTinNew = JSON.parse(localStorage.getItem('userLogin'));
-            // thongTinNew.data.name = thongTinUpdate.name;
-            // thongTinNew.data.NgaySinh = thongTinUpdate.NgaySinh;
-            // thongTinNew.data.SoDienThoai = thongTinUpdate.SoDienThoai;
-            // thongTinNew.data.HinhAnh = this.hinhAnh;
-            // localStorage.setItem('userLogin', JSON.stringify(thongTinNew));
-            // window.location.href = window.location.href;
-          })
+        if (typeof res == 'object') {
+          Swal.fire('Success', 'Bạn đã cập nhật thành công', "success")
+            .then(res => {
+              this.flag = false;
+
+            })
+        }
+        else {
+          Swal.fire('Error', res, 'error')
+        }
+
 
       })
     }
@@ -146,7 +149,7 @@ export class AdminUserComponent implements OnInit {
     }
 
   }
-  
+
   checkUpdatePass() {
     let checkbox: any = document.getElementById('CheckPassword');
 

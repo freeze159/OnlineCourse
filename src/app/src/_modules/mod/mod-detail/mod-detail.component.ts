@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/src/_core/services/user.service';
 import Swal from 'sweetalert2';
 import { KhoaHocService } from 'src/app/src/_core/services/khoa-hoc.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mod-detail',
@@ -10,7 +11,7 @@ import { KhoaHocService } from 'src/app/src/_core/services/khoa-hoc.service';
 })
 export class ModDetailComponent implements OnInit {
 
-  constructor(private userService: UserService,private khoaHocService:KhoaHocService) { }
+  constructor(private userService: UserService,private khoaHocService:KhoaHocService,private route:Router) { }
   p:number=1;
   idGiangVien: number;
   thongTin: any;
@@ -43,7 +44,7 @@ export class ModDetailComponent implements OnInit {
       'TomTat':thongTin.TomTat
     }
     this.userService.UpdateGiangVien(this.idGiangVien,thongTinUpdate).subscribe((res:any)=>{
-      Swal.fire('Thành Công',res.data,'success').then(res => {window.location.href =window.location.href});
+      Swal.fire('Thành Công',res.data,'success').then(res => {this.route.navigateByUrl('/instructor/about')});
       
     })
   }

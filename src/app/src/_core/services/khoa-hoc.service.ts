@@ -47,6 +47,12 @@ export class KhoaHocService {
     const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
     return observable;
   }
+  public LayDanhSachBaiGiangPublic(idKH:any):Observable<any>{
+    const linkApi= `https://api.khoahocdt.com/api/KhoaHoc/${idKH}/BaiGiangPublic`;
+    // const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.get(linkApi)
+    return observable;
+  }
   public TimKiem(keyword:string){
     const linkApi= `https://api.khoahocdt.com/api/Search?TuKhoa=${keyword}`;
     const observable = this.http.get(linkApi);
@@ -211,6 +217,31 @@ export class KhoaHocService {
     const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
     const observable = this.http.delete(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
     return observable;
+  }
+  //Cau Hoi
+  public LayDanhSachCauHoi(idBaiGiang){
+    const linkApi= `https://api.khoahocdt.com/api/BaiGiang/${idBaiGiang}/CauHoi`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public ThemCauHoi(idBaiGiang,body){
+    const linkApi= `https://api.khoahocdt.com/api/BaiGiang/${idBaiGiang}/CauHoi`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.post(linkApi,body,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public CapNhatCauHoi(idBaiGiang,idCauHoi,body){
+    const linkApi= `https://api.khoahocdt.com/api/BaiGiang/${idBaiGiang}/CauHoi/${idCauHoi}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.put(linkApi,body,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public XoaCauHoi(idBaiGiang,idCauHoi){
+    const linkApi= `https://api.khoahocdt.com/api/BaiGiang/${idBaiGiang}/CauHoi/${idCauHoi}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.delete(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable
   }
   // Rate
   public LayDanhSachDanhGia(idKhoaHoc){

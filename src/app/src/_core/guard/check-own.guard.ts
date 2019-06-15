@@ -22,7 +22,6 @@ export class CheckOwnGuard implements CanActivate {
       }
       else {
         this.Routes.navigateByUrl('/chitietkhoahoc/'+id+'/'+mangKHid);
-        Swal.fire('','Bạn chưa sở hữu khóa học này','question')
       }
     }
     else{

@@ -32,7 +32,6 @@ export class UserPageComponent implements OnInit {
   ngOnInit() {
     let checkbox: any = document.getElementById('CheckPassword');
     checkbox.checked = false;
-    console.log(checkbox.checked)
     this.atvRoute.params.subscribe(res => {
       let id = res;
       this.idUser = id.id;

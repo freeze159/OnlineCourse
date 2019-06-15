@@ -11,7 +11,6 @@
                 </ng-container>
 
 
-
                 <br>
                 <a class="btn btn-success btn-start waves-light" mdbWavesEffect
                     routerLink='../../../learn-continue/{{khoaHocId}}/{{mangKHId}}'>Bắt đầu học</a>
@@ -35,7 +34,7 @@
                     <a class="nav-link" data-toggle="tab" href="#main" (click)='loadBaiGiang()'>Nội dung khóa học</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#rate" (click)='loadComment()'>Bình luận</a>
+                    <a class="nav-link" data-toggle="tab" href="#rate" (click)='loadComment();loadRate()'>Bình luận</a>
                 </li>
 
             </ul>
@@ -51,7 +50,7 @@
                                     </div>
                                     <div class="box-text">
                                         <span class="lead">Tổng quan</span>
-                                        <h3 class="mb-1">Giới thiệu về khóa học</h3>
+                                        <h3 class="mb-1">Lý do bạn chọn khóa học này</h3>
                                     </div>
 
                                 </div>
@@ -62,15 +61,10 @@
 
                             </div>
                             <div id="collapseOne" class="collapse" data-parent="#accordion">
-                                <div class="card-body">
-                                    Lorem ipsum..
+                                <div class="card-body" id="mainNoiDung">
+
                                 </div>
-                                <div class="card-body">
-                                    Lorem ipsum..
-                                </div>
-                                <div class="card-body">
-                                    Lorem ipsum..
-                                </div>
+
                             </div>
                         </div>
                         <div class="card">
@@ -81,7 +75,7 @@
                                     </div>
                                     <div class="box-text">
                                         <span class="lead">Tổng quan</span>
-                                        <h3 class="mb-1">Giới thiệu về khóa học</h3>
+                                        <h3 class="mb-1">Kết quả đạt được</h3>
                                     </div>
 
                                 </div>
@@ -92,18 +86,13 @@
 
                             </div>
                             <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                                <div class="card-body">
-                                    Lorem ipsum..
+                                <div class="card-body" id='ketquadatduoc'>
+
                                 </div>
-                                <div class="card-body">
-                                    Lorem ipsum..
-                                </div>
-                                <div class="card-body">
-                                    Lorem ipsum..
-                                </div>
+
                             </div>
                         </div>
-                        <div class="card">
+                        <!-- <div class="card">
                             <div class="card-header d-flex justify-content-between justify-item-center">
                                 <div class="collapse-icon-left d-flex">
                                     <div class="box-icon">
@@ -162,7 +151,7 @@
                                     Lorem ipsum..
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="tab-pane" id="main">
@@ -187,20 +176,23 @@
                             </div>
                             <div id="baiGiang" class="collapse show" data-parent="#accordion1"
                                 *ngFor='let video of baiGiangList;let i=index;'>
-                                <div class="card-body" *ngIf='i<=2'>
-                                    <a class="play-video" href="../{{video.EmbededURL}}"> <i
-                                            class="fa fa-play-circle mr-2"></i></a><span>Bài {{i+1}}:
-                                        {{video.TenBaiGiang}}</span>
+                                <div class="card-body d-flex justify-content-between" *ngIf='video.EmbededURL!=null'>
+                                    <div><span class="lead text-success text-main">Bài {{i+1}}:
+                                            {{video.TenBaiGiang}}</span></div>
+                                    <div> <a class="play-video" href="../{{video.EmbededURL}}"><span>Học Thử</span></a>
+                                    </div>
+
+
 
 
                                 </div>
-                                <div class="card-body" *ngIf='i>2'>
-                                    <a class="none-video" aria-disabled="true" data-toggle="modal"
-                                        data-target='#buynow'><i class="fa fa-play-circle mr-2"></i></a><span>Bài
+                                <div class="card-body d-flex justify-content-between" *ngIf='video.EmbededURL==null'>
+                                    <span class="lead text-muted text-main">Bài
                                         {{i+1}}:
                                         {{video.TenBaiGiang}}</span>
 
-
+                                    <a class="none-video" aria-disabled="true" data-toggle="modal"
+                                        data-target='#buynow'><i class="fa fa-lock mr-2 text-danger"></i></a>
                                 </div>
 
                             </div>
@@ -212,34 +204,90 @@
                 </div>
                 <div class="tab-pane" id="rate">
                     <ul class="comment-section">
-
+                        <h3 class="lead display-4" *ngIf='flagNull'>Chưa có bình luận nào. Hãy là người đầu tiên để lại
+                            bình luận</h3>
+                        <h1>Trang bình luận</h1>
                         <li class="comment user-comment"
-                            *ngFor='let comment of danhSachComment | paginate: { itemsPerPage: 4, currentPage: p} '>
+                            *ngFor='let comment of danhSachComment | paginate: { itemsPerPage: 4, currentPage: p};let i=index;'>
 
                             <div class="info">
-                                <a href="#">{{comment.user}}</a>
+                                <a>{{comment.user}}</a>
                                 <span>{{comment.ThoiGian}}</span>
                             </div>
 
-                            <a class="avatar" href="#">
-                                <img src={{comment.HinhUser}} width="35" alt="Profile Avatar" title="Anie Silverston" />
+                            <a class="avatar">
+                                <img src={{comment.HinhUser}} width="35" alt="Profile Avatar"
+                                    title="{{comment.user}}" />
                             </a>
 
                             <p>{{comment.NoiDung}}</p>
-
+                            <a class="rate-delete" (click)='xoaRate(comment.id)' *ngIf='checkCo(comment.user_id)'>x</a>
                         </li>
 
 
 
                         <li class="write-new">
-
+                            <h1>Bình luận</h1>
                             <form #frmComment='ngForm' (ngSubmit)='comment(frmComment.value)'>
 
                                 <textarea placeholder="Write your comment here" name="NoiDung" ngModel
                                     #content='ngModel' required minlength="5"></textarea>
 
                                 <div>
-                                    <div class="rate" *ngIf='flag'>
+
+                                    <button type="submit" class="btn btn-primary btn-start waves-light"
+                                        style="width: 150px;" mdbWavesEffect [disabled]='frmComment.invalid'>Bình luận
+                                        </button>
+                                </div>
+
+                            </form>
+
+                        </li>
+                        
+                        <br>
+                        <br>
+                        <br>
+                        <pagination-controls autoHide="true" responsive="true" previousLabel="Trang trước"
+                            nextLabel="Trang Kế" (pageChange)="p=$event;detect($event)"></pagination-controls>
+                        <br>
+                        <br>
+
+                        <hr>
+                        <h1>Trang Đánh giá</h1>
+                        <li class="comment user-comment" *ngFor='let rate of danhSachRate'>
+
+                            <div class="info">
+                                <a>{{rate.user}}</a>
+                                <span>{{rate.ThoiGian}}</span>
+
+                            </div>
+
+                            <a class="avatar">
+                                <img src={{rate.HinhUser}} width="35" alt="Profile Avatar" title="{{rate.user}}" />
+                                <span *ngFor='let star of rate.Diem' style="color:yellow">★</span>
+
+                            </a>
+                            <div>
+                                <h5 class="rate-content">{{rate.TieuDe}}</h5>
+                                <p class="rate-content">{{rate.NoiDung}}</p>
+
+                            </div>
+
+
+                        </li>
+                        <li class="write-new">
+                            <h1>Đánh Giá</h1>
+
+                            <form #frmRate='ngForm' (ngSubmit)='rate(frmRate.value)'>
+                                <textarea placeholder="Tiêu đề" name="TieuDe" ngModel #title='ngModel' required
+                                    class="form-control" rows="1"></textarea>
+                                <br>
+                                <textarea placeholder="Đánh giá của bạn" name="NoiDung" ngModel #content='ngModel'
+                                    required minlength="5"></textarea>
+
+                                <div>
+                                    <span style="float:left">Điểm:</span>
+                                    <div class="rate">
                                         <input type="radio" id="star5" name="rate" value="5" ngModel #star='ngModel'
                                             name="sao" />
                                         <label for="star5"></label>
@@ -256,14 +304,14 @@
                                             name="sao" />
                                         <label for="star1"></label>
                                     </div>
-                                    <button type="submit" [disabled]='frmComment.invalid'>Nhận xét</button>
+                                    <button type="submit" class="btn btn-primary btn-start waves-light"
+                                        style="width: 150px;" mdbWavesEffect [disabled]='frmRate.invalid'>Đánh Giá</button>
                                 </div>
 
                             </form>
 
                         </li><br>
-                        <pagination-controls autoHide="true" responsive="true" previousLabel="Trang trước"
-                            nextLabel="Trang Kế" (pageChange)="p=$event"></pagination-controls>
+
                     </ul>
                 </div>
             </div>
@@ -305,7 +353,8 @@
 
             </div>
             <div class="modal-footer">
-                <a class="btn btn-success btn-start waves-light" mdbWavesEffect (click)='addCart()' data-dismiss="modal">Đăng Ký Ngay</a>
+                <a class="btn btn-success btn-start waves-light" mdbWavesEffect (click)='addCart()'
+                    data-dismiss="modal">Đăng Ký Ngay</a>
                 <button class="btn btn-secondary btn-start" type="button" data-dismiss="modal">Cancel</button>
             </div>
         </div>

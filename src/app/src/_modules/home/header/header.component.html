@@ -1,88 +1,4 @@
-<!-- <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-dark">
-  <mdb-navbar-brand>
-    <a routerLink="/" class="navbar-brand" href="#">
-      <img src="../../../../../assets/img/s1.png" height="70" width="100" alt="">
 
-    </a>
-  </mdb-navbar-brand>
-  <ul class="navbar-nav">
-    <li class="nav-item dropdown none-hover" dropdown>
-      <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light dropdown-main" mdbWavesEffect>
-        <i class="fa fa-th mr-2 py-1"></i>
-        <span>Catolories</span>
-        <span class="caret"></span>
-      </a>
-      <ul id="menuid" class="amazonmenu  dropdown-menu dropdown dropdown-primary" *dropdownMenu>
-        <ul>
-          <li><a href="#">Item 1</a></li>
-          <li><a href="#">Folder 0</a>
-          </li>
-          <li><a href="#">Folder 1</a>
-            <ul>
-              <li><a href="#">Sub Item 1.1</a></li>
-              <li><a href="#">Sub Item 1.2</a></li>
-              <li><a href="#">Sub Item 1.3</a>
-                <ul>
-                  <li>Sub Item 1.3.1</li>
-                  <li>Sub Item 1.3.2</li>
-                  <li>Sub Item 1.3.3</li>
-                </ul>
-              </li>
-              <li><a href="#">Sub Item 1.4</a></li>
-              <li><a href="#">Sub Item 1.2</a></li>
-              <li><a href="#">Sub Item 1.3</a></li>
-              <li><a href="#">Sub Item 1.4</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Item 3</a></li>
-          <li><a href="#">Folder 2</a>
-            <ul>
-              <li><a href="#">Sub Item 2.1</a></li>
-              <li><a href="#">Sub Item 2.1</a></li>
-              <li><a href="#">Sub Item 2.1</a></li>
-              <li><a href="#">Sub Item 2.1</a></li>
-              <li><a href="#">Sub Item 2.1</a></li>
-              <li><a href="#">Sub Item 2.1</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Item 4</a></li>
-        </ul>
-      </ul>
-      
-    </li>
-    <form class="form-inline waves-light" mdbWavesEffect>
-      <div class="md-form my-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      </div>
-    </form>
-    <li class="nav-item">
-      <a class="nav-link waves-light" mdbWavesEffect routerLink="/">Becomes Instructor</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link waves-light" mdbWavesEffect routerLink="/login">Login</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link waves-light" mdbWavesEffect routerLink="/signup" href="#">Create Account</a>
-    </li>
-
-    <li class="nav-item dropdown " dropdown>
-      <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light dropdown-main"
-        mdbWavesEffect>
-        <i class="fas fa-user"></i>
-        <span> Admin </span>
-        <span class="caret"></span>
-      </a>
-      <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#">My Account</a>
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something</a>
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Something else</a>
-        <div class="divider dropdown-divider"></div>
-        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
-      </div>
-    </li>
-
-  </ul>
-</mdb-navbar> -->
 <header>
   <div class="menu-mobile container-fluid">
     <div class="row">
@@ -251,7 +167,7 @@
           <form class="course-search-boxtop navbar-form form-inline" (ngSubmit)=search(frmSearch.value)
             #frmSearch=ngForm>
             <input name="keyWord" type="text" class="form-control course-form"
-              placeholder="Tìm khóa học, giảng viên bạn quan tâm" ngModel required>
+              placeholder="Tìm khóa học bạn quan tâm" ngModel required>
             <button type="submit" class="btn course-btn-search" [disabled]="frmSearch.invalid">
               <i class="fa fa-search"></i>
 

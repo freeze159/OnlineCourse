@@ -1,39 +1,43 @@
 <section class="container">
-  <div class="row">
-    <h1 class="col-md-12 ">Cập nhật bài giảng</h1>
-    <hr>
-    <h4 class="col-md-12 lead">Chỉ sửa những thông tin cần thiết</h4>
-    <form #frmUpdate='ngForm' (submit)='update(frmUpdate.value)' class="col-md-12">
-      <div class="form-group">
-        <label>Tên Bài Giảng</label>
-        <input type="text" class="form-control" name="TenBaiGiang" #lecture='ngModel' ngModel
-          placeholder="{{tenBaiGiang}}" minlength="10"  />
-        <div *ngIf="lecture.errors && (lecture.dirty || lecture.touched)">
-
-          <div *ngIf="lecture.errors.minlength" class="alert alert-danger">
-            Độ dài từ 10 kí tự!
+    <div class="row">
+      <h1 class="col-md-12 ">Cập nhật bài giảng</h1>
+      <hr>
+      <h4 class="col-md-12 lead">Chỉ sửa những thông tin cần thiết</h4>
+      <form #frmUpdate='ngForm' (submit)='update(frmUpdate.value)' class="col-md-12">
+        <div class="form-group">
+          <label>Tên Bài Giảng</label>
+          <input type="text" class="form-control" name="TenBaiGiang" #lecture='ngModel' ngModel
+            placeholder="{{tenBaiGiang}}" minlength="10"  />
+          <div *ngIf="lecture.errors && (lecture.dirty || lecture.touched)">
+  
+            <div *ngIf="lecture.errors.minlength" class="alert alert-danger">
+              Độ dài từ 10 kí tự!
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label>Mô Tả</label>
-        <input type="text" class="form-control" name="MoTa" #mota='ngModel' ngModel placeholder="{{moTa}}"
-          minlength="10">
-          <div *ngIf="mota.errors && (mota.dirty || mota.touched)">
-
-              <div *ngIf="mota.errors.minlength" class="alert alert-danger">
-                Độ dài từ 10 kí tự!
+        <div class="form-group">
+          <label>Mô Tả</label>
+          <input type="text" class="form-control" name="MoTa" #mota='ngModel' ngModel placeholder="{{moTa}}"
+            minlength="10">
+            <div *ngIf="mota.errors && (mota.dirty || mota.touched)">
+  
+                <div *ngIf="mota.errors.minlength" class="alert alert-danger">
+                  Độ dài từ 10 kí tự!
+                </div>
               </div>
-            </div>
-      </div>
-      <div class="form-group">
-        <label>Link youtube</label>
-        <input type="text" class="form-control" name="EmbededURL" #link@='ngModel' ngModel placeholder="{{link}}">
-      </div>
-      <div class="form-group">
-        <button mat-button class="btn-success" type="submit" [disabled]='frmUpdate.invalid'>Cập nhật</button>
-      </div>
-    </form>
-
-  </div>
-</section>
+        </div>
+        <div class="form-group">
+          <label>Link youtube</label>
+          <input type="text" class="form-control" name="EmbededURL" #link@='ngModel' ngModel placeholder="{{link}}">
+        </div>
+        <div class="form-group">
+          <label>Học Thử</label>
+          <input type="radio" class="ml-4" name="HocThu" #hocThu='ngModel' ngModel value="1" >
+        </div>
+        <div class="form-group">
+          <button mat-button class="btn-success" type="submit" [disabled]='frmUpdate.invalid'>Cập nhật</button>
+        </div>
+      </form>
+  
+    </div>
+  </section>
