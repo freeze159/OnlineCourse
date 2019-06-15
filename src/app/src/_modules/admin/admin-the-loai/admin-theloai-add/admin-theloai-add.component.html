@@ -1,5 +1,6 @@
 <div class="row">
-  <form #frmTheTheLoai='ngForm' (ngSubmit)='addTheLoai(frmTheTheLoai.value)'>
+  <h3 class="col-md-12 mx-auto text-center">Thêm thể loại mới</h3>
+  <form #frmTheTheLoai='ngForm' (ngSubmit)='addTheLoai(frmTheTheLoai.value)' class="col-md-5 mx-auto">
     <mat-form-field>
       <mat-label>Điền Tên Thể Loại</mat-label>
       <input type="text" matInput #theLoai name="TenTheLoai" ngModel required minlength="3">

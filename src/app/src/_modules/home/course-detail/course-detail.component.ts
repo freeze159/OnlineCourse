@@ -28,7 +28,6 @@ export class CourseDetailComponent implements OnInit {
   baiGiangList: any
   flag = false;
   flagNull = false;
-  flagComment: Array<boolean>;
   ngOnInit() {
     this.atvRoute.params.subscribe(data => {
       this.khoaHocId = (data.id);
@@ -49,8 +48,7 @@ export class CourseDetailComponent implements OnInit {
     this.khoaHocService.LayChiTietKhoaHoc(this.mangKHId, this.khoaHocId).subscribe((res: any) => {
       //Cắt chuỗi nội dung
       let wholeString: string = res.data.TomTat;
-      let index: number = wholeString.indexOf('<h2 style="text-align: center;"><strong>KẾT QUẢ ĐẠT ĐƯỢC</strong></h2>'
-      );
+      let index: number = wholeString.indexOf('<h2 style="text-align: center;"><strong>KẾT QUẢ ĐẠT ĐƯỢC</strong></h2>');
       let stringKq = wholeString.slice(index, wholeString.length);
       let stringMain = wholeString.slice(0, index);
       document.getElementById('mainNoiDung').innerHTML = stringMain;
@@ -81,10 +79,8 @@ export class CourseDetailComponent implements OnInit {
       Gia: this.thanhTien,
       TenGiangVien: this.giangVien,
       HinhAnh: this.hinhAnh,
-
     };
     this.cartService.cart.emit(addedCourse);
-    // console.log(addedCourse);
   }
 
   checkCo(id) {
@@ -106,7 +102,6 @@ export class CourseDetailComponent implements OnInit {
       }
       this.danhSachComment = res.data;
 
-      console.log(this.danhSachComment)
     })
 
 
@@ -114,7 +109,7 @@ export class CourseDetailComponent implements OnInit {
   loadRate() {
     this.khoaHocService.LayDanhSachDanhGia(this.khoaHocId).subscribe((res: any) => {
       for (let danhgia of res.data) {
-        const diem = JSON.parse(danhgia.Diem);
+        let diem = JSON.parse(danhgia.Diem);
         let newDanhGia: Array<number> = Array(diem).fill(5);
         danhgia.Diem = newDanhGia;
         this.danhSachRate.push(danhgia);

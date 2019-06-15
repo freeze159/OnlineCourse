@@ -39,7 +39,7 @@ const adminRoutes: Routes = [
       {path: 'khoa-hoc', component: AdminKhoahocComponent},
       {path: 'khoa-hoc-add', component:AdminKhoahocAddComponent},
       {path: 'bai-giang', component:AdminBaiGiangComponent},
-      {path: 'bai-giang-add', component:AdminBaigiangAddComponent},
+      // {path: 'bai-giang-add', component:AdminBaigiangAddComponent},
       {path: 'the-loai/:id/nhom-khoa-hoc/:idMang/khoa-hoc/:idKhoaHoc/bai-giang', component: AdminBaiGiangComponent},
 
       {path: 'duyet-khoa-hoc', component:AdminDuyetComponent},
@@ -47,6 +47,7 @@ const adminRoutes: Routes = [
       {path: 'nguoi-dung-them', component:AdminUserAddComponent},
       {path: 'giang-vien', component:AdminInstructorComponent},
       {path: 'giang-vien-them', component:AdminInstructorAddComponent},
+      {path: '', component: AdminDuyetComponent},
     ]
     
   },

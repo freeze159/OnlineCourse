@@ -38,14 +38,14 @@ export class AdminInstructorComponent implements OnInit {
     if (thongTin.TomTat == '') {
       thongTin.TomTat = this.tomTat;
     }
-    this.userS.UpdateGiangVien(this.iđUpdate,thongTin).subscribe(res =>{
-      Swal.fire('Thành Công',res.data,'success');
-      this.flag=false;
+    this.userS.UpdateGiangVien(this.iđUpdate, thongTin).subscribe(res => {
+      Swal.fire('Thành Công', res.data, 'success');
+      this.flag = false;
     });
   }
   getDataUpdate(id) {
     this.flag = true;
-    this.iđUpdate=id;
+    this.iđUpdate = id;
     this.userS.LayChiTietGiangVien1(id).subscribe((res: any) => {
       this.ten = res.data.TenGiangVien;
       this.tomTat = res.data.TomTat;
@@ -62,7 +62,7 @@ export class AdminInstructorComponent implements OnInit {
 
     })
   }
-  delUser(id) {
+  delGiangVien(id) {
 
     Swal.fire({
       title: 'Bạn có chắc chắn?',
@@ -74,19 +74,26 @@ export class AdminInstructorComponent implements OnInit {
       confirmButtonText: 'Có, xóa ngay'
     }).then(res => {
       if (res.value) {
-        let indexDel = this.danhSachGiangVien.findIndex(x => x.id == id);
 
-        this.danhSachGiangVien.splice(indexDel, 1);
 
-        this.userS.DelUser(id).subscribe((res: any) => {
-
-          Swal.fire(
-            'Đã xóa!',
-            'Thể Loại đã được xóa',
-            'success'
-          ).then(res => {
-
-          })
+        this.userS.DelGiangVien(id).subscribe((res: any) => {
+          if (typeof res == 'object') {
+            Swal.fire(
+              'Đã xóa!',
+              'Giảng viên đã được xóa',
+              'success'
+            ).then(res => {
+              let indexDel = this.danhSachGiangVien.findIndex(x => x.id == id);
+              this.danhSachGiangVien.splice(indexDel, 1);
+            })
+          }
+          else{
+            Swal.fire(
+              'Không xóa được',
+              res,
+              'warning'
+            )
+          }
 
         }, err => { Swal.fire('Thất bại', 'Lỗi', 'error') })
       }

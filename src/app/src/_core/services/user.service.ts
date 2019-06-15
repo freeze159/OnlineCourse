@@ -175,6 +175,13 @@ export class UserService {
     const observable = this.http.delete(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
     return observable;
   }
+  public DelGiangVien(id):Observable<any>{
+    const linkApi= `https://api.khoahocdt.com/api/GiangVien/${id}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    var reqHeader = new HttpHeaders({});
+    const observable = this.http.delete(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
   public ResetPass(email:string):Observable<any>{
     const linkApi= `https://api.khoahocdt.com/api/Mail/ResetPassword?email=${email}`;
     const tokenParse = JSON.parse(localStorage.getItem('tokenbearer'));  

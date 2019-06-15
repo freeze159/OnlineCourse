@@ -26,7 +26,8 @@ export class UserPageComponent implements OnInit {
   email: string;
   p=1;
   thongTinUser: User;
-  bill:Object
+  bill:Object;
+  birthday
   constructor(private userService: UserService, private atvRoute: ActivatedRoute,private khoaHocService:KhoaHocService) {}
   
   ngOnInit() {
@@ -40,6 +41,8 @@ export class UserPageComponent implements OnInit {
         this.hinhAnh = this.thongTinUser.HinhAnh;
         this.ten = this.thongTinUser.name;
         this.birth = this.thongTinUser.NgaySinh;
+        this.birthday = this.birth.split('-').join('/');
+        console.log(this.birth)
         this.phone = this.thongTinUser.SoDienThoai;
         this.email = this.thongTinUser.email;
       });

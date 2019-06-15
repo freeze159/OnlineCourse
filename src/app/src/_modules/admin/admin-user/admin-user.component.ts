@@ -53,12 +53,17 @@ export class AdminUserComponent implements OnInit {
       this.phone = this.thongTinUser.SoDienThoai;
       this.email = this.thongTinUser.email;
       this.idUser = id;
+      console.log(this.birth)
     })
     this.flag = true;
-    let checkbox: any = document.getElementById('CheckPassword');
-    checkbox.checked = false;
-    
-    
+    setTimeout(() => {
+      let checkbox: any = document.getElementById('CheckPassword');
+      checkbox.checked = false;
+      
+    }, 600);
+
+
+
   }
   modal(id) {
     this.userS.XemChiTietUser(id).subscribe((res: any) => {
@@ -132,13 +137,7 @@ export class AdminUserComponent implements OnInit {
           Swal.fire('Success', 'Bạn đã cập nhật thành công', "success")
             .then(res => {
               this.flag = true;
-              // let thongTinNew = JSON.parse(localStorage.getItem('userLogin'));
-              // thongTinNew.data.name = thongTinUpdate.name;
-              // thongTinNew.data.NgaySinh = thongTinUpdate.NgaySinh;
-              // thongTinNew.data.SoDienThoai = thongTinUpdate.SoDienThoai;
-              // thongTinNew.data.HinhAnh = this.hinhAnh;
-              // localStorage.setItem('userLogin', JSON.stringify(thongTinNew));
-              // window.location.href = window.location.href;
+              
             })
 
         })
@@ -196,13 +195,13 @@ export class AdminUserComponent implements OnInit {
 
           Swal.fire(
             'Đã xóa!',
-            'Thể Loại đã được xóa',
+            'User đã được xóa',
             'success'
           ).then(res => {
 
           })
 
-        }, err => { Swal.fire('Thất bại', 'Lỗi', 'error') })
+        }, err => { Swal.fire('Thất bại', err, 'error') })
       }
 
     })
