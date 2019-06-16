@@ -114,6 +114,206 @@
 .active, .accordion:hover {
   background-color: #ccc;
 }
+/* Câu hỏi */
+.comment-section{
+  list-style: none;
+  max-width: 800px;
+  width: 100%;
+  margin: 50px auto;
+  padding: 10px;
+}
+
+.comment{
+  display: flex;
+  border-radius: 3px;
+  /* margin-bottom: 45px; */
+  flex-wrap: wrap;
+}
+
+.comment.user-comment{
+  color:  #808080;
+}
+
+/* User and time info */
+
+.comment .info{
+  width: 17%;
+}
+
+.comment.user-comment .info{
+  text-align: right;
+}
+
+.comment.author-comment .info{
+  order: 3;
+}
+
+
+.comment .info a{	/* User name */
+  display: block;
+  text-decoration: none;
+  color: #656c71;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor:default;
+  padding: 10px 0 3px 0;
+}
+
+.comment .info span{	/* Time */
+  font-size: 11px;
+  color:  #9ca7af;
+}
+
+
+/* The user avatar */
+
+.comment .avatar{
+  width: 19%;
+}
+
+.comment.user-comment .avatar{
+  /* padding: 10px 18px 0 3px; */
+}
+
+.comment.author-comment .avatar{
+  /* order: 2; */
+  /* padding: 10px 3px 0 18px; */
+}
+
+.comment .avatar img{
+  display: block;
+  border-radius: 50%;
+}
+
+.comment.user-comment .avatar img{
+  float: right;
+}
+
+/* The comment text */
+
+.comment p.rate-content{
+  line-height: 1.5;
+  padding: 18px 22px;
+  width: 100%;
+  position: relative;
+  word-wrap: break-word;
+  margin-left: 30px;
+}
+
+.comment.user-comment p.rate-content{
+  background-color:  #f3f3f3;
+}
+
+
+
+.user-comment p.rate-content:after{
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 2px solid #f3f3f3;
+  left: -3px;
+  top: -4px;
+}
+.comment h5.rate-content{
+  line-height: 1.5;
+  padding: 18px 22px;
+  width: 100%;
+  position: relative;
+  word-wrap: break-word;
+  font-weight: 600;
+  font-size: 1.2rem
+}
+
+.comment.user-comment h5.rate-content{
+  background-color:  #ffffff;
+}
+
+
+.rate-delete{
+  position: relative;
+
+width: 15px;
+
+height: 15px;
+
+top: -59%;
+
+font-size: 1.2rem;
+
+color: red !important;
+
+left: 97%;
+  
+}
+
+.user-comment p:after{
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 2px solid #f3f3f3;
+  left: -8px;
+  top: 18px;
+}
+/* Comment form */
+
+.write-new{
+  margin: 10px auto auto;
+/* width: 60%; */
+}
+
+.write-new textarea{
+  color:  #444;
+  font: inherit;
+
+  outline: 0;
+  border-radius: 3px;
+  border: 1px solid #cecece;
+  background-color:  #fefefe;
+  box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.06);
+  overflow: auto;
+
+  width:100%;
+  min-height: 80px;
+  padding: 15px 20px;
+}
+
+.write-new img{
+  border-radius: 50%;
+  margin-top: 15px;
+}
+h1{
+  font-size:30px;
+  color: #5cb85c;
+  font-weight: 300;
+
+
+}
+h3{
+  font-size:25px;
+  color: #246523;
+  font-weight: 300;
+}
+.write-new button{
+  float:right;
+  background-color:  #87bae1;
+  box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+  border: 0;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+
+  padding: 10px 25px;
+  margin-top: 18px;
+}
 
 /* Style the accordion panel. Note: hidden by default */
 .panel {

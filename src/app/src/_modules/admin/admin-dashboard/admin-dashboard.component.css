@@ -1,4 +1,3 @@
-
 .btn {
     display: inline-block;
     font-weight: 400;
@@ -23,8 +22,7 @@
   }
   table { 
     width: 100%; 
-    border-collapse: collapse;
-    margin-left: 2rem; 
+    border-collapse: collapse; 
   }
   /* Zebra striping */
   tr:nth-of-type(odd) { 
@@ -43,6 +41,7 @@
   td{
     font-size:1.1rem;
     font-weight: 400;
+    width: 1px;
 }
   @media 
 only screen and (max-width: 760px),
@@ -60,12 +59,9 @@ only screen and (max-width: 760px),
   }
 	/* Force table to not be like tables anymore */
 	table, thead, tbody, th, td, tr { 
-        display: block; 
-        
+		display: block; 
 	}
-	table{
-        margin-left:0;
-    }
+	
 	/* Hide table headers (but not display: none;, for accessibility) */
 	thead tr { 
 		position: absolute;
@@ -99,12 +95,9 @@ only screen and (max-width: 760px),
 	/*
 	Label the data
 	*/
-	td:nth-of-type(1):before { content: "ID"; }
-	td:nth-of-type(2):before { content: "ID_User"; }
-	td:nth-of-type(3):before { content: "Tên"; }
-	td:nth-of-type(4):before { content: "Học Viên"; }
-    td:nth-of-type(5):before { content: "Khóa Học"; }
-    td:nth-of-type(6):before { content: "Trạng Thái"; }
-    td:nth-of-type(7):before { content: "Thao tác"; }
+	td:nth-of-type(1):before { content: "Khóa Học"; }
+	td:nth-of-type(2):before { content: "Tên Người Mua"; }
+	td:nth-of-type(3):before { content: "Tổng Tiền"; }
+	
 	
 }

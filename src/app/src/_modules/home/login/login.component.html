@@ -62,18 +62,20 @@
                 </div>
                 <form class="user text-center" #frmDangNhap='ngForm' (ngSubmit)="DangNhap(frmDangNhap.value)">
                   <div class="form-group">
-                    <input  class="form-control form-control-user"   placeholder="Enter Email Address..."  type="text" name='email' #email='ngModel' ngModel required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" >
+                    <input class="form-control form-control-user" placeholder="Enter Email Address..." type="text"
+                      name='email' #email='ngModel' ngModel required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                     <div *ngIf="email.errors && (email.dirty || email.touched)">
                       <div *ngIf="email.errors.required" class="alert alert-danger">
-                          <p>Không được để rỗng</p>
+                        <p>Không được để rỗng</p>
                       </div>
                       <div *ngIf="email.errors.pattern" class="alert alert-danger">
-                          <p>Không đúng định dạng email</p>
+                        <p>Không đúng định dạng email</p>
                       </div>
                     </div>
                   </div>
                   <div class="form-group">
-                    <input type="password" name='password' ngModel required class="form-control form-control-user"  placeholder="Password">
+                    <input type="password" name='password' ngModel required class="form-control form-control-user"
+                      placeholder="Password">
                   </div>
                   <div class="form-group">
                     <div class="custom-control custom-checkbox small text-left">
@@ -81,13 +83,14 @@
                       <label class="custom-control-label" for="customCheck">Remember Me</label>
                     </div>
                   </div>
-                  
-                  <button type="submit" [disabled]='frmDangNhap.invalid' class="btn-primary btn-user btn-block">Login</button>
+
+                  <button type="submit" [disabled]='frmDangNhap.invalid'
+                    class="btn-primary btn-user btn-block">Login</button>
                   <hr>
-                  <a  class="btn-google btn-user btn-block">
+                  <a class="btn-google btn-user btn-block" (click)='logGoogle($event)'>
                     <i class="fa fa-google fa-fw"></i> Login with Google
                   </a>
-                  <a  class="btn-facebook btn-user btn-block">
+                  <a class="btn-facebook btn-user btn-block">
                     <i class="fa fa-facebook-f fa-fw"></i> Login with Facebook
                   </a>
                 </form>

@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild, ViewChildren } from '@angular
 import { KhoaHocService } from 'src/app/src/_core/services/khoa-hoc.service';
 import { ActivatedRoute } from '@angular/router';
 import * as $ from 'jquery';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-course-watch',
@@ -15,22 +16,24 @@ export class CourseWatchComponent implements OnInit {
   idKhoaHoc:any
   baiGiangList:any
   danhSachCauHoi:any;
-  
+  idBaiGiangCurrent:number
   videoMoDau:string;
   baiGiangDauTien:any;
+  mangKhid:number;
   constructor(private khoaHocService:KhoaHocService,private atv:ActivatedRoute) { }
 
   ngOnInit() {
     //Lấy params id và mangKHid
     this.atv.params.subscribe((res:any)=>{
       this.idKhoaHoc=res.id;
+      this.mangKhid =res.mangKHid;
       
     })
     this.khoaHocService.LayDanhSachBaiGiang(this.idKhoaHoc).subscribe((res:any)=>{
-      console.log(res)
       this.baiGiangList=res;
       this.baiGiangDauTien=this.baiGiangList[0];
       this.videos.nativeElement.src='https://'+this.baiGiangDauTien.EmbededURL;
+      this.getCauHoi(this.baiGiangDauTien.id);
     })
     // this.khoaHocService.LayDanhSachCauHoi()
     //icon
@@ -88,5 +91,62 @@ export class CourseWatchComponent implements OnInit {
     this.videos.nativeElement.src='https://'+video;
     // console.log(this.videos.nativeElement.src);
     // console.log(this.links.nativeElement);
+  }
+  getCauHoi(id){
+    this.idBaiGiangCurrent = id;
+    this.khoaHocService.LayDanhSachCauHoi(id).subscribe((res:any)=>{
+      this.danhSachCauHoi = res.data;
+      console.log(this.danhSachCauHoi)
+    })
+  }
+  themCauHoi(thongTin){
+    console.log(thongTin);
+    console.log(this.idBaiGiangCurrent)
+    this.khoaHocService.ThemCauHoi(this.idBaiGiangCurrent,thongTin).subscribe((res:any)=>{
+      if(typeof res =='object'){
+        Swal.fire('Thành công',res.data,'success').then(res => {
+          this.getCauHoi(this.idBaiGiangCurrent);
+          $('#askContent').val('');
+          $('#askBox').val('');
+        });
+      }
+      else
+      {
+        Swal.fire('Thất bại',res,'error');
+      }
+    })
+  }
+  checkQues(tenUser:string){
+    const userLog = JSON.parse(localStorage.getItem('userLogin'))
+    if(userLog){
+      
+      if(userLog.data.name == tenUser){
+        return true
+      }
+      else return false;
+    }
+  }
+  xoaQues(id){
+    Swal.fire({
+      title: 'Bạn chắc chứ',
+      text: "Không thể khôi phục sau khi xóa",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+
+      if (result.value) {
+        this.khoaHocService.XoaCauHoi(this.idBaiGiangCurrent,id).subscribe(res => {
+          this.getCauHoi(this.idBaiGiangCurrent)
+        })
+        Swal.fire(
+          'Đã xóa!',
+          'Câu hỏi của bạn đã được xóa',
+          'success'
+        )
+      }
+    })
   }
 }

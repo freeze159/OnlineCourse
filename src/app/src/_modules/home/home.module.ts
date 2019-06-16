@@ -32,7 +32,7 @@ import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
 const config = new AuthServiceConfig([
   {
     id:GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider('1000537625722-3b4iiidhj6g8r8g2evgnaes658pc85v8.apps.googleusercontent.com')
+    provider: new GoogleLoginProvider('973343754841-e19qfr604imr2ibkp6ao92h68tdo5f5g.apps.googleusercontent.com')
   }
 ],false)
 const homeRoutes: Routes = [

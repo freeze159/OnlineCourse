@@ -142,18 +142,22 @@ export class AdminKhoahocComponent implements OnInit {
       confirmButtonText: 'Có, xóa ngay'
     }).then(res => {
       if (res.value) {
-        let indexDel = this.danhSachKhoaHoc.findIndex(khoaHoc =>khoaHoc.id == id)
-        this.danhSachKhoaHoc.splice(indexDel,1);
-        this.khoaHocS.XoaKhoaHoc(this.idKhoaHocUpdate, this.idMangUpdate).subscribe((res: any) => {
+        
+        this.khoaHocS.XoaKhoaHoc(id,this.idMang).subscribe((res: any) => {
           
           Swal.fire(
             'Đã xóa!',
             'Khóa học đã được xóa',
             'success'
           ).then(res => {
+            let indexDel = this.danhSachKhoaHoc.findIndex(khoaHoc =>khoaHoc.id == id)
+            this.danhSachKhoaHoc.splice(indexDel,1);
           })
 
-        }, err => { Swal.fire('Thất bại', 'Lỗi', 'error') })
+        }, err => {
+          //  Swal.fire('Thất bại', 'Lỗi', 'error') 
+          console.log(err);
+          })
       }
 
     })

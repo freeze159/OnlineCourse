@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   @ViewChild('frmDangNhap') frmDn: NgForm
-  title = 'app';
   public user: any = SocialUser;
   constructor(private userService: UserService, private socialAuthService: AuthService, private route: Router) { }
   ngOnInit() {
@@ -43,16 +42,46 @@ export class LoginComponent implements OnInit {
       }
     })
 
-
-
   }
-  logGoogle() {
-    // this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then((userData) => {
+  logGoogle(event) {
 
-    //   this.user = userData
-    //   console.log(userData);
-    // })
-    window.location.href = 'https://api.khoahocdt.com/api/Login/google';
+
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then((userData) => {
+      this.user = userData;      
+      let dataSend = {
+        name: this.user.name,
+        email: this.user.email,
+        HinhAnh: this.user.photoUrl,
+        provider:this.user.provider,
+        provider_id:this.user.id
+      }
+      this.userService.LoginGoogle(dataSend).subscribe((data:any)=>{
+        if (typeof data == 'object') {
+          const userLogin = JSON.stringify(data);
+          const apiToken = JSON.stringify(data.data.api_token);
+          localStorage.setItem('userLogin', userLogin);
+  
+          localStorage.setItem('tokenbearer', apiToken);
+          const token = localStorage.getItem('tokenbearer');
+          this.userService.KhoaHocCuaToi().subscribe((res: any) => {
+            const ownCouse = JSON.stringify(res.data)
+            localStorage.setItem('ownCourse', ownCouse);
+            Swal.fire('Thành công', 'Bạn đã đăng nhập thành công', "success").then(res => {
+  
+              this.route.navigateByUrl('/');
+            })
+          });
+  
+  
+        }
+        else {
+          Swal.fire('Thất bại', data, "error");
+        }
+      })
+    }).catch(err => {
+    })
+
+
 
 
   }

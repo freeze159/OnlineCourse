@@ -6,6 +6,7 @@ import { UserService } from 'src/app/src/_core/services/user.service';
 import Swal from 'sweetalert2';
 import { User } from 'src/app/src/_core/models/user';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-admin-user',
   templateUrl: './admin-user.component.html',
@@ -30,7 +31,7 @@ export class AdminUserComponent implements OnInit {
   flag = false;
   danhSachUser: any;
   dataTable: any;
-  constructor(private userS: UserService, private chRef: ChangeDetectorRef) { }
+  constructor(private userS: UserService, private chRef: ChangeDetectorRef,private route:Router) { }
 
   ngOnInit() {
 
@@ -129,24 +130,52 @@ export class AdminUserComponent implements OnInit {
           "NgaySinh": thongtin.NgaySinh,
           "SoDienThoai": thongtin.SoDienThoai,
           "CheckPassword": "on",
-          "PasswordHienTai": thongtin.PasswordHienTai,
           "PasswordMoi": thongtin.PasswordMoi,
           "PasswordMoiNhapLai": thongtin.PasswordMoiNhapLai
         }
         this.userS.Update(this.idUser, thongTinUpdate).subscribe((res: any) => {
           Swal.fire('Success', 'Bạn đã cập nhật thành công', "success")
             .then(res => {
-              this.flag = true;
+              this.flag = false;
               
             })
 
         })
       }
 
-
-
     }
 
+  }
+  upGiangVien(id:number){
+    Swal.fire({
+      title: 'Bạn chắc chắn chứ?',
+      type: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Có,nâng cấp'
+    }).then(res => {
+      if (res.value) {
+        this.userS.UpGiangVien(id).subscribe((res: any) => {
+          if(typeof res=='object'){
+            Swal.fire(
+              'Thành công!',
+              res.data,
+              'success'
+            ).then(res => {
+                this.route.navigateByUrl('admin/giang-vien');
+            })
+  
+          }
+          else {
+            Swal.fire('Thất bại',res,'error');
+            console.log(res)
+          }
+          
+        }, err => {console.log(err); Swal.fire('Thất bại', err, 'error') })
+      }
+
+    })
   }
 
   checkUpdatePass() {
@@ -160,6 +189,7 @@ export class AdminUserComponent implements OnInit {
     let formData = new FormData()
     formData.set('HinhAnh', this.fileData, this.fileData.name);
     this.userS.UpdateImage(this.idUser, formData).subscribe((res: any) => {
+      console.log(res)
       this.hinhAnh = res.data
     })
   }

@@ -15,6 +15,7 @@ import 'magnific-popup';
 export class CourseDetailComponent implements OnInit {
   constructor(private route: Router, private atvRoute: ActivatedRoute, private khoaHocService: KhoaHocService, private cartService: CartService, private userS: UserService) { }
   @Input() cart: any = {}
+ 
   khoaHocId: any;
   mangKHId: any;
   thongTinKH: KhoaHoc;
@@ -150,6 +151,8 @@ export class CourseDetailComponent implements OnInit {
     this.khoaHocService.ThemComment(this.khoaHocId, thongTinComment).subscribe(res => {
       Swal.fire('Thành công', 'Thêm bình luận thành công', 'success').then(res => {
         this.loadComment();
+        $('#cmtBox').val('');
+        
       })
 
     }, err => {
@@ -180,9 +183,10 @@ export class CourseDetailComponent implements OnInit {
       this.khoaHocService.ThemDanhGia(this.khoaHocId, thongTinDanhGia).subscribe((res: any) => {
         if (typeof res == 'object') {
           Swal.fire('Thành công','Cảm ơn bạn đã đánh giá','success');
+          $('#rateBox').val('');
         }
         else {
-          Swal.fire('Thông báo','Bạn cần sở hữu khóa học để đánh giá','warning');
+          Swal.fire('Thông báo',res,'warning');
         }
       }, err => {
         Swal.fire({
@@ -204,6 +208,7 @@ export class CourseDetailComponent implements OnInit {
       Swal.fire('Thông báo','Bạn chưa chọn điểm','warning');
     }
   }
+  
   loadBaiGiang() {
     $('.play-video').magnificPopup({
       type: 'iframe'

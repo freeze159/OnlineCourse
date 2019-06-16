@@ -23,6 +23,7 @@ import { AdminUserComponent } from './admin-user/admin-user.component';
 import { AdminInstructorComponent } from './admin-instructor/admin-instructor.component';
 import { AdminUserAddComponent } from './admin-user/admin-user-add/admin-user-add.component';
 import { AdminInstructorAddComponent } from './admin-instructor/admin-instructor-add/admin-instructor-add.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 const adminRoutes: Routes = [
   {
@@ -47,14 +48,14 @@ const adminRoutes: Routes = [
       {path: 'nguoi-dung-them', component:AdminUserAddComponent},
       {path: 'giang-vien', component:AdminInstructorComponent},
       {path: 'giang-vien-them', component:AdminInstructorAddComponent},
-      {path: '', component: AdminDuyetComponent},
+      {path: '', component: AdminDashboardComponent},
     ]
     
   },
 ]
 @NgModule({
   
-  declarations: [AdminTemplateComponent,AdminTheLoaiComponent,AdminUserAddComponent,AdminInstructorAddComponent,AdminMangKhoahocComponent, AdminCodeComponent, AdminCodeAddComponent, AdminMangThemComponent, AdminTheloaiAddComponent, AdminKhoahocComponent,AdminKhoahocAddComponent, AdminDuyetComponent, AdminBaiGiangComponent, AdminBaigiangAddComponent, AdminUserComponent, AdminInstructorComponent],
+  declarations: [AdminTemplateComponent,AdminTheLoaiComponent,AdminUserAddComponent,AdminInstructorAddComponent,AdminMangKhoahocComponent, AdminCodeComponent, AdminCodeAddComponent, AdminMangThemComponent, AdminTheloaiAddComponent, AdminKhoahocComponent,AdminKhoahocAddComponent, AdminDuyetComponent, AdminBaiGiangComponent, AdminBaigiangAddComponent, AdminUserComponent, AdminInstructorComponent, AdminDashboardComponent],
   imports: [
     CommonModule,ReactiveFormsModule,RouterModule.forChild(adminRoutes),MatStepperModule,MatButtonModule,MatInputModule,MatFormFieldModule,FormsModule,MatSelectModule
   ]

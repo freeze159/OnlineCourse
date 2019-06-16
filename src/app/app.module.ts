@@ -33,11 +33,14 @@ const appRoute:Routes = [
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    MatSidenavModule, MatCheckboxModule, MatButtonModule,
+    MatSidenavModule, MatCheckboxModule, MatButtonModule
     
     
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

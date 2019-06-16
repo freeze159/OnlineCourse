@@ -1,5 +1,5 @@
 <div class="row">
-    <form class="form" #frmUpdate='ngForm' (ngSubmit)='update(frmUpdate.value)' class="col-md-10 mx-auto"
+  <form class="form" #frmUpdate='ngForm' (ngSubmit)='update(frmUpdate.value)' class="col-md-10 mx-auto"
     enctype="multipart/form-data" *ngIf='flag'>
     <h3 class="text-center">Cập nhật Giảng Viên</h3>
     <div class="form-group">
@@ -33,60 +33,66 @@
       </div>
     </div>
   </form>
-    <table class="table table-bordered table-responsive-sm table-striped "  id="dataTable" width="100%" cellspacing="0">
-        <thead class="table-primary">
-          <tr>
-            <th>ID</th>
-            <th>ID_User</th>
-            <th>Tên GV</th>
-            <th>SoLuongHocVien</th>
-            <th>SoLuongKhoaHoc</th>
-            <th>Thao Tác</th>
-      
-          </tr>
-        </thead>
-        
-        <tbody>
-          <tr *ngFor='let user of danhSachGiangVien'>
-            <td>{{user.id}}</td>
-            <td>{{user.user_id}}</td>
-            <td>{{user.TenGiangVien}}</td>
-            <td>{{user.SoLuongHocVien}}</td>
-            <td>{{user.SoLuongKhoaHoc}}</td>
-            <td><button matButton  class="btn btn-primary mr-3 " (click)='modal(user.id)' data-toggle="modal" data-target="#updateModal">Xem Chi Tiết</button>
-              <button  matButton (click)='getDataUpdate(user.id)' class="btn mr-3 btn-info">Cập nhật</button>
-              <button  matButton (click)='delGiangVien(user.id)' class="btn btn-danger">Xóa</button></td>
-      
-          </tr>
-        </tbody>
-      </table>
+  <table class="table table-bordered table-responsive-sm table-striped " id="dataTable" width="100%" cellspacing="0">
+    <thead class="table-primary">
+      <tr>
+        <th>ID</th>
+        <th>ID_User</th>
+        <th>Tên GV</th>
+        <th>Số Học Viên</th>
+        <th>Số Khóa Học</th>
+        <th>Trạng thái</th>
+        <th>Thao Tác</th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor='let user of danhSachGiangVien'>
+        <td>{{user.id}}</td>
+        <td>{{user.user_id}}</td>
+        <td>{{user.TenGiangVien}}</td>
+        <td>{{user.SoLuongHocVien}}</td>
+        <td>{{user.SoLuongKhoaHoc}}</td>
+        <td>{{user.TrangThai}}</td>
+        <td><button matButton class="btn btn-primary mr-3 " (click)='modal(user.id)' data-toggle="modal"
+            data-target="#updateModal">Xem Chi Tiết</button>
+          <button matButton (click)='getDataUpdate(user.id)' class="btn mr-3 btn-info">Cập nhật</button>
+          <button matButton (click)='delGiangVien(user.id)' class="btn btn-danger" *ngIf='!xetTrangThai(user.TrangThai)'>Xóa</button>
+        <button matButton (click)='activeGiangVien(user.id)' class="btn btn-success"
+          *ngIf='xetTrangThai(user.TrangThai)'>Khôi phục</button></td>
+
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 
 
-<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content ">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Thông tin Giảng Viên</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content ">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thông tin Giảng Viên</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body d-flex">
+        <div style="height: 300px;width: 200px;" class=" mr-3">
+          <img src={{hinhAnh}} width="200" height="300">
         </div>
-        <div class="modal-body d-flex">
-          <div style="height: 300px;width: 200px;" class=" mr-3">
-            <img src={{hinhAnh}} width="200" height="300" >
-          </div>
-          <div class="data">
-            <p>Họ Tên: {{ten}}</p>
-            <p>Tóm tắt: {{tomTat}}</p>
-            <p>Số lượng học viên: {{SoLuongHocVien}}</p>
-            <p>Số lượng khóa học: {{SoLuongKhoaHoc}}</p>
-          </div>
+        <div class="data">
+          <p>Họ Tên: {{ten}}</p>
+          <p>Tóm tắt: {{tomTat}}</p>
+          <p>Số lượng học viên: {{SoLuongHocVien}}</p>
+          <p>Số lượng khóa học: {{SoLuongKhoaHoc}}</p>
         </div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
       </div>
     </div>
   </div>
+</div>

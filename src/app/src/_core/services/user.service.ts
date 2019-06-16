@@ -33,10 +33,10 @@ export class UserService {
     const observable = this.http.post(linkApi,thongtin,{headers:{'Content-Type':'application/x-www-form-urlencoded;application/json'}})
     return observable;
   }
-  public LoginGoogle(){
-    const linkApi= `https://api.khoahocdt.com/api/Login/google`
+  public LoginGoogle(thongTin){
+    const linkApi= `https://api.khoahocdt.com/api/Login/GetGoogleUser`
     const header: HttpHeaders = new HttpHeaders(); // Cho biết định dạng dữ liệu truyền đi
-    const observable = this.http.get(linkApi);
+    const observable = this.http.post(linkApi,thongTin,{headers:{'Content-Type':'application/x-www-form-urlencoded;application/json'}})
     return observable;
   }
   public XemChiTietUser(id:any){
@@ -47,6 +47,13 @@ export class UserService {
       // Cho biết định dạng dữ liệu truyền đi
     // header.append('Content-Type','application/x-www-form-urlencoded')
     const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`,'Content-Type':'application/x-www-form-urlencoded;application/json'}})
+    return observable;
+  }
+  public XemGhiDanhKhoaHoc(){
+    const linkApi= `https://api.khoahocdt.com/api/Admin/DanhSachGhiDanhKhoaHoc`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    var reqHeader = new HttpHeaders({});
+    const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
     return observable;
   }
   public KhoaHocCuaToi():Observable<any>{
@@ -82,6 +89,13 @@ export class UserService {
     var reqHeader = new HttpHeaders({});
  
     const observable = this.http.post(linkApi,thongTin,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public UpGiangVien(idUser):Observable<any>{
+    const linkApi= `https://api.khoahocdt.com/api/Admin/CapQuyenGiangVien/User/${idUser}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+ 
+    const observable = this.http.post(linkApi,null,{headers:{'Authorization':`Bearer ${tokenParse}`}})
     return observable;
   }
   public LichSuThanhToan():Observable<any>{
