@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
         const userLogin = JSON.stringify(data);
         const apiToken = JSON.stringify(data.data.api_token);
         localStorage.setItem('userLogin', userLogin);
-
+        const userLv = data.data.level_id;
         localStorage.setItem('tokenbearer', apiToken);
         const token = localStorage.getItem('tokenbearer');
         this.userService.KhoaHocCuaToi().subscribe((res: any) => {
@@ -31,7 +31,17 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('ownCourse', ownCouse);
           Swal.fire('Thành công', 'Bạn đã đăng nhập thành công', "success").then(res => {
 
-            this.route.navigateByUrl('/');
+            if(userLv == 1){
+              this.route.navigateByUrl('/admin');
+            }
+            if(userLv == 2){
+              this.route.navigateByUrl('/mod');
+            }
+            if(userLv == 3){
+              this.route.navigateByUrl('/');
+            }
+            
+           
           })
         });
 
@@ -60,7 +70,7 @@ export class LoginComponent implements OnInit {
           const userLogin = JSON.stringify(data);
           const apiToken = JSON.stringify(data.data.api_token);
           localStorage.setItem('userLogin', userLogin);
-  
+          
           localStorage.setItem('tokenbearer', apiToken);
           const token = localStorage.getItem('tokenbearer');
           this.userService.KhoaHocCuaToi().subscribe((res: any) => {

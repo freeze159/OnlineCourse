@@ -1,5 +1,11 @@
 $(document).ready(function () {
     'use strict';
+    $(function () {
+        amazonmenu.init({
+            menuid: 'mysidebarmenu'
+        })
+    
+    })
     $('[data-toggle="popover"]').popover();
     
     $(".remove-navibar").click(function () {
@@ -58,12 +64,7 @@ $(document).ready(function () {
 
 })
 
-$(function () {
-    amazonmenu.init({
-        menuid: 'mysidebarmenu'
-    })
 
-})
 $(document).on('shown.bs.tab', function (e) {
     var target = ($(e.target).attr("href"));
     switch (target) {
@@ -449,32 +450,6 @@ $(window).on('popstate', function (event) {
     }, 1600);
 });
 
-$(function () {
-    $('.pop').popover({
-        trigger: "manual",
-        html: true,
-        animation: false,
-        content: function () {
-            var content = $(this).parents('.box-pop').find('#popover-content').html();
 
-            return content;
-        }
-
-    }).on("mouseenter", function () {
-        console.log('haha');
-        var _this = this;
-        $(this).popover("show");
-        $(".popover").on("mouseleave", function () {
-            $(_this).popover('hide');
-        });
-    }).on("mouseleave", function () {
-        var _this = this;
-        setTimeout(function () {
-            if (!$(".popover:hover").length) {
-                $(_this).popover("hide");
-            }
-        }, 0);
-    });
-})
 
 

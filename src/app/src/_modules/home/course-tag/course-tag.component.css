@@ -3,9 +3,7 @@
 .u-order { border-bottom: 1px solid #d7d7d7; margin-bottom: 13px; }
 .u-cate-list { border: 1px solid #d7d7d7; padding: 9px 12px; margin-bottom: 20px; }
 .u-cate-list i { width: 30px; font-size: 18px; text-align: center; color: #f67052; vertical-align: middle; }
-.hassub{
-        margin-left:10px;
-}
+
 .u-cate-list h3 { font-size: 16px; font-weight: bold; border-bottom: 1px solid #d7d7d7; margin-bottom: 10px; padding-bottom: 5px;  }
 .u-cate-list ul { list-style-type: none;}
 .u-cate-list ul li { line-height: 35px;text-decoration: none }

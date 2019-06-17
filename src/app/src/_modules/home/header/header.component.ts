@@ -55,6 +55,12 @@ export class HeaderComponent implements OnInit {
 
     }
   }
+  
+  getMang(id){
+    this.khoaHocService.LayMangKhoaHoc(id).subscribe((res:any)=>{
+      this.danhSachMang =res.data;
+    })
+  }
   logOut() {
     localStorage.removeItem('userLogin');
     localStorage.removeItem('tokenbearer');
@@ -92,6 +98,12 @@ export class HeaderComponent implements OnInit {
       }
 
     })
+  }
+  dieuHuong(tenMang:string,mangId:number,idTheLoai:number){
+    let keyword = '';
+    keyword=tenMang;
+    let keyWordClean = keyword.replace(/ /g, "-")
+    this.location.navigateByUrl(`/tag/${keyWordClean}/${idTheLoai}/${mangId}`);
   }
   search(key:any){
     let keyword = '';

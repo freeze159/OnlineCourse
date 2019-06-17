@@ -4,102 +4,96 @@
       <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 u-list-leftbar hidden-xs">
           <section>
-            <div class="u-cate-list">
-              <p
-                style="font-size: 16px;font-weight: bold;border-bottom: 1px solid #d7d7d7;margin-bottom: 10px;padding-bottom: 5px;">
-                Danh mục khóa học</p>
-              <ul>
-                <li class="hassub"><a title="Các khóa học công nghệ thông tin Online từ cơ bản đến chuyên sâu"
-                    routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Công-Nghệ-Thông-Tin',Id:'1'}"><i
-                      class="fa fa fa-code" aria-hidden="true"></i> Công nghệ thông
-                    tin</a>
-                  <ul class="issub" style="z-index: 1008; display: none;">
-                    <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Công-Nghệ-Thông-Tin',Id:'1'}">Tất cả
-                        Công nghệ thông tin</a></li>
-                    <li><a href="/tag/co-so-du-lieu">Đồ Họa</a></li>
-                    <li><a href="/tag/hoc-quan-tri-mang">Phần Cứng</a></li>
-                    <li><a href="/tag/lap-trinh">Phần Mềm</a></li>
-                    <li><a href="/tag/lap-trinh-web">Mạng Máy Tính</a></li>
-                  </ul>
-                </li>
-                <li class="hassub"><a title="Các khóa học kinh tế từ cơ bản đến nâng cao tốt nhất"
-                    routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Kinh-Tế',Id:'2'}"><i
-                      class="fa fa fa-desktop" aria-hidden="true"></i> Kinh Tế</a>
-                  <ul class="issub" style="z-index: 1011; display: none;">
-                    <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Kinh-Tế',Id:'2'}">Tất cả Kinh tế</a>
+              <div class="u-cate-list">
+                  <p
+                    style="font-size: 16px;font-weight: bold;border-bottom: 1px solid #d7d7d7;margin-bottom: 10px;padding-bottom: 5px;">
+                    Danh mục khóa học</p>
+                  <ul id="accordion">
+                    <li class="hassub">
+                      <a title="Các khóa học công nghệ thông tin Online từ cơ bản đến chuyên sâu" data-toggle="collapse"
+                        data-target="#collapse1" (click)='getMang(1)'>
+                        <i class="fa fa fa-code" aria-hidden="true"></i>
+                        Công nghệ thông
+                        tin</a>
+                      <ul class="issub" id="collapse1" class="collapse" data-parent="#accordion">
+                        <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Công-Nghệ-Thông-Tin',Id:'1'}">Tất cả
+                            Công nghệ thông tin</a></li>
+                        <li *ngFor='let mang of danhSachMang'><a (click)='dieuHuong(mang.TenMangKH,mang.id,1)'>{{mang.TenMangKH}}</a></li>
+                      </ul>
                     </li>
-                    <li><a>Tài Chính</a></li>
-                    <li><a>Sales</a></li>
-                    <li><a>Chiến lược kinh tế</a></li>
-                  </ul>
-                </li>
-                <li class="hassub"><a title="Các khóa học giáo dục từ cơ bản đến chuyên sâu"
-                    routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Giáo-Dục',Id:'3'}"><i
-                      class="fa fa fa-paint-brush" aria-hidden="true"></i>Giáo Dục</a>
-                  <ul class="issub" style="z-index: 1012; display: none;">
-                    <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Giáo-Dục',Id:'3'}">Tất cả Giáo
-                        dục</a></li>
-                    <li><a>Toán học</a></li>
-                    <li><a>Khoa Học</a></li>
-                    <li><a>Ngôn ngữ học</a></li>
-
-                  </ul>
-                </li>
-                <li class="hassub"><a title="Khóa học y tế thực chiến từ những giảng viên hàng đầu Việt Nam"
-                    routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Y-Tế',Id:'4'}"><i
-                      class="fa fa fa-line-chart" aria-hidden="true"></i> Y Tế</a>
-                  <ul class="issub" style="z-index: 1013; display: none;">
-                    <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Y-Tế',Id:'4'}">Tất cả Y Tế</a></li>
-                    <li><a href="/tag/facebook-marketing">Dinh Dưỡng</a></li>
-                    <li><a href="/tag/tu-dong-hoa-marketing">Yoga - Fitness</a></li>
-                    <li><a href="/tag/email-marketing">Sơ cứu</a></li>
-
-                  </ul>
-                </li>
-                <li class="hassub"><a title="Khóa học âm nhạc,nhạc cụ từ các chuyên gia  hàng đầu "
-                    routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Âm-Nhạc',Id:'5'}"><i
-                      class="fa fa fa-shopping-cart" aria-hidden="true"></i> Âm Nhạc
-                  </a>
-                  <ul class="issub" style="z-index: 1014; display: none;">
-                    <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Âm-Nhạc',Id:'5'}">Tất cả Âm nhạc</a>
+                    <li class="hassub">
+                      <a title="Các khóa học kinh tế từ cơ bản đến nâng cao tốt nhất" routerLink='/danhmuckhoahoc'
+                        [queryParams]="{TenTheLoai:'Kinh-Tế',Id:'2'}" (click)='getMang(2)' data-toggle="collapse"
+                        data-target="#collapse2">
+                        <i class="fa fa fa-desktop" aria-hidden="true"></i> Kinh Tế</a>
+                      <ul class="issub" id="collapse2" class="collapse" data-parent="#accordion">
+                        <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Kinh-Tế',Id:'2'}">Tất cả Kinh tế</a>
+                        </li>
+                        <li *ngFor='let mang of danhSachMang'><a (click)='dieuHuong(mang.TenMangKH,mang.id,2)'>{{mang.TenMangKH}}</a></li>
+                      </ul>
                     </li>
-                    <li><a>Thanh nhạc</a></li>
-                    <li><a>Kỹ thuật nhạc cổ điển</a></li>
-                    <li><a>Phần mềm</a></li>
-
-                  </ul>
-                </li>
-                <li class="hassub"><a title="Các khóa học thời trang và cuộc sống để phù hợp với cuộc sống hiện đại"
-                    routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Thời-Trang',Id:'6'}"><i
-                      class="fa fa fa-rocket" aria-hidden="true"></i> Thời Trang</a>
-                  <ul class="issub" style="z-index: 1002; display: none;">
-                    <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Thời-Trang',Id:'6'}">Tất cả Thời
-                        Trang</a></li>
-
-                  </ul>
-                </li>
-                <li class="hassub"><a title="Các khóa học làm đẹp để tự tin chinh phục cuộc chơi"
-                    routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Sắc-Đẹp',Id:'7'}"><i
-                      class="fa fa fa-lightbulb-o" aria-hidden="true"></i> Sắc Đẹp</a>
-                  <ul class="issub" style="z-index: 1002; display: none;">
-                    <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Sắc-Đẹp',Id:'7'}">Tất cả Sắc đẹp</a>
+                    <li class="hassub"><a title="Các khóa học giáo dục từ cơ bản đến chuyên sâu"
+                        routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Giáo-Dục',Id:'3'}" data-toggle="collapse"
+                        data-target="#collapse3"  (click)='getMang(3)'>
+                        <i class="fa fa fa-paint-brush" aria-hidden="true"></i>Giáo Dục</a>
+                      <ul class="issub" id="collapse3" class="collapse" data-parent="#accordion">
+                        <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Giáo-Dục',Id:'3'}">Tất cả Giáo
+                            dục</a></li>
+                        <li *ngFor='let mang of danhSachMang'><a (click)='dieuHuong(mang.TenMangKH,mang.id,3)'>{{mang.TenMangKH}}</a></li>
+    
+                      </ul>
                     </li>
-
+                    <li class="hassub"><a title="Khóa học y tế thực chiến từ những giảng viên hàng đầu Việt Nam"
+                        routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Y-Tế',Id:'4'}" data-toggle="collapse"
+                        data-target="#collapse4"  (click)='getMang(4)'><i class="fa fa fa-line-chart" aria-hidden="true"></i> Y Tế</a>
+                      <ul class="issub" id="collapse4" class="collapse" data-parent="#accordion">
+                        <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Y-Tế',Id:'4'}">Tất cả Y Tế</a></li>
+                        <li *ngFor='let mang of danhSachMang'><a (click)='dieuHuong(mang.TenMangKH,mang.id,4)'>{{mang.TenMangKH}}</a></li>
+    
+                      </ul>
+                    </li>
+                    <li class="hassub"><a title="Khóa học âm nhạc,nhạc cụ từ các chuyên gia  hàng đầu "
+                        routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Âm-Nhạc',Id:'5'}" data-toggle="collapse"
+                        data-target="#collapse5"  (click)='getMang(5)'><i class="fa fa fa-shopping-cart" aria-hidden="true"></i> Âm Nhạc
+                      </a>
+                      <ul class="issub" id="collapse5" class="collapse" data-parent="#accordion">
+                        <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Âm-Nhạc',Id:'5'}">Tất cả Âm nhạc</a>
+                        </li>
+                        <li *ngFor='let mang of danhSachMang'><a (click)='dieuHuong(mang.TenMangKH,mang.id,5)'>{{mang.TenMangKH}}</a></li>
+    
+                      </ul>
+                    </li>
+                    <li class="hassub"><a title="Các khóa học thời trang và cuộc sống để phù hợp với cuộc sống hiện đại"
+                        routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Thời-Trang',Id:'6'}" data-toggle="collapse"
+                        data-target="#collapse6"  (click)='getMang(6)'><i class="fa fa fa-rocket" aria-hidden="true"></i> Thời Trang</a>
+                      <ul class="issub" id="collapse6" class="collapse" data-parent="#accordion">
+                        <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Thời-Trang',Id:'6'}">Tất cả Thời
+                            Trang</a></li>
+                        <li *ngFor='let mang of danhSachMang' (click)='dieuHuong(mang.TenMangKH,mang.id,6)'><a>{{mang.TenMangKH}}</a></li>
+                      </ul>
+                    </li>
+                    <li class="hassub"><a title="Các khóa học làm đẹp để tự tin chinh phục cuộc chơi"
+                        routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Sắc-Đẹp',Id:'7'}" data-toggle="collapse"
+                        data-target="#collapse7"  (click)='getMang(7)'><i class="fa fa fa-lightbulb-o" aria-hidden="true"></i> Sắc Đẹp</a>
+                      <ul class="issub" id="collapse7" class="collapse" data-parent="#accordion">
+                        <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Sắc-Đẹp',Id:'7'}">Tất cả Sắc đẹp</a>
+                        </li>
+                        <li *ngFor='let mang of danhSachMang'><a (click)='dieuHuong(mang.TenMangKH,mang.id,7)'>{{mang.TenMangKH}}</a></li>
+                      </ul>
+                    </li>
+                    <li class="hassub"><a title="Các khóa học nâng cao nhận thức nghệ thuật cho người Việt"
+                        routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Nghệ-Thuật',Id:'8'}" data-toggle="collapse"
+                        data-target="#collapse8"  (click)='getMang(8)'><i class="fa fa fa-heartbeat" aria-hidden="true"></i> Nghệ Thuật</a>
+                      <ul class="issub" id="collapse8" class="collapse" data-parent="#accordion">
+                        <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Nghệ-Thuật',Id:'8'}">Tất cả Nghệ
+                            Thuật</a></li>
+                        <li *ngFor='let mang of danhSachMang'><a (click)='dieuHuong(mang.TenMangKH,mang.id,8)'>{{mang.TenMangKH}}</a></li>
+                      </ul>
+                    </li>
+    
+    
                   </ul>
-                </li>
-                <li class="hassub"><a title="Các khóa học nâng cao nhận thức nghệ thuật cho người Việt"
-                    routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Nghệ-Thuật',Id:'8'}"><i
-                      class="fa fa fa-heartbeat" aria-hidden="true"></i> Nghệ Thuật</a>
-                  <ul class="issub" style="z-index: 1005; display: none;">
-                    <li><a routerLink='/danhmuckhoahoc' [queryParams]="{TenTheLoai:'Nghệ-Thuật',Id:'8'}">Tất cả Nghệ
-                        Thuật</a></li>
-
-                  </ul>
-                </li>
-
-
-              </ul>
-            </div>
+                </div>
           </section>
         </div>
         <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 main-content">
