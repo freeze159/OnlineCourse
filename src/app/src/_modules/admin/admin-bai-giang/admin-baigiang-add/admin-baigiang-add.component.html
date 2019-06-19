@@ -30,7 +30,7 @@
               </div>
               <hr>
               <input type="text" formControlName="MoTa" placeholder="Mô tả" class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && cd.controls.MoTa.errors }" required minlength="10" />
+                [ngClass]="{ 'is-invalid': submitted && cd.controls.MoTa.errors }"  minlength="10" />
               <div *ngIf="submitted && cd.controls.MoTa.errors" class="invalid-feedback">
                 <div *ngIf="cd.controls.MoTa.errors.required">Cần nhập Mô tả</div>
                 <div *ngIf="cd.controls.MoTa.errors.minlength">Cần nhập nhiều hơn 10 ký tự</div>

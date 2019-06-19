@@ -202,4 +202,35 @@ export class UserService {
     const observable = this.http.get(linkApi)
     return observable;
   }
+  public LayDanhSachLevel(){
+    const linkApi= `https://api.khoahocdt.com/api/Level`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public ThemLevel(body){
+    const linkApi= `https://api.khoahocdt.com/api/Level`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.post(linkApi,body,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public CapNhatLevel(idLevel,body){
+    const linkApi= `https://api.khoahocdt.com/api/Level/${idLevel}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.put(linkApi,body,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public XoaLevel(idLevel){
+    const linkApi= `https://api.khoahocdt.com/api/Level/${idLevel}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.delete(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public XoaHoaDon(hoaDonId){
+    const linkApi= `https://api.khoahocdt.com/api/HoaDon/${hoaDonId}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.delete(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+
 }

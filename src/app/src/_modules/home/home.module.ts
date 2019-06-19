@@ -29,7 +29,6 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { CourseInterestComponent } from './course-interest/course-interest.component';
 import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider} from 'ng4-social-login';
 import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
-import { CourseTagComponent } from './course-tag/course-tag.component';
 const config = new AuthServiceConfig([
   {
     id:GoogleLoginProvider.PROVIDER_ID,
@@ -45,6 +44,7 @@ const homeRoutes: Routes = [
       { path: 'chitietkhoahoc/:id/:mangKHid', component: CourseDetailComponent },
       { path: 'user/:id', component: UserPageComponent },
       { path: 'danhmuckhoahoc', component: CourseViewComponent },
+      { path: 'khoa-hoc-noi-bat', component: CourseViewComponent },
       { path: 'tag/:ten/:idTheLoai/:idMang', component: CourseViewComponent },
       { path: 'ket-qua/:keyword', component: SearchResultComponent },
       { path: 'kichhoat', component: EnterCodeComponent },
@@ -61,7 +61,7 @@ const homeRoutes: Routes = [
 @NgModule({
   declarations: [HomeTemplateComponent, LoginComponent, SignUpComponent, HomePageComponent,
     CartComponent, BecomeInstructorComponent, CourseListComponent, CourseDetailComponent,
-    HeaderComponent, FooterComponent, CourseWatchComponent, UserPageComponent, LearnNowComponent,ForgotPassComponent, CourseViewComponent, SearchResultComponent, EnterCodeComponent, CourseInterestComponent, ForgotPassComponent, CourseTagComponent],
+    HeaderComponent, FooterComponent, CourseWatchComponent, UserPageComponent, LearnNowComponent,ForgotPassComponent, CourseViewComponent, SearchResultComponent, EnterCodeComponent, CourseInterestComponent, ForgotPassComponent],
   imports: [
     CommonModule, MDBBootstrapModule.forRoot(), FormsModule,
     NavbarModule, WavesModule, ButtonsModule, MatSidenavModule, MatCheckboxModule, MatButtonModule, HttpClientModule,

@@ -15,7 +15,7 @@ import 'magnific-popup';
 export class CourseDetailComponent implements OnInit {
   constructor(private route: Router, private atvRoute: ActivatedRoute, private khoaHocService: KhoaHocService, private cartService: CartService, private userS: UserService) { }
   @Input() cart: any = {}
- 
+
   khoaHocId: any;
   mangKHId: any;
   thongTinKH: KhoaHoc;
@@ -52,8 +52,10 @@ export class CourseDetailComponent implements OnInit {
       let index: number = wholeString.indexOf('<h2 style="text-align: center;"><strong>KẾT QUẢ ĐẠT ĐƯỢC</strong></h2>');
       let stringKq = wholeString.slice(index, wholeString.length);
       let stringMain = wholeString.slice(0, index);
-      document.getElementById('mainNoiDung').innerHTML = stringMain;
+      document.getElementById('mainNoiDung').innerHTML = stringMain
       document.getElementById('ketquadatduoc').innerHTML = stringKq;
+      
+
       //    Lưu data chi tiét
       this.thongTinKH = res.data;
       this.tenKh = this.thongTinKH.TenKH;
@@ -83,6 +85,50 @@ export class CourseDetailComponent implements OnInit {
     };
     this.cartService.cart.emit(addedCourse);
   }
+  checkChuaMua() {
+    let userLogin = JSON.parse(localStorage.getItem('userLogin'));
+    if (userLogin) {
+      let userLv = userLogin.data.level_id;
+      if (userLv == 3) {
+        const course = JSON.parse(localStorage.getItem('ownCourse'));
+        if (course) {
+          // console.log(course)
+          let ownC = course.find(x => x.id == this.khoaHocId);
+          if (ownC) {
+            return true;
+          }
+          else return false;
+        }
+      }
+      else if (userLv == 2) {
+        const courseGv = JSON.parse(localStorage.getItem('modCourse'));
+        if (courseGv) {
+          let ownC = courseGv.find(x => x.id == this.khoaHocId);
+          if (ownC) {
+            return true;
+          }
+          else {
+            const course = JSON.parse(localStorage.getItem('ownCourse'));
+            if (course) {
+              let ownC = course.find(x => x.id == this.khoaHocId);
+              if (ownC) {
+                return true;
+              }
+              else return false;
+
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+
+
+
+
+
 
   checkCo(id) {
     let userLogin = JSON.parse(localStorage.getItem('userLogin'));
@@ -152,7 +198,7 @@ export class CourseDetailComponent implements OnInit {
       Swal.fire('Thành công', 'Thêm bình luận thành công', 'success').then(res => {
         this.loadComment();
         $('#cmtBox').val('');
-        
+
       })
 
     }, err => {
@@ -182,11 +228,14 @@ export class CourseDetailComponent implements OnInit {
       }
       this.khoaHocService.ThemDanhGia(this.khoaHocId, thongTinDanhGia).subscribe((res: any) => {
         if (typeof res == 'object') {
-          Swal.fire('Thành công','Cảm ơn bạn đã đánh giá','success');
+          Swal.fire('Thành công', 'Cảm ơn bạn đã đánh giá', 'success');
           $('#rateBox').val('');
+          $('#rateContent').val('');
+          this.loadRate()
+
         }
         else {
-          Swal.fire('Thông báo',res,'warning');
+          Swal.fire('Thông báo', res, 'warning');
         }
       }, err => {
         Swal.fire({
@@ -205,10 +254,10 @@ export class CourseDetailComponent implements OnInit {
       })
     }
     else {
-      Swal.fire('Thông báo','Bạn chưa chọn điểm','warning');
+      Swal.fire('Thông báo', 'Bạn chưa chọn điểm', 'warning');
     }
   }
-  
+
   loadBaiGiang() {
     $('.play-video').magnificPopup({
       type: 'iframe'

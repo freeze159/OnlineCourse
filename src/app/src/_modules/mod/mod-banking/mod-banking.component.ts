@@ -10,8 +10,6 @@ import Swal from 'sweetalert2';
 })
 export class ModBankingComponent implements OnInit {
   constructor(private userS:UserService,private cartS:CartService) { }
-  favoriteSeason: string;
-  gender: string[] = ['Mr.', 'Ms.'];
   bankList:any;
   thongTin:any;
   getBankParam:any;

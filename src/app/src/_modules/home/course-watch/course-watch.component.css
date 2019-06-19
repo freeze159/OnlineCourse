@@ -207,7 +207,14 @@
 }
 
 
-
+.btn-start{
+  font-size:1.1rem;
+  border-radius:10px!important;
+  width: 100%;
+  background:#FF3333;
+  height: 3rem;
+  line-height: 45px;
+}
 .user-comment p.rate-content:after{
   content: '';
   position: absolute;

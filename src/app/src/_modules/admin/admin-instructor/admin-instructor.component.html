@@ -59,7 +59,7 @@
             data-target="#updateModal">Xem Chi Tiết</button>
           <button matButton (click)='getDataUpdate(user.id)' class="btn mr-3 btn-info">Cập nhật</button>
           <button matButton (click)='delGiangVien(user.id)' class="btn btn-danger" *ngIf='!xetTrangThai(user.TrangThai)'>Xóa</button>
-        <button matButton (click)='activeGiangVien(user.id)' class="btn btn-success"
+        <button matButton (click)='activeGiangVien(user.user_id)' class="btn btn-success"
           *ngIf='xetTrangThai(user.TrangThai)'>Khôi phục</button></td>
 
       </tr>

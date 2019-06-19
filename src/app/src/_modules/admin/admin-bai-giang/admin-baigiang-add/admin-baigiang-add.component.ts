@@ -81,11 +81,11 @@ export class AdminBaigiangAddComponent implements OnInit {
           return;
 
         }
-        if (item.MoTa == '') {
-          Swal.fire('Lỗi', 'Không được bỏ trống mô tả', 'error');
-          return;
+        // if (item.MoTa == '') {
+        //   Swal.fire('Lỗi', 'Không được bỏ trống mô tả', 'error');
+        //   return;
 
-        }
+        // }
         if (item.EmbededURL == '') {
 
           Swal.fire('Lỗi', 'Không được bỏ trống đường dẫn ', 'error');
@@ -94,7 +94,6 @@ export class AdminBaigiangAddComponent implements OnInit {
         }
 
       }
-      console.log(this.BaiGiangForm.value)
       if (this.failInput) {
         this.danhSachThem = this.BaiGiangForm.value;
         this.khoahocS.ThemBaiGiang(this.courseId, this.danhSachThem).subscribe((res: any) => {

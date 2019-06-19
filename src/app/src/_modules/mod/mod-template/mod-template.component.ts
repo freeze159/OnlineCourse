@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/src/_core/services/user.service';
+import { KhoaHocService } from 'src/app/src/_core/services/khoa-hoc.service';
 
 @Component({
   selector: 'app-mod-template',
@@ -8,20 +9,25 @@ import { UserService } from 'src/app/src/_core/services/user.service';
 })
 export class ModTemplateComponent implements OnInit {
 
-  constructor(private userService:UserService) { }
+  constructor(private userService: UserService, private khoaHocS: KhoaHocService) { }
 
   ngOnInit() {
+    // const thongTinUser = JSON.parse(localStorage.getItem('userLogin'));
     this.userService.LayChiTietGiangVien().subscribe(
-      (res:any)=>{
-        localStorage.setItem('gv_log',JSON.stringify(res.data));
-        
-  
-      },
-      (err:any) => {
-        console.log(err)
+      (res: any) => {
+        localStorage.setItem('gv_log', JSON.stringify(res.data));
+        this.khoaHocS.LayKhoaHocGiangVien(res.data.id).subscribe((res: any) => {
+          localStorage.setItem('modCourse', JSON.stringify(res.data));
+
+        },
+          (err: any) => {
+            console.log(err)
+          })
+
+
       })
   }
-  openNav(){
+  openNav() {
     document.getElementById("mySidenav").style.width = "250px";
   }
   closeNav() {

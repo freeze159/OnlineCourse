@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CourseTagComponent } from './course-tag.component';
+import { AdminLevelComponent } from './admin-level.component';
 
-describe('CourseTagComponent', () => {
-  let component: CourseTagComponent;
-  let fixture: ComponentFixture<CourseTagComponent>;
+describe('AdminLevelComponent', () => {
+  let component: AdminLevelComponent;
+  let fixture: ComponentFixture<AdminLevelComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseTagComponent ]
+      declarations: [ AdminLevelComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CourseTagComponent);
+    fixture = TestBed.createComponent(AdminLevelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

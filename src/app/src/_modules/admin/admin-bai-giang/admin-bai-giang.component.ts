@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { KhoaHocService } from 'src/app/src/_core/services/khoa-hoc.service';
 import Swal from 'sweetalert2';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-bai-giang',
@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AdminBaiGiangComponent implements OnInit {
 
-  constructor(private khoaHocS: KhoaHocService,private atv:ActivatedRoute) { }
+  constructor(private khoaHocS: KhoaHocService, private atv: ActivatedRoute,private route:Router) { }
   danhSachTheLoai: any;
   danhSachMang: any;
   danhSachKhoaHoc: any;
@@ -21,13 +21,18 @@ export class AdminBaiGiangComponent implements OnInit {
   name: string = '';
   describe: string = '';
   link: string = '';
+  idKhoaHoc: number;
+  xemCauHoi(id){
+    this.route.navigateByUrl(`/admin/bai-giang/xem-cau-hoi/${id}`)
+  }
   ngOnInit() {
     this.khoaHocS.LayTheLoaiKhoaHoc().subscribe(res => {
       this.danhSachTheLoai = res.data
     })
-    this.atv.params.subscribe((res:any)=>{
-      if(typeof res.idKhoaHoc !='undefined'){
-        this.khoaHocS.LayDanhSachBaiGiang(res.idKhoaHoc).subscribe((resu: any) => {
+    this.atv.params.subscribe((res: any) => {
+      if (typeof res.idKhoaHoc != 'undefined') {
+        this.idKhoaHoc = res.idKhoaHoc;
+        this.khoaHocS.LayDanhSachBaiGiang(this.idKhoaHoc).subscribe((resu: any) => {
           this.danhSachBaiGiang = resu;
         })
       }
@@ -59,7 +64,7 @@ export class AdminBaiGiangComponent implements OnInit {
   }
   update(thongTin) {
     if (thongTin.TenBaiGiang == '') {
-      thongTin.TenBaiGiang=this.name;
+      thongTin.TenBaiGiang = this.name;
     }
     if (thongTin.MoTa == '') {
       thongTin.MoTa = this.describe
@@ -68,16 +73,20 @@ export class AdminBaiGiangComponent implements OnInit {
       thongTin.EmbededURL = this.link
     }
     let bodyUpdate = {
-      TenBaiGiang:  thongTin.TenBaiGiang,
-      MoTa:  thongTin.MoTa,
+      TenBaiGiang: thongTin.TenBaiGiang,
+      MoTa: thongTin.MoTa,
       EmbededURL: thongTin.EmbededURL
     }
-    this.flag=false;
+    this.flag = false;
     this.khoaHocS.UpdateBaiGiang(this.idKhoaHocUpdate, this.idUpate, bodyUpdate).subscribe((res: any) => {
-      Swal.fire('Thành công',res.data,'success');
+      Swal.fire('Thành công', res.data, 'success').then(res => {
+        this.khoaHocS.LayDanhSachBaiGiang(this.idKhoaHoc).subscribe((resu: any) => {
+          this.danhSachBaiGiang = resu;
+        })
+      });
     })
   }
-  delele(idBaiGiang,idKhoaHoc){
+  delele(idBaiGiang, idKhoaHoc) {
     Swal.fire({
       title: 'Bạn có chắc chắn?',
       text: "Không thể khôi phục khi đã xóa!",
@@ -88,17 +97,17 @@ export class AdminBaiGiangComponent implements OnInit {
       confirmButtonText: 'Có, xóa ngay'
     }).then(res => {
       if (res.value) {
-        let indexDel = this.danhSachBaiGiang.findIndex(x => x.id == idBaiGiang);
 
-        this.danhSachBaiGiang.splice(indexDel, 1);
-        this.khoaHocS.XoaBaiGiang(idKhoaHoc,idBaiGiang).subscribe((res: any) => {
+        this.khoaHocS.XoaBaiGiang(idKhoaHoc, idBaiGiang).subscribe((res: any) => {
 
           Swal.fire(
             'Đã xóa!',
             res.data,
             'success'
           ).then(res => {
-            
+            let indexDel = this.danhSachBaiGiang.findIndex(x => x.id == idBaiGiang);
+
+            this.danhSachBaiGiang.splice(indexDel, 1);
           })
 
         }, err => { Swal.fire('Thất bại', 'Lỗi', 'error') })

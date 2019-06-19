@@ -90,7 +90,6 @@ export class ModCreateLectureComponent implements OnInit {
   }
   SaveData() {
     this.submitted = true;
-    console.log(this.BaiGiangForm.value)
     // stop here if form is invalid
     if (this.BaiGiangForm.invalid) {
       Swal.fire('Thất bại', 'Chưa nhập đủ thông tin', 'error');
@@ -106,11 +105,11 @@ export class ModCreateLectureComponent implements OnInit {
           return;
 
         }
-        if (item.MoTa == '') {
-          Swal.fire('Lỗi', 'Không được bỏ trống mô tả', 'error');
-          return;
+        // if (item.MoTa == '') {
+        //   Swal.fire('Lỗi', 'Không được bỏ trống mô tả', 'error');
+        //   return;
 
-        }
+        // }
         if (item.EmbededURL == '') {
 
           Swal.fire('Lỗi', 'Không được bỏ trống đường dẫn ', 'error');

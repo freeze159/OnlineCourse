@@ -1,3 +1,24 @@
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active, .nav-tabs .nav-link:focus {
+    border-width: 5px;
+    border-color: #fff #fff #5cb85c;
+    color: #555;
+    }
+    .nav-tabs .nav-link:hover{
+        border-width: 5px;
+        border-color: #fff #fff #87bae1;
+        color: #555;
+    }
+    .nav-tabs .nav-link{
+        font-size: 1.4rem;
+        font-weight: 600
+    
+    }
+    ul li {
+        margin-right: 2rem
+    }
+
+
+    
 .btn {
     display: inline-block;
     font-weight: 400;
@@ -25,21 +46,26 @@
     border-collapse: collapse; 
   }
   /* Zebra striping */
-  
+  tr:nth-of-type(odd) { 
+    /* background: #eee;  */
+  }
+  th { 
+    /* background: #333; 
+    color: white; 
+    font-weight: bold;  */
+  }
   td, th { 
     padding: 6px; 
     border: 1px solid #ccc; 
     text-align: left; 
-    width: 1%;
   }
   td{
     font-size:1.1rem;
     font-weight: 400;
     width: 1%;
-    white-space: nowrap;
+    white-space: nowrap
 }
-  @media 
-only screen and (max-width: 760px),
+@media only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
   .btn {
     display: inline-block;
@@ -74,6 +100,7 @@ only screen and (max-width: 760px),
     padding-left: 50%; 
     font-size:0.75rem;
     font-weight: 400;
+    
 	}
 	
 	td:before { 
@@ -90,12 +117,19 @@ only screen and (max-width: 760px),
 	/*
 	Label the data
 	*/
-  td:nth-of-type(1):before { content: "ID"; }
-  td:nth-of-type(2):before { content: "Khóa Học"; }
-  td:nth-of-type(3):before { content: "Tên Người Mua"; }
-  
-  td:nth-of-type(4):before { content: "Email"; }
-  td:nth-of-type(5):before { content: "Tổng Tiền"; }
-	td:nth-of-type(6):before { content: "Thao tác"; }
+	td:nth-of-type(1):before { content: "ID"; }
+	td:nth-of-type(2):before { content: "User"; }
+	td:nth-of-type(3):before { content: "Tiêu đề"; }
+	td:nth-of-type(4):before { content: "Nội dung"; }
+    td:nth-of-type(5):before { content: "Thời gian"; }
+    td:nth-of-type(6):before { content: "Điểm"; }
+    td:nth-of-type(7):before { content: "Thao tác"; }
+
+    td.td-cmt:nth-of-type(1):before { content: "ID"; }
+	td.td-cmt:nth-of-type(2):before { content: "ID User"; }
+	td.td-cmt:nth-of-type(3):before { content: "User"; }
+	td.td-cmt:nth-of-type(4):before { content: "Nội dung"; }
+    td.td-cmt:nth-of-type(5):before { content: "Thời gian"; }
+    td.td-cmt:nth-of-type(6):before { content: "Thao tác"; }
 	
 }

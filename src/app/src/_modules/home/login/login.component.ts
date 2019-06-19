@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
               this.route.navigateByUrl('/admin');
             }
             if(userLv == 2){
-              this.route.navigateByUrl('/mod');
+              this.route.navigateByUrl('/instructor');
             }
             if(userLv == 3){
               this.route.navigateByUrl('/');

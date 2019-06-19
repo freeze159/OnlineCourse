@@ -24,6 +24,25 @@
     width: 100%; 
     border-collapse: collapse; 
   }
+  .play{
+    color: blue;
+    animation: example 4s infinite 0.2s   ;
+  
+  }
+  @-webkit-keyframes example {
+    0%   {color: red;}
+    25%  {color: yellow;}
+    50%  {color: blue;}
+    100% {color: green;}
+  }
+  
+  /* Standard syntax */
+  @keyframes example {
+    0%   {color: red;}
+    25%  {color: yellow;}
+    50%  {color: blue;}
+    100% {color: green;}
+  }
   /* Zebra striping */
   tr:nth-of-type(odd) { 
     /* background: #eee;  */

@@ -23,11 +23,7 @@
 
           <form #frmBankAdd='ngForm' (ngSubmit)='addBank(frmBankAdd.value)'>
             <div class="form-group">
-              <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
-                <mat-radio-button class="example-radio-button mr-5" *ngFor="let g of gender" [value]="g">
-                  {{g}}
-                </mat-radio-button>
-              </mat-radio-group>
+              
               <div class="main-form mt-4">
                 <div class="form-group">
                   <mat-form-field>

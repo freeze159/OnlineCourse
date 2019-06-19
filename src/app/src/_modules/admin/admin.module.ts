@@ -24,6 +24,9 @@ import { AdminInstructorComponent } from './admin-instructor/admin-instructor.co
 import { AdminUserAddComponent } from './admin-user/admin-user-add/admin-user-add.component';
 import { AdminInstructorAddComponent } from './admin-instructor/admin-instructor-add/admin-instructor-add.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminKhoahocCmtComponent } from './admin-khoahoc-cmt/admin-khoahoc-cmt.component';
+import { AdminKhoahocQuestionComponent } from './admin-khoahoc-question/admin-khoahoc-question.component';
+import { AdminLevelComponent } from './admin-level/admin-level.component';
 
 const adminRoutes: Routes = [
   {
@@ -38,11 +41,14 @@ const adminRoutes: Routes = [
       {path: 'code', component: AdminCodeComponent},
       {path: 'code-add', component: AdminCodeAddComponent,},
       {path: 'khoa-hoc', component: AdminKhoahocComponent},
+      {path: 'khoa-hoc/nhan-xet/:id', component: AdminKhoahocCmtComponent},
       {path: 'khoa-hoc-add', component:AdminKhoahocAddComponent},
       {path: 'bai-giang', component:AdminBaiGiangComponent},
+      {path: 'bai-giang/xem-cau-hoi/:id', component:AdminKhoahocQuestionComponent},
       // {path: 'bai-giang-add', component:AdminBaigiangAddComponent},
+      
       {path: 'the-loai/:id/nhom-khoa-hoc/:idMang/khoa-hoc/:idKhoaHoc/bai-giang', component: AdminBaiGiangComponent},
-
+      {path: 'level', component:AdminLevelComponent},
       {path: 'duyet-khoa-hoc', component:AdminDuyetComponent},
       {path: 'nguoi-dung', component:AdminUserComponent},
       {path: 'nguoi-dung-them', component:AdminUserAddComponent},
@@ -55,7 +61,7 @@ const adminRoutes: Routes = [
 ]
 @NgModule({
   
-  declarations: [AdminTemplateComponent,AdminTheLoaiComponent,AdminUserAddComponent,AdminInstructorAddComponent,AdminMangKhoahocComponent, AdminCodeComponent, AdminCodeAddComponent, AdminMangThemComponent, AdminTheloaiAddComponent, AdminKhoahocComponent,AdminKhoahocAddComponent, AdminDuyetComponent, AdminBaiGiangComponent, AdminBaigiangAddComponent, AdminUserComponent, AdminInstructorComponent, AdminDashboardComponent],
+  declarations: [AdminTemplateComponent,AdminTheLoaiComponent,AdminUserAddComponent,AdminInstructorAddComponent,AdminMangKhoahocComponent, AdminCodeComponent, AdminCodeAddComponent, AdminMangThemComponent, AdminTheloaiAddComponent, AdminKhoahocComponent,AdminKhoahocAddComponent, AdminDuyetComponent, AdminBaiGiangComponent, AdminBaigiangAddComponent, AdminUserComponent, AdminInstructorComponent, AdminDashboardComponent, AdminKhoahocCmtComponent, AdminKhoahocQuestionComponent, AdminLevelComponent],
   imports: [
     CommonModule,ReactiveFormsModule,RouterModule.forChild(adminRoutes),MatStepperModule,MatButtonModule,MatInputModule,MatFormFieldModule,FormsModule,MatSelectModule
   ]

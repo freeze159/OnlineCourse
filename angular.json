@@ -37,7 +37,9 @@
               "src/assets/css/slick.css",
               "src/assets/css/slick-theme.css",
               "src/assets/css/dataTables.bootstrap4.css",
-              "src/assets/css/magnific-popup.css"
+              "src/assets/css/magnific-popup.css",
+              "./node_modules/froala-editor/css/froala_editor.pkgd.min.css",
+              "./node_modules/froala-editor/css/froala_style.min.css"
               
 
             ],
@@ -53,7 +55,9 @@
               "src/assets/js/dataTables.bootstrap4.js",
               "src/assets/js/custom.js",
               "src/assets/js/dataTable.js",
-              "src/assets/js/jquery.magnific-popup.min.js"
+              "src/assets/js/jquery.magnific-popup.min.js",
+              "./node_modules/froala-editor/js/plugins/font_size.min.js"
+              
               
             ]
           },

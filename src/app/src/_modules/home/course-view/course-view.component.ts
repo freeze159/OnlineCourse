@@ -12,6 +12,7 @@ export class CourseViewComponent implements OnInit {
   constructor(private khoahocService: KhoaHocService, private atvRoute: ActivatedRoute, private route:Router) { }
   danhSachKhoaHoc: Array<any> = [];
   danhSachMang: Array<any> = []
+  
   p = 1;
   getMang(id) {
     this.khoahocService.LayMangKhoaHoc(id).subscribe((res: any) => {
@@ -47,8 +48,15 @@ export class CourseViewComponent implements OnInit {
           }
         })
       }
+      if(!res.idTheLoai && !res.idMang){
+        this.khoahocService.LayKhoaHocNoiBat().subscribe((res:any)=>{
+          this.danhSachKhoaHoc=res.data;
+        })
+      }
       
     })
+
+
   }
   dieuHuong(tenMang:string,mangId:number,idTheLoai:number){
     let keyword = '';

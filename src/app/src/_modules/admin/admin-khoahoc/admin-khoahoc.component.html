@@ -59,6 +59,7 @@
           <button matButton class="btn btn-primary mr-3 " *ngIf='!flagButton' routerLink='../the-loai/{{idTheLoai}}/nhom-khoa-hoc/{{khoahoc.MangKH_id}}/khoa-hoc/{{khoahoc.id}}/bai-giang'>Xem Chi Tiết</button>
           <button matButton (click)='updateTriggered(khoahoc.MangKH_id,khoahoc.id)' class="btn mr-3 btn-info">Cập
             nhật</button>
+            <button matButton (click)='xemRate(khoahoc.id)' class="btn btn-success">Xem Rate</button>
           <button matButton (click)='delele(khoahoc.id)' class="btn btn-danger">Xóa</button>
         </td>
 
@@ -67,7 +68,7 @@
   </table>
   <form #frmUpdate='ngForm' (ngSubmit)='update(frmUpdate.value)' class="col-md-12" *ngIf='flag'>
     <mat-form-field>
-      <mat-label>Thể loại khóa học bạn chọn là: </mat-label>
+      <mat-label>Thể loại cũ: {{tenTheLoai}} </mat-label>
       <mat-select (selectionChange)="onSelectTheLoai($event.value)" required>
         <mat-option value="0">--Select--</mat-option>
         <mat-option *ngFor="let theLoai of danhSachTheLoai" value={{theLoai.id}}>{{theLoai.TenTheLoai}}
@@ -82,7 +83,7 @@ left: 30%;
 top: 53px;">Nhóm khóa học là bắt buộc</label>
     <mat-form-field>
 
-      <mat-label>Nhóm khóa học bạn chọn là: </mat-label>
+      <mat-label>Nhóm khóa học cũ: {{tenMang}} </mat-label>
       <mat-select #nhomKH='ngModel' name='MangKH_id' ngModel required>
         <mat-option value="0">--Select--</mat-option>
         <mat-option *ngFor="let nhomKhoaHoc of danhSachMangSecond" value={{nhomKhoaHoc.id}}>
@@ -111,6 +112,7 @@ top: 53px;">Nhóm khóa học là bắt buộc</label>
     </div>
     <div class="form-group">
       <label>Hình Ảnh</label><br>
+      <img src={{hinhAnh}} alt="" width="200" height="175"><br>
       <input type="file" class="text-center center-block file-upload" name='HinhAnh' (change)='onFileChange($event)'>
     </div>
     <div class="form-group">

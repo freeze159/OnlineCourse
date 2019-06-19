@@ -13,7 +13,8 @@
 
                 <br>
                 <a class="btn btn-success btn-start waves-light" mdbWavesEffect
-                    routerLink='../../../learn-continue/{{khoaHocId}}/{{mangKHId}}'>Bắt đầu học</a>
+                    routerLink='../../../learn-continue/{{khoaHocId}}/{{mangKHId}}'*ngIf='checkChuaMua()'  >Bắt đầu học</a>
+                    
             </div>
             <div>
                 <p>Giảng viên: {{giangVien}}</p>
@@ -224,7 +225,7 @@
                                     class="form-control" rows="1" id="rateBox"></textarea>
                                 <br>
                                 <textarea placeholder="Đánh giá của bạn" name="NoiDung" ngModel #rateBox='ngModel'
-                                    required minlength="5"></textarea>
+                                    required minlength="5" id="rateContent"></textarea>
 
                                 <div>
                                     <span style="float:left">Điểm:</span>

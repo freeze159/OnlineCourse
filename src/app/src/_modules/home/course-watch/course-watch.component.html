@@ -27,12 +27,11 @@
               <h3 class="lead display-4" *ngIf='flagNull'>Chưa có bình luận nào. Hãy là người đầu tiên để lại
                   bình luận</h3>
               
-              <h1>Trang Đánh giá</h1>
-                        <li class="comment user-comment" *ngFor='let cauhoi of danhSachCauHoi'>
+              
+                        <li class="comment user-comment d-flex" *ngFor='let cauhoi of danhSachCauHoi'>
 
                             <div class="info">
                                 <a>{{cauhoi.user}}</a>
-                                <span>{{cauhoi.ThoiGian}}</span>
 
                             </div>
 
@@ -49,7 +48,7 @@
 
                         </li>
                         <li class="write-new">
-                            <h1>Đánh Giá</h1>
+                            <h1>Đặt câu hỏi</h1>
 
                             <form #frmCauHoi='ngForm' (ngSubmit)='themCauHoi(frmCauHoi.value)'>
                                 <textarea placeholder="Tiêu đề" name="TieuDe" ngModel #title='ngModel' required

@@ -17,6 +17,7 @@ import { FormsModule,ReactiveFormsModule    } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { ModCreateLectureComponent } from './mod-create-lecture/mod-create-lecture.component';
 import { UpdateComponent } from './mod-create-lecture/update/update.component';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 
 import {MatRadioModule} from '@angular/material/radio';
@@ -44,7 +45,7 @@ const modRoutes: Routes = [
 @NgModule({
   declarations: [ModPageComponent, ModTemplateComponent, ModHeaderComponent, ModDetailComponent, ModCourseComponent, ModHistoryComponent, ModCreateComponent, ModCreateLectureComponent, UpdateComponent, ModBankingComponent],
   imports: [
-    CommonModule, RouterModule.forChild(modRoutes), NgxPaginationModule, MatInputModule, MatFormFieldModule, MatStepperModule, FormsModule,ReactiveFormsModule, MatButtonModule, MatSelectModule,MatRadioModule
+    CommonModule, RouterModule.forChild(modRoutes), NgxPaginationModule,FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(), MatInputModule, MatFormFieldModule, MatStepperModule, FormsModule,ReactiveFormsModule, MatButtonModule, MatSelectModule,MatRadioModule
   ]
 })
 

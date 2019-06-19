@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { KhoaHocService } from 'src/app/src/_core/services/khoa-hoc.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -16,7 +16,8 @@ export class AdminKhoahocComponent implements OnInit {
   idMangUpdate: any;
   idKhoaHocUpdate: any;
   fileData: File;
-  constructor(private khoaHocS: KhoaHocService, private atv: ActivatedRoute) { }
+  hinhAnh:string;
+  constructor(private khoaHocS: KhoaHocService, private atv: ActivatedRoute,private route:Router) { }
   danhSachTheLoai: any;
   danhSachMang: any;
   danhSachMangSecond:any
@@ -58,13 +59,12 @@ export class AdminKhoahocComponent implements OnInit {
       this.giam = res.data.GiamGia;
       this.tenMang = res.data.MangKH;
       this.idMangUpdate = idmang;
-      this.idKhoaHocUpdate = idKH
-      console.log(this.idKhoaHocUpdate, this.idMangUpdate)
+      this.idKhoaHocUpdate = idKH;
+      this.hinhAnh = res.data.HinhAnh;
     })
   }
   update(thongTin: any) {
     this.flag = false;
-    console.log(this.idKhoaHocUpdate, this.idMangUpdate)
     if (thongTin.TenKH == '') {
       thongTin.TenKH = this.name;
     }
@@ -82,15 +82,23 @@ export class AdminKhoahocComponent implements OnInit {
       thongTin.GiamGia = this.giam
     }
     this.khoaHocS.UpdateKhoaHoc(this.idKhoaHocUpdate, this.idMangUpdate, thongTin).subscribe((res: any) => {
-      Swal.fire('Thành công', 'Cập nhật khóa học thành công', 'success');
+      if(typeof res =='object'){
+        Swal.fire('Thành công', 'Cập nhật khóa học thành công', 'success').then((res)=>{
+          this.khoaHocS.LayDanhSachKhoaHoc(this.idMang).subscribe((res: any) => {
+            this.danhSachKhoaHoc = res.data;
+          })
+        });
+      }
+      else{
+        Swal.fire('Thất bại', res, 'error');
+      }
+      
     }, err => {
-      console.log(err)
       Swal.fire('Thất bại', 'Cập nhật khóa học thất bại', 'error');
     })
 
   }
   onSelect(event) {
-    console.log(event);
     this.idTheLoai = event;
     this.khoaHocS.LayMangKhoaHoc(this.idTheLoai).subscribe((res: any) => {
       this.danhSachMang = res.data;
@@ -121,6 +129,7 @@ export class AdminKhoahocComponent implements OnInit {
 
     formData.set('HinhAnh', this.fileData, this.fileData.name);
     this.khoaHocS.UpdateKhoaHocImage(this.idMangUpdate, this.idKhoaHocUpdate, formData).subscribe((res: any) => {
+      this.hinhAnh = res.data.HinhAnh;
 
 
       // }, err => {
@@ -130,6 +139,9 @@ export class AdminKhoahocComponent implements OnInit {
     )
 
 
+  }
+  xemRate(id){
+    this.route.navigateByUrl(`admin/khoa-hoc/nhan-xet/${id}`);
   }
   delele(id) {
     Swal.fire({
@@ -155,8 +167,7 @@ export class AdminKhoahocComponent implements OnInit {
           })
 
         }, err => {
-          //  Swal.fire('Thất bại', 'Lỗi', 'error') 
-          console.log(err);
+           Swal.fire('Thất bại', 'Lỗi', 'error') 
           })
       }
 

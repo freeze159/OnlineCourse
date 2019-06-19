@@ -1,0 +1,74 @@
+<div class="row">
+  <ul class="nav nav-tabs course-tab col-md-12">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#rate">Xem Đánh giá</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#cmt" (click)='loadCmt()'>Xem Bình luận</a>
+    </li>
+
+
+  </ul>
+  <div class="tab-content col-sm-12 pt-5">
+    <div class="tab-pane active" id="rate">
+      <table class="table table-bordered table-responsive-sm table-striped" id="dataTableRate" width="100%"
+        cellspacing="0">
+        <thead class="table-primary">
+          <tr>
+            <th>ID</th>
+            <th>Tên User</th>
+            <th>Tiêu đề</th>
+            <th>Nội dung</th>
+            <th>Thời gian</th>
+            <th>Điểm</th>
+            <th>Thao tác</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor='let rate of danhSachRate'>
+            <td>{{rate.id}}</td>
+            <td>{{rate.user}}</td>
+            <td>{{rate.TieuDe}}</td>
+            <td>{{rate.NoiDung}}</td>
+            <td>{{rate.ThoiGian}}</td>
+            <td>{{rate.Diem}} <sup><i class="fa fa-star" style="color:yellow"></i></sup></td>
+            <td><button class="btn btn-danger" (click)='xoaRate(rate.id)'>Xóa</button></td>
+
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane " id="cmt">
+      <table class="table table-bordered table-responsive-sm table-striped"  id="dataTableCmt" width="100%"
+        cellspacing="0">
+        <thead class="table-primary">
+          <tr>
+            <th>ID</th>
+            <th>ID User</th>
+            <th>Tên User</th>
+            <th>Nội dung</th>
+            <th>Thời gian</th>
+            <th>Thao tác</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor='let cmt of danhSachCmt'>
+            <td class="td-cmt">{{cmt.id}}</td>
+            <td class="td-cmt">{{cmt.user_id}}</td>
+            <td class="td-cmt">{{cmt.user}}</td>
+            <td class="td-cmt">{{cmt.NoiDung}}</td>
+            <td class="td-cmt">{{cmt.ThoiGian}}</td>
+            <td class="td-cmt"><button class="btn btn-danger" (click)='xoaCmt(cmt.id)'>Xóa</button></td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

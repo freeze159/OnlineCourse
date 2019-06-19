@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/src/_core/services/user.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-become-instructor',
@@ -9,7 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class BecomeInstructorComponent implements OnInit {
 
-  constructor(private userS:UserService) { }
+  constructor(private userS:UserService,private route:Router) { }
   isLinear
   isTeacher:boolean = false;
   ngOnInit() {
@@ -63,11 +64,17 @@ export class BecomeInstructorComponent implements OnInit {
           TenGiangVien:result.value[1]
         }
         this.userS.TroThanhGiangVien(thongTin).subscribe((res:any)=>{
+          const userInfo = JSON.parse(localStorage.getItem('userLogin'));
+          let userInfoNew = userInfo;
           if(typeof res =='object'){
-            
+            let userInfoNew = userInfo;
+            userInfoNew.data.level_id = '2';
+            localStorage.setItem('userLogin',JSON.stringify(userInfoNew));
             Swal.fire({
               title: 'Mọi thứ đã xong!',          
               confirmButtonText: 'Bắt đầu đăng bài giảng của bạn!'
+            }).then((res)=>{
+              this.route.navigateByUrl('/instructor');
             })
           }
           else{

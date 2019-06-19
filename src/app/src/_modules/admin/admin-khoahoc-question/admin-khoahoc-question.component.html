@@ -1,0 +1,26 @@
+    <table class="table table-bordered table-responsive-sm table-striped" id="dataTable" width="100%"
+    cellspacing="0">
+    <thead class="table-primary">
+      <tr>
+        <th>ID</th>
+        <th>Tên User</th>
+        <th>Tiêu Đề</th>
+        <th>Nội dung</th>
+        <th>Thời gian</th>
+        <th>Thao tác</th>
+
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor='let ques of danhSachCauHoi'>
+        <td>{{ques.id}}</td>
+        <td>{{ques.user}}</td>
+        <td>{{ques.TieuDe}}</td>
+        <td>{{ques.NoiDung}}</td>
+        <td>{{ques.ThoiGian}}</td>
+        <td><button class="btn btn-danger" (click)='xoaQues(ques.id)'>Xóa</button></td>
+
+      </tr>
+    </tbody>
+  </table>
