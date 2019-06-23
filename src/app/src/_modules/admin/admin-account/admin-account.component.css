@@ -18,7 +18,89 @@
     }
 
 
-    
+    .preloader {
+        position: relative;
+        display: none;
+        z-index: 999;
+        background-color: #ffffff;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+      
+      .lds-css.ng-scope {
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+      }
+      
+      @keyframes lds-ripple {
+        0% {
+          top: 96px;
+          left: 96px;
+          width: 0;
+          height: 0;
+          opacity: 1;
+        }
+        100% {
+          top: 18px;
+          left: 18px;
+          width: 156px;
+          height: 156px;
+          opacity: 0;
+        }
+      }
+      @-webkit-keyframes lds-ripple {
+        0% {
+          top: 96px;
+          left: 96px;
+          width: 0;
+          height: 0;
+          opacity: 1;
+        }
+        100% {
+          top: 18px;
+          left: 18px;
+          width: 156px;
+          height: 156px;
+          opacity: 0;
+        }
+      }
+      .lds-ripple {
+        position: relative;
+      }
+      
+      .lds-ripple div {
+        -webkit-box-sizing: content-box;
+                box-sizing: content-box;
+        position: absolute;
+        border-width: 4px;
+        border-style: solid;
+        opacity: 1;
+        border-radius: 50%;
+        -webkit-animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+        animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+      }
+      
+      .lds-ripple div:nth-child(1) {
+        border-color: #eb1436;
+      }
+      
+      .lds-ripple div:nth-child(2) {
+        border-color: #eb1436;
+        -webkit-animation-delay: -0.5s;
+        animation-delay: -0.5s;
+      }
+      
+      .lds-ripple {
+        width: 100px !important;
+        height: 100px !important;
+        -webkit-transform: translate(-50px, -50px) scale(0.5) translate(50px, 50px);
+        transform: translate(-50px, -50px) scale(0.5) translate(50px, 50px);
+      }
 .btn {
     display: inline-block;
     font-weight: 400;
@@ -55,8 +137,8 @@
   td{
     font-size:1.1rem;
     font-weight: 400;
-    width: 1%;
-    white-space: nowrap
+    /* width: 1%;
+    white-space: nowrap */
 }
 @media only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
@@ -111,10 +193,12 @@
 	Label the data
 	*/
 	td:nth-of-type(1):before { content: "ID"; }
-	td:nth-of-type(2):before { content: "Level"; }
-	
-    td:nth-of-type(3):before { content: "Thao tác"; }
-    td:nth-of-type(4):before { content: "Tạo mới"; }
+	td:nth-of-type(2):before { content: "Id user"; }
+    td:nth-of-type(3):before { content: "STK"; }
+    td:nth-of-type(4):before { content: "Chủ thẻ"; }
+	td:nth-of-type(5):before { content: "Ngân Hàng"; }
+    td:nth-of-type(6):before { content: "Chi Nhánh"; }
+    td:nth-of-type(7):before { content: "Thao tác"; }
 
   
 	

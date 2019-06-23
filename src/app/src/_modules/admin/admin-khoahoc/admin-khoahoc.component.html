@@ -14,7 +14,7 @@
     </form>
   </div>
   <div class="col-md-6  col-xs-12">
-    <label>Chọn Thể Loại Khóa Học</label>
+    <label>Chọn Nhóm Khóa Học</label>
     <br>
     <form #frmUpdate='ngForm'>
       <mat-form-field>
@@ -55,74 +55,110 @@
         <td>{{khoahoc.GiamGia}}</td>
         <td>{{khoahoc.DanhGia[0]}} <sup><i class="fa fa-star" style="color:yellow"></i></sup></td>
         <td>
-          <button matButton class="btn btn-primary mr-3 " *ngIf='flagButton' routerLink='{{khoahoc.id}}/bai-giang'>Xem Chi Tiết</button>
-          <button matButton class="btn btn-primary mr-3 " *ngIf='!flagButton' routerLink='../the-loai/{{idTheLoai}}/nhom-khoa-hoc/{{khoahoc.MangKH_id}}/khoa-hoc/{{khoahoc.id}}/bai-giang'>Xem Chi Tiết</button>
-          <button matButton (click)='updateTriggered(khoahoc.MangKH_id,khoahoc.id)' class="btn mr-3 btn-info">Cập
-            nhật</button>
-            <button matButton (click)='xemRate(khoahoc.id)' class="btn btn-success">Xem Rate</button>
+          <button matButton class="btn btn-primary mr-3 " *ngIf='flagButton' routerLink='{{khoahoc.id}}/bai-giang'>Xem
+            Chi Tiết</button>
+          <button matButton class="btn btn-primary mr-3 " *ngIf='!flagButton'
+            routerLink='../the-loai/{{idTheLoai}}/nhom-khoa-hoc/{{khoahoc.MangKH_id}}/khoa-hoc/{{khoahoc.id}}/bai-giang'>Xem
+            Chi Tiết</button>
+          <a matButton (click)='updateTriggered(khoahoc.MangKH_id,khoahoc.id)' class="btn mr-3 btn-info"
+            href="/admin/khoa-hoc#formUpdate">Cập
+            nhật</a>
+          <button matButton (click)='xemRate(khoahoc.id)' class="btn btn-success">Xem Rate</button>
           <button matButton (click)='delele(khoahoc.id)' class="btn btn-danger">Xóa</button>
         </td>
 
       </tr>
     </tbody>
   </table>
-  <form #frmUpdate='ngForm' (ngSubmit)='update(frmUpdate.value)' class="col-md-12" *ngIf='flag'>
-    <mat-form-field>
-      <mat-label>Thể loại cũ: {{tenTheLoai}} </mat-label>
-      <mat-select (selectionChange)="onSelectTheLoai($event.value)" required>
-        <mat-option value="0">--Select--</mat-option>
-        <mat-option *ngFor="let theLoai of danhSachTheLoai" value={{theLoai.id}}>{{theLoai.TenTheLoai}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+  <form [formGroup]='KhoaHocUpdateForm' class="col-md-10 mx-auto" (ngSubmit)='update(KhoaHocUpdateForm.value)' *ngIf='flag' id='formUpdate'>
+       <div class="form-group d-flex">
+        <mat-form-field class="col-md-6">
+            <mat-label>Thể loại khóa học bạn chọn là: </mat-label>
+            <mat-select (selectionChange)="onSelect($event.value)" required>
+              <mat-option value="0">--Select--</mat-option>
+              <mat-option *ngFor="let theLoai of danhSachTheLoai" value={{theLoai.id}}>{{theLoai.TenTheLoai}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          
+          <mat-form-field class="col-md-6">
 
-    <sup style="color:red;font-size: 1.2rem;position: relative;
-              left: 30%;
-              top: 53px;"> * </sup> <label style="color:red;font-size: 1rem;position: relative;
-left: 30%;
-top: 53px;">Nhóm khóa học là bắt buộc</label>
-    <mat-form-field>
-
-      <mat-label>Nhóm khóa học cũ: {{tenMang}} </mat-label>
-      <mat-select #nhomKH='ngModel' name='MangKH_id' ngModel required>
-        <mat-option value="0">--Select--</mat-option>
-        <mat-option *ngFor="let nhomKhoaHoc of danhSachMangSecond" value={{nhomKhoaHoc.id}}>
-          {{nhomKhoaHoc.TenMangKH}}</mat-option>
-      </mat-select>
-    </mat-form-field>
+            <mat-label>Nhóm khóa học bạn chọn là: </mat-label>
+            <mat-select  formControlName='MangKH_id' required >
+              <mat-option value="0">--Select--</mat-option>
+              <mat-option *ngFor="let nhomKhoaHoc of danhSachMang" value={{nhomKhoaHoc.id}}>
+                {{nhomKhoaHoc.TenMangKH}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+    </div>
+    
     <div class="form-group">
       <label>Tên Khóa học mới</label>
-      <input type="text" class="form-control" #tenKH='ngModel' name='TenKH' ngModel minlength="10"
-        placeholder="{{name}}">
-      <div *ngIf='tenKH.errors && (tenKH.touched || tenKH.dirty)'>
-        <div *ngIf='tenKH.errors.minlength' class="alert alert-danger">
+      <input type="text" class="form-control" formControlName='TenKH' minlength="10" placeholder="{{name}}">
+      <div *ngIf='KhoaHocUpdateForm.controls.TenKH.errors && (KhoaHocUpdateForm.controls.TenKH.touched || KhoaHocUpdateForm.controls.TenKH.dirty)'>
+        <div *ngIf='KhoaHocUpdateForm.controls.TenKH.errors.minlength' class="alert alert-danger">
           Tên khóa học phải nhiều hơn 10 ký tự
         </div>
       </div>
     </div>
     <div class="form-group">
-      <label>Mô tả mới</label>
-      <input type="text" class="form-control" #mota='ngModel' name='TomTat' ngModel minlength="10"
-        placeholder="{{short}}">
-      <div *ngIf='mota.errors && (mota.touched || mota.dirty)'>
-        <div *ngIf='mota.errors.minlength' class="alert alert-danger">
-          Tên khóa học phải nhiều hơn 10 ký tự
+
+      <h2 id="h2lyDo" style="text-align: center;"><strong>L&Yacute; DO BẠN N&Ecirc;N CHỌN KH&Oacute;A HỌC
+          N&Agrave;Y</strong></h2>
+      <textarea [froalaEditor]  formControlName="lydo" required
+        minlength="17">Lý do</textarea>
+
+      <div style="width:300px;"
+        *ngIf="KhoaHocUpdateForm.controls.lydo.errors && (KhoaHocUpdateForm.controls.lydo.dirty || KhoaHocUpdateForm.controls.lydo.touched)">
+        <div *ngIf="KhoaHocUpdateForm.controls.lydo.errors.required" class="alert alert-danger">
+          <p>Không được để rỗng!</p>
+        </div>
+        <div *ngIf="KhoaHocUpdateForm.controls.lydo.errors.minlength" class="alert alert-danger">
+          <p>Độ dài từ 10 ký tự!</p>
         </div>
       </div>
     </div>
     <div class="form-group">
+      <h2 style="text-align: center;" id="h2ketQua"><strong>KẾT QUẢ ĐẠT ĐƯỢC</strong></h2>
+      <textarea [froalaEditor] formControlName="ketqua" required
+        minlength="17"> {{stringKq}}</textarea>
+      <div style="width:300px;"
+        *ngIf="KhoaHocUpdateForm.controls.ketqua.errors && (KhoaHocUpdateForm.controls.ketqua.dirty || KhoaHocUpdateForm.controls.ketqua.touched)">
+        <div *ngIf="KhoaHocUpdateForm.controls.ketqua.errors.required" class="alert alert-danger">
+          <p>Không được để rỗng!</p>
+        </div>
+        <div *ngIf="KhoaHocUpdateForm.controls.ketqua.errors.minlength" class="alert alert-danger">
+          <p>Độ dài từ 10 ký tự</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group" style="position:relative">
+      <div class="preloader" id="preloader">
+        <div class="lds-css ng-scope">
+          <div class="lds-ripple">
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
       <label>Hình Ảnh</label><br>
-      <img src={{hinhAnh}} alt="" width="200" height="175"><br>
-      <input type="file" class="text-center center-block file-upload" name='HinhAnh' (change)='onFileChange($event)'>
+      <img src={{hinhAnh}} alt="" width="200" height="175">
+      <br>
+      <input type="file" class="text-center center-block file-upload" name='HinhAnh'
+        (change)='onFileChange($event)'>
     </div>
     <div class="form-group">
       <label>Giá tiền mới</label>
-      <input type="number" class="form-control" #giaT='ngModel' name='GiaTien' ngModel placeholder="{{price}}">
+      <input type="number" class="form-control"formControlName='GiaTien' placeholder="{{price}}">
     </div>
     <div class="form-group">
       <label>Giảm giá %</label>
-      <input type="number" class="form-control" #giamG='ngModel' name='GiamGia' ngModel placeholder="{{giam}}">
+      <input type="number" class="form-control" formControlName='GiamGia'  placeholder="{{giam}}">
     </div>
-    <button mat-button type="submit" [disabled]='frmUpdate.invalid' class="btn-success">Cập nhật</button>
+    <button mat-button type="submit" [disabled]='KhoaHocUpdateForm.invalid' class="btn-success">Cập nhật</button>
   </form>
 </div>

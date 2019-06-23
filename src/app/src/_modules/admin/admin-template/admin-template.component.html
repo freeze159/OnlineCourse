@@ -4,7 +4,7 @@
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" >
+    <a class="sidebar-brand d-flex align-items-center justify-content-center">
       <div class="sidebar-brand-icon rotate-n-15">
         <i class="fa fa-laugh-wink"></i>
       </div>
@@ -16,7 +16,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-      <a class="nav-link "routerLink='/admin'>
+      <a class="nav-link " routerLink='/admin'>
         <i class="fa fa-archive"></i>
         <span>Dashboard</span></a>
     </li>
@@ -40,7 +40,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Thư mục thể loại:</h6>
           <a class="collapse-item" routerLink='the-loai'>Danh sách thể loại</a>
-          <a class="collapse-item"  routerLink='the-loai-add'>Thêm thể loại</a>
+          <a class="collapse-item" routerLink='the-loai-add'>Thêm thể loại</a>
         </div>
       </div>
     </li>
@@ -55,9 +55,9 @@
       <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Thư mục mảng khóa học:</h6>
-          <a class="collapse-item"  routerLink='mang-khoa-hoc'>Danh Sách Mảng Khóa Học</a>
-          <a class="collapse-item"  routerLink='mang-khoa-hoc-add'>Thêm Mảng Khóa Học</a>
-          
+          <a class="collapse-item" routerLink='mang-khoa-hoc'>Danh Sách Mảng Khóa Học</a>
+          <a class="collapse-item" routerLink='mang-khoa-hoc-add'>Thêm Mảng Khóa Học</a>
+
         </div>
       </div>
     </li>
@@ -76,19 +76,19 @@
       </div>
     </li>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLecture" aria-expanded="true"
-          aria-controls="collapseLecture">
-          <i class="fa fa-server "></i>
-          <span>Bài Giảng Khóa Học</span>
-        </a>
-        <div id="collapseLecture" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Thư mục Bài Giảng:</h6>
-            <a class="collapse-item" routerLink='bai-giang'>Danh sách bài giảng</a>
-            <!-- <a class="collapse-item" routerLink='bai-giang-add'>Thêm bài giảng</a> -->
-          </div>
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLecture" aria-expanded="true"
+        aria-controls="collapseLecture">
+        <i class="fa fa-server "></i>
+        <span>Bài Giảng Khóa Học</span>
+      </a>
+      <div id="collapseLecture" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Thư mục Bài Giảng:</h6>
+          <a class="collapse-item" routerLink='bai-giang'>Danh sách bài giảng</a>
+          <!-- <a class="collapse-item" routerLink='bai-giang-add'>Thêm bài giảng</a> -->
         </div>
-      </li>
+      </div>
+    </li>
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCode" aria-expanded="true"
         aria-controls="collapseCode">
@@ -103,8 +103,8 @@
         </div>
       </div>
     </li>
-    
-    
+
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -123,8 +123,8 @@
       <div id="collapseUser" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">User</h6>
-           <a class="collapse-item" routerLink='nguoi-dung' >Danh Sách User</a>
-           <a class="collapse-item" routerLink='nguoi-dung-them' >Thêm User</a>
+          <a class="collapse-item" routerLink='nguoi-dung'>Danh Sách User</a>
+          <a class="collapse-item" routerLink='nguoi-dung-them'>Thêm User</a>
         </div>
       </div>
     </li>
@@ -139,7 +139,7 @@
       <div id="collapseMod" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Giảng Viên</h6>
-           <a class="collapse-item" routerLink='giang-vien' >Danh Sách Giảng Viên</a>
+          <a class="collapse-item" routerLink='giang-vien'>Danh Sách Giảng Viên</a>
         </div>
       </div>
     </li>
@@ -152,8 +152,8 @@
     </li>
     <hr class="sidebar-divider d-none d-md-block">
     <div class="sidebar-heading">
-        Quản Lý Chung
-      </div>
+      Quản Lý Chung
+    </div>
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true"
         aria-controls="collapseThree">
@@ -172,30 +172,45 @@
       </div>
     </li>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLevel" aria-expanded="true"
-          aria-controls="collapseLevel">
-          <i class="fa fa-fw fa-table "></i>
-          <span>Level User</span>
-        </a>
-        <div id="collapseLevel" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Báo cáo</h6>
-            <a class="collapse-item" routerLink='level'>
-              Danh Sách Level</a>
-            
-  
-          </div>
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLevel" aria-expanded="true"
+        aria-controls="collapseLevel">
+        <i class="fa fa-fw fa-table "></i>
+        <span>Level User</span>
+      </a>
+      <div id="collapseLevel" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Level:</h6>
+          <a class="collapse-item" routerLink='level'>
+            Danh Sách Level</a>
         </div>
-      </li>
+      </div>
+    </li>
     <li class="nav-item">
-        <a routerLink='/' class="turn-back"><i class="fa fa-arrow-left mr-2" aria-hidden="true"></i>Về trang chủ</a>
-      </li>
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBank" aria-expanded="true"
+        aria-controls="collapseBank">
+        <i class="fa fa-fw fa-table "></i>
+        <span>Ngân hàng</span>
+      </a>
+      <div id="collapseBank" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Quản lý thanh toán</h6>
+          <a class="collapse-item" routerLink='bank'>
+            Danh Sách Ngân Hàng</a>
+          <a class="collapse-item" routerLink='account'>
+            Danh Sách Tài Khoản</a>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a routerLink='/' class="turn-back"><i class="fa fa-arrow-left mr-2" aria-hidden="true"></i>Về trang chủ</a>
+    </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
-      <button class="rounded-circle border-0" id="sidebarToggle"><i class="fa fa-cogs fa-spin fa-fw" style="color:bisque;font-size:1.4rem;"></i></button>
+      <button class="rounded-circle border-0" id="sidebarToggle"><i class="fa fa-cogs fa-spin fa-fw"
+          style="color:bisque;font-size:1.4rem;"></i></button>
     </div>
 
   </ul>

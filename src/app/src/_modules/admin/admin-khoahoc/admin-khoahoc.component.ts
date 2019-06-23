@@ -1,14 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { KhoaHocService } from 'src/app/src/_core/services/khoa-hoc.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import * as $ from 'jquery'
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-khoahoc',
   templateUrl: './admin-khoahoc.component.html',
+  encapsulation:ViewEncapsulation.None,
   styleUrls: ['./admin-khoahoc.component.css']
 })
 export class AdminKhoahocComponent implements OnInit {
+  KhoaHocUpdateForm = new FormGroup({
+    MangKH_id: new FormControl(''),
+    TenKH: new FormControl(''),
+    GiaTien: new FormControl(''),
+    GiamGia: new FormControl(''),
+    lydo: new FormControl(''),
+    ketqua: new FormControl(''),
+
+  })
   name: any;
   short: any;
   price: any;
@@ -64,39 +76,42 @@ export class AdminKhoahocComponent implements OnInit {
     })
   }
   update(thongTin: any) {
-    this.flag = false;
-    if (thongTin.TenKH == '') {
-      thongTin.TenKH = this.name;
-    }
-    if (thongTin.MangKH_id == '') {
-      thongTin.MangKH_id = this.idMangUpdate;
-      return;
-    }
-    if (thongTin.TomTat == '') {
-      thongTin.TomTat = this.short;
-    }
-    if (thongTin.GiaTien == '') {
-      thongTin.GiaTien = this.price;
-    }
-    if (thongTin.GiamGia == '') {
-      thongTin.GiamGia = this.giam
-    }
-    this.khoaHocS.UpdateKhoaHoc(this.idKhoaHocUpdate, this.idMangUpdate, thongTin).subscribe((res: any) => {
-      if(typeof res =='object'){
-        Swal.fire('Thành công', 'Cập nhật khóa học thành công', 'success').then((res)=>{
-          this.khoaHocS.LayDanhSachKhoaHoc(this.idMang).subscribe((res: any) => {
-            this.danhSachKhoaHoc = res.data;
-          })
-        });
+    let lydo = document.getElementById('h2lyDo').outerHTML.replace(/id="h2lyDo" /g, "");
+    let ketqua = document.getElementById('h2ketQua').outerHTML.replace(/id="h2ketQua" /g, "");
+    let tomTat = lydo + '\r\n' + this.KhoaHocUpdateForm.value.lydo + ketqua + '\r\n' + this.KhoaHocUpdateForm.value.ketqua;
+    this.khoaHocS.LayChiTietKhoaHoc(this.idMangUpdate, this.idKhoaHocUpdate).subscribe((res: any) => {
+      let ketqua = res.data;
+      if (this.KhoaHocUpdateForm.value.TenKH == '') {
+        this.KhoaHocUpdateForm.value.TenKH = ketqua.TenKH;
       }
-      else{
-        Swal.fire('Thất bại', res, 'error');
+      if (this.KhoaHocUpdateForm.value.MangKH_id == '') {
+        this.KhoaHocUpdateForm.value.MangKH_id = ketqua.TenKH;
       }
-      
-    }, err => {
-      Swal.fire('Thất bại', 'Cập nhật khóa học thất bại', 'error');
-    })
+      if (tomTat == '') {
+        tomTat = ketqua.TomTat;
+      }
+      if (this.KhoaHocUpdateForm.value.GiaTien == '') {
+        this.KhoaHocUpdateForm.value.GiaTien = ketqua.GiaTien;
+      }
+      if (this.KhoaHocUpdateForm.value.GiamGia == '') {
+        this.KhoaHocUpdateForm.value.GiamGia = 0
+      }
+      let thongTinUpdate = {
+        TenKH: this.KhoaHocUpdateForm.value.TenKH,
+        MangKH_id: this.KhoaHocUpdateForm.value.MangKH_id,
+        GiaTien: this.KhoaHocUpdateForm.value.GiaTien,
+        GiamGia: this.KhoaHocUpdateForm.value.GiamGia,
+        TomTat: tomTat
+      }
+      this.khoaHocS.UpdateKhoaHoc(this.idKhoaHocUpdate, this.idMangUpdate, thongTinUpdate).subscribe((res: any) => {
+        Swal.fire('Thành công', 'Cập nhật khóa học thành công', 'success').then(res => {
+          this.route.navigateByUrl(`/instructor/lecture/${this.idKhoaHocUpdate}/${thongTin.MangKH_id}`);
 
+        });
+      }, err => {
+        Swal.fire('Thất bại', err, 'error');
+      })
+    })
   }
   onSelect(event) {
     this.idTheLoai = event;
@@ -123,14 +138,16 @@ export class AdminKhoahocComponent implements OnInit {
 
   }
   onFileChange(event) {
-
+    const preload: any = $('#preloader');
+    let preloaDiv = document.getElementById("preloader");
+    preloaDiv.style.display = 'block';
     this.fileData = <File>event.target.files[0];
     let formData = new FormData();
 
     formData.set('HinhAnh', this.fileData, this.fileData.name);
     this.khoaHocS.UpdateKhoaHocImage(this.idMangUpdate, this.idKhoaHocUpdate, formData).subscribe((res: any) => {
       this.hinhAnh = res.data.HinhAnh;
-
+      preload.fadeOut('slow');
 
       // }, err => {
       //   Swal.fire('Error', 'Bạn cần điền tên và tóm tắt khóa học', 'error');

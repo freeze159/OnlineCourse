@@ -1,0 +1,151 @@
+<table class="table table-bordered table-responsive-sm table-striped" id="dataTableBank" width="100%" cellspacing="0">
+  <thead class="table-primary">
+    <tr>
+      <th>ID</th>
+      <th>ID user</th>
+      <th>Số tài khoản</th>
+      <th>Chủ tài khoản</th>
+      <th>Ngân hàng</th>
+      <th>Chi Nhánh</th>
+      <th>Thao tác</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor='let cmt of danhSachTaiKhoan'>
+      <td>{{cmt.id}}</td>
+      <td>{{cmt.user_id}}</td>
+      <td>{{cmt.SoTaiKhoan}}</td>
+      <td>{{cmt.ChuTaiKhoan}}</td>
+      <td>{{cmt.NganHang}}</td>
+      <td>{{cmt.ChiNhanhNganHang}}</td>
+
+      <td>
+        <!-- <a class="btn btn-info"
+          (click)='updateTrigger(cmt.id,cmt.SoTaiKhoan,cmt.ChuTaiKhoan,cmt.ChiNhanhNganHang,cmt.NganHang)'
+          data-toggle='modal' data-target='#updateModal'>Cập nhật</a> -->
+        <!-- <a class="btn btn-success" data-toggle='modal' data-target='#addModal'>Thêm mới</a> -->
+        <button class="btn btn-danger" (click)='xoaTk(cmt.id)'>Xóa</button>
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+<!-- <div class="modal" tabindex="-1" role="dialog" id="addModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Thêm tài khoản mới</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12">
+          <form #frmBankAdd='ngForm' (ngSubmit)='addBank(frmBankAdd.value)'>
+            <div class="form-group">
+
+              <div class="main-form mt-4">
+                <div class="form-group">
+                  <mat-form-field>
+
+                    <mat-label>Chủ thẻ tối thiểu 5 ký tự</mat-label>
+                    <input matInput type="text" ngModel name='ChuTaiKhoan' #bankChuTaiKhoan='ngModel' required
+                      minlength="5">
+
+
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Số tài khoản từ 12 đến 19 số</mat-label>
+                    <input matInput type="text" ngModel name='SoTaiKhoan' #bankSoTaiKhoan='ngModel' required
+                      minlength="12" maxlength="19">
+
+
+
+                  </mat-form-field>
+
+
+                </div>
+                <div class="form-group">
+
+
+
+                  <select name="NganHang_id" #bankId='ngModel' ngModel class="form-control">
+                    <option value="0">--Select--</option>
+                    <option value="{{bank.id}}" *ngFor='let bank of bankList'>{{bank.TenNganHang}}</option>
+                  </select>
+                  <mat-form-field>
+                    <mat-label>Chi nhánh tối thiểu 5 ký tự</mat-label>
+                    <input matInput type="text" ngModel name='ChiNhanhNganHang' #bankChiNhanhNganHang='ngModel' required
+                      minlength="5">
+
+                  </mat-form-field>
+                </div>
+              </div>
+              <button type="submit" mat-button class="btn-success btn-confirmB" [disabled]='frmBankAdd.invalid'><a
+                  data-toggle='tab' href='#bank'> </a>Xác nhận</button>
+
+            </div>
+          </form>
+          <div class="preloader" id="preloader">
+            <div class="lds-css ng-scope">
+              <div class="lds-ripple">
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- <div class="modal" tabindex="-1" role="dialog" id="updateModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cập nhật tài khoản</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #frmUpdate='ngForm' (ngSubmit)='update(frmUpdate.value)'>
+          <div class="form-group">
+            <label>Số tài khoản mới:</label>
+            <input type="text" name="SoTaiKhoan" #num='ngModel' ngModel placeholder="STK cũ: {{SoTaiKhoanHienTai}}"
+              class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Chủ tài khoản:</label>
+            <input type="text" name="ChuTaiKhoan" #name='ngModel' ngModel placeholder="Tên cũ: {{ChuTaiKhoanHienTai}}"
+              class="form-control">
+          </div>
+          <div class="form-group">
+
+            <select name="NganHang_id" #bankId='ngModel' ngModel class="form-control">
+              <option value="0">--Select--</option>
+              <option value="{{bank.id}}" *ngFor='let bank of bankList'>{{bank.TenNganHang}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Chi Nhánh:</label>
+            <input type="text" name="ChiNhanhNganHang" #act='ngModel' ngModel
+              placeholder="Chi Nhánh: {{ChiNhanhNganHang}}" class="form-control">
+          </div>
+          <div class="form-group">
+            <button class="btn btn-success" type="submit" [disabled]='frmUpdate.invalid'>Cập nhật</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> -->

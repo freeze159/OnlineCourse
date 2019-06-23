@@ -86,7 +86,6 @@ export class ModCreateComponent implements OnInit {
       'TomTat': this.summary,
       'GiaTien': this.price
     }
-    console.log(this.thongTinBody)
 
   }
   onFileChange(event) {
@@ -113,7 +112,6 @@ export class ModCreateComponent implements OnInit {
 
   }
   finish() {
-    console.log(this.form.value)
     Swal.fire('Hoàn tất', 'Bạn đã tạo khóa học thành công hãy tạo bài giảng cho khóa học', 'success').then(res => {
       window.location.href = `/instructor/lecture/${this.idKhoaHocVuaThem}/${this.idMangKhoaHoc}`;
     })

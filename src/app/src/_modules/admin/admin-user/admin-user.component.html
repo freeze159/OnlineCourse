@@ -29,12 +29,21 @@
     </label>
     <input type="email" class="form-control" name="Email" value="{{email}}" title="enter your email." disabled>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6" style="position: relative">
 
     <h4>Ảnh đại diện</h4>
-
-    <img src={{hinhAnh}} alt="avatar" width="150" height="150">
-    <input type="file" class="text-center center-block file-upload" name='HinhAnh' (change)='onFileChange($event)'>
+    <div class="text-center" style="position: relative">
+      <div class="preloader" id="preloader">
+        <div class="lds-css ng-scope">
+          <div class="lds-ripple">
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+      <img src={{hinhAnh}} alt="avatar" width="150" height="150">
+      <input type="file" class="text-center center-block file-upload" name='HinhAnh' (change)='onFileChange($event)'>
+    </div>
   </div>
   <div class="col-md-6 pt-5">
     <label>
@@ -101,10 +110,10 @@
         <td>{{user.name}}</td>
         <td>{{user.email}}</td>
         <td>{{user.href}}</td>
-        <td><button matButton class="btn btn-primary mr-2 " (click)='modal(user.id)'
-            data-toggle="modal" data-target="#detailModel">Xem Chi Tiết</button>
+        <td><button matButton class="btn btn-primary mr-2 " (click)='modal(user.id)' data-toggle="modal"
+            data-target="#detailModel">Xem Chi Tiết</button>
           <button matButton (click)='getDataUpdate(user.id)' class="btn mr-2 btn-info">Cập nhật</button>
-          
+
           <button matButton (click)='delUser(user.id)' class="btn btn-danger">Xóa</button>
           <button matButton (click)='upGiangVien(user.id)' class="btn btn-secondary">Up GV</button>
 

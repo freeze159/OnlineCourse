@@ -1,3 +1,98 @@
+.preloader {
+    position: absolute;
+display: none;
+background-color: #ffffff;
+left: 0;
+right: 0;
+bottom: 0;
+width: 100%;
+top: 0;
+height: auto;
+  }
+  
+  .preloaderExcel {
+    position: absolute;
+display: none;
+background-color: #ffffff;
+left: 0;
+right: 0;
+bottom: 0;
+width: 100%;
+top: 0;
+height: auto;
+  }
+  .lds-css.ng-scope {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  
+  @keyframes lds-ripple {
+    0% {
+      top: 96px;
+      left: 96px;
+      width: 0;
+      height: 0;
+      opacity: 1;
+    }
+    100% {
+      top: 18px;
+      left: 18px;
+      width: 156px;
+      height: 156px;
+      opacity: 0;
+    }
+  }
+  @-webkit-keyframes lds-ripple {
+    0% {
+      top: 96px;
+      left: 96px;
+      width: 0;
+      height: 0;
+      opacity: 1;
+    }
+    100% {
+      top: 18px;
+      left: 18px;
+      width: 156px;
+      height: 156px;
+      opacity: 0;
+    }
+  }
+  .lds-ripple {
+    position: relative;
+  }
+  
+  .lds-ripple div {
+    -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+    position: absolute;
+    border-width: 4px;
+    border-style: solid;
+    opacity: 1;
+    border-radius: 50%;
+    -webkit-animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  }
+  
+  .lds-ripple div:nth-child(1) {
+    border-color: #eb1436;
+  }
+  
+  .lds-ripple div:nth-child(2) {
+    border-color: #eb1436;
+    -webkit-animation-delay: -0.5s;
+    animation-delay: -0.5s;
+  }
+  
+  .lds-ripple {
+    width: 100px !important;
+    height: 100px !important;
+    -webkit-transform: translate(-50px, -50px) scale(0.5) translate(50px, 50px);
+    transform: translate(-50px, -50px) scale(0.5) translate(50px, 50px);
+  }
 .tab-pane{
     padding-left: 20px;
     padding-right: 20px;
@@ -39,33 +134,32 @@
     
 }
 
-ul{
+ul.columnL{
     line-height: 2;
     font-size:1.5rem;
     font-weight: bold;
     font-style: italic;
 }
-ul li a{
+ul.columnL li a{
     font-size:17px;
     color:rgb(6, 247, 26);
     font-weight: bold;
     width: 100%;
 }
 
-li {
+ul.columnL li{
     margin-left: 10px; 
 }
-li:hover{
+ul.columnL li:hover{
     color: white!important;
     background: cornflowerblue;
 }
-li:hover a{
+ul.columnL li:hover a{
     color: white!important;
     background: cornflowerblue;
 }
-a.active{
+ul.columnL li a.active{
     color: white!important;
-
     display: block;
     background: cornflowerblue;
 
@@ -164,7 +258,6 @@ th{
 		left: -9999px;
 	}
 	
-	tr {  }
 	
 	td { 
 		/* Behave  like a "row" */

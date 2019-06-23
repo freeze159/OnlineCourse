@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { KhoaHocService } from 'src/app/src/_core/services/khoa-hoc.service';
+import * as $ from 'jquery'
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-khoahoc-add',
@@ -8,6 +10,40 @@ import { KhoaHocService } from 'src/app/src/_core/services/khoa-hoc.service';
   styleUrls: ['./admin-khoahoc-add.component.css']
 })
 export class AdminKhoahocAddComponent implements OnInit {
+  form = new FormGroup({
+    name: new FormControl(''),
+    lydo: new FormControl(''),
+    ketqua: new FormControl(''),
+    price: new FormControl(''),
+  })
+  public options: Object = {
+    charCounterCount: true,
+    toolbarButtons: {
+      'moreText': {
+        'buttons': ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontFamily', 'fontSize', 'textColor', 'backgroundColor', 'inlineClass', 'inlineStyle', 'clearFormatting'],
+        'buttonsVisible': 6
+      }
+    },
+    toolbarButtonsXS: {
+      'moreText': {
+        'buttons': ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontFamily', 'fontSize', 'textColor', 'backgroundColor', 'inlineClass', 'inlineStyle', 'clearFormatting'],
+        'buttonsVisible': 6
+      }
+    },
+    toolbarButtonsSM: {
+      'moreText': {
+        'buttons': ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontFamily', 'fontSize', 'textColor', 'backgroundColor', 'inlineClass', 'inlineStyle', 'clearFormatting'],
+        'buttonsVisible': 6
+      }
+    },
+    toolbarButtonsMD: {
+      'moreText': {
+        'buttons': ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontFamily', 'fontSize', 'textColor', 'backgroundColor', 'inlineClass', 'inlineStyle', 'clearFormatting'],
+        'buttonsVisible': 6
+      }
+    },
+
+  };
   name: string = ''
   summary: String = '';
   price: number = 0;
@@ -15,7 +51,7 @@ export class AdminKhoahocAddComponent implements OnInit {
   idKhoaHocVuaThem: number;
   fileData: File = null;
   hinhAnh: any;
-  constructor(private khoahocService:KhoaHocService) { }
+  constructor(private khoahocService: KhoaHocService) { }
   danhSachTheLoai: any;
   danhSachMangKhoaHoc: any;
   thongTinBody: any;
@@ -24,11 +60,17 @@ export class AdminKhoahocAddComponent implements OnInit {
       this.danhSachTheLoai = res.data;
     })
   }
-  getName(thongTin: any) {
-    this.name = thongTin.name;
-    this.summary = thongTin.short;
-    this.price = thongTin.price;
-    console.log(thongTin)
+  getName() {
+
+    let lydo = document.getElementById('h2lyDo').outerHTML
+    let ketqua = document.getElementById('h2ketQua').outerHTML
+    let ketquaClean = ketqua.replace(/id="h2ketQua" /g, "");
+    let lyDoClean = lydo.replace(/id="h2lyDo" /g, "");
+    // console.log(lyDoClean)
+    // console.log(ketquaClean)
+    this.name = this.form.value.name
+    this.summary = lyDoClean + '\r\n' + this.form.value.lydo + ketquaClean +'\r\n'+ this.form.value.ketqua;
+    this.price = this.form.value.price;
   }
   onSelect(theLoaiId) {
     this.khoahocService.LayMangKhoaHoc(theLoaiId).subscribe((res: any) => {
@@ -43,11 +85,14 @@ export class AdminKhoahocAddComponent implements OnInit {
       'GiaTien': this.price
     }
 
-
   }
   onFileChange(event) {
+    const preload: any = $('#preloader');
+      let preloaDiv = document.getElementById("preloader");
     this.khoahocService.ThemKhoaHoc(this.idMangKhoaHoc, this.thongTinBody).subscribe((res: any) => {
-      console.log(res.data)
+      
+      preloaDiv.style.display='block';
+      
       this.idKhoaHocVuaThem = res.data.id;
       this.fileData = <File>event.target.files[0];
       let formData = new FormData();
@@ -55,9 +100,11 @@ export class AdminKhoahocAddComponent implements OnInit {
       formData.set('HinhAnh', this.fileData, this.fileData.name);
       this.khoahocService.UpdateKhoaHocImage(this.idMangKhoaHoc, this.idKhoaHocVuaThem, formData).subscribe((res: any) => {
         this.hinhAnh = res.data;
+        preload.fadeOut(1200);
       })
 
     }, err => {
+      preload.fadeOut('slow');
       Swal.fire('Error', 'Bạn cần điền tên và tóm tắt khóa học', 'error');
     })
 

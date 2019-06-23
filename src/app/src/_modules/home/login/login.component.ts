@@ -36,9 +36,16 @@ export class LoginComponent implements OnInit {
             }
             if(userLv == 2){
               this.route.navigateByUrl('/instructor');
+              
             }
             if(userLv == 3){
-              this.route.navigateByUrl('/');
+              if(sessionStorage.getItem('cart')){
+                this.route.navigateByUrl('/cart')
+              }
+              else{
+                this.route.navigateByUrl('/');
+              }
+             
             }
             
            
@@ -54,8 +61,6 @@ export class LoginComponent implements OnInit {
 
   }
   logGoogle(event) {
-
-
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then((userData) => {
       this.user = userData;      
       let dataSend = {

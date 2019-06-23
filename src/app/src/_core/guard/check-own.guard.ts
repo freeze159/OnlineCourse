@@ -70,6 +70,9 @@ export class CheckOwnGuard implements CanActivate {
   
         }
       }
+      else if(thongTinUser.data.level_id == 1){
+        return true
+      }
     }
     else {
       Swal.fire({

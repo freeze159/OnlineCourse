@@ -9,8 +9,16 @@
     <div class="row">
         <div class="col-sm-3">
             <!--left col-->
-            <div class="text-center">
-                <img src={{hinhAnh}} class="avatar img-circle img-thumbnail" alt="avatar">
+            <div class="text-center" style="position: relative;">
+                <div class="preloader" id="preloader">
+                    <div class="lds-css ng-scope">
+                        <div class="lds-ripple">
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+                <img src={{hinhAnh}} class="avatar img-circle img-thumbnail" alt="avatar" height="176" width="255">
                 <h6>Upload a different photo...</h6>
                 <input type="file" class="text-center center-block file-upload" name='HinhAnh'
                     (change)='onFileChange($event)'>
@@ -191,33 +199,33 @@
                     </div>
 
                 </div>
-                
+
                 <div class="tab-pane" id="history">
                     <div class="row">
                         <h2 class="col-sm-12">Lịch sử thanh toán</h2>
-                        
-                            <table class="table table-bordered table-hover table-responsive-sm col-sm-12">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col">Tên khóa học</th>
-                                        <th scope="col">Tổng tiền</th>
-                                        <th scope="col">Hình thức thanh toán</th>
-                                        <th scope="col">Thời gian giao dịch</th>
-                                        <th scope="col">Trạng Thái</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor='let thongTin of bill'>
-                                        <td scope="row" class="table-primary">{{thongTin.KhoaHoc}}</td>
-                                        <td scope="row" class="table-danger">{{thongTin.TongTien}}</td>
-                                        <td scope="row" class="table-success">{{thongTin.ThanhToan}}</td>
-                                        <td scope="row" class="table-secondary">{{thongTin.ThoiGian}}</td>
-                                        <td scope="row" class="table-info">{{thongTin.TrangThai}}</td>
-                                    </tr>
 
-                                </tbody>
-                            </table>
-                        
+                        <table class="table table-bordered table-hover table-responsive-sm col-sm-12">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Tên khóa học</th>
+                                    <th scope="col">Tổng tiền</th>
+                                    <th scope="col">Hình thức thanh toán</th>
+                                    <th scope="col">Thời gian giao dịch</th>
+                                    <th scope="col">Trạng Thái</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor='let thongTin of bill'>
+                                    <td scope="row" class="table-primary">{{thongTin.KhoaHoc}}</td>
+                                    <td scope="row" class="table-danger">{{thongTin.TongTien}}</td>
+                                    <td scope="row" class="table-success">{{thongTin.ThanhToan}}</td>
+                                    <td scope="row" class="table-secondary">{{thongTin.ThoiGian}}</td>
+                                    <td scope="row" class="table-info">{{thongTin.TrangThai}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
 
                     </div>
 

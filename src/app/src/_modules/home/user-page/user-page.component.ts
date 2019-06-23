@@ -5,7 +5,7 @@ import { NgForm } from '@angular/forms';
 import { User } from 'src/app/src/_core/models/user';
 import Swal from 'sweetalert2';
 import { KhoaHocService } from 'src/app/src/_core/services/khoa-hoc.service';
-
+import * as $ from 'jquery'
 @Component({
   selector: 'app-user-page',
   templateUrl: './user-page.component.html',
@@ -18,17 +18,17 @@ export class UserPageComponent implements OnInit {
   checkPass: any = "";
   idUser: number;
   selectedFile: File;
-  myCourse:any;
+  myCourse: any;
   hinhAnh: string;
   ten: string;
   birth: string;
   phone: string;
   email: string;
-  p=1;
+  p = 1;
   thongTinUser: User;
-  bill:Object;
-  constructor(private userService: UserService, private atvRoute: ActivatedRoute,private khoaHocService:KhoaHocService) {}
-  
+  bill: Object;
+  constructor(private userService: UserService, private atvRoute: ActivatedRoute, private khoaHocService: KhoaHocService) { }
+
   ngOnInit() {
     let checkbox: any = document.getElementById('CheckPassword');
     checkbox.checked = false;
@@ -45,7 +45,7 @@ export class UserPageComponent implements OnInit {
       });
     })
     this.myCourse = JSON.parse(localStorage.getItem('ownCourse'));
-    
+
   }
   update(thongtin: any) {
     if (this.checkedButton == false) {
@@ -130,17 +130,23 @@ export class UserPageComponent implements OnInit {
 
   }
   onFileChange(event) {
+    const preload: any = $('#preloader');
+    let preloaDiv = document.getElementById("preloader");
+    preloaDiv.style.display = 'block';
+
     this.fileData = <File>event.target.files[0];
     let formData = new FormData()
     formData.set('HinhAnh', this.fileData, this.fileData.name);
     this.userService.UpdateImage(this.idUser, formData).subscribe((res: any) => {
       this.hinhAnh = res.data
+      preload.fadeOut('slow');
+
     })
   }
   kiemTraMatKhau(rePass: string, passNew: string): boolean {
     console.log(rePass + passNew)
     if (rePass !== passNew) {
-      
+
       // tạo ra 1 lỗi cho form
       this.frmUpdate.control.setErrors({ 'loiNhapLaiMatKhau': true });
       return true;
@@ -149,10 +155,10 @@ export class UserPageComponent implements OnInit {
     this.frmUpdate.control.setErrors({ 'loiNhapLaiMatKhau': false });
     return false;
   }
-  
-  lichSu(){
-    this.userService.LichSuThanhToan().subscribe((res:any)=>{
-       this.bill = res.data;
+
+  lichSu() {
+    this.userService.LichSuThanhToan().subscribe((res: any) => {
+      this.bill = res.data;
     })
   }
 }

@@ -31,12 +31,22 @@ export class AdminDuyetComponent implements AfterViewChecked {
   constructor(private khoahocS: KhoaHocService) { }
   danhSachChuaDuyet: any
   danhsachBaiGiang: any
+  danhSachKhoaHocTuChoi:any
   ngOnInit() {
+    this.loadKhoaHoc();
+    this.loadKhoaHocTuChoi();
+  }
+  loadKhoaHoc(){
     this.khoahocS.LayKhoaHocChuaDuyet().subscribe((res: any) => {
       this.danhSachChuaDuyet = res.data;
 
     })
-    
+  }
+  loadKhoaHocTuChoi(){
+    this.khoahocS.LayKhoaHocTuChoi().subscribe((res: any) => {
+      this.danhSachKhoaHocTuChoi = res.data;
+
+    })
   }
 
   layBaiGiang(data) {
@@ -53,6 +63,31 @@ export class AdminDuyetComponent implements AfterViewChecked {
       let index = this.danhSachChuaDuyet.findIndex(x => x.id == id);
       this.danhSachChuaDuyet.splice(index, 1);
       Swal.fire('Thành công', 'Khóa học đã được duyệt', "success");
+    })
+  }
+  tuChoi(id){
+    let thongTin ={
+      KhoaHoc_id:id
+    }
+    Swal.fire({
+      type:'warning',
+      title:'Không thể khôi phục sau khi xóa',
+      showCancelButton:true,
+      confirmButtonText:'Đồng ý xóa'
+    }).then(res =>{
+      if(res.value){
+        this.khoahocS.TuChoiKhoaHoc(thongTin).subscribe((res:any)=>{
+            if(typeof res == 'object'){
+              Swal.fire('Đã từ chối',res.data,'success').then(()=>{
+                this.loadKhoaHoc();
+                this.loadKhoaHocTuChoi();
+              })
+            }
+            else{
+              Swal.fire('Thất bại',res,'error');
+            }
+        })
+      }
     })
   }
 

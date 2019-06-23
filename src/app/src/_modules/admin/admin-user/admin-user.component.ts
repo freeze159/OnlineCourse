@@ -185,12 +185,15 @@ export class AdminUserComponent implements OnInit {
 
   }
   onFileChange(event) {
+    const preload: any = $('#preloader');
+    let preloaDiv = document.getElementById("preloader");
+    preloaDiv.style.display = 'block';
     this.fileData = <File>event.target.files[0];
     let formData = new FormData()
     formData.set('HinhAnh', this.fileData, this.fileData.name);
     this.userS.UpdateImage(this.idUser, formData).subscribe((res: any) => {
-      console.log(res)
       this.hinhAnh = res.data
+      preload.fadeOut('slow')
     })
   }
   kiemTraMatKhau(rePass: string, passNew: string): boolean {

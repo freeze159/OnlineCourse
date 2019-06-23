@@ -4,10 +4,6 @@ import { AdminTemplateComponent } from './admin-template/admin-template.componen
 import { Routes, RouterModule } from '@angular/router';
 import { AdminTheLoaiComponent } from './admin-the-loai/admin-the-loai.component';
 import { AdminMangKhoahocComponent } from './admin-mang-khoahoc/admin-mang-khoahoc.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
 import { FormsModule,ReactiveFormsModule    } from '@angular/forms';
 import { AdminCodeComponent } from './admin-code/admin-code.component';
 import { AdminCodeAddComponent } from './admin-code/admin-code-add/admin-code-add.component';
@@ -15,7 +11,6 @@ import { AdminMangThemComponent } from './admin-mang-khoahoc/admin-mang-them/adm
 import { AdminTheloaiAddComponent } from './admin-the-loai/admin-theloai-add/admin-theloai-add.component';
 import { AdminKhoahocComponent } from './admin-khoahoc/admin-khoahoc.component';
 import { AdminKhoahocAddComponent } from './admin-khoahoc/admin-khoahoc-add/admin-khoahoc-add.component';
-import { MatStepperModule } from '@angular/material/stepper';
 import { AdminDuyetComponent } from './admin-duyet/admin-duyet.component';
 import { AdminBaiGiangComponent } from './admin-bai-giang/admin-bai-giang.component';
 import { AdminBaigiangAddComponent } from './admin-bai-giang/admin-baigiang-add/admin-baigiang-add.component';
@@ -27,6 +22,15 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { AdminKhoahocCmtComponent } from './admin-khoahoc-cmt/admin-khoahoc-cmt.component';
 import { AdminKhoahocQuestionComponent } from './admin-khoahoc-question/admin-khoahoc-question.component';
 import { AdminLevelComponent } from './admin-level/admin-level.component';
+import { AdminBankComponent } from './admin-bank/admin-bank.component';
+import { AdminAccountComponent } from './admin-account/admin-account.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+import { MatSelectModule } from '@angular/material/select';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 const adminRoutes: Routes = [
   {
@@ -49,6 +53,8 @@ const adminRoutes: Routes = [
       
       {path: 'the-loai/:id/nhom-khoa-hoc/:idMang/khoa-hoc/:idKhoaHoc/bai-giang', component: AdminBaiGiangComponent},
       {path: 'level', component:AdminLevelComponent},
+      {path: 'bank', component:AdminBankComponent},
+      {path: 'account', component:AdminAccountComponent},
       {path: 'duyet-khoa-hoc', component:AdminDuyetComponent},
       {path: 'nguoi-dung', component:AdminUserComponent},
       {path: 'nguoi-dung-them', component:AdminUserAddComponent},
@@ -61,9 +67,11 @@ const adminRoutes: Routes = [
 ]
 @NgModule({
   
-  declarations: [AdminTemplateComponent,AdminTheLoaiComponent,AdminUserAddComponent,AdminInstructorAddComponent,AdminMangKhoahocComponent, AdminCodeComponent, AdminCodeAddComponent, AdminMangThemComponent, AdminTheloaiAddComponent, AdminKhoahocComponent,AdminKhoahocAddComponent, AdminDuyetComponent, AdminBaiGiangComponent, AdminBaigiangAddComponent, AdminUserComponent, AdminInstructorComponent, AdminDashboardComponent, AdminKhoahocCmtComponent, AdminKhoahocQuestionComponent, AdminLevelComponent],
+  declarations: [AdminTemplateComponent,AdminTheLoaiComponent,AdminUserAddComponent,AdminInstructorAddComponent,AdminMangKhoahocComponent, AdminCodeComponent, AdminCodeAddComponent, AdminMangThemComponent, AdminTheloaiAddComponent, AdminKhoahocComponent,AdminKhoahocAddComponent, AdminDuyetComponent, AdminBaiGiangComponent, AdminBaigiangAddComponent, AdminUserComponent, AdminInstructorComponent, AdminDashboardComponent, AdminKhoahocCmtComponent, AdminKhoahocQuestionComponent, AdminLevelComponent, AdminBankComponent, AdminAccountComponent],
   imports: [
-    CommonModule,ReactiveFormsModule,RouterModule.forChild(adminRoutes),MatStepperModule,MatButtonModule,MatInputModule,MatFormFieldModule,FormsModule,MatSelectModule
+    CommonModule,ReactiveFormsModule,RouterModule.forChild(adminRoutes)
+    ,MatStepperModule,MatButtonModule,MatInputModule,MatFormFieldModule,FormsModule,MatSelectModule,
+    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ]
 })
 export class AdminModule { }

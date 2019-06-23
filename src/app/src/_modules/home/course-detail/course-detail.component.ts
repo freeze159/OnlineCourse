@@ -120,6 +120,9 @@ export class CourseDetailComponent implements OnInit {
           }
         }
       }
+      else if(userLv ==1){
+        return true;
+      }
     }
   }
 

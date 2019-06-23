@@ -21,6 +21,7 @@ export class ModDetailComponent implements OnInit {
   tenGiangVien: string;
   tomTat: string;
   myCourse:any;
+  danhSachBiTuChoi:any
   ngOnInit() {
     this.thongTin = JSON.parse(localStorage.getItem('gv_log'));
     this.idGiangVien=this.thongTin.id;
@@ -51,6 +52,11 @@ export class ModDetailComponent implements OnInit {
   choDuyet(){
     this.khoaHocService.LayKhoaHocChoDuyet(this.idGiangVien).subscribe((res:any)=>{
         this.myCourse = res.data;
+    })
+  }
+  biTuChoi(){
+    this.khoaHocService.LayKhoaHocBiTuChoi(this.idGiangVien).subscribe((res:any)=>{
+      this.danhSachBiTuChoi =res.data;
     })
   }
 }

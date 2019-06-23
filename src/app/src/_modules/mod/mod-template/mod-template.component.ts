@@ -5,6 +5,7 @@ import { KhoaHocService } from 'src/app/src/_core/services/khoa-hoc.service';
 @Component({
   selector: 'app-mod-template',
   templateUrl: './mod-template.component.html',
+
   styleUrls: ['./mod-template.component.css']
 })
 export class ModTemplateComponent implements OnInit {

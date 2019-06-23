@@ -13,27 +13,46 @@ export class AdminCodeAddComponent implements OnInit {
   fileData: File = null;
   flag: boolean = false;
   ngOnInit() {
-    
+
   }
   onFileChange(event) {
     this.fileData = <File>event.target.files[0];
 
   }
   Upload() {
-    let formData = new FormData()
+    const preload: any = $('#preloader');
+    let preloaDiv = document.getElementById("preloader");
+    preloaDiv.style.display = 'block';
+    let formData = new FormData();
     formData.set('file', this.fileData, this.fileData.name);
     this.userService.UploadCode(formData).subscribe((res: any) => {
-      
-      const preload: any = $('#preloader');
-      let preloaDiv = document.getElementById("preloader");
-      preloaDiv.style.display='block';
-      preload.fadeOut('slow');
-      setTimeout(() => {
-        Swal.fire('Upload thành công','Đã upload','success');
-      }, 600);
-      
+      if (typeof res == 'object') {
+        Swal.fire('Thành công', res.data, 'success').then(res => {
+          preload.fadeOut('slow');
+        })
+      }
+      else {
+        Swal.fire('Thất bại', res, 'error').then(res => {
+          preload.fadeOut('slow');
+        })
+
+
+      }
     }, err => {
-      Swal.fire('Upload thất bại', 'Fail', 'error')
+      if (err.error.errors) {
+        let loi = err.error.errors.file[0]
+        if (loi) {
+          Swal.fire('Thất bại', loi, 'error').then(res => {
+            preload.fadeOut('slow');
+          })
+        }
+      }
+      else {
+        Swal.fire('Thất bại', 'File excel chưa đúng cấu trúc', 'error').then(res => {
+          preload.fadeOut('slow');
+        })
+      }
+
     })
   }
 }

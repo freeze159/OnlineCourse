@@ -1,17 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { KhoaHocService } from 'src/app/src/_core/services/khoa-hoc.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import Swal from 'sweetalert2';
+import * as $ from 'jquery'
+
 @Component({
   selector: 'app-mod-create-lecture',
   templateUrl: './mod-create-lecture.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./mod-create-lecture.component.css']
 })
 export class ModCreateLectureComponent implements OnInit {
   BaiGiangForm: FormGroup
   name: string;
-  constructor(private atv: ActivatedRoute, private khoahocS: KhoaHocService, private fb: FormBuilder,private route:Router) { }
+  KhoaHocUpdateForm = new FormGroup({
+    MangKH_id: new FormControl(''),
+    TenKH: new FormControl(''),
+    GiaTien: new FormControl(''),
+    GiamGia: new FormControl(''),
+    lydo: new FormControl(''),
+    ketqua: new FormControl(''),
+
+  })
+  constructor(private atv: ActivatedRoute, private khoahocS: KhoaHocService, private fb: FormBuilder, private route: Router) { }
   courseId: number;
   short: string;
   p = 1;
@@ -30,23 +42,38 @@ export class ModCreateLectureComponent implements OnInit {
   giam: number;
   tenMangKH; string
   fileData: File;
+  fileExcel: File;
+  stringKq
+  stringMain
+  flagThuCong: boolean = false;
+  flagExcel: boolean = false;
+  public options = {
+    placeholderText: 'Start typing something...'
+  }
   ngOnInit() {
     this.atv.params.subscribe(res => {
       this.courseId = res.id;
       this.courseGroupId = res.mangKhoaHoc;
       this.khoahocS.LayChiTietKhoaHoc(this.courseGroupId, this.courseId).subscribe(res => {
-        console.log(res)
+        console.log(res.data)
         this.hinhAnh = res.data.HinhAnh;
         this.name = res.data.TenKH;
         this.short = res.data.TomTat;
         this.price = res.data.GiaTien;
         this.giam = res.data.GiamGia;
         this.tenMangKH = res.data.MangKH;
+        // $('#lyDoMain').val('con cac địt mẹ m')
+        // console.log(document.getElementById('lyDoMain').value)
+        // let wholeString: string = res.data.TomTat;
+        // let index: number = wholeString.indexOf('<h2 style="text-align: center;"><strong>KẾT QUẢ ĐẠT ĐƯỢC</strong></h2>');
+        // this.stringKq = wholeString.slice(index, wholeString.length);
+        // this.stringMain = wholeString.slice(0, index);
+        // document.getElementById('lyDoMain'). = this.stringMain
+        // document.getElementById('ketquadatduoc').innerHTML = String;
       })
     })
     this.khoahocS.LayDanhSachBaiGiang(this.courseId).subscribe((res: any) => {
       this.courseList = res;
-      console.log(res)
 
     })
     this.khoahocS.LayTheLoaiKhoaHoc().subscribe((res: any) => {
@@ -65,6 +92,16 @@ export class ModCreateLectureComponent implements OnInit {
     this.AllBaiGiang = this.soBaiGiang;
     this.confirmNum = true;
     this.createform();
+  }
+  ChonLoai(loai: string) {
+    if (loai == 'thucong') {
+      this.flagThuCong = true;
+      this.flagExcel = false;
+    }
+    if (loai == 'excel') {
+      this.flagThuCong = false;
+      this.flagExcel = true;
+    }
   }
   onSelect(theLoaiId) {
     this.khoahocS.LayMangKhoaHoc(theLoaiId).subscribe((res: any) => {
@@ -85,7 +122,7 @@ export class ModCreateLectureComponent implements OnInit {
       TenBaiGiang: [''],
       MoTa: [''],
       EmbededURL: [''],
-      HocThu:['0']
+      HocThu: ['0']
     })
   }
   SaveData() {
@@ -125,8 +162,8 @@ export class ModCreateLectureComponent implements OnInit {
             Swal.fire('Thành công', 'Thêm Bài Giảng thành công', 'success')
             this.BaiGiangForm.reset();
           }
-          else{
-            Swal.fire('Lỗi',res,'error')
+          else {
+            Swal.fire('Lỗi', res, 'error')
           }
         })
       }
@@ -167,44 +204,92 @@ export class ModCreateLectureComponent implements OnInit {
 
   }
   onFileChange(event) {
-
+    const preload: any = $('#preloader');
+    let preloaDiv = document.getElementById("preloader");
+    preloaDiv.style.display = 'block';
     this.fileData = <File>event.target.files[0];
     let formData = new FormData();
 
     formData.set('HinhAnh', this.fileData, this.fileData.name);
     this.khoahocS.UpdateKhoaHocImage(this.courseGroupId, this.courseId, formData).subscribe((res: any) => {
       this.hinhAnh = res.data;
-
-
-      // }, err => {
-      //   Swal.fire('Error', 'Bạn cần điền tên và tóm tắt khóa học', 'error');
-      //
+      preload.fadeOut('slow');
     }
     )
 
 
   }
+  upExcelBaiGiang(event) {
+    const preload: any = $('#preloaderExcel');
+    let preloaDiv = document.getElementById("preloaderExcel");
+    preloaDiv.style.display = 'block';
+    this.fileExcel = <File>event.target.files[0];
+    let formData = new FormData();
+
+    formData.set('file', this.fileExcel, this.fileExcel.name);
+    this.khoahocS.ThemBaiGiangExcel(this.courseId, formData).subscribe((res: any) => {
+      if (typeof res == 'object') {
+        Swal.fire('Thành công', res.data, 'success').then(res => {
+          preload.fadeOut('slow');
+        })
+
+      }
+      else {
+        Swal.fire('Thất bại', res, 'error').then(res => {
+          preload.fadeOut('slow');
+        })
+
+
+      }
+    }, err => {
+      if (err.error.errors) {
+        let loi = err.error.errors.file[0]
+        if (loi) {
+          Swal.fire('Thất bại', loi, 'error').then(res => {
+            preload.fadeOut('slow');
+          })
+        }
+      }
+
+
+      else {
+        Swal.fire('Thất bại', 'File excel chưa đúng cấu trúc', 'error').then(res => {
+          preload.fadeOut('slow');
+        })
+      }
+
+    })
+  }
   update(thongTin: any) {
-    console.log(thongTin)
+    let lydo = document.getElementById('h2lyDo').outerHTML.replace(/id="h2lyDo" /g, "");
+    let ketqua = document.getElementById('h2ketQua').outerHTML.replace(/id="h2ketQua" /g, "");
+    let tomTat = lydo + '\r\n' + this.KhoaHocUpdateForm.value.lydo + ketqua + '\r\n' + this.KhoaHocUpdateForm.value.ketqua;
     this.khoahocS.LayChiTietKhoaHoc(this.courseGroupId, this.courseId).subscribe((res: any) => {
       let ketqua = res.data;
-      if (thongTin.TenKH == '') {
-        thongTin.TenKH = ketqua.TenKH;
+      if (this.KhoaHocUpdateForm.value.TenKH == '') {
+        this.KhoaHocUpdateForm.value.TenKH = ketqua.TenKH;
       }
-      if (thongTin.MangKH_id == '') {
-        thongTin.MangKH_id = ketqua.TenKH;
+      if (this.KhoaHocUpdateForm.value.MangKH_id == '') {
+        this.KhoaHocUpdateForm.value.MangKH_id = ketqua.TenKH;
       }
-      if (thongTin.TomTat == '') {
-        thongTin.TomTat = ketqua.TomTat;
+      if (tomTat == '') {
+        tomTat = ketqua.TomTat;
       }
-      if (thongTin.GiaTien == '') {
-        thongTin.GiaTien = ketqua.GiaTien;
+      if (this.KhoaHocUpdateForm.value.GiaTien == '') {
+        this.KhoaHocUpdateForm.value.GiaTien = ketqua.GiaTien;
       }
-      if (thongTin.GiamGia == '') {
-        thongTin.GiamGia = 0
+      if (this.KhoaHocUpdateForm.value.GiamGia == '') {
+        this.KhoaHocUpdateForm.value.GiamGia = 0
       }
-      this.khoahocS.UpdateKhoaHoc(this.courseId, this.courseGroupId, thongTin).subscribe((res: any) => {
-        Swal.fire('Thành công', 'Cập nhật khóa học thành công', 'success').then(res =>{
+      let thongTinUpdate = {
+        TenKH: this.KhoaHocUpdateForm.value.TenKH,
+        MangKH_id: this.KhoaHocUpdateForm.value.MangKH_id,
+        GiaTien: this.KhoaHocUpdateForm.value.GiaTien,
+        GiamGia: this.KhoaHocUpdateForm.value.GiamGia,
+        TomTat: tomTat
+      }
+      this.khoahocS.UpdateKhoaHoc(this.courseId, this.courseGroupId, thongTinUpdate).subscribe((res: any) => {
+        Swal.fire('Thành công', 'Cập nhật khóa học thành công', 'success').then(res => {
           this.route.navigateByUrl(`/instructor/lecture/${this.courseId}/${thongTin.MangKH_id}`);
 
         });

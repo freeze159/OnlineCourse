@@ -7,7 +7,7 @@
     <mat-vertical-stepper #stepper class="col-sm-12">
       <mat-step [stepControl]="firstFormGroup" #step1>
         <ng-template matStepLabel>Bước 1 trong 3</ng-template>
-        
+
         <h3>Bạn muốn đặt tên khóa học là gì?</h3>
         <form [formGroup]="form" (ngSubmit)='getName()'>
           <div class="form-group">
@@ -33,29 +33,29 @@
             <h2 id="h2lyDo" style="text-align: center;"><strong>L&Yacute; DO BẠN N&Ecirc;N CHỌN KH&Oacute;A HỌC
                 N&Agrave;Y</strong></h2>
             <textarea [froalaEditor] placeholder="Tóm tắt khóa học của bạn" formControlName="lydo" required
-              minlength="10" maxlength="200"></textarea>
+              minlength="17"></textarea>
 
             <div style="width:300px;"
               *ngIf="form.controls.lydo.errors && (form.controls.lydo.dirty || form.controls.lydo.touched)">
               <div *ngIf="form.controls.lydo.errors.required" class="alert alert-danger">
                 <p>Không được để rỗng!</p>
               </div>
-              <div *ngIf="form.controls.lydo.errors.minlength || form.controls.lydo.errors.maxlength"
-                class="alert alert-danger">
-                <p>Độ dài từ 10 đến 200 ký tự!</p>
+              <div *ngIf="form.controls.lydo.errors.minlength" class="alert alert-danger">
+                <p>Độ dài từ 10 ký tự!</p>
               </div>
             </div>
+          </div>
+          <div class="form-group">
             <h2 style="text-align: center;" id="h2ketQua"><strong>KẾT QUẢ ĐẠT ĐƯỢC</strong></h2>
             <textarea [froalaEditor] placeholder="Tóm tắt khóa học của bạn" formControlName="ketqua" required
-              minlength="10" maxlength="200"></textarea>
+              minlength="17"></textarea>
             <div style="width:300px;"
               *ngIf="form.controls.ketqua.errors && (form.controls.ketqua.dirty || form.controls.ketqua.touched)">
               <div *ngIf="form.controls.ketqua.errors.required" class="alert alert-danger">
                 <p>Không được để rỗng!</p>
               </div>
-              <div *ngIf="form.controls.ketqua.errors.minlength || form.controls.ketqua.errors.maxlength"
-                class="alert alert-danger">
-                <p>Độ dài từ 10 đến 200 ký tự!</p>
+              <div *ngIf="form.controls.ketqua.errors.minlength" class="alert alert-danger">
+                <p>Độ dài từ 10 ký tự</p>
               </div>
             </div>
           </div>

@@ -22,4 +22,46 @@ export class CartService {
     const observable = this.http.get(linkApi)
     return observable;
   }
+  public ThemNganHangExcel(body){
+    const linkApi= `https://api.khoahocdt.com/api/NganHang`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.post(linkApi,body,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public CapNhatNganHang(idBank,body){
+    const linkApi= `https://api.khoahocdt.com/api/NganHang/${idBank}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.put(linkApi,body,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public XoaNganHang(idBank){
+    const linkApi= `https://api.khoahocdt.com/api/NganHang/${idBank}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.delete(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public LayDanhSachTaiKhoan(){
+    const linkApi= `https://api.khoahocdt.com/api/TaiKhoanNganHang`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.get(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public ThemTaiKhoan(body){
+    const linkApi= `https://api.khoahocdt.com/api/TaiKhoanNganHang`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.post(linkApi,body,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public CapNhatTaiKhoan(idTaiKhoan,body){
+    const linkApi= `https://api.khoahocdt.com/api/TaiKhoanNganHang/${idTaiKhoan}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.put(linkApi,body,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
+  public XoaTaiKhoan(idTaiKhoan){
+    const linkApi= `https://api.khoahocdt.com/api/TaiKhoanNganHang/${idTaiKhoan}`;
+    const tokenParse = JSON.parse(localStorage.getItem('tokenbearer')); 
+    const observable = this.http.delete(linkApi,{headers:{'Authorization':`Bearer ${tokenParse}`}})
+    return observable;
+  }
 }

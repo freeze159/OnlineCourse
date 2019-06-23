@@ -29,6 +29,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { CourseInterestComponent } from './course-interest/course-interest.component';
 import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider} from 'ng4-social-login';
 import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
+import { CheckCartGuard } from '../../_core/guard/check-cart.guard';
 const config = new AuthServiceConfig([
   {
     id:GoogleLoginProvider.PROVIDER_ID,
@@ -39,7 +40,7 @@ const homeRoutes: Routes = [
   {
     path: '', component: HomeTemplateComponent, children: [
       { path: '', component: HomePageComponent },
-      { path: 'cart', component: CartComponent },
+      { path: 'cart', component: CartComponent,canActivate:[CheckCartGuard] },
       { path: 'tro-thanh-giang-vien', component: BecomeInstructorComponent },
       { path: 'chitietkhoahoc/:id/:mangKHid', component: CourseDetailComponent },
       { path: 'user/:id', component: UserPageComponent },

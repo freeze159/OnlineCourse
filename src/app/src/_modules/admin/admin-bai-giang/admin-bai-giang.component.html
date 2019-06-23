@@ -41,8 +41,8 @@
       </mat-form-field>
     </form>
   </div>
-  <div class="col-md-10 mx-auto" *ngIf='flag' id="updateRole">
-    <h3>Cập nhật bài bài giảng</h3>
+  <div class="col-md-10 mx-auto mt-3 mb-3 pt-3 pb-3" *ngIf='flag' id="updateRole" style="border:1px solid black">
+    <h3>Cập nhật bài giảng</h3>
     <form #frmUpdate='ngForm' (ngSubmit)='update(frmUpdate.value)' class="col-md-12" >
     
       <div class="form-group">
@@ -97,9 +97,9 @@
         
         <td>
           <button matButton (click)='updateTriggered(baiGiang.id,baiGiang.KhoaHoc_id,baiGiang.TenBaiGiang,baiGiang.MoTa,baiGiang.EmbededURL)' 
-          class="btn mr-3 btn-info">Cập
+          class="btn mr-3 btn-success">Cập
               nhật </button>
-          <button matButton (click)='xemCauHoi(baiGiang.id)' class="btn btn-danger">Xem câu hỏi</button>
+          <button matButton (click)='xemCauHoi(baiGiang.id)' class="btn btn-info">Xem câu hỏi</button>
           <button matButton (click)='delele(baiGiang.id,baiGiang.KhoaHoc_id)' class="btn btn-danger">Xóa</button>
         </td>
 
