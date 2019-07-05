@@ -54,7 +54,7 @@ export class CourseDetailComponent implements OnInit {
       let stringMain = wholeString.slice(0, index);
       document.getElementById('mainNoiDung').innerHTML = stringMain
       document.getElementById('ketquadatduoc').innerHTML = stringKq;
-      
+
 
       //    Lưu data chi tiét
       this.thongTinKH = res.data;
@@ -120,7 +120,7 @@ export class CourseDetailComponent implements OnInit {
           }
         }
       }
-      else if(userLv ==1){
+      else if (userLv == 1) {
         return true;
       }
     }
@@ -157,6 +157,7 @@ export class CourseDetailComponent implements OnInit {
 
   }
   loadRate() {
+    this.danhSachRate = [];
     this.khoaHocService.LayDanhSachDanhGia(this.khoaHocId).subscribe((res: any) => {
       for (let danhgia of res.data) {
         let diem = JSON.parse(danhgia.Diem);
@@ -221,44 +222,70 @@ export class CourseDetailComponent implements OnInit {
     })
 
   }
+  checkLogin(){
+    const logged = JSON.parse(localStorage.getItem('userLogin'))
+    if(logged){
+      return true
+    }
+    else return false;
+  }
   rate(thongtin) {
-    if (thongtin.sao != '') {
-      let rate = thongtin.sao;
-      let thongTinDanhGia = {
-        Diem: rate,
-        TieuDe: thongtin.TieuDe,
-        NoiDung: thongtin.NoiDung
-      }
-      this.khoaHocService.ThemDanhGia(this.khoaHocId, thongTinDanhGia).subscribe((res: any) => {
-        if (typeof res == 'object') {
-          Swal.fire('Thành công', 'Cảm ơn bạn đã đánh giá', 'success');
-          $('#rateBox').val('');
-          $('#rateContent').val('');
-          this.loadRate()
-
+    
+    if(this.checkLogin()){
+      if (thongtin.sao != '') {
+        let rate = thongtin.sao;
+        let thongTinDanhGia = {
+          Diem: rate,
+          TieuDe: thongtin.TieuDe,
+          NoiDung: thongtin.NoiDung
         }
-        else {
-          Swal.fire('Thông báo', res, 'warning');
-        }
-      }, err => {
-        Swal.fire({
-          title: 'Bạn chưa đăng nhập',
-          text: "Đăng nhập ngay!!!",
-          type: 'question',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Đăng nhập'
-        }).then((result) => {
-          if (result.value) {
-            this.route.navigateByUrl('/login');
+        this.khoaHocService.ThemDanhGia(this.khoaHocId, thongTinDanhGia).subscribe((res: any) => {
+          if (typeof res == 'object') {
+            Swal.fire('Thành công', 'Cảm ơn bạn đã đánh giá', 'success');
+            $('#rateBox').val('');
+            $('#rateContent').val('');
+            this.loadRate()
+  
           }
+          else {
+            Swal.fire('Thông báo', res, 'warning');
+          }
+        }, err => {
+          Swal.fire({
+            title: 'Bạn chưa mua khóa học',
+            text: "Mua ngay!!!",
+            type: 'question',
+            showCancelButton: true,
+            // confirmButtonColor: '#3085d6',
+            // cancelButtonColor: '#d33',
+            // confirmButtonText: 'Đăng nhập'
+          }).then((result) => {
+            // if (result.value) {
+            //   this.route.navigateByUrl('/login');
+            // }
+          })
         })
+      }
+      else {
+        Swal.fire('Thông báo', 'Bạn chưa chọn điểm', 'warning');
+      }
+    }
+    else{
+      Swal.fire({
+        title: 'Bạn chưa đăng nhập',
+        text: "Đăng nhập ngay!!!",
+        type: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Đăng nhập'
+      }).then(res => {
+        if(res.value){
+          this.route.navigateByUrl('/login');
+        }
       })
     }
-    else {
-      Swal.fire('Thông báo', 'Bạn chưa chọn điểm', 'warning');
-    }
+    
   }
 
   loadBaiGiang() {

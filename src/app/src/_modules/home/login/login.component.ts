@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
   }
 
   DangNhap(thongtin: any) {
-
     this.userService.DangNhap(thongtin).subscribe((data: any) => {
       if (typeof data == 'object') {
         const userLogin = JSON.stringify(data);
@@ -30,25 +29,22 @@ export class LoginComponent implements OnInit {
           const ownCouse = JSON.stringify(res.data)
           localStorage.setItem('ownCourse', ownCouse);
           Swal.fire('Thành công', 'Bạn đã đăng nhập thành công', "success").then(res => {
-
-            if(userLv == 1){
+            if (userLv == 1) {
               this.route.navigateByUrl('/admin');
             }
-            if(userLv == 2){
+            if (userLv == 2) {
               this.route.navigateByUrl('/instructor');
-              
+
             }
-            if(userLv == 3){
-              if(sessionStorage.getItem('cart')){
+            if (userLv == 3) {
+              if (sessionStorage.getItem('cart')) {
                 this.route.navigateByUrl('/cart')
               }
-              else{
+              else {
                 this.route.navigateByUrl('/');
               }
-             
+
             }
-            
-           
           })
         });
 
@@ -62,32 +58,46 @@ export class LoginComponent implements OnInit {
   }
   logGoogle(event) {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then((userData) => {
-      this.user = userData;      
+      this.user = userData;
       let dataSend = {
         name: this.user.name,
         email: this.user.email,
         HinhAnh: this.user.photoUrl,
-        provider:this.user.provider,
-        provider_id:this.user.id
+        provider: this.user.provider,
+        provider_id: this.user.id
       }
-      this.userService.LoginGoogle(dataSend).subscribe((data:any)=>{
+      this.userService.LoginGoogle(dataSend).subscribe((data: any) => {
         if (typeof data == 'object') {
           const userLogin = JSON.stringify(data);
           const apiToken = JSON.stringify(data.data.api_token);
           localStorage.setItem('userLogin', userLogin);
-          
+          const userLv = data.data.level_id;
           localStorage.setItem('tokenbearer', apiToken);
           const token = localStorage.getItem('tokenbearer');
           this.userService.KhoaHocCuaToi().subscribe((res: any) => {
             const ownCouse = JSON.stringify(res.data)
             localStorage.setItem('ownCourse', ownCouse);
             Swal.fire('Thành công', 'Bạn đã đăng nhập thành công', "success").then(res => {
-  
-              this.route.navigateByUrl('/');
+              if (userLv == 1) {
+                this.route.navigateByUrl('/admin');
+              }
+              if (userLv == 2) {
+                this.route.navigateByUrl('/instructor');
+
+              }
+              if (userLv == 3) {
+                if (sessionStorage.getItem('cart')) {
+                  this.route.navigateByUrl('/cart')
+                }
+                else {
+                  this.route.navigateByUrl('/');
+                }
+
+              }
             })
           });
-  
-  
+
+
         }
         else {
           Swal.fire('Thất bại', data, "error");

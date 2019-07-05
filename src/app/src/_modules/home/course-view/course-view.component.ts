@@ -36,6 +36,7 @@ export class CourseViewComponent implements OnInit {
         })
       }
     })
+    
     this.atvRoute.params.subscribe((res: any) => {
       this.danhSachKhoaHoc=[];
       if(res.idTheLoai && res.idMang){

@@ -55,21 +55,13 @@ export class ModCreateLectureComponent implements OnInit {
       this.courseId = res.id;
       this.courseGroupId = res.mangKhoaHoc;
       this.khoahocS.LayChiTietKhoaHoc(this.courseGroupId, this.courseId).subscribe(res => {
-        console.log(res.data)
         this.hinhAnh = res.data.HinhAnh;
         this.name = res.data.TenKH;
         this.short = res.data.TomTat;
         this.price = res.data.GiaTien;
         this.giam = res.data.GiamGia;
         this.tenMangKH = res.data.MangKH;
-        // $('#lyDoMain').val('con cac địt mẹ m')
-        // console.log(document.getElementById('lyDoMain').value)
-        // let wholeString: string = res.data.TomTat;
-        // let index: number = wholeString.indexOf('<h2 style="text-align: center;"><strong>KẾT QUẢ ĐẠT ĐƯỢC</strong></h2>');
-        // this.stringKq = wholeString.slice(index, wholeString.length);
-        // this.stringMain = wholeString.slice(0, index);
-        // document.getElementById('lyDoMain'). = this.stringMain
-        // document.getElementById('ketquadatduoc').innerHTML = String;
+       
       })
     })
     this.khoahocS.LayDanhSachBaiGiang(this.courseId).subscribe((res: any) => {
@@ -142,11 +134,7 @@ export class ModCreateLectureComponent implements OnInit {
           return;
 
         }
-        // if (item.MoTa == '') {
-        //   Swal.fire('Lỗi', 'Không được bỏ trống mô tả', 'error');
-        //   return;
-
-        // }
+      
         if (item.EmbededURL == '') {
 
           Swal.fire('Lỗi', 'Không được bỏ trống đường dẫn ', 'error');
@@ -232,7 +220,6 @@ export class ModCreateLectureComponent implements OnInit {
         Swal.fire('Thành công', res.data, 'success').then(res => {
           preload.fadeOut('slow');
         })
-
       }
       else {
         Swal.fire('Thất bại', res, 'error').then(res => {
@@ -250,8 +237,6 @@ export class ModCreateLectureComponent implements OnInit {
           })
         }
       }
-
-
       else {
         Swal.fire('Thất bại', 'File excel chưa đúng cấu trúc', 'error').then(res => {
           preload.fadeOut('slow');

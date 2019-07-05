@@ -26,7 +26,9 @@
   }
   .col-width-lg { margin: 0 auto; }
 .course-home-menutop {display: flex;}
-.course-logo { padding: 13px 0 15px 0; }
+.course-logo { width: 120px;
+  padding-left: 20px;
+  padding-top: 13px; }
 .course-menu-cate { display: inline-block;    margin: 25px 0 0 16px; cursor: pointer; position: relative; color: #555}
 .course-menu-cate i { font-size: 18px; margin-right: 5px; vertical-align: middle; }
 .course-form {    font-size: 13px;   font-style: italic;    height: 40px;    width: 99% !important;}

@@ -55,8 +55,7 @@
               "src/assets/js/dataTables.bootstrap4.js",
               "src/assets/js/custom.js",
               "src/assets/js/dataTable.js",
-              "src/assets/js/jquery.magnific-popup.min.js",
-              "./node_modules/froala-editor/js/plugins/font_size.min.js"
+              "src/assets/js/jquery.magnific-popup.min.js"
               
               
             ]

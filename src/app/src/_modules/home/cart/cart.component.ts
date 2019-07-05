@@ -88,24 +88,22 @@ export class CartComponent implements OnInit {
             Swal.fire('Thất bại', res, 'error');
           }
           else {
-
             const linkThanhToan = res.data;
             window.location.href = linkThanhToan;
-
           }
-
         },err=>{
           Swal.fire({
             type:'error',
-            titleText:'Bạn chưa đăng nhập',
-            showCancelButton:true,
-            confirmButtonText:'Đăng nhập ngay',
+            titleText:'Bạn chưa điền đủ thông tin',
+            // showCancelButton:true,
+            // confirmButtonText:'Đăng nhập ngay',
     
-          }).then(res=>{
-            if(res.value){
-              this.route.navigateByUrl('/login');
-            }
           })
+          // .then(res=>{
+          //   if(res.value){
+          //     this.route.navigateByUrl('/login');
+          //   }
+          // })
         })
     }
     else{

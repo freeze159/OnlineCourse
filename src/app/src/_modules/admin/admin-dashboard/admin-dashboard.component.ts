@@ -27,26 +27,26 @@ export class AdminDashboardComponent implements OnInit {
       this.dataTable = table.DataTable();
     })
   }
-  xoa(id){
-    Swal.fire({
-      type:'warning',
-      title:'Không thể khôi phục sau khi xóa',
-      showCancelButton:true,
-      confirmButtonText:'Đồng ý xóa'
-    }).then(res =>{
-      if(res.value){
-        this.userS.XoaHoaDon(id).subscribe((res:any)=>{
-            if(typeof res == 'object'){
-              Swal.fire('Xóa thành công',res.data,'success').then(()=>{
-                this.load();
-              })
-            }
-            else{
-              Swal.fire('Thất bại',res,'error');
-            }
-        })
-      }
-    })
-  }
+  // xoa(id){
+  //   Swal.fire({
+  //     type:'warning',
+  //     title:'Không thể khôi phục sau khi xóa',
+  //     showCancelButton:true,
+  //     confirmButtonText:'Đồng ý xóa'
+  //   }).then(res =>{
+  //     if(res.value){
+  //       this.userS.XoaHoaDon(id).subscribe((res:any)=>{
+  //           if(typeof res == 'object'){
+  //             Swal.fire('Xóa thành công',res.data,'success').then(()=>{
+  //               this.load();
+  //             })
+  //           }
+  //           else{
+  //             Swal.fire('Thất bại',res,'error');
+  //           }
+  //       })
+  //     }
+  //   })
+  // }
 
 }

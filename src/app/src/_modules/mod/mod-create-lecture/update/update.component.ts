@@ -16,7 +16,7 @@ export class UpdateComponent implements OnInit {
   idBaiGiang: number;
   idKhoaHoc: number;
   link: string;
-  hocThu:string = '0'
+  hocThu:number = 0
   ngOnInit() {
     this.atv.queryParams.subscribe(res => {
       this.tenBaiGiang = res.TenBaiGiang;
@@ -46,7 +46,6 @@ export class UpdateComponent implements OnInit {
     if (thongTin.HocThu == '') {
       thongTin.HocThu = this.hocThu;
     }
-    console.log(thongTin);
     this.khoaHocS.UpdateBaiGiang(this.idKhoaHoc, this.idBaiGiang, thongTin).subscribe((res: any) => {
       if (typeof res == 'object') {
         Swal.fire('Thành công', res.data, 'success').then(res => {

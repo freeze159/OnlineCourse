@@ -3,6 +3,7 @@ import { KhoaHocService } from 'src/app/src/_core/services/khoa-hoc.service';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { UserService } from 'src/app/src/_core/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-enter-code',
@@ -11,7 +12,7 @@ import { UserService } from 'src/app/src/_core/services/user.service';
 })
 export class EnterCodeComponent implements OnInit {
   flagLoggin:boolean=true
-  constructor(private khoaHocService:KhoaHocService,private userService:UserService) { }
+  constructor(private khoaHocService:KhoaHocService,private userService:UserService,private route:Router) { }
   @ViewChild('frmCode') frmCode:NgForm
   ngOnInit() {
     if(localStorage.getItem('userLogin')){
@@ -28,12 +29,15 @@ export class EnterCodeComponent implements OnInit {
     
     this.khoaHocService.KichHoat(data).subscribe((res:any)=>{
       if(typeof res=='object'){
-        Swal.fire('Thông báo','Bạn đã mỡ thành công khóa học',"success");
+        Swal.fire('Thông báo','Bạn đã mở thành công khóa học',"success");
         const token = localStorage.getItem('tokenbearer'); 
         this.userService.KhoaHocCuaToi().subscribe((res:any)=>{
           const ownCouse = JSON.stringify(res.data)
           localStorage.setItem('ownCourse',ownCouse);
-          window.location.href='/';
+          setTimeout(() => {
+            this.route.navigateByUrl('/');
+          }, 600);
+          
         })
       }
       else{
